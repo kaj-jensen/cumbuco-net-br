@@ -8,6 +8,7 @@
     "build": "astro build",
     "test": "node --test worker/index.test.js",
     "audit:seo": "npm run build && node scripts/audit-seo.mjs",
+    "audit:properties": "node scripts/audit-property-facts.mjs",
     "audit:live": "node scripts/audit-live.mjs",
     "content:prepare": "node scripts/prepare-content.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
