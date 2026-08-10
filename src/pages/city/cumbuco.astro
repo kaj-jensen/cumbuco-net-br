@@ -4,511 +4,109 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const image = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
 const heroImage = "/images/content/cumbuco/sunny-beach-1440.jpg";
-const title = "Cumbuco Travel Guide: Kitesurfing, Weather & Things to Do";
-const description = "Plan a Cumbuco stay with practical advice on wind and rainy seasons, Fortaleza airport transfers, beaches, dunes, lagoons, restaurants, and rentals.";
-
+const title = "Guia de Cumbuco: Praia, Kitesurf, Lagoas e Onde Ficar";
+const description = "Guia local de Cumbuco com informações sobre praia, kitesurf, dunas, lagoas, restaurantes, transporte, clima e imóveis para temporada.";
 const faqItems = [
-  {
-    question: "When is the best time for kitesurfing in Cumbuco?",
-    answer: "The most reliable wind season generally runs from July into December, with useful conditions often continuing into January. Wind, tide, and sea conditions still change from day to day, so riders should check locally before launching.",
-  },
-  {
-    question: "Is Cumbuco only for kitesurfers?",
-    answer: "No. The beach, warm water, dunes, lagoons, buggy trips, restaurants, relaxed beach bars, pools, and easy village life make Cumbuco equally enjoyable for families, couples, and groups who never step onto a kiteboard.",
-  },
-  {
-    question: "How far is Cumbuco from Fortaleza?",
-    answer: "Cumbuco is approximately 30 kilometres from central Fortaleza and about 40 kilometres from Fortaleza International Airport. The airport journey commonly takes around 45 to 60 minutes, but traffic and the exact accommodation location make advance transfer planning worthwhile.",
-  },
-  {
-    question: "Where should I stay in Cumbuco?",
-    answer: "Choose according to the experience you want: close to the village for restaurants and evening life, directly on the beach for sea access, or in a quieter house or condominium for more space, gardens, and private or shared pools.",
-  },
-  {
-    question: "When is the rainy season in Cumbuco?",
-    answer: "Ceará's principal rainy period runs from February through May, with March and April normally the wettest months. Rainfall varies from year to year and tropical rain often comes in concentrated periods rather than lasting all day.",
-  },
-  {
-    question: "Do I need a car in Cumbuco?",
-    answer: "Not necessarily. The village centre, restaurants, and nearby beach are manageable on foot from a central stay. A transfer, taxi, app-based ride, authorised buggy, or rental car is useful for the airport, lagoons, more distant properties, and trips along the coast.",
-  },
-  {
-    question: "Is Cumbuco suitable for beginner kitesurfers?",
-    answer: "Yes, provided beginners book instruction with a qualified local school and follow its guidance about wind, tide, equipment, and safe launch areas. Conditions that suit an experienced independent rider are not automatically suitable for a first lesson.",
-  },
-  {
-    question: "How many days should I spend in Cumbuco?",
-    answer: "Three or four days allow time for the beach, village, dunes, and a lagoon visit. A week or longer makes more sense for kitesurfers, families, and travellers who want weather flexibility and slower days at their rental.",
-  },
+  { question: "Qual é a melhor época para kitesurf em Cumbuco?", answer: "A temporada principal costuma ir de julho a dezembro, muitas vezes com condições úteis em janeiro. Vento, maré e estado do mar devem ser avaliados localmente todos os dias." },
+  { question: "Cumbuco é interessante para quem não pratica kitesurf?", answer: "Sim. Praia, dunas, lagoas, passeios de buggy, restaurantes e imóveis com piscina fazem de Cumbuco uma boa base para famílias, casais e grupos." },
+  { question: "Qual é a distância entre Fortaleza e Cumbuco?", answer: "Cumbuco fica a cerca de 30 km de Fortaleza e aproximadamente 40 km do aeroporto. O trajeto costuma levar de 45 a 60 minutos, dependendo do trânsito e do endereço." },
+  { question: "Preciso de carro em Cumbuco?", answer: "Não necessariamente. Quem fica perto do centro costuma chegar a pé à praia e a restaurantes. Traslado, táxi, carro por aplicativo ou veículo alugado ajudam nos trajetos ao aeroporto, lagoas e imóveis mais afastados." },
 ];
-
 const structuredData = [
-  {
-    "@type": "TouristDestination",
-    "@id": "https://www.cumbuco.net.br/city/cumbuco/#destination",
-    name: "Cumbuco, Ceará, Brasil",
-    url: "https://www.cumbuco.net.br/city/cumbuco/",
-    description,
-    image: new URL(image, Astro.site).toString(),
-    containedInPlace: {
-      "@type": "AdministrativeArea",
-      name: "Caucaia, Ceará, Brasil",
-    },
-    touristType: ["Kitesurfers", "Beach travellers", "Families", "Couples", "Groups"],
-  },
-  {
-    "@type": "BreadcrumbList",
-    "@id": "https://www.cumbuco.net.br/city/cumbuco/#breadcrumb",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Cumbuco Rentals", item: "https://www.cumbuco.net.br/" },
-      { "@type": "ListItem", position: 2, name: "Cumbuco Travel Guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    ],
-  },
-  {
-    "@type": "FAQPage",
-    "@id": "https://www.cumbuco.net.br/city/cumbuco/#faq",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: { "@type": "Answer", text: item.answer },
-    })),
-  },
+  { "@type": "TouristDestination", "@id": "https://www.cumbuco.net.br/city/cumbuco/#destination", name: "Cumbuco, Ceará, Brasil", url: "https://www.cumbuco.net.br/city/cumbuco/", description, image: new URL(image, Astro.site).toString(), containedInPlace: { "@type": "AdministrativeArea", name: "Caucaia, Ceará, Brasil" }, inLanguage: "pt-BR" },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+  ]},
+  { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];
 ---
 
-<BaseLayout title={title} description={description} canonical="/city/cumbuco/" image={image} imageAlt="Kitesurfing above the Atlantic coast at Cumbuco" structuredData={structuredData}>
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/" image={image} imageAlt="Kitesurf na Praia de Cumbuco" structuredData={structuredData}>
   <section class="destination-hero">
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w" sizes="100vw" />
-      <img src={heroImage} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Bright blue sky, warm sand, and the Atlantic shoreline at Cumbuco beach" fetchpriority="high" />
+      <img src={heroImage} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Praia de Cumbuco em um dia claro" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
-    <div class="shell hero-copy">
-      <p class="eyebrow">Cumbuco destination guide</p>
-      <h1>Where the trade winds meet village life.</h1>
-      <p>A warm-water beach destination in Ceará, Brazil, known around the world for kitesurfing—and loved locally for much more.</p>
-    </div>
+    <div class="shell hero-copy"><p class="eyebrow">Guia local de Cumbuco</p><h1>Praia, vento e vida de vila.</h1><p>Informação prática para escolher onde ficar e aproveitar Cumbuco no seu próprio ritmo.</p></div>
   </section>
 
   <DestinationGuideNav current="hub" />
 
-  <section class="guide-directory-section">
+  <section class="guide-section">
     <div class="shell">
-      <div class="directory-heading">
-        <div>
-          <p class="eyebrow">Build your Cumbuco stay</p>
-          <h2>Start with the question that matters now.</h2>
-        </div>
-        <p>Choose the guide that matches the day you are planning. Every topic now opens into its own practical Cumbuco guide.</p>
-      </div>
-      <div class="guide-directory">
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/where-to-stay/"><span>Stay</span><h3>Where to stay</h3><p>Compare the village, beachfront condominiums, houses, and villas.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/travel-information/"><span>Plan</span><h3>Travel information</h3><p>Airport transfers, weather, money, power, packing, and getting around.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/restaurants/"><span>Taste</span><h3>Restaurants</h3><p>Beach tables, Ceará flavours, and village evenings.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/things-to-do/"><span>Discover</span><h3>Things to do</h3><p>Dunes, lagoons, shoreline walks, and slower days at home.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/beaches/"><span>Water</span><h3>Beaches & lagoons</h3><p>Atlantic beach life and freshwater landscapes beyond the village.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/kiteboarding/"><span>Ride</span><h3>Kiteboarding</h3><p>Wind seasons, safe planning, lessons, storage, and local conditions.</p><strong>Open guide →</strong></a>
-        <a class="guide-card guide-card--primary" href="/city/cumbuco/local-businesses/"><span>Local</span><h3>Local directory</h3><p>Verified direct links for food, stays, kite schools, and useful services.</p><strong>Open directory →</strong></a>
+      <div class="section-heading"><div><p class="eyebrow">Planeje sua estadia</p><h2>Comece pelo que importa para a sua viagem.</h2></div><p>Os guias abaixo reúnem orientação específica, escrita para Cumbuco e organizada para consulta rápida.</p></div>
+      <div class="guide-grid">
+        <a href="/city/cumbuco/where-to-stay/"><span>Hospedagem</span><h3>Onde ficar</h3><p>Centro, beira-mar, condomínios, casas e vilas.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/travel-information/"><span>Planejamento</span><h3>Informações de viagem</h3><p>Aeroporto, transporte, clima, compras e detalhes práticos.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/restaurants/"><span>Gastronomia</span><h3>Onde comer</h3><p>Da praia ao centro, com escolhas para diferentes momentos.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/things-to-do/"><span>Passeios</span><h3>O que fazer</h3><p>Dunas, lagoas, buggy, praia e dias sem programação.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/beaches/"><span>Água</span><h3>Praias e lagoas</h3><p>Condições, acesso e diferenças entre mar e água doce.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/kiteboarding/"><span>Vento</span><h3>Kitesurf</h3><p>Temporada, aulas, segurança, equipamento e logística.</p><strong>Abrir guia →</strong></a>
+        <a href="/city/cumbuco/local-businesses/"><span>Serviços</span><h3>Guia local</h3><p>Contatos organizados por categoria para falar diretamente.</p><strong>Abrir diretório →</strong></a>
       </div>
     </div>
   </section>
 
-  <nav class="anchor-nav" aria-label="On this Cumbuco guide page">
-    <div class="shell">
-      <a href="#why-cumbuco">Why visit</a>
-      <a href="#when-to-visit">When to go</a>
-      <a href="#kitesurfing">Kitesurfing</a>
-      <a href="#getting-there">Getting there</a>
-      <a href="#food-and-drink">Food & drink</a>
-      <a href="#things-to-do">Things to do</a>
-      <a href="#plan-your-days">Trip ideas</a>
-      <a href="#cumbuco-faq">FAQ</a>
-    </div>
-  </nav>
-
-  <section class="section" id="why-cumbuco">
-    <div class="shell story">
-      <div>
-        <p class="eyebrow">Why visit Cumbuco</p>
-        <h2>A beach village with room to breathe.</h2>
-      </div>
-      <div class="prose intro-copy">
-        <p>Cumbuco sits on the Atlantic coast of Ceará in the municipality of Caucaia, approximately 30 kilometres from Fortaleza. It is close enough for a straightforward arrival, yet the broad beach, coconut palms, dunes, and open horizon quickly create a different rhythm.</p>
-        <p>The village grew from a fishing community into one of Brazil’s best-known kitesurfing destinations. Today, international riders share the shoreline with Brazilian holidaymakers, families, long-stay visitors, and people who simply want warm water and an easy life near the sea.</p>
-        <p>Cumbuco works because the days can be as active or relaxed as you choose. Ride the wind, visit a lagoon, cross the dunes, settle beside a pool, walk into the village for dinner, or spend an afternoon with your feet in the sand at a beach bar.</p>
-      </div>
-    </div>
+  <section class="section intro-section">
+    <div class="shell intro-grid"><div><p class="eyebrow">Cumbuco na prática</p><h2>Perto de Fortaleza, com um ritmo próprio.</h2></div><div class="prose"><p>Cumbuco fica no município de Caucaia, no litoral do Ceará. A proximidade com Fortaleza facilita a chegada, mas a praia extensa, as dunas e a vida concentrada da vila mudam rapidamente a sensação da viagem.</p><p>O destino ganhou projeção internacional pelo kitesurf. Ainda assim, funciona igualmente bem para quem quer caminhar na praia, conhecer as lagoas, reunir a família em uma casa com piscina ou simplesmente aproveitar dias mais tranquilos.</p></div></div>
   </section>
 
-  <section class="facts-section" aria-label="Cumbuco quick facts">
-    <div class="shell fact-grid">
-      <div><strong>30 km</strong><span>approximately from Fortaleza</span></div>
-      <div><strong>Jul–Dec</strong><span>core trade-wind season</span></div>
-      <div><strong>Feb–May</strong><span>principal rainy period in Ceará</span></div>
-      <div><strong>Year-round</strong><span>warm Atlantic days and village life</span></div>
-    </div>
+  <section class="facts"><div class="shell fact-grid"><div><strong>30 km</strong><span>aproximadamente de Fortaleza</span></div><div><strong>45–60 min</strong><span>trajeto usual desde o aeroporto</span></div><div><strong>Jul–dez</strong><span>principal temporada de vento</span></div><div><strong>Fev–mai</strong><span>principal período chuvoso</span></div></div></section>
+
+  <section class="section section--sand">
+    <div class="shell local-grid"><div><p class="eyebrow">Escolhas que mudam a experiência</p><h2>Localização vem antes da lista de comodidades.</h2></div><div class="local-list"><article><h3>Centro da vila</h3><p>Facilita restaurantes, pequenas compras e saídas a pé, especialmente para quem não pretende alugar carro.</p></article><article><h3>Beira-mar</h3><p>Prioriza o acesso à praia. Confirme se o imóvel realmente tem saída direta para a areia ou apenas vista para o mar.</p></article><article><h3>Casas e condomínios</h3><p>Podem oferecer piscina, jardim, cozinha e mais espaço, mas a distância até o centro varia bastante.</p></article><article><h3>Viagem de kite</h3><p>Considere armazenamento, lavagem do equipamento, acesso ao pico e transporte de boardbags antes de reservar.</p></article></div></div>
   </section>
 
-  <section class="section section--sand" id="kitesurfing">
-    <div class="shell feature-grid">
-      <div>
-        <p class="eyebrow">Kitesurfing in Cumbuco</p>
-        <h2>One of the names riders know worldwide.</h2>
-      </div>
-      <div class="prose">
-        <p>Cumbuco’s reputation is built on the steady trade winds that reach Ceará’s coast, warm water, a long open beach, and access to varied conditions. The principal wind season normally builds from July and remains strongest through the second half of the year, often extending into January.</p>
-        <p>Experienced riders use Cumbuco as a base for beach sessions and longer downwind journeys along the Ceará coast. Beginners can find instruction locally, but should always learn with a qualified school, understand the launch area, and respect swimmers, other riders, tides, and changing sea conditions.</p>
-        <p>The spectacle is part of the destination even when you are not riding. On a good wind day, colourful kites fill the sky from one end of the beach to the other.</p>
-        <div class="planning-box">
-          <h3>Plan a safer kite trip</h3>
-          <ul>
-            <li>Reserve lessons and equipment early during the busiest wind months.</li>
-            <li>Ask your school which beach or lagoon suits your current ability.</li>
-            <li>Check the daily wind, tide, access, and launch conditions locally.</li>
-            <li>Arrange secure equipment storage and transport before travelling with a full quiver.</li>
-            <li>Use an experienced local guide for any downwinder rather than treating it as an ordinary beach session.</li>
-          </ul>
-        </div>
-        <a class="text-link" href="/properties/">Find a Cumbuco rental near the water →</a>
-      </div>
-    </div>
-  </section>
+  <section class="section faq-section"><div class="shell"><p class="eyebrow">Perguntas frequentes</p><h2>Antes de chegar a Cumbuco.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div></section>
 
-  <section class="landscape-section" aria-label="Kitesurfing on Cumbuco beach">
-    <div class="shell">
-      <picture>
-        <source type="image/avif" srcset="/images/content/cumbuco/sunny-kitesurfing-720.avif 720w, /images/content/cumbuco/sunny-kitesurfing-1440.avif 1440w" sizes="(max-width: 1200px) 100vw, 1200px" />
-        <source type="image/webp" srcset="/images/content/cumbuco/sunny-kitesurfing-720.webp 720w, /images/content/cumbuco/sunny-kitesurfing-1440.webp 1440w" sizes="(max-width: 1200px) 100vw, 1200px" />
-        <img src={image} srcset="/images/content/cumbuco/sunny-kitesurfing-720.jpg 720w, /images/content/cumbuco/sunny-kitesurfing-1440.jpg 1440w" sizes="(max-width: 1200px) 100vw, 1200px" width="1440" height="1080" alt="Kitesurfers and colourful kites riding in bright sunshine along Cumbuco beach in Ceará, Brazil" loading="lazy" />
-      </picture>
-      <p>Trade-wind days bring colourful kites, riders, and long views along Cumbuco’s Atlantic shoreline.</p>
-    </div>
-  </section>
-
-  <section class="section" id="when-to-visit">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Best time to visit Cumbuco</p>
-          <h2>Choose the season for the holiday you want.</h2>
-        </div>
-        <p class="section-intro">Cumbuco stays warm throughout the year, but wind reliability, rainfall, visitor numbers, and the atmosphere around the village change noticeably.</p>
-      </div>
-      <div class="season-grid">
-        <article><span>July–August</span><h3>The wind returns</h3><p>Rainfall usually eases and the trade-wind season becomes established. These months suit riders who want strong conditions with slightly less peak-season intensity.</p></article>
-        <article><span>September–November</span><h3>Prime kite months</h3><p>This is the heart of the international kitesurf season. Expect reliable wind, busy schools, more riders, and stronger demand for beachfront accommodation.</p></article>
-        <article><span>December–January</span><h3>Summer and holidays</h3><p>Warm holiday energy continues around the village. Wind can remain useful, but becomes less predictable as the season changes, particularly later in January.</p></article>
-        <article><span>February–May</span><h3>Greener and quieter</h3><p>Ceará's principal rainy period brings greener dunes and fewer kite-focused visitors. March and April are normally the wettest months, although conditions vary each year.</p></article>
-      </div>
-      <p class="source-note">Seasons describe typical patterns, not a daily forecast. Check <a href="https://www.funceme.br/" target="_blank" rel="noopener noreferrer">FUNCEME</a> for regional weather information and a specialist forecast before planning a kite session.</p>
-    </div>
-  </section>
-
-  <section class="section arrival-section" id="getting-there">
-    <div class="shell arrival-grid">
-      <div>
-        <p class="eyebrow">Getting to Cumbuco</p>
-        <h2>From Fortaleza airport to the beach.</h2>
-        <p class="lede">Fortaleza International Airport is roughly 40 kilometres from Cumbuco. A normal road journey is often around 45 to 60 minutes, depending on traffic and your exact destination.</p>
-      </div>
-      <div class="practical-list">
-        <article><h3>Pre-arranged transfer</h3><p>The simplest option with luggage, children, or kite equipment. Confirm the flight number, arrival time, passenger count, and equipment dimensions in advance.</p></article>
-        <article><h3>Taxi or app-based ride</h3><p>The airport has official taxi services and a designated Uber pick-up area. Confirm that the driver accepts the Cumbuco journey and has enough space before loading.</p></article>
-        <article><h3>Rental car</h3><p>Useful when you plan independent lagoon visits or a longer coast itinerary. Confirm parking at the property and avoid driving on dunes or beaches without authorised local access.</p></article>
-        <article><h3>Public transport</h3><p>Possible, but normally less convenient because the trip can require city connections. It is rarely the best first choice with suitcases, children, or kite bags.</p></article>
-      </div>
-    </div>
-    <div class="shell arrival-tip">
-      <strong>Arrival tip</strong>
-      <p>Send us your flight details when enquiring. We can help you compare the practical options for your party and rental location without adding transport automatically to the booking.</p>
-      <a href="https://fortaleza-airport.com.br/pt/viajar/guia-do-passageiro" target="_blank" rel="noopener noreferrer">See official Fortaleza Airport transport information →</a>
-    </div>
-  </section>
-
-  <section class="section dining-section" id="food-and-drink">
-    <div class="shell">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Beach bars and restaurants</p>
-          <h2>Come off the water hungry. Stay for the view.</h2>
-        </div>
-        <p class="section-intro">Cumbuco has an informal dining scene that moves between tables in the sand, shaded beachfront restaurants, and the compact village centre.</p>
-      </div>
-      <div class="duro-feature">
-        <figure class="duro-feature__image">
-          <picture>
-            <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.avif 1440w" sizes="(max-width: 700px) 100vw, 62vw" />
-            <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.webp 1440w" sizes="(max-width: 700px) 100vw, 62vw" />
-            <img src="/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg 1440w" sizes="(max-width: 700px) 100vw, 62vw" width="1440" height="1080" loading="lazy" decoding="async" alt="Tables beneath palm trees at Duro Beach with the Atlantic Ocean beyond" />
-          </picture>
-          <figcaption>Duro Beach brings the classic Cumbuco combination together: palms, sand, sea, music, and an unhurried table.</figcaption>
-        </figure>
-        <div class="duro-feature__copy">
-          <p class="eyebrow">A local example</p>
-          <h3>Duro Beach, from lunch into late afternoon.</h3>
-          <p>One example of Cumbuco's feet-in-the-sand appeal is Duro Beach. The beach bar and restaurant sits directly by the ocean, so lunch or a cold drink still feels connected to the water, wind, and passing kites.</p>
-          <p>It can suit an easy lunch, a post-session drink, or a longer afternoon under the palms. The atmosphere, events, menu, and opening hours can change, so check current details directly before making it part of a fixed plan.</p>
-        </div>
-      </div>
-      <div class="duro-gallery" aria-label="Duro Beach bar and drinks">
-        <figure>
-          <picture>
-            <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.avif 1440w" sizes="(max-width: 700px) 100vw, 64vw" />
-            <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.webp 1440w" sizes="(max-width: 700px) 100vw, 64vw" />
-            <img src="/images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg 1440w" sizes="(max-width: 700px) 100vw, 64vw" width="1440" height="1080" loading="lazy" decoding="async" alt="Open-air dining area at Duro Beach overlooking the sea and kitesurfers" />
-          </picture>
-          <figcaption>Even from a shaded table, the beach and kites remain part of the scene.</figcaption>
-        </figure>
-        <figure>
-          <picture>
-            <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-drinks-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-drinks-1440.avif 1440w" sizes="(max-width: 700px) 100vw, 28vw" />
-            <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-drinks-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-drinks-1440.webp 1440w" sizes="(max-width: 700px) 100vw, 28vw" />
-            <img src="/images/content/cumbuco/duro-beach/duro-beach-drinks-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-drinks-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-drinks-1440.jpg 1440w" sizes="(max-width: 700px) 100vw, 28vw" width="810" height="1080" loading="lazy" decoding="async" alt="Cold bottled drinks on ice at a Duro Beach table with the ocean behind" />
-          </picture>
-          <figcaption>Cold drinks, shade, and nowhere you need to hurry to next.</figcaption>
-        </figure>
-      </div>
-      <div class="experience-grid">
-        <article><span>01</span><h3>Feet in the sand</h3><p>Beach bars and lounges make it easy to settle in for cold drinks, lunch, and a long view of the Atlantic between swims or kite sessions. Service is generally relaxed, so allow the meal to become part of the afternoon.</p></article>
-        <article><span>02</span><h3>Flavours of Ceará</h3><p>Look for fresh fish, prawns, grilled meat, carne de sol, baião de dois, tapioca, tropical fruit, and familiar Brazilian favourites served without unnecessary ceremony.</p></article>
-        <article><span>03</span><h3>Village evenings</h3><p>After sunset, the village offers relaxed restaurants, pizza, cafés, cocktails, ice cream, and casual bars within a compact area that is easy to explore on foot.</p></article>
-      </div>
-      <p class="local-note"><strong>Local planning note:</strong> beachfront kitchens may close earlier than village restaurants, and places or opening hours can change with the season. We are happy to share current suggestions when you enquire about a stay.</p>
-    </div>
-  </section>
-
-  <section class="section section--sand" id="things-to-do">
-    <div class="shell activity-grid">
-      <div>
-        <p class="eyebrow">Beyond the beach</p>
-        <h2>Dunes, lagoons, and unhurried days.</h2>
-        <p class="lede">Kitesurfing may be the headline, but it does not have to define the whole holiday.</p>
-      </div>
-      <div class="activity-list">
-        <article><h3>Explore the dunes</h3><p>See the landscape behind the village with an experienced, authorised local buggy operator. Routes and access can vary with conditions.</p></article>
-        <article><h3>Visit the lagoons</h3><p>Freshwater lagoons among the dunes offer a different setting from the ocean and are a familiar part of Cumbuco day trips.</p></article>
-        <article><h3>Walk the shoreline</h3><p>Beachfront condominiums, restaurants, and the village sit along a coast that rewards an early walk or a cooler late-afternoon wander.</p></article>
-        <article><h3>Slow down at home</h3><p>A private villa, garden, veranda, or shared pool can be as important as any excursion—especially for families and larger groups.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section itinerary-section" id="plan-your-days">
-    <div class="shell">
-      <p class="eyebrow">A practical Cumbuco itinerary</p>
-      <div class="itinerary-heading">
-        <h2>Three days is a beginning. A week lets you settle in.</h2>
-        <p>Use this as a flexible outline rather than a checklist. Wind, tide, rain, and how slowly you want to travel should shape each day.</p>
-      </div>
-      <div class="itinerary-grid">
-        <article><span>Day 1</span><h3>Beach and village</h3><p>Arrive, learn the immediate area around your rental, walk the beach in daylight, and spend the evening exploring the restaurants around the village centre.</p></article>
-        <article><span>Day 2</span><h3>Wind or water</h3><p>Book a kite lesson or supervised session if you ride. Non-riders can choose a relaxed beach day, pool time, or a longer lunch at a beach bar.</p></article>
-        <article><span>Day 3</span><h3>Dunes and lagoon</h3><p>Arrange an authorised buggy excursion or local transfer to experience the dune landscape and a freshwater lagoon. Confirm the route and stops before departure.</p></article>
-        <article><span>Days 4–7</span><h3>Follow the conditions</h3><p>Leave room for another kite day, a coastal excursion, a quiet morning at home, and the places recommended locally after you arrive.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="where-to-stay">
-    <div class="shell stay-grid">
-      <div>
-        <p class="eyebrow">Where to stay in Cumbuco</p>
-        <h2>Choose the location before the floor plan.</h2>
-      </div>
-      <div class="prose">
-        <p>There is no single best part of Cumbuco. A beachfront apartment can suit travellers who want easy sea access and shared facilities. A villa or independent house offers more privacy and space for a group. Staying closer to the village makes restaurants and evening walks simpler.</p>
-        <p>Our property pages explain guest capacity, bedrooms, bathrooms, facilities, and location. Availability is connected to our calendars, and quotations are prepared personally according to dates, number of guests, season, and length of stay.</p>
-        <div class="stay-actions">
-          <a class="button" href="/properties/">Explore all Cumbuco rentals</a>
-          <a class="button button--ghost" href="/contact-cumbuco-rentals/">Ask for local advice</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section faq-section" id="cumbuco-faq">
-    <div class="shell">
-      <p class="eyebrow">Planning your trip</p>
-      <h2>Cumbuco travel questions.</h2>
-      <div class="faq-grid">
-        {faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}
-      </div>
-      <p class="source-note">For broader regional information, consult <a href="https://visitbrasil.com/en/blog/kitesurfing-in-brazil-water-adventures-and-tourist-destinations/" target="_blank" rel="noopener noreferrer">Visit Brasil’s guide to kitesurfing in Brazil</a>.</p>
-    </div>
-  </section>
-
-  <section class="section section--ocean final-cta">
-    <div class="shell cta-inner">
-      <div><p class="eyebrow">Make Cumbuco your base</p><h2>Find a stay that fits the way you travel.</h2></div>
-      <a class="button button--light" href="/properties/">View Cumbuco properties</a>
-    </div>
-  </section>
+  <section class="section final-cta"><div class="shell cta-grid"><div><p class="eyebrow">Imóveis em Cumbuco</p><h2>Encontre uma base que funcione para o seu grupo.</h2></div><a class="button" href="/properties/">Ver imóveis disponíveis</a></div></section>
 </BaseLayout>
 
 <style>
-  .destination-hero { position: relative; min-height: min(47rem, calc(100vh - 5rem)); display: grid; align-items: end; overflow: hidden; color: white; }
+  .destination-hero { position: relative; min-height: min(44rem, calc(100vh - 5rem)); display: grid; align-items: end; overflow: hidden; color: white; }
   .destination-hero picture, .destination-hero img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .destination-hero picture { display: block; }
   .destination-hero img { object-fit: cover; object-position: center 70%; }
-  .shade { background: linear-gradient(90deg, rgb(5 43 43 / 52%) 0%, rgb(5 43 43 / 8%) 68%), linear-gradient(0deg, rgb(5 43 43 / 60%), transparent 62%); }
+  .shade { background: linear-gradient(90deg, rgb(4 44 46 / 68%), rgb(4 44 46 / 10%) 72%), linear-gradient(0deg, rgb(4 44 46 / 62%), transparent 60%); }
   .hero-copy { position: relative; padding-bottom: clamp(4rem, 9vw, 7rem); }
-  .hero-copy h1 { max-width: 11ch; }
-  .hero-copy > p:last-child { max-width: 40rem; margin-top: 1.35rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
-  .hero-copy .eyebrow { color: var(--coral-light); }
-
-  .guide-directory-section { padding-block: clamp(3rem, 6vw, 5rem); background: linear-gradient(150deg, #effbf7 0%, var(--sky) 100%); }
-  .directory-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.75fr); gap: clamp(2rem, 6vw, 5rem); align-items: end; }
-  .directory-heading h2 { max-width: 15ch; }
-  .directory-heading > p { max-width: 36rem; color: var(--ink-soft); }
-  .guide-directory { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 2.5rem; }
-  .guide-card { min-height: 14rem; display: flex; flex-direction: column; align-items: flex-start; padding: 1.35rem; border: 1px solid rgb(6 105 109 / 16%); border-radius: var(--radius); background: rgb(255 255 255 / 74%); color: var(--ink); text-decoration: none; transition: transform 160ms ease, border-color 160ms ease, background 160ms ease; }
-  .guide-card:hover { border-color: var(--ocean); background: white; transform: translateY(-2px); }
-  .guide-card span { color: var(--coral); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-  .guide-card h3 { margin-top: 1.7rem; font-size: 1.55rem; }
-  .guide-card p { margin-top: 0.6rem; color: var(--ink-soft); font-size: 0.9rem; }
-  .guide-card strong { margin-top: auto; padding-top: 1rem; color: var(--ocean); font-size: 0.78rem; }
-  .guide-card--primary { background: var(--ocean-deep); color: white; }
-  .guide-card--primary:hover { background: var(--ocean); }
-  .guide-card--primary span { color: #ffd46c; }
-  .guide-card--primary p { color: rgb(255 255 255 / 76%); }
-  .guide-card--primary strong { color: white; }
-
-  .anchor-nav { border-bottom: 1px solid var(--line); background: var(--paper); }
-  .anchor-nav .shell { display: flex; gap: 1.5rem; overflow-x: auto; scrollbar-width: none; }
-  .anchor-nav .shell::-webkit-scrollbar { display: none; }
-  .anchor-nav a { flex: 0 0 auto; padding-block: 0.9rem; color: var(--ink-soft); font-size: 0.82rem; font-weight: 700; text-decoration: none; }
-  .anchor-nav a:hover { color: var(--ocean); }
-
-  .story, .feature-grid, .activity-grid, .stay-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
-  .intro-copy > p:first-child { color: var(--ink); font-size: 1.22rem; }
-  .text-link { display: inline-block; margin-top: 0.5rem; color: var(--ocean); font-weight: 700; text-decoration-thickness: 1px; text-underline-offset: 0.25rem; }
-  .planning-box { margin-block: 1.75rem 1rem; padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
-  .planning-box h3 { font-size: 1.35rem; }
-  .planning-box ul { margin: 1rem 0 0; padding-left: 1.15rem; color: var(--ink-soft); }
-  .planning-box li + li { margin-top: 0.45rem; }
-
-  .facts-section { border-block: 1px solid var(--line); }
+  .hero-copy h1 { max-width: 10ch; }
+  .hero-copy > p:last-child { max-width: 38rem; margin-top: 1rem; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+  .guide-section { padding-block: clamp(3rem, 7vw, 5.5rem); background: var(--seafoam); }
+  .section-heading { display: grid; grid-template-columns: 1fr .72fr; gap: 3rem; align-items: end; }
+  .section-heading h2 { max-width: 14ch; }
+  .section-heading > p { color: var(--ink-soft); }
+  .guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; margin-top: 2.5rem; }
+  .guide-grid a { min-height: 14rem; display: flex; flex-direction: column; padding: 1.35rem; border-radius: var(--radius); background: var(--ocean-deep); color: white; text-decoration: none; transition: transform 160ms ease, background 160ms ease; }
+  .guide-grid a:hover { background: var(--ocean); transform: translateY(-2px); }
+  .guide-grid span { color: #ffd46c; font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; }
+  .guide-grid h3 { margin-top: 1.6rem; font-size: 1.5rem; }
+  .guide-grid p { margin-top: .55rem; color: rgb(255 255 255 / 76%); }
+  .guide-grid strong { margin-top: auto; padding-top: 1rem; font-size: .78rem; }
+  .intro-grid, .local-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+  .intro-grid h2, .local-grid h2 { max-width: 13ch; }
+  .facts { background: var(--ocean-deep); color: white; }
   .fact-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
-  .fact-grid div { display: grid; gap: 0.1rem; padding: 2rem; border-right: 1px solid var(--line); }
+  .fact-grid div { padding: 2rem 1.2rem; border-right: 1px solid rgb(255 255 255 / 18%); }
   .fact-grid div:last-child { border-right: 0; }
-  .fact-grid strong { color: var(--ocean); font-family: "Fraunces", Georgia, serif; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; }
-  .fact-grid span { color: var(--ink-soft); font-size: 0.88rem; }
-
-  .season-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-block: 1px solid var(--line); }
-  .season-grid article { padding: 1.75rem; border-right: 1px solid var(--line); }
-  .season-grid article:last-child { border-right: 0; }
-  .season-grid span, .itinerary-grid span { color: var(--coral); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
-  .season-grid h3 { margin-top: 2.25rem; }
-  .season-grid p { margin-top: 0.75rem; color: var(--ink-soft); }
-
-  .landscape-section { padding-block: clamp(4rem, 8vw, 7rem); background: var(--sand); }
-  .landscape-section picture { display: block; aspect-ratio: 16 / 7; overflow: hidden; border-radius: 1.5rem; box-shadow: var(--shadow); }
-  .landscape-section img { width: 100%; height: 100%; object-fit: cover; object-position: center 46%; }
-  .landscape-section p { margin-top: 1rem; color: var(--ink-soft); font-size: 0.9rem; }
-
-  .arrival-section { border-bottom: 1px solid var(--line); }
-  .arrival-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
-  .practical-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .practical-list article { padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); }
-  .practical-list h3 { font-size: 1.3rem; }
-  .practical-list p { margin-top: 0.75rem; color: var(--ink-soft); }
-  .arrival-tip { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1.25rem; align-items: center; margin-top: 2rem; padding: 1.25rem 1.5rem; border-radius: var(--radius); background: var(--seafoam); }
-  .arrival-tip p { color: var(--ink-soft); }
-  .arrival-tip a { color: var(--ocean); font-size: 0.88rem; font-weight: 700; }
-
-  .section-heading { align-items: end; }
-  .section-intro { max-width: 34rem; color: var(--ink-soft); font-size: 1.05rem; }
-  .duro-feature { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr); gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; margin-top: 3rem; }
-  .duro-feature figure, .duro-gallery figure { margin: 0; }
-  .duro-feature__image picture, .duro-gallery picture { display: block; overflow: hidden; border-radius: 1.35rem; background: var(--seafoam); }
-  .duro-feature__image picture { aspect-ratio: 16 / 10; box-shadow: var(--shadow); }
-  .duro-feature img, .duro-gallery img { width: 100%; height: 100%; object-fit: cover; }
-  .duro-feature__image img { object-position: center 58%; }
-  .duro-feature figcaption, .duro-gallery figcaption { margin-top: 0.75rem; color: var(--ink-soft); font-size: 0.82rem; line-height: 1.5; }
-  .duro-feature__copy { padding-block: 1rem; }
-  .duro-feature__copy h3 { margin-top: 0.65rem; font-size: clamp(1.8rem, 3vw, 2.7rem); }
-  .duro-feature__copy p:not(.eyebrow) { margin-top: 1rem; color: var(--ink-soft); }
-  .duro-gallery { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(15rem, 0.65fr); gap: 1rem; margin-block: 3rem; }
-  .duro-gallery picture { height: clamp(23rem, 38vw, 34rem); }
-  .duro-gallery figure:first-child img, .duro-gallery figure:last-child img { object-position: center 52%; }
-  .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
-  .experience-grid article { padding: 2rem; border-right: 1px solid var(--line); }
-  .experience-grid article:last-child { border-right: 0; }
-  .experience-grid span { color: var(--coral); font-size: 0.74rem; font-weight: 800; }
-  .experience-grid h3 { margin-top: 2.5rem; }
-  .experience-grid p, .activity-list p, .faq-grid p { margin-top: 0.75rem; color: var(--ink-soft); }
-  .local-note, .source-note { margin-top: 1.5rem; color: var(--ink-soft); font-size: 0.9rem; }
-
-  .activity-grid > div:first-child { position: sticky; top: 6rem; }
-  .activity-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-  .activity-list article { min-height: 15rem; padding: 1.6rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
-  .activity-list h3 { margin-top: 3rem; }
-
-  .itinerary-section { background: var(--ocean-deep); color: white; }
-  .itinerary-section .eyebrow { color: var(--coral-light); }
-  .itinerary-heading { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); gap: 3rem; align-items: end; }
-  .itinerary-heading h2 { max-width: 15ch; }
-  .itinerary-heading p { max-width: 34rem; color: rgb(255 255 255 / 76%); }
-  .itinerary-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 3rem; border-block: 1px solid rgb(255 255 255 / 22%); }
-  .itinerary-grid article { padding: 1.75rem; border-right: 1px solid rgb(255 255 255 / 22%); }
-  .itinerary-grid article:last-child { border-right: 0; }
-  .itinerary-grid h3 { margin-top: 2rem; color: white; }
-  .itinerary-grid p { margin-top: 0.75rem; color: rgb(255 255 255 / 72%); }
-
-  .stay-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
-  .faq-section { border-top: 1px solid var(--line); }
+  .fact-grid strong, .fact-grid span { display: block; }
+  .fact-grid strong { color: #ffd46c; font-size: 1.35rem; }
+  .fact-grid span { margin-top: .35rem; color: rgb(255 255 255 / 72%); font-size: .85rem; }
+  .local-list { border-top: 1px solid var(--line); }
+  .local-list article { display: grid; grid-template-columns: 12rem 1fr; gap: 1.5rem; padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+  .local-list p, .faq-grid p { color: var(--ink-soft); }
   .faq-section h2 { max-width: 13ch; }
-  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 3rem; border-top: 1px solid var(--line); }
-  .faq-grid article { padding: 2rem 2rem 2rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--line); }
   .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
-  .faq-grid article:nth-child(even) { padding-left: 2rem; }
-  .faq-grid h3 { font-size: 1.35rem; }
-  .source-note a { color: var(--ocean); }
-
-  .cta-inner { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
-  .final-cta h2 { max-width: 14ch; }
-
-  @media (max-width: 850px) {
-    .guide-directory { grid-template-columns: 1fr 1fr; }
-    .fact-grid { grid-template-columns: 1fr 1fr; }
-    .fact-grid div:nth-child(2) { border-right: 0; }
-    .fact-grid div:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
-    .experience-grid { grid-template-columns: 1fr; }
-    .experience-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
-    .experience-grid article:last-child { border-bottom: 0; }
-    .season-grid, .itinerary-grid { grid-template-columns: 1fr 1fr; }
-    .season-grid article:nth-child(2), .itinerary-grid article:nth-child(2) { border-right: 0; }
-    .season-grid article:nth-child(-n + 2), .itinerary-grid article:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
-    .itinerary-grid article:nth-child(-n + 2) { border-bottom-color: rgb(255 255 255 / 22%); }
-    .arrival-tip { grid-template-columns: 1fr; }
-    .duro-feature { grid-template-columns: 1fr; align-items: start; }
-    .duro-feature__copy { max-width: 42rem; padding-block: 0; }
-  }
-
-  @media (max-width: 700px) {
-    .directory-heading, .guide-directory { grid-template-columns: 1fr; }
-    .guide-card { min-height: 11rem; }
-    .story, .feature-grid, .activity-grid, .stay-grid, .faq-grid, .arrival-grid, .itinerary-heading { grid-template-columns: 1fr; }
-    .activity-grid > div:first-child { position: static; }
-    .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.5rem 0; border-right: 0; }
-    .cta-inner { align-items: stretch; flex-direction: column; }
-    .duro-gallery { grid-template-columns: 1fr; }
-    .duro-gallery picture { height: auto; aspect-ratio: 4 / 3; }
-    .duro-gallery figure:last-child picture { aspect-ratio: 3 / 4; }
-  }
-
-  @media (max-width: 560px) {
-    .destination-hero { min-height: 42rem; }
-    .destination-hero img { object-position: 53% 70%; }
-    .fact-grid, .activity-list, .season-grid, .practical-list, .itinerary-grid { grid-template-columns: 1fr; }
-    .fact-grid div { border-right: 0; border-bottom: 1px solid var(--line); }
-    .fact-grid div:last-child { border-bottom: 0; }
-    .activity-list article { min-height: 0; }
-    .activity-list h3 { margin-top: 1.5rem; }
-    .landscape-section picture { aspect-ratio: 4 / 3; }
-    .season-grid article, .itinerary-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
-    .itinerary-grid article { border-bottom-color: rgb(255 255 255 / 22%); }
-    .season-grid article:last-child, .itinerary-grid article:last-child { border-bottom: 0; }
-  }
+  .faq-grid article:nth-child(even) { padding-left: 1.5rem; }
+  .faq-grid p { margin-top: .6rem; }
+  .final-cta { background: var(--ocean); color: white; }
+  .cta-grid { align-items: center; }
+  .cta-grid .eyebrow { color: #ffd46c; }
+  .cta-grid .button { justify-self: end; background: white; color: var(--ocean-deep); }
+  @media (max-width: 850px) { .guide-grid { grid-template-columns: 1fr 1fr; } .fact-grid { grid-template-columns: 1fr 1fr; } .fact-grid div:nth-child(2) { border-right: 0; } .fact-grid div { border-bottom: 1px solid rgb(255 255 255 / 18%); } }
+  @media (max-width: 700px) { .section-heading, .intro-grid, .local-grid, .cta-grid, .faq-grid { grid-template-columns: 1fr; } .guide-grid { grid-template-columns: 1fr; } .guide-grid a { min-height: 12rem; } .local-list article { grid-template-columns: 1fr; gap: .35rem; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } .cta-grid .button { justify-self: start; } }
 </style>

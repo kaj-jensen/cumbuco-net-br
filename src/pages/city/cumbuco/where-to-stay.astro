@@ -66,12 +66,6 @@ const structuredData = [
 
 <BaseLayout title={title} description={description} canonical="/city/cumbuco/where-to-stay/" image={image} structuredData={structuredData}>
   <section class="sub-hero">
-    <picture>
-      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
-      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Coqueiros, areia e mar no litoral de Cumbuco" fetchpriority="high" />
-    </picture>
-    <div class="shade"></div>
     <div class="shell hero-copy">
       <p class="eyebrow">Onde ficar em Cumbuco</p>
       <h1>Escolha primeiro o ritmo das suas férias.</h1>
@@ -134,13 +128,6 @@ const structuredData = [
 
   <section class="section choice-section">
     <div class="shell choice-grid">
-      <div class="choice-image">
-        <picture>
-          <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
-          <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
-          <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="1080" loading="lazy" alt="Praia com coqueiros e a luz tranquila da manhã em Cumbuco" />
-        </picture>
-      </div>
       <div>
         <p class="eyebrow">Antes de escolher</p>
         <h2>Seis perguntas para evitar uma reserva inadequada.</h2>
@@ -204,14 +191,11 @@ const structuredData = [
 </BaseLayout>
 
 <style>
-  .sub-hero { position: relative; min-height: 36rem; display: grid; align-items: end; overflow: hidden; color: white; }
-  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .sub-hero picture { display: block; }
-  .sub-hero img { object-fit: cover; object-position: center 56%; }
-  .shade { background: linear-gradient(90deg, rgb(3 48 52 / 78%) 0%, rgb(3 48 52 / 38%) 55%, rgb(3 48 52 / 8%) 100%), linear-gradient(0deg, rgb(3 40 43 / 46%), transparent 56%); }
-  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
-  .hero-copy h1 { max-width: 11ch; }
-  .hero-copy > p:last-child { max-width: 42rem; margin-top: 1.15rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+  .sub-hero { position: relative; min-height: 31rem; display: grid; align-items: end; overflow: hidden; color: white; background: radial-gradient(circle at 82% 18%, rgb(65 184 188 / 24%), transparent 24rem), linear-gradient(135deg, #033a40 0%, #075b62 58%, #0b7379 100%); }
+  .sub-hero::after { position: absolute; right: -8rem; bottom: -14rem; width: 38rem; height: 38rem; border: 1px solid rgb(255 255 255 / 13%); border-radius: 50%; content: ""; box-shadow: 0 0 0 5rem rgb(255 255 255 / 3%), 0 0 0 10rem rgb(255 255 255 / 2%); }
+  .hero-copy { position: relative; z-index: 1; padding-block: clamp(4rem, 9vw, 7rem); }
+  .hero-copy h1 { max-width: 13ch; }
+  .hero-copy > p:last-child { max-width: 48rem; margin-top: 1.15rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
   .hero-copy .eyebrow { color: #ffd46c; }
 
   .intro-grid, .match-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
@@ -225,7 +209,7 @@ const structuredData = [
   .area-grid p { margin-top: 0.8rem; color: var(--ink-soft); }
   .area-grid strong { display: block; margin-top: 1.25rem; color: var(--ocean); font-size: 0.8rem; }
 
-  .choice-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .choice-grid { display: grid; grid-template-columns: minmax(0, 52rem); justify-content: center; }
   .choice-image picture { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
   .choice-image img { width: 100%; height: 100%; object-fit: cover; }
   .choice-grid h2 { max-width: 13ch; }

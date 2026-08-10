@@ -54,16 +54,10 @@ const structuredData = [
 
 <BaseLayout title={title} description={description} canonical="/city/cumbuco/local-businesses/" image={image} structuredData={structuredData}>
   <section class="directory-hero">
-    <picture>
-      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
-      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Coqueiros e o litoral atlântico em Cumbuco" fetchpriority="high" />
-    </picture>
-    <div class="shade"></div>
     <div class="shell hero-copy">
       <p class="eyebrow">Guia local de Cumbuco</p>
-      <h1>Categorias locais. Contexto claro. Melhor planejamento.</h1>
-      <p>Um ponto de partida organizado para restaurantes, escolas de kite e hospedagens. Parceiros locais confirmados podem ser incluídos sem transformar o guia em uma lista automática.</p>
+      <h1>Contatos locais para planejar melhor.</h1>
+      <p>Restaurantes, escolas de kite e hospedagens reunidos por categoria, com informações diretas e sem classificações artificiais.</p>
     </div>
   </section>
 
@@ -71,10 +65,10 @@ const structuredData = [
 
   <section class="directory-intro">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">How to use the guide</p><h2>Explore the possibilities.</h2></div>
+      <div><p class="eyebrow">Como usar o guia</p><h2>Encontre o serviço certo para a sua estadia.</h2></div>
       <div>
-        <p>Each card represents a type of local business visitors may want during their stay. Confirmed partners will receive their own name, direct contact options, and carefully checked information.</p>
-        <p>Future inclusion will remain selective rather than becoming a quality ranking or personal guarantee. Featured presentation will never change the factual way a business is described.</p>
+        <p>Use os filtros para localizar empresas por categoria e falar diretamente com cada estabelecimento.</p>
+        <p>A presença no diretório não representa ranking nem garantia pessoal. Informações comerciais e horários devem ser confirmados com a própria empresa.</p>
       </div>
     </div>
   </section>
@@ -83,33 +77,33 @@ const structuredData = [
     <div class="shell">
       <div class="directory-toolbar">
         <div>
-          <p class="eyebrow">Browse the directory</p>
-          <h2><span data-visible-count>{businesses.length}</span> available placements</h2>
+          <p class="eyebrow">Diretório de Cumbuco</p>
+          <h2><span data-visible-count>{businesses.length}</span> opções cadastradas</h2>
         </div>
         <div class="filters" role="group" aria-label="Filter businesses by category">
-          <button type="button" class="is-active" data-filter="all" aria-pressed="true">All <span>{businesses.length}</span></button>
+          <button type="button" class="is-active" data-filter="all" aria-pressed="true">Todas <span>{businesses.length}</span></button>
           {categories.map((category) => <button type="button" data-filter={category.value} aria-pressed="false">{category.label} <span>{counts.get(category.value)}</span></button>)}
         </div>
       </div>
       <div class="business-grid" data-business-grid>
         {businesses.map((business) => <BusinessCard business={business} placeholder={true} />)}
       </div>
-      <p class="no-results" data-no-results hidden>No available placements match this filter yet.</p>
+      <p class="no-results" data-no-results hidden>Ainda não há opções publicadas nesta categoria.</p>
     </div>
   </section>
 
   <section class="partner-section">
     <div class="shell partner-grid">
-      <div><p class="eyebrow">For local businesses</p><h2>Reach visitors while they are planning Cumbuco.</h2></div>
-      <div><p>Featured Partners receive a clearly marked enhanced presentation, stronger placement within relevant guides, and direct links to their own contact channels. We do not publish partnership pricing on the website.</p><a class="button" href="/featured-partners/">Explore Featured Partnership</a></div>
+      <div><p class="eyebrow">Empresas de Cumbuco</p><h2>Mantenha suas informações claras e atualizadas.</h2></div>
+      <div><p>Empresas locais podem solicitar inclusão ou correção de dados. Destaques comerciais são identificados com transparência e não alteram a descrição factual do negócio.</p><a class="button" href="/featured-partners/">Conhecer as opções de destaque</a></div>
     </div>
   </section>
 
   <section class="section next-section">
     <div class="shell next-grid">
-      <a href="/city/cumbuco/restaurants/"><span>Eat</span><h3>Restaurant guide</h3><p>Understand Cumbuco's dining scene before choosing a table.</p></a>
-      <a href="/city/cumbuco/kiteboarding/"><span>Ride</span><h3>Kiteboarding guide</h3><p>Wind season, lessons, safety, equipment, and trip planning.</p></a>
-      <a href="/city/cumbuco/where-to-stay/"><span>Stay</span><h3>Where to stay</h3><p>Compare the village, beachfront living, houses, and villas.</p></a>
+      <a href="/city/cumbuco/restaurants/"><span>Comer</span><h3>Onde comer</h3><p>Entenda os diferentes estilos de restaurante antes de escolher.</p></a>
+      <a href="/city/cumbuco/kiteboarding/"><span>Velejar</span><h3>Guia de kitesurf</h3><p>Temporada, aulas, segurança, equipamento e planejamento.</p></a>
+      <a href="/city/cumbuco/where-to-stay/"><span>Ficar</span><h3>Onde ficar</h3><p>Compare centro, beira-mar, casas e vilas.</p></a>
     </div>
   </section>
 
@@ -141,7 +135,7 @@ const structuredData = [
 </BaseLayout>
 
 <style>
-  .directory-hero { position: relative; min-height: 33rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .directory-hero { position: relative; min-height: 33rem; display: grid; align-items: end; overflow: hidden; color: white; background: radial-gradient(circle at 78% 22%, rgb(255 212 108 / 28%), transparent 24%), linear-gradient(135deg, #063f43 0%, #08777a 58%, #78cfc3 100%); }
   .directory-hero picture, .directory-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
   .directory-hero img { object-fit: cover; object-position: center 55%; }
   .shade { background: linear-gradient(90deg, rgb(3 43 45 / 85%), rgb(3 43 45 / 36%) 62%, rgb(3 43 45 / 8%)), linear-gradient(0deg, rgb(3 35 38 / 52%), transparent 58%); }

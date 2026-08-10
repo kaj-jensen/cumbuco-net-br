@@ -141,22 +141,15 @@ const structuredData = [
 
   <section class="section">
     <div class="shell practical-layout">
-      <div class="practical-image">
-        <picture>
-          <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 45vw" />
-          <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 45vw" />
-          <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 45vw" width="1200" height="800" loading="lazy" alt="Coqueiros fazendo sombra na areia perto do mar em Cumbuco" />
-        </picture>
-      </div>
-      <div>
+      <div class="practical-heading">
         <p class="eyebrow">Dinheiro, energia e conexão</p>
         <h2>Pequenos detalhes que facilitam a estadia.</h2>
-        <div class="detail-list">
-          <article><h3>Pagamentos em Cumbuco</h3><p>Restaurantes, mercados e muitos serviços aceitam Pix e cartão. Leve algum dinheiro para vendedores na praia, pequenas compras ou momentos em que o sinal da maquininha falhar.</p></article>
-          <article><h3>Energia 220V</h3><p>A região de Fortaleza usa 220V. As tomadas normalmente aceitam dois ou três pinos redondos. Confira a voltagem do aparelho e leve o adaptador correto.</p></article>
-          <article><h3>Internet móvel</h3><p>Wi-Fi e cobertura móvel variam. Quem precisa fazer chamadas de trabalho deve confirmar a conexão do imóvel e preparar uma alternativa de dados.</p></article>
-          <article><h3>Compras do dia a dia</h3><p>O centro de Cumbuco reúne pequenos mercados, farmácias e serviços básicos. Para compras grandes ou itens específicos, planeje uma parada em Caucaia ou Fortaleza.</p></article>
-        </div>
+      </div>
+      <div class="detail-list">
+        <article><span>01</span><h3>Pagamentos em Cumbuco</h3><p>Restaurantes, mercados e muitos serviços aceitam Pix e cartão. Leve algum dinheiro para vendedores na praia, pequenas compras ou momentos em que o sinal da maquininha falhar.</p></article>
+        <article><span>02</span><h3>Energia 220V</h3><p>A região de Fortaleza usa 220V. As tomadas normalmente aceitam dois ou três pinos redondos. Confira a voltagem do aparelho e leve o adaptador correto.</p></article>
+        <article><span>03</span><h3>Internet móvel</h3><p>Wi-Fi e cobertura móvel variam. Quem precisa fazer chamadas de trabalho deve confirmar a conexão do imóvel e preparar uma alternativa de dados.</p></article>
+        <article><span>04</span><h3>Compras do dia a dia</h3><p>O centro de Cumbuco reúne pequenos mercados, farmácias e serviços básicos. Para compras grandes ou itens específicos, planeje uma parada em Caucaia ou Fortaleza.</p></article>
       </div>
     </div>
   </section>
@@ -267,13 +260,16 @@ const structuredData = [
   .arrival-note p { color: var(--ink-soft); }
   .arrival-note a { color: var(--ocean); font-size: 0.86rem; font-weight: 800; }
 
-  .practical-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
-  .practical-image picture { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
-  .practical-image img { width: 100%; height: 100%; object-fit: cover; }
-  .practical-layout h2 { max-width: 13ch; }
-  .detail-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
-  .detail-list article { padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); }
+  .practical-layout { display: grid; gap: clamp(2.5rem, 6vw, 4.5rem); }
+  .practical-heading { display: grid; grid-template-columns: minmax(0, .55fr) minmax(0, 1.45fr); gap: clamp(2rem, 7vw, 6rem); align-items: end; }
+  .practical-layout h2 { max-width: 18ch; }
+  .detail-list { display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
+  .detail-list article { padding: 1.6rem; border-right: 1px solid var(--line); }
+  .detail-list article:first-child { padding-left: 0; }
+  .detail-list article:last-child { padding-right: 0; border-right: 0; }
+  .detail-list span { color: var(--coral); font-size: .75rem; font-weight: 800; }
   .detail-list h3 { font-size: 1.2rem; }
+  .detail-list span + h3 { margin-top: 1.8rem; }
   .detail-list p { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.9rem; }
 
   .packing-section { color: white; }
@@ -321,12 +317,14 @@ const structuredData = [
     .fact-grid div:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
     .transport-grid article:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); }
     .arrival-note { grid-template-columns: 1fr; }
+    .detail-list { grid-template-columns: 1fr 1fr; }
+    .detail-list article:nth-child(2) { border-right: 0; }
+    .detail-list article:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
   }
 
   @media (max-width: 720px) {
     .sub-hero { min-height: 32rem; }
-    .intro-grid, .practical-layout, .packing-layout, .season-layout, .local-grid, .faq-grid, .cta-grid { grid-template-columns: 1fr; }
-    .practical-image picture { aspect-ratio: 16 / 10; }
+    .intro-grid, .packing-layout, .season-layout, .local-grid, .faq-grid, .cta-grid, .practical-heading { grid-template-columns: 1fr; }
     .season-layout > div:first-child { position: static; }
     .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.35rem 0; border-right: 0; }
     .cta-actions { justify-content: flex-start; }
@@ -334,6 +332,8 @@ const structuredData = [
 
   @media (max-width: 520px) {
     .fact-grid, .transport-grid, .detail-list, .packing-grid, .local-options { grid-template-columns: 1fr; }
+    .detail-list article, .detail-list article:first-child, .detail-list article:last-child { padding: 1.25rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+    .detail-list article:last-child { border-bottom: 0; }
     .fact-grid div, .transport-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
     .transport-grid article:last-child { grid-column: auto; border-top: 0; }
     .packing-grid article { border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 22%); }

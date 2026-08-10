@@ -32,8 +32,8 @@ const structuredData = [
     <div class="shade"></div>
     <div class="shell hero-copy">
       <p class="eyebrow">O que fazer em Cumbuco</p>
-      <h1>Siga o vento ou esqueça o relógio.</h1>
-      <p>Atravesse as dunas, conheça as lagoas, aprenda um novo esporte ou simplesmente fique onde está. Cumbuco combina aventura e descanso.</p>
+      <h1>Cumbuco além da praia.</h1>
+      <p>Dunas, lagoas, kitesurf e bons momentos sem programação: escolha o passeio que combina com o seu dia.</p>
     </div>
   </section>
 
@@ -41,14 +41,14 @@ const structuredData = [
 
   <section class="section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">Planeje um dia melhor</p><h2>Escolha uma experiência principal, não cinco paradas apressadas.</h2></div>
-      <div class="prose"><p>Cumbuco parece compacto no mapa, mas praia, centro, dunas e lagoas têm ritmos próprios. Os melhores dias deixam espaço para o clima, a maré e um almoço sem planejamento.</p><p>Use este guia para entender cada experiência antes de escolher um prestador. Empresas locais e parceiros são identificados claramente, sem confundir visibilidade comercial com orientação editorial.</p></div>
+      <div><p class="eyebrow">Organize o dia</p><h2>Uma boa experiência já vale o passeio.</h2></div>
+      <div class="prose"><p>Praia, centro, dunas e lagoas ficam próximos, mas não funcionam no mesmo ritmo. Escolha a atividade principal e deixe margem para o vento, a maré e os deslocamentos.</p><p>Antes de contratar, confirme diretamente o percurso, as paradas, a duração, o veículo e o que está incluído.</p></div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">Seis experiências em Cumbuco</p><h2>Da primeira luz à última bebida.</h2></div><p class="section-intro">A natureza define as condições. Confirme acesso, horário, clima e dados do operador antes de sair.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Seis maneiras de aproveitar</p><h2>Escolha conforme o clima e a companhia.</h2></div><p class="section-intro">Acesso, nível da água e condições do percurso mudam. Confirme tudo no dia do passeio.</p></div>
       <div class="experience-grid">
         <article><span>01</span><h3>Atravesse as dunas</h3><p>Um passeio autorizado de buggy revela a paisagem atrás da praia: grandes extensões de areia, mirantes e paradas em água doce. Escolha conscientemente entre “com emoção” e “sem emoção”.</p><strong>Reserve: meio dia</strong></article>
         <article><span>02</span><h3>Passe algumas horas em uma lagoa</h3><p>O nível da água e o acesso mudam conforme a estação. A Lagoa do Parnamirim e a região do Cauípe mostram o lado mais tranquilo e doce do litoral.</p><strong>Reserve: 2 a 4 horas</strong></article>
@@ -62,11 +62,6 @@ const structuredData = [
 
   <section class="section split-feature">
     <div class="shell split-grid">
-      <picture>
-        <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
-        <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
-        <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 50vw" width="1200" height="800" loading="lazy" alt="Coqueiros e areia dourada perto das dunas de Cumbuco" />
-      </picture>
       <div>
         <p class="eyebrow">Cuidados no passeio pelas dunas</p>
         <h2>Aventura exige um operador responsável.</h2>
@@ -77,7 +72,6 @@ const structuredData = [
           <li>Leve água, proteção solar, calçado seguro e proteja o celular ou a câmera.</li>
           <li>Respeite áreas restritas, vegetação, animais, moradores e a fragilidade das dunas.</li>
         </ul>
-        <p class="source-note">O Visit Brasil recomenda prestadores certificados que cumpram as normas técnicas de ecoturismo e turismo de aventura.</p>
       </div>
     </div>
   </section>
@@ -137,7 +131,7 @@ const structuredData = [
   .experience-grid h3 { margin-top: 1.6rem; }
   .experience-grid p { margin-top: .7rem; color: var(--ink-soft); }
   .experience-grid strong { display: block; margin-top: 1rem; color: var(--ocean); font-size: .8rem; }
-  .split-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .split-grid { display: grid; grid-template-columns: minmax(0, 46rem); justify-content: center; }
   .split-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
   .split-grid img { width: 100%; height: 100%; object-fit: cover; }
   .split-grid h2 { max-width: 12ch; }
