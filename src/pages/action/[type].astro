@@ -2,14 +2,15 @@
 import { getCollection } from "astro:content";
 import PropertyArchive from "../../components/PropertyArchive.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const labels = { apartment: "Apartment stays", "entire-home": "Entire homes" } as const;
+import { brazilianPropertySlugs } from "../../config/site";
+const labels = { apartment: "Apartamentos", "entire-home": "Casas e villas" } as const;
 export async function getStaticPaths() {
-  const labels = { apartment: "Apartment stays", "entire-home": "Entire homes" } as const;
-  const properties = await getCollection("properties");
+  const labels = { apartment: "Apartamentos", "entire-home": "Casas e villas" } as const;
+  const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
   return Object.entries(labels).map(([type, title]) => ({ params: { type }, props: { title, properties: properties.filter((item) => item.data.rentalType === type) } }));
 }
 const { title, properties } = Astro.props;
 ---
-<BaseLayout title={`${title} in Cumbuco`} description={`Browse ${title.toLowerCase()} for vacation rental in Cumbuco, Brazil, with local support and personal availability by WhatsApp.`}>
-  <PropertyArchive properties={properties} eyebrow="Rental collection" title={`${title} in Cumbuco.`} description="This legacy collection remains available while the new rental catalogue is being organized." />
+<BaseLayout title={`Aluguel de ${title.toLowerCase()} em Cumbuco`} description={`Veja ${title.toLowerCase()} para aluguel por temporada em Cumbuco, com disponibilidade confirmada pessoalmente pelo WhatsApp.`}>
+  <PropertyArchive properties={properties} eyebrow="Imóveis por temporada" title={`${title} em Cumbuco.`} description="Compare imóveis com informações claras e consulte datas e valores diretamente conosco." />
 </BaseLayout>

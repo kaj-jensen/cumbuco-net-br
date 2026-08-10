@@ -102,7 +102,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     const localIso = (date: Date) =>
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
     const today = localIso(new Date());
-    const yearEnd = `${today.slice(0, 4)}-12-31`;
+    const bookingHorizon = new Date();
+    bookingHorizon.setFullYear(bookingHorizon.getFullYear() + 2);
+    const latestBookingDate = localIso(bookingHorizon);
     const nextDay = (iso: string) => {
       const date = new Date(`${iso}T12:00:00`);
       date.setDate(date.getDate() + 1);
@@ -129,9 +131,9 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     };
 
     arrival.min = today;
-    arrival.max = yearEnd;
+    arrival.max = latestBookingDate;
     departure.min = today;
-    departure.max = yearEnd;
+    departure.max = latestBookingDate;
 
     arrival.addEventListener('change', () => {
       departure.min = arrival.value ? nextDay(arrival.value) : today;

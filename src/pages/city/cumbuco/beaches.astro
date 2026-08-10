@@ -4,7 +4,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 const title = "Praias e Lagoas de Cumbuco: Onde Nadar, Relaxar e Explorar";
 const description = "Conheça a Praia de Cumbuco, as dunas e lagoas de água doce. Veja o que cada paisagem oferece, como as condições mudam e como visitar com responsabilidade.";
-const image = "/images/content/cumbuco/sunny-beach-1440.jpg";
+const image = "/images/content/cumbuco/beach-palms-1440.jpg";
 const faqItems = [
   { question: "A Praia de Cumbuco é segura para banho?", answer: "As condições variam conforme vento, maré, ondas, correntes e o trecho da praia. Escolha uma área movimentada, pergunte localmente, supervisione as crianças e não entre quando o mar estiver além da sua capacidade." },
   { question: "Qual lagoa devo visitar perto de Cumbuco?", answer: "A Lagoa do Parnamirim costuma fazer parte dos passeios pelas dunas. O Cauípe é conhecido internacionalmente pelo kitesurf e pela paisagem natural protegida. A melhor escolha depende do nível da água, acesso, atividade desejada e movimento no dia." },
@@ -25,9 +25,9 @@ const structuredData = [
 <BaseLayout title={title} description={description} canonical="/city/cumbuco/beaches/" image={image} structuredData={structuredData}>
   <section class="sub-hero">
     <picture>
-      <source type="image/avif" srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w" sizes="100vw" />
-      <source type="image/webp" srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Areia dourada e mar azul na Praia de Cumbuco" fetchpriority="high" />
+      <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Praia de Cumbuco vista entre coqueiros" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">

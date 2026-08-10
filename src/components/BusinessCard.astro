@@ -13,10 +13,10 @@ const { data } = business;
 const category = businessCategories.find((item) => item.value === data.category);
 const image = data.images[0];
 const imageSmall = image?.src.replace(/-1440(?=\.[^.]+$)/, "-720");
-const displayName = placeholder ? "Your business could be featured here" : data.name;
-const initials = placeholder ? "Your business" : data.name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("");
+const displayName = placeholder ? "Sua empresa pode aparecer aqui" : data.name;
+const initials = placeholder ? "Sua empresa" : data.name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("");
 const whatsappDigits = data.contact.whatsapp?.replace(/\D/g, "");
-const checked = new Intl.DateTimeFormat("en", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${data.verifiedAt}T12:00:00Z`));
+const checked = new Intl.DateTimeFormat("pt-BR", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${data.verifiedAt}T12:00:00Z`));
 ---
 
 <article class:list={["business-card", { "business-card--compact": compact, "business-card--featured": data.featuredPartner }]} data-category={data.category}>
@@ -26,24 +26,24 @@ const checked = new Intl.DateTimeFormat("en", { month: "short", year: "numeric",
     ) : (
       <div class="business-card__fallback" aria-hidden="true"><span>{initials}</span><small>{category?.label || data.category}</small></div>
     )}
-    {!placeholder && data.featuredPartner && <span class="partner-badge">Featured Partner</span>}
+    {!placeholder && data.featuredPartner && <span class="partner-badge">Parceiro em destaque</span>}
   </div>
   <div class="business-card__body">
     <div class="business-card__meta">
       <span>{data.subcategory || category?.label}</span>
-      <span>{placeholder ? "Placement available" : `Checked ${checked}`}</span>
+      <span>{placeholder ? "Espaço disponível" : `Verificado em ${checked}`}</span>
     </div>
     <h3>{displayName}</h3>
     <p>{data.summary}</p>
-    {!compact && data.tags.length > 0 && <ul class="tag-list" aria-label={placeholder ? "Business category highlights" : `${data.name} highlights`}>{data.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>}
+    {!compact && data.tags.length > 0 && <ul class="tag-list" aria-label={placeholder ? "Destaques da categoria" : `Destaques de ${data.name}`}>{data.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>}
     <div class="business-card__links">
       {placeholder ? (
-        <a href="/featured-partners/">Feature your business →</a>
+        <a href="/featured-partners/">Destacar sua empresa →</a>
       ) : (
         <>
-          {data.contact.website && <a href={data.contact.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${data.name} website in a new tab`}>Website ↗</a>}
-          {whatsappDigits && <a href={`https://wa.me/${whatsappDigits}`} target="_blank" rel="noopener noreferrer" aria-label={`Contact ${data.name} on WhatsApp in a new tab`}>WhatsApp ↗</a>}
-          {data.contact.googleMaps && <a href={data.contact.googleMaps} target="_blank" rel="noopener noreferrer" aria-label={`Open ${data.name} in Google Maps in a new tab`}>Map ↗</a>}
+          {data.contact.website && <a href={data.contact.website} target="_blank" rel="noopener noreferrer" aria-label={`Abrir o site de ${data.name} em uma nova aba`}>Site ↗</a>}
+          {whatsappDigits && <a href={`https://wa.me/${whatsappDigits}`} target="_blank" rel="noopener noreferrer" aria-label={`Falar com ${data.name} pelo WhatsApp em uma nova aba`}>WhatsApp ↗</a>}
+          {data.contact.googleMaps && <a href={data.contact.googleMaps} target="_blank" rel="noopener noreferrer" aria-label={`Abrir ${data.name} no Google Maps em uma nova aba`}>Mapa ↗</a>}
         </>
       )}
     </div>

@@ -1,4 +1,5 @@
 import { getCollection } from "astro:content";
+import { brazilianPropertySlugs } from "../config/site";
 
 export const prerender = true;
 
@@ -13,7 +14,7 @@ const escapeXml = (value: string) =>
 
 export async function GET({ site }: { site: URL }) {
   const [properties, pages] = await Promise.all([
-    getCollection("properties"),
+    getCollection("properties", ({ data }) => brazilianPropertySlugs.has(data.slug)),
     getCollection("pages"),
   ]);
   const fixedRoutes = [

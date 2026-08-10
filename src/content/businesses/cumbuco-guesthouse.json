@@ -4,7 +4,7 @@
   "name": "Cumbuco Guesthouse",
   "category": "pousada",
   "subcategory": "Guesthouse and pousada",
-  "summary": "A guesthouse with air-conditioned rooms, breakfast, garden-facing balconies, pool, hydromassage, and help arranging local activities.",
+  "summary": "Pousada com quartos climatizados, café da manhã, varandas voltadas para o jardim, piscina, hidromassagem e apoio para organizar atividades locais.",
   "descriptionHtml": "<p>Cumbuco Guesthouse offers air-conditioned rooms with private bathrooms, breakfast, Wi-Fi, and balconies. Its official website also presents a pool, hydromassage, airport transfers, buggy arrangements, and kite lessons through local providers.</p><p>Confirm current room types, rates, transfer prices, and activity arrangements directly before booking.</p>",
   "images": [],
   "contact": {
@@ -22,16 +22,16 @@
   "priceRange": "$$",
   "tags": [
     "pousada",
-    "breakfast",
-    "pool",
-    "families"
+    "café da manhã",
+    "piscina",
+    "famílias"
   ],
   "featuredPartner": false,
   "featuredPriority": 0,
   "verifiedAt": "2026-07-25",
   "seo": {
     "title": "Cumbuco Guesthouse",
-    "description": "Direct information for Cumbuco Guesthouse, including facilities and contact links.",
+    "description": "Informações, estrutura e contatos diretos da Cumbuco Guesthouse.",
     "modified": "2026-07-25T12:00:00+02:00",
     "ogImage": "/images/content/cumbuco/sunny-beach-1440.jpg"
   }

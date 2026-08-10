@@ -1,95 +1,89 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
-const title = "Featured Partners for Cumbuco Businesses";
-const description = "Present your Cumbuco restaurant, hotel, kite school, activity, shop, or service to travellers already planning where to stay and what to do.";
+const title = "Empresas em Destaque no Guia de Cumbuco";
+const description = "Apresente seu restaurante, pousada, escola de kite, passeio, loja ou serviço a pessoas que já estão planejando uma viagem a Cumbuco.";
 const image = "/images/content/cumbuco/cumbuco-palms-sand-1200.jpg";
-const whatsapp = "https://wa.me/5585988139402?text=Hello%2C%20I%20would%20like%20to%20discuss%20becoming%20a%20Featured%20Partner%20on%20Cumbuco.net.";
+const whatsapp = "https://wa.me/5585988139402?text=Ola%2C%20gostaria%20de%20conversar%20sobre%20destacar%20minha%20empresa%20no%20guia%20de%20Cumbuco.";
 const faqItems = [
-  { question: "Who can apply to become a Featured Partner?", answer: "Established businesses serving Cumbuco visitors may enquire, including restaurants, accommodation, kite schools, activities, transport, shops, and practical services. Every business is reviewed before publication." },
-  { question: "Does Featured Partner status guarantee a recommendation?", answer: "No. It provides clearly marked enhanced visibility and direct contact opportunities. Editorial travel guidance and factual listing standards remain separate." },
-  { question: "Will prices for partnerships be published online?", answer: "No. The presentation, placement, content needs, and commercial arrangement are discussed directly with each business." },
-  { question: "Can a normal listing appear without Featured Partner status?", answer: "Yes. The directory can include selected factual listings without enhanced placement. Inclusion is not automatic, exhaustive, or a ranking." },
+  { question: "Quais empresas podem solicitar destaque?", answer: "Empresas que atendem visitantes de Cumbuco, como restaurantes, hospedagens, escolas de kite, passeios, transportes, lojas e serviços. Cada empresa é avaliada antes da publicação." },
+  { question: "O destaque significa recomendação editorial?", answer: "Não. O destaque oferece mais visibilidade e contato direto, sempre identificado com clareza. A orientação editorial permanece independente." },
+  { question: "Os valores da parceria são publicados?", answer: "Não. Apresentação, posicionamento, conteúdo e condições comerciais são conversados diretamente com cada empresa." },
+  { question: "Uma empresa pode aparecer sem pagar por destaque?", answer: "Sim. O diretório pode incluir cadastros factuais sem posicionamento comercial. A inclusão não é automática nem constitui ranking." },
 ];
 const structuredData = [
-  { "@type": "WebPage", "@id": "https://www.cumbuco.net.br/featured-partners/#page", name: title, description, url: "https://www.cumbuco.net.br/featured-partners/", inLanguage: "en" },
+  { "@type": "WebPage", "@id": "https://www.cumbuco.net.br/featured-partners/#page", name: title, description, url: "https://www.cumbuco.net.br/featured-partners/", inLanguage: "pt-BR" },
   { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];
 ---
 
 <BaseLayout title={title} description={description} canonical="/featured-partners/" image={image} structuredData={structuredData}>
   <section class="partner-hero">
-    <picture>
-      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="100vw" />
-      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Golden sand and palm trees in Cumbuco" fetchpriority="high" />
-    </picture>
-    <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Featured Partners</p>
-      <h1>Grow your business with Cumbuco Rentals.</h1>
-      <p>Meet travellers while they are choosing where to stay, what to do, and which local businesses to contact.</p>
-      <a class="button" href={whatsapp} target="_blank" rel="noopener noreferrer">Start a conversation on WhatsApp ↗</a>
+      <p class="eyebrow">Empresas em destaque</p>
+      <h1>Sua empresa no momento em que o visitante decide.</h1>
+      <p>Apresente seu negócio enquanto o viajante escolhe onde ficar, o que fazer e quais serviços locais contatar.</p>
+      <a class="button" href={whatsapp} target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp ↗</a>
     </div>
   </section>
 
   <section class="section intro-section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">Relevant visibility</p><h2>Be useful at the moment a visitor decides.</h2></div>
-      <div class="prose"><p>Cumbuco.net is evolving from a successful vacation-rental website into a complete local planning resource. The audience is not browsing an unrelated advertising feed: they are actively planning accommodation, meals, lessons, activities, and transport in Cumbuco.</p><p>A Featured Partnership creates a stronger, professionally written presentation inside that journey while sending the visitor directly to your own website, WhatsApp, map, or contact channel.</p></div>
+      <div><p class="eyebrow">Visibilidade relevante</p><h2>Informação útil quando a escolha acontece.</h2></div>
+      <div class="prose"><p>O Cumbuco.net.br reúne imóveis e informações locais para pessoas que estão planejando hospedagem, refeições, aulas, passeios e transporte em Cumbuco.</p><p>O destaque oferece uma apresentação mais completa dentro dessa jornada e leva o visitante diretamente ao site, WhatsApp, mapa ou canal de contato da empresa.</p></div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">What a partnership can include</p><h2>A better presentation, not just a bigger badge.</h2></div><p class="section-intro">The exact scope is agreed directly according to the business and the most relevant guide pages.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">O que pode fazer parte</p><h2>Uma apresentação melhor, não apenas um selo maior.</h2></div><p class="section-intro">O formato é combinado conforme a empresa e as páginas do guia em que ela realmente ajuda o visitante.</p></div>
       <div class="benefit-grid">
-        <article><span>01</span><h3>Enhanced placement</h3><p>Priority visibility in the local directory and carefully selected destination-guide contexts.</p></article>
-        <article><span>02</span><h3>Professional copy</h3><p>A clear English-language presentation focused on what international and Brazilian visitors need to know.</p></article>
-        <article><span>03</span><h3>Direct enquiries</h3><p>Links to your website, WhatsApp, map, or preferred contact channel without placing a booking barrier between you and the visitor.</p></article>
-        <article><span>04</span><h3>Visual presentation</h3><p>Support selecting and presenting suitable photographs when you have the right to provide them for publication.</p></article>
-        <article><span>05</span><h3>Relevant context</h3><p>Placement beside useful destination information instead of appearing in an unrelated list.</p></article>
-        <article><span>06</span><h3>Ongoing accuracy</h3><p>A structured listing that can be updated when your services or contact details change.</p></article>
+        <article><span>01</span><h3>Posicionamento em destaque</h3><p>Mais visibilidade no diretório e em contextos selecionados do guia local.</p></article>
+        <article><span>02</span><h3>Texto profissional</h3><p>Uma apresentação clara em português, focada no que o visitante precisa saber.</p></article>
+        <article><span>03</span><h3>Contato direto</h3><p>Links para site, WhatsApp, mapa ou canal preferido, sem criar barreiras entre empresa e visitante.</p></article>
+        <article><span>04</span><h3>Apresentação visual</h3><p>Apoio para selecionar fotografias adequadas que a empresa tenha autorização para publicar.</p></article>
+        <article><span>05</span><h3>Contexto relevante</h3><p>Presença ao lado de informações úteis, em vez de uma lista sem relação com a viagem.</p></article>
+        <article><span>06</span><h3>Informações atualizadas</h3><p>Cadastro estruturado que pode ser corrigido quando serviços ou contatos mudarem.</p></article>
       </div>
     </div>
   </section>
 
   <section class="principles">
     <div class="shell principles-grid">
-      <div><p class="eyebrow">Clear for visitors</p><h2>Featured visibility and editorial guidance stay distinct.</h2></div>
+      <div><p class="eyebrow">Transparência para o visitante</p><h2>Destaque comercial e orientação editorial continuam separados.</h2></div>
       <div>
-        <p>A Featured Partner receives enhanced visibility and is identified with a clear badge. The badge does not mean the business bought a higher editorial ranking or that factual visitor guidance will be changed.</p>
-        <p>Normal directory listings may also appear without partnership status. Every published listing remains subject to verification, relevance, and the quality standards of Cumbuco.net.</p>
+        <p>Uma empresa em destaque recebe mais visibilidade e é identificada com clareza. Isso não significa compra de posição editorial nem alteração das informações factuais do guia.</p>
+        <p>Cadastros comuns também podem aparecer sem parceria. Toda publicação continua sujeita à verificação, relevância e aos padrões de qualidade do Cumbuco.net.br.</p>
       </div>
     </div>
   </section>
 
   <section class="section process-section">
     <div class="shell process-grid">
-      <div><p class="eyebrow">How it begins</p><h2>One direct conversation.</h2></div>
+      <div><p class="eyebrow">Como começa</p><h2>Uma conversa direta.</h2></div>
       <ol>
-        <li><span>1</span><div><h3>Tell us about the business</h3><p>Share the official website, location, services, contact channels, and what makes the business useful to Cumbuco visitors.</p></div></li>
-        <li><span>2</span><div><h3>We review the fit</h3><p>We check relevance, current information, visual material, and the guide pages where the presentation could genuinely help visitors.</p></div></li>
-        <li><span>3</span><div><h3>Agree the presentation</h3><p>The scope and commercial arrangement are discussed privately. No partnership pricing is displayed publicly.</p></div></li>
-        <li><span>4</span><div><h3>Publish and maintain</h3><p>The listing is clearly marked where appropriate, linked directly to the business, and given a visible verification date.</p></div></li>
+        <li><span>1</span><div><h3>Apresente a empresa</h3><p>Envie site oficial, localização, serviços, contatos e o que torna o negócio útil para quem visita Cumbuco.</p></div></li>
+        <li><span>2</span><div><h3>Avaliamos a compatibilidade</h3><p>Verificamos relevância, informações atuais, material visual e os pontos do guia em que a empresa pode ajudar.</p></div></li>
+        <li><span>3</span><div><h3>Combinamos a apresentação</h3><p>Formato e condição comercial são conversados diretamente. Valores de parceria não são publicados.</p></div></li>
+        <li><span>4</span><div><h3>Publicamos e mantemos</h3><p>O cadastro é identificado quando necessário, ligado diretamente à empresa e recebe uma data visível de verificação.</p></div></li>
       </ol>
     </div>
   </section>
 
   <section class="contact-section">
     <div class="shell contact-grid">
-      <div><p class="eyebrow">Local business enquiry</p><h2>Let us see whether the partnership makes sense.</h2><p>Send the business name, website or social profile, contact person, category, and the service you want visitors to discover.</p></div>
-      <div class="actions"><a class="button" href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp Cumbuco Rentals ↗</a><a class="button button--ghost" href="mailto:info@cumbuco.net?subject=Featured%20Partner%20enquiry">Email partnership enquiry</a><a class="text-link" href="/city/cumbuco/local-businesses/">View the local directory →</a></div>
+      <div><p class="eyebrow">Contato para empresas</p><h2>Vamos avaliar se a parceria faz sentido.</h2><p>Envie o nome da empresa, site ou perfil social, pessoa de contato, categoria e o serviço que deseja apresentar.</p></div>
+      <div class="actions"><a class="button" href={whatsapp} target="_blank" rel="noopener noreferrer">WhatsApp Cumbuco Aluguéis ↗</a><a class="button button--ghost" href="mailto:info@cumbuco.net?subject=Empresa%20em%20destaque">Enviar consulta por e-mail</a><a class="text-link" href="/city/cumbuco/local-businesses/">Ver o diretório local →</a></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><p class="eyebrow">Partnership questions</p><h2>Before getting in touch.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+    <div class="shell"><p class="eyebrow">Dúvidas sobre parcerias</p><h2>Antes de entrar em contato.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
   </section>
 </BaseLayout>
 
 <style>
-  .partner-hero { position: relative; min-height: 37rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .partner-hero { position: relative; min-height: 37rem; display: grid; align-items: end; overflow: hidden; color: white; background: radial-gradient(circle at 82% 18%, rgb(255 212 108 / 30%), transparent 23rem), linear-gradient(135deg, #063f43, #08777a 62%, #7bcfc4); }
   .partner-hero picture, .partner-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
   .partner-hero img { object-fit: cover; object-position: center 55%; }
   .shade { background: linear-gradient(90deg, rgb(3 43 45 / 88%), rgb(3 43 45 / 46%) 60%, rgb(3 43 45 / 12%)), linear-gradient(0deg, rgb(3 35 38 / 58%), transparent 56%); }

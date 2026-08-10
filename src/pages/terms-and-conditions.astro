@@ -1,7 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-import ContentPage from "../components/ContentPage.astro";
-const entry = (await getCollection("pages")).find((item) => item.data.slug === "terms-and-conditions");
-if (!entry) throw new Error("Terms content missing");
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<ContentPage entry={entry} eyebrow="Information" />
+<BaseLayout title="Termos e Condições | Cumbuco Aluguéis" description="Consulte os termos e condições aplicáveis às consultas, cotações, reservas, cancelamentos e locações de imóveis por temporada com o Cumbuco Aluguéis." canonical="/terms-and-conditions/">
+  <section class="page-hero"><div class="shell"><p class="eyebrow">Informações legais</p><h1>Termos e condições</h1><p class="lede">Condições gerais aplicáveis às consultas e reservas intermediadas pelo Cumbuco Aluguéis.</p></div></section>
+  <section class="section"><div class="shell prose legal"><p>As páginas e o conteúdo do Cumbuco Aluguéis pertencem à Fortaleza Real Estate e estão sujeitos às condições abaixo.</p><p>O Cumbuco Aluguéis apresenta imóveis para locação em Cumbuco e atua como intermediário entre o hóspede e o proprietário.</p><p>As informações de cada imóvel são baseadas nos dados fornecidos pelos proprietários. A cotação considera imóvel, datas, número de noites e hóspedes, temporada e serviços opcionais. O custo completo, incluindo cobranças adicionais como eletricidade ou limpeza de saída quando aplicáveis, é informado antes da reserva.</p><p>Ao concluir uma reserva com o Cumbuco Aluguéis, o hóspede aceita a política de cancelamento e não comparecimento.</p><h2>Política geral de cancelamento e não comparecimento</h2><ul><li>Para reembolso de 90%, o cancelamento deve ocorrer pelo menos 45 dias completos antes do horário local de check-in, ou 15h quando não houver horário especificado.</li><li>Cancelamentos entre 45 e 30 dias de antecedência recebem reembolso de 50%.</li><li>Cancelamentos com menos de 30 dias de antecedência não recebem reembolso.</li><li>Se o hóspede chegar e decidir sair antes, as noites não utilizadas não são reembolsadas.</li></ul><p>Confira as condições específicas do imóvel antes de reservar. Para revisar, alterar ou cancelar uma reserva, entre em contato por telefone ou WhatsApp.</p><p>Na medida permitida pela lei, estes termos e a prestação dos serviços são regidos pela legislação brasileira, e eventuais disputas serão submetidas aos tribunais competentes no Brasil.</p></div></section>
+</BaseLayout>
+<style>.legal{max-width:52rem}.legal h2{margin-top:2rem}.legal p,.legal ul{margin-top:.85rem}.legal ul{display:grid;gap:.55rem;padding-left:1.25rem}</style>

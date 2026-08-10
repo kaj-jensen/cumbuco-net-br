@@ -4,7 +4,7 @@
   "name": "Muda Restaurant",
   "category": "restaurant",
   "subcategory": "Restaurant, lounge and bar",
-  "summary": "An established evening restaurant close to Cumbuco's main square, known for an open-air setting, international cooking, pizza, drinks, and wine.",
+  "summary": "Restaurante noturno próximo à praça principal de Cumbuco, com ambiente aberto, cozinha internacional, pizzas, bebidas e vinhos.",
   "descriptionHtml": "<p>Muda Restaurant opened in 2009 and is located on Cumbuco's main street near the square. Its official site presents an evening restaurant with pizza, a broader menu, drinks, wine, and allergy information.</p><p>Contact the restaurant directly for current opening days, reservations, delivery, and dietary questions.</p>",
   "images": [],
   "contact": {
@@ -22,17 +22,17 @@
   ],
   "priceRange": "$$",
   "tags": [
-    "evening",
-    "pizza",
-    "international cuisine",
-    "wine"
+    "funcionamento noturno",
+    "pizzas",
+    "cozinha internacional",
+    "vinhos"
   ],
   "featuredPartner": false,
   "featuredPriority": 0,
   "verifiedAt": "2026-07-25",
   "seo": {
-    "title": "Muda Restaurant in Cumbuco",
-    "description": "Visitor information and direct booking links for Muda Restaurant near the main square in Cumbuco.",
+    "title": "Muda Restaurant em Cumbuco",
+    "description": "Informações e contatos diretos do Muda Restaurant, próximo à praça principal de Cumbuco.",
     "modified": "2026-07-25T12:00:00+02:00",
     "ogImage": "/images/content/cumbuco/sunny-beach-1440.jpg"
   }

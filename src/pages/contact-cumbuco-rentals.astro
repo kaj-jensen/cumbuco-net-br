@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import EnquiryForm from "../components/EnquiryForm.astro";
+import { brazilianPropertySlugs } from "../config/site";
 
 const entry = (await getCollection("pages")).find((item) => item.data.slug === "contact-cumbuco-rentals");
 if (!entry) throw new Error("Contact content missing");
@@ -9,6 +10,7 @@ const p = entry.data;
 const phone = (p.contact as any)?.phones?.at(-1);
 const whatsappUrl = "https://wa.me/5585988139402";
 const properties = (await getCollection("properties"))
+  .filter((item) => brazilianPropertySlugs.has(item.data.slug))
   .map((item) => ({ title: item.data.title, slug: item.data.slug, maxGuests: item.data.metrics.guests }))
   .sort((a, b) => a.title.localeCompare(b.title));
 const contactUrl = new URL("/contact-cumbuco-rentals/", Astro.site).toString();
@@ -21,7 +23,7 @@ const structuredData = [{
   ],
 }];
 ---
-<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical="/contact-cumbuco-rentals/" pageType="ContactPage" structuredData={structuredData}>
+<BaseLayout title="Contato | Cumbuco Aluguéis por Temporada" description="Fale com o Cumbuco Aluguéis pelo WhatsApp ou formulário para consultar imóveis, datas, disponibilidade e valores de locação em Cumbuco." canonical="/contact-cumbuco-rentals/" pageType="ContactPage" structuredData={structuredData}>
   <section class="page-hero"><div class="shell"><p class="eyebrow">Vamos planejar sua estadia</p><h1>Fale com quem conhece Cumbuco.</h1><p class="lede">Informe as datas, o número de hóspedes e o tipo de estadia que procura. Ajudaremos você a encontrar as melhores opções.</p></div></section>
   <section class="section">
     <div class="shell contact-grid">
