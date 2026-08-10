@@ -5,8 +5,8 @@ import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { businessCategories } from "../../../config/destination";
 
-const title = "Cumbuco Local Businesses: Restaurants, Kite Schools & Stays";
-const description = "Explore the restaurants, kite schools, hotels, and pousadas visitors look for in Cumbuco, with opportunities for selected local businesses to be featured.";
+const title = "Guia Local de Cumbuco: Restaurantes, Escolas de Kite e Pousadas";
+const description = "Conheça restaurantes, escolas de kite, hotéis e pousadas de Cumbuco, com espaço para destacar empresas locais cuidadosamente selecionadas.";
 const image = "/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg";
 const businesses = (await getCollection("businesses", ({ data }) => data.status === "published"))
   .sort((a, b) => Number(b.data.featuredPartner) - Number(a.data.featuredPartner) || b.data.featuredPriority - a.data.featuredPriority || a.data.name.localeCompare(b.data.name));
@@ -23,17 +23,17 @@ const structuredData = [
     description,
     url: directoryUrl,
     about: [
-      { "@type": "Thing", name: "Restaurants in Cumbuco" },
-      { "@type": "Thing", name: "Kite schools in Cumbuco" },
-      { "@type": "Thing", name: "Hotels and pousadas in Cumbuco" },
-      { "@type": "Place", name: "Cumbuco, Ceará, Brazil" },
+      { "@type": "Thing", name: "Restaurantes em Cumbuco" },
+      { "@type": "Thing", name: "Escolas de kite em Cumbuco" },
+      { "@type": "Thing", name: "Hotéis e pousadas em Cumbuco" },
+      { "@type": "Place", name: "Cumbuco, Ceará, Brasil" },
     ],
-    inLanguage: "en",
+    inLanguage: "pt-BR",
   },
   { "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    { "@type": "ListItem", position: 3, name: "Local businesses", item: directoryUrl },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Guia local", item: directoryUrl },
   ]},
   {
     "@type": "ItemList",
@@ -57,13 +57,13 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Palm trees and the Atlantic shoreline in Cumbuco" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Coqueiros e o litoral atlântico em Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Cumbuco local guide</p>
-      <h1>Local categories. Clear context. Better planning.</h1>
-      <p>A carefully presented starting point for restaurants, kite schools, and places to stay. Confirmed local partners can be added without turning the guide into an automatically scraped list.</p>
+      <p class="eyebrow">Guia local de Cumbuco</p>
+      <h1>Categorias locais. Contexto claro. Melhor planejamento.</h1>
+      <p>Um ponto de partida organizado para restaurantes, escolas de kite e hospedagens. Parceiros locais confirmados podem ser incluídos sem transformar o guia em uma lista automática.</p>
     </div>
   </section>
 

@@ -3,8 +3,8 @@ import BusinessHighlights from "../../../components/BusinessHighlights.astro";
 import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const title = "Kiteboarding in Cumbuco: Wind Season, Lessons & Safety";
-const description = "Plan a Cumbuco kiteboarding trip with guidance on wind season, lessons, beach and lagoon conditions, equipment, downwinders, safety, and where to stay.";
+const title = "Kitesurf em Cumbuco: Temporada de Vento, Aulas e Segurança";
+const description = "Planeje sua viagem de kitesurf a Cumbuco: temporada de vento, aulas, condições de praia e lagoa, equipamento, downwind, segurança e hospedagem.";
 const image = "/images/content/cumbuco/kitesurfing-1440.jpg";
 const faqItems = [
   { question: "When is the best wind season in Cumbuco?", answer: "The core season normally runs from July through December, with useful trade-wind conditions often continuing into January. Daily strength, direction, tide, and sea state still require a current local check." },
@@ -13,11 +13,11 @@ const faqItems = [
   { question: "Can I do a downwinder from Cumbuco?", answer: "Experienced independent riders can join supported downwind trips, but route knowledge, changing conditions, landing options, communication, and vehicle support matter. Book an established local service and be honest about your level." },
 ];
 const structuredData = [
-  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/kiteboarding/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "SportsActivityLocation", name: "Cumbuco kiteboarding area", address: { "@type": "PostalAddress", addressLocality: "Cumbuco", addressRegion: "Ceará", addressCountry: "BR" } }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/kiteboarding/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "SportsActivityLocation", name: "Área de kitesurf em Cumbuco", address: { "@type": "PostalAddress", addressLocality: "Cumbuco", addressRegion: "Ceará", addressCountry: "BR" } }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
   { "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    { "@type": "ListItem", position: 3, name: "Kiteboarding", item: "https://www.cumbuco.net.br/city/cumbuco/kiteboarding/" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Kitesurf", item: "https://www.cumbuco.net.br/city/cumbuco/kiteboarding/" },
   ]},
   { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];
@@ -32,9 +32,9 @@ const structuredData = [
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Kiteboarding in Cumbuco</p>
-      <h1>Come for the trade wind. Ride with judgement.</h1>
-      <p>Cumbuco earned its worldwide reputation through warm water, long beaches, strong seasonal wind, and access to varied conditions—not through promises that every day suits every rider.</p>
+      <p class="eyebrow">Kitesurf em Cumbuco</p>
+      <h1>Venha pelos ventos alísios. Navegue com responsabilidade.</h1>
+      <p>Cumbuco conquistou fama mundial pela água quente, praias extensas, ventos sazonais fortes e variedade de condições — não pela promessa de que todos os dias servem para todos os velejadores.</p>
     </div>
   </section>
 

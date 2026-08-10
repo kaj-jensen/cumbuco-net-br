@@ -17,29 +17,29 @@ const structuredData = [{
   "@id": `${contactUrl}#breadcrumb`,
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Cumbuco Rentals", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Contact", item: contactUrl },
+    { "@type": "ListItem", position: 2, name: "Contato", item: contactUrl },
   ],
 }];
 ---
 <BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical="/contact-cumbuco-rentals/" pageType="ContactPage" structuredData={structuredData}>
-  <section class="page-hero"><div class="shell"><p class="eyebrow">Let's plan your stay</p><h1>Talk to someone who knows Cumbuco.</h1><p class="lede">Share your dates, group size, and the kind of stay you have in mind. We'll help narrow the options.</p></div></section>
+  <section class="page-hero"><div class="shell"><p class="eyebrow">Vamos planejar sua estadia</p><h1>Fale com quem conhece Cumbuco.</h1><p class="lede">Informe as datas, o número de hóspedes e o tipo de estadia que procura. Ajudaremos você a encontrar as melhores opções.</p></div></section>
   <section class="section">
     <div class="shell contact-grid">
-      <div><p class="eyebrow">Choose what suits you</p><h2>Email or WhatsApp—either reaches us directly.</h2><p class="lede">Use the secure form below for an email reply, or start a WhatsApp conversation. Every enquiry is answered personally.</p></div>
+      <div><p class="eyebrow">Escolha como falar conosco</p><h2>WhatsApp ou formulário: sua mensagem chega diretamente até nós.</h2><p class="lede">Enquanto preparamos o novo serviço de e-mail, envie o formulário ou inicie uma conversa pelo WhatsApp. Cada consulta é respondida pessoalmente.</p></div>
       <aside>
-        <p class="small">Phone & WhatsApp</p>
-        <a class="whatsapp-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Chat with Cumbuco Rentals on WhatsApp at ${phone?.label}`}>
+        <p class="small">Telefone e WhatsApp</p>
+        <a class="whatsapp-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Fale com Cumbuco Aluguéis pelo WhatsApp no número ${phone?.label}`}>
           <span class="whatsapp-icon" aria-hidden="true">
             <svg viewBox="0 0 24 24" role="img">
               <path class="bubble" d="M12 2a9 9 0 0 0-7.7 13.7L3 21l5.4-1.3A9 9 0 1 0 12 2Z" />
               <path class="phone" d="M8.1 6.8c.3-.2.7-.1.9.2l1.1 2c.2.3.1.6-.1.9l-.8.9c.7 1.5 1.8 2.6 3.3 3.3l.9-.8c.3-.2.6-.3.9-.1l2 1.1c.3.2.4.6.2.9l-.7 1.2c-.3.5-.9.8-1.5.7-4.1-.7-7.3-3.9-8-8-.1-.6.2-1.2.7-1.5l1.1-.8Z" />
             </svg>
           </span>
-          <span class="whatsapp-copy"><strong>Chat on WhatsApp</strong><small>Open a direct conversation</small></span>
+          <span class="whatsapp-copy"><strong>Conversar no WhatsApp</strong><small>Abrir uma conversa direta</small></span>
           <span class="arrow" aria-hidden="true">→</span>
           <span class="contact-number">{phone?.label}</span>
         </a>
-        <p>Include the property, arrival and departure dates, and number of guests so we can help quickly.</p>
+        <p>Informe o imóvel, as datas de chegada e saída e o número de hóspedes para agilizar o atendimento.</p>
       </aside>
     </div>
   </section>

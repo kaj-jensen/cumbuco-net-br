@@ -3,8 +3,8 @@ import BusinessHighlights from "../../../components/BusinessHighlights.astro";
 import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const title = "Best Restaurants in Cumbuco: A Local Dining Guide";
-const description = "Discover how to eat well in Cumbuco, from beach lunches and Ceará seafood to village restaurants, cafés, pizza, and relaxed evening drinks.";
+const title = "Melhores Restaurantes em Cumbuco: Guia Gastronômico Local";
+const description = "Descubra onde comer em Cumbuco: almoços na praia, frutos do mar do Ceará, restaurantes no centro, cafés, pizzas e bares descontraídos.";
 const image = "/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg";
 const faqItems = [
   { question: "What food is Cumbuco known for?", answer: "Cumbuco's menus reflect coastal Ceará: fresh fish and seafood, grilled meats, rice and beans, regional ingredients, fruit juices, tapioca, and relaxed beach food. The village also has international choices shaped by its long-standing international kite community." },
@@ -13,11 +13,11 @@ const faqItems = [
   { question: "Can I pay by card?", answer: "Cards and Pix are widely used, but a small amount of Brazilian reais is useful for beach vendors, small purchases, or a temporary connection problem. Confirm accepted payment methods before ordering when it matters." },
 ];
 const structuredData = [
-  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/restaurants/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/restaurants/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
   { "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    { "@type": "ListItem", position: 3, name: "Restaurants", item: "https://www.cumbuco.net.br/city/cumbuco/restaurants/" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Restaurantes", item: "https://www.cumbuco.net.br/city/cumbuco/restaurants/" },
   ]},
   { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];
@@ -28,13 +28,13 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.avif 1440w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Tables beneath palm trees beside Cumbuco beach" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Mesas sob coqueiros ao lado da praia de Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Eat and drink in Cumbuco</p>
-      <h1>Beach lunches. Village evenings. No hurry.</h1>
-      <p>Cumbuco dining is at its best when the setting becomes part of the meal—from bare feet in the sand to an easy walk through the village after sunset.</p>
+      <p class="eyebrow">Comer e beber em Cumbuco</p>
+      <h1>Almoço na praia. Noite no centro. Sem pressa.</h1>
+      <p>A gastronomia de Cumbuco fica ainda melhor quando o ambiente faz parte da refeição: dos pés na areia a um passeio tranquilo pelo centro depois do pôr do sol.</p>
     </div>
   </section>
 

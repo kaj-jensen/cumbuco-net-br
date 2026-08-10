@@ -5,18 +5,18 @@ interface Props {
 
 const { current = "hub" } = Astro.props;
 const items = [
-  { key: "hub", label: "Guide overview", href: "/city/cumbuco/" },
-  { key: "where-to-stay", label: "Where to stay", href: "/city/cumbuco/where-to-stay/" },
+  { key: "hub", label: "Visão geral", href: "/city/cumbuco/" },
+  { key: "where-to-stay", label: "Onde ficar", href: "/city/cumbuco/where-to-stay/" },
   { key: "restaurants", label: "Restaurants", href: "/city/cumbuco/restaurants/" },
-  { key: "things-to-do", label: "Things to do", href: "/city/cumbuco/things-to-do/" },
-  { key: "beaches", label: "Beaches & lagoons", href: "/city/cumbuco/beaches/" },
-  { key: "kiteboarding", label: "Kiteboarding", href: "/city/cumbuco/kiteboarding/" },
-  { key: "travel-information", label: "Plan your trip", href: "/city/cumbuco/travel-information/" },
-  { key: "local-businesses", label: "Local directory", href: "/city/cumbuco/local-businesses/" },
+  { key: "things-to-do", label: "O que fazer", href: "/city/cumbuco/things-to-do/" },
+  { key: "beaches", label: "Praias e lagoas", href: "/city/cumbuco/beaches/" },
+  { key: "kiteboarding", label: "Kitesurf", href: "/city/cumbuco/kiteboarding/" },
+  { key: "travel-information", label: "Planeje sua viagem", href: "/city/cumbuco/travel-information/" },
+  { key: "local-businesses", label: "Guia local", href: "/city/cumbuco/local-businesses/" },
 ] as const;
 ---
 
-<nav class="destination-sections" aria-label="Cumbuco destination guide">
+<nav class="destination-sections" aria-label="Guia de Cumbuco">
   <div class="shell">
     {items.map((item) => (
       <a href={item.href} aria-current={item.key === current ? "page" : undefined}>{item.label}</a>

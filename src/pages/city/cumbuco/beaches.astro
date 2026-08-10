@@ -2,8 +2,8 @@
 import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const title = "Cumbuco Beaches & Lagoons: Where to Swim, Relax and Explore";
-const description = "Explore Cumbuco Beach, the dunes and freshwater lagoons near Cumbuco. Learn what each landscape offers, how conditions change, and how to visit responsibly.";
+const title = "Praias e Lagoas de Cumbuco: Onde Nadar, Relaxar e Explorar";
+const description = "Conheça a Praia de Cumbuco, as dunas e lagoas de água doce. Veja o que cada paisagem oferece, como as condições mudam e como visitar com responsabilidade.";
 const image = "/images/content/cumbuco/sunny-beach-1440.jpg";
 const faqItems = [
   { question: "Is Cumbuco Beach safe for swimming?", answer: "Conditions vary with wind, tide, waves, currents, and the exact stretch of beach. Choose a populated area, ask locally, supervise children closely, and stay out when the sea looks stronger than your ability." },
@@ -12,11 +12,11 @@ const faqItems = [
   { question: "Can I drive on the dunes or beach?", answer: "Do not take an ordinary rental vehicle onto dunes or beaches. Access can be restricted, conditions are deceptive, and the environment is fragile. Use authorised local operators where off-road access is required." },
 ];
 const structuredData = [
-  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/beaches/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/beaches/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
   { "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    { "@type": "ListItem", position: 3, name: "Beaches and lagoons", item: "https://www.cumbuco.net.br/city/cumbuco/beaches/" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Praias e lagoas", item: "https://www.cumbuco.net.br/city/cumbuco/beaches/" },
   ]},
   { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];

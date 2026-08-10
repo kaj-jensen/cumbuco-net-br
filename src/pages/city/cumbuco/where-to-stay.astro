@@ -5,32 +5,32 @@ import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import PropertyCard from "../../../components/PropertyCard.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const title = "Where to Stay in Cumbuco: Areas, Villas & Beachfront Rentals";
-const description = "Compare Cumbuco village, beachfront condominiums, private houses, and villas. Choose the right area and rental style for your beach holiday.";
+const title = "Onde Ficar em Cumbuco: Casas, Vilas e Aluguéis à Beira-Mar";
+const description = "Compare o centro de Cumbuco, condomínios à beira-mar, casas e vilas. Escolha a localização e o imóvel ideais para suas férias na praia.";
 const image = "/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg";
 
 const properties = await getCollection("properties");
-const exampleSlugs = ["villa-branca", "dream-village-302-v", "casa-vermelha"];
+const exampleSlugs = ["villa-branca", "dream-village-301-v", "casa-vermelha"];
 const examples = exampleSlugs
   .map((slug) => properties.find((property) => property.data.slug === slug))
   .filter(Boolean);
 
 const faqItems = [
   {
-    question: "What is the best area to stay in Cumbuco without a car?",
-    answer: "A property close to the village centre and beach usually makes restaurants, small shops, and evening walks easiest. Confirm the walking route and exact location before booking because Cumbuco properties described as central can still vary noticeably in distance.",
+    question: "Qual é a melhor região de Cumbuco para ficar sem carro?",
+    answer: "Um imóvel próximo ao centro e à praia facilita o acesso a restaurantes, pequenos comércios e passeios à noite. Confirme a localização exata e o percurso a pé antes de reservar, pois as distâncias podem variar mesmo quando o imóvel é anunciado como central.",
   },
   {
-    question: "Should I choose a beachfront apartment or a private villa?",
-    answer: "Beachfront apartments suit travellers who value direct sea access, shared pools, and simpler maintenance. Villas suit larger groups and guests who want more bedrooms, social space, gardens, and often a private pool.",
+    question: "Devo escolher um apartamento à beira-mar ou uma vila privativa?",
+    answer: "Apartamentos à beira-mar são indicados para quem valoriza acesso direto à praia, piscinas compartilhadas e praticidade. Vilas atendem melhor grupos maiores que procuram mais quartos, áreas de convivência, jardins e, muitas vezes, piscina privativa.",
   },
   {
-    question: "Where should kitesurfers stay in Cumbuco?",
-    answer: "Prioritise safe equipment storage, practical beach access, space to rinse and dry gear, and transport arrangements for sessions away from the property. The closest beach is not automatically the right launch area for every ability or condition.",
+    question: "Onde os kitesurfistas devem ficar em Cumbuco?",
+    answer: "Priorize armazenamento seguro, acesso prático à praia, espaço para lavar e secar o equipamento e transporte para outros pontos. A praia mais próxima nem sempre é o local de saída adequado para todos os níveis e condições.",
   },
   {
-    question: "Are Cumbuco rentals suitable for families?",
-    answer: "Yes. Many apartments, houses, and villas work well for families, but pool barriers, stairs, balconies, sleeping arrangements, walking distances, and transport needs should be checked property by property.",
+    question: "Os imóveis de Cumbuco são adequados para famílias?",
+    answer: "Sim. Muitos apartamentos, casas e vilas funcionam bem para famílias, mas é importante verificar em cada imóvel as piscinas, escadas, varandas, camas, distâncias a pé e necessidades de transporte.",
   },
 ];
 
@@ -41,16 +41,16 @@ const structuredData = [
     headline: title,
     description,
     image: new URL(image, Astro.site).toString(),
-    about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" },
+    about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" },
     publisher: { "@id": "https://www.cumbuco.net.br/#organization" },
-    inLanguage: "en",
+    inLanguage: "pt-BR",
   },
   {
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-      { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-      { "@type": "ListItem", position: 3, name: "Where to stay", item: "https://www.cumbuco.net.br/city/cumbuco/where-to-stay/" },
+      { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+      { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+      { "@type": "ListItem", position: 3, name: "Onde ficar", item: "https://www.cumbuco.net.br/city/cumbuco/where-to-stay/" },
     ],
   },
   {
@@ -69,13 +69,13 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Palm trees, sand, and ocean on the Cumbuco coastline" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Coqueiros, areia e mar no litoral de Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Where to stay in Cumbuco</p>
-      <h1>Choose the rhythm before the room.</h1>
-      <p>The best Cumbuco rental is the one that places your group close to the days you actually want—beach, village, kite sessions, privacy, or all four.</p>
+      <p class="eyebrow">Onde ficar em Cumbuco</p>
+      <h1>Escolha primeiro o ritmo das suas férias.</h1>
+      <p>O melhor aluguel em Cumbuco é aquele que deixa seu grupo perto do que realmente deseja: praia, centro, kitesurf, privacidade ou tudo isso junto.</p>
     </div>
   </section>
 
@@ -84,12 +84,12 @@ const structuredData = [
   <section class="section intro-section">
     <div class="shell intro-grid">
       <div>
-        <p class="eyebrow">Start with location</p>
-        <h2>There is no single “best” part of Cumbuco.</h2>
+        <p class="eyebrow">Comece pela localização</p>
+        <h2>Não existe uma única região “melhor” em Cumbuco.</h2>
       </div>
       <div class="prose">
-        <p>Cumbuco is compact, but the experience changes between a home beside the village, a beachfront condominium, and a quieter private house. A few extra minutes on foot or by car can make a meaningful difference when you travel with children, kite equipment, or a large group.</p>
-        <p>Decide which moments should be effortless. If dinner on foot matters, start near the village. If the sea should be outside the gate, prioritise verified beachfront access. If privacy, bedrooms, and shared time matter most, compare houses and villas.</p>
+        <p>Cumbuco é compacto, mas a experiência muda entre uma casa perto do centro, um condomínio à beira-mar e uma residência privativa mais tranquila. Alguns minutos a mais a pé ou de carro fazem diferença para quem viaja com crianças, equipamento de kite ou um grupo grande.</p>
+        <p>Defina o que precisa ser fácil. Se quiser ir jantar a pé, procure o centro. Se deseja o mar logo depois do portão, confirme o acesso à praia. Se privacidade, quartos e convivência forem prioridade, compare casas e vilas.</p>
       </div>
     </div>
   </section>
@@ -98,35 +98,35 @@ const structuredData = [
     <div class="shell">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Four useful ways to stay</p>
-          <h2>Match the setting to your holiday.</h2>
+          <p class="eyebrow">Quatro maneiras de se hospedar</p>
+          <h2>Escolha o ambiente que combina com suas férias.</h2>
         </div>
-        <p class="section-intro">These are practical styles rather than strict neighbourhood borders. Always check the individual property location and access.</p>
+        <p class="section-intro">Estas são categorias práticas, não divisões rígidas de bairros. Sempre confira a localização e o acesso de cada imóvel.</p>
       </div>
       <div class="area-grid">
         <article>
           <span>01</span>
-          <h3>Near the village centre</h3>
-          <p>Best for restaurants, cafés, small shops, and an evening walk without arranging transport. Ask about street noise and the exact walking route.</p>
-          <strong>Good for: first visits, couples, sociable groups</strong>
+          <h3>Perto do centro</h3>
+          <p>Ideal para restaurantes, cafés, pequenos comércios e passeios à noite sem precisar de transporte. Pergunte sobre o ruído da rua e o percurso exato a pé.</p>
+          <strong>Bom para: primeira visita, casais e grupos sociáveis</strong>
         </article>
         <article>
           <span>02</span>
-          <h3>Beachfront condominiums</h3>
-          <p>Direct or near-direct access to the sand, shared pools, gardens, and the convenience of an apartment. Confirm whether “sea view” also means practical beach access.</p>
-          <strong>Good for: beach days, smaller groups, easy living</strong>
+          <h3>Condomínios à beira-mar</h3>
+          <p>Acesso direto ou muito próximo à areia, piscinas compartilhadas, jardins e a praticidade de um apartamento. Confirme se “vista para o mar” também significa acesso fácil à praia.</p>
+          <strong>Bom para: dias de praia, grupos menores e praticidade</strong>
         </article>
         <article>
           <span>03</span>
-          <h3>Private houses</h3>
-          <p>More independence, kitchens, outdoor areas, and room to settle in. Location, parking, pool layout, and walking distance vary considerably.</p>
-          <strong>Good for: families, longer stays, privacy</strong>
+          <h3>Casas privativas</h3>
+          <p>Mais independência, cozinha, áreas externas e espaço para se acomodar. Localização, estacionamento, piscina e distância a pé variam bastante.</p>
+          <strong>Bom para: famílias, estadias longas e privacidade</strong>
         </article>
         <article>
           <span>04</span>
-          <h3>Large villas</h3>
-          <p>Multiple bedrooms and generous social spaces make it easier for friends or extended families to stay together without living on top of one another.</p>
-          <strong>Good for: celebrations, groups, shared holidays</strong>
+          <h3>Vilas espaçosas</h3>
+          <p>Vários quartos e amplas áreas de convivência permitem que amigos e famílias grandes fiquem juntos sem abrir mão do espaço individual.</p>
+          <strong>Bom para: comemorações, grupos e férias em família</strong>
         </article>
       </div>
     </div>
@@ -138,19 +138,19 @@ const structuredData = [
         <picture>
           <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
           <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
-          <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="1080" loading="lazy" alt="Palm-lined beach and calm morning light in Cumbuco" />
+          <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="1080" loading="lazy" alt="Praia com coqueiros e a luz tranquila da manhã em Cumbuco" />
         </picture>
       </div>
       <div>
-        <p class="eyebrow">Before choosing</p>
-        <h2>Six questions that prevent the wrong booking.</h2>
+        <p class="eyebrow">Antes de escolher</p>
+        <h2>Seis perguntas para evitar uma reserva inadequada.</h2>
         <ol class="question-list">
-          <li><strong>How often will you walk into the village?</strong><span>Daily convenience may matter more than an extra facility.</span></li>
-          <li><strong>Do you need true beachfront access?</strong><span>A sea view, beach proximity, and a gate onto the sand are different things.</span></li>
-          <li><strong>How will everyone sleep?</strong><span>Count proper beds and suitable rooms—not only the maximum guest number.</span></li>
-          <li><strong>Will you carry kite equipment?</strong><span>Ask about storage, rinsing, drying, transfers, and launch guidance.</span></li>
-          <li><strong>Does anyone have limited mobility?</strong><span>Check stairs, lifts, entrances, bathrooms, and the route outside the property.</span></li>
-          <li><strong>What should be private?</strong><span>Clarify pools, gardens, entrances, parking, and any shared condominium facilities.</span></li>
+          <li><strong>Com que frequência vocês irão ao centro a pé?</strong><span>A praticidade diária pode valer mais do que uma comodidade adicional.</span></li>
+          <li><strong>Vocês precisam de acesso verdadeiro à praia?</strong><span>Vista para o mar, proximidade e um portão direto para a areia são coisas diferentes.</span></li>
+          <li><strong>Como todos irão dormir?</strong><span>Conte camas adequadas e quartos úteis, não apenas a capacidade máxima.</span></li>
+          <li><strong>Levarão equipamento de kite?</strong><span>Pergunte sobre armazenamento, lavagem, secagem, transporte e orientação para entrar na água.</span></li>
+          <li><strong>Alguém tem mobilidade reduzida?</strong><span>Verifique escadas, elevadores, entradas, banheiros e o caminho fora do imóvel.</span></li>
+          <li><strong>O que precisa ser privativo?</strong><span>Confirme piscinas, jardins, entradas, estacionamento e áreas compartilhadas do condomínio.</span></li>
         </ol>
       </div>
     </div>
@@ -160,10 +160,10 @@ const structuredData = [
     <div class="shell">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">Three different bases</p>
-          <h2>See how the rental styles compare.</h2>
+          <p class="eyebrow">Três opções diferentes</p>
+          <h2>Compare os estilos de hospedagem.</h2>
         </div>
-        <a class="button button--ghost" href="/properties/">View every Cumbuco rental</a>
+        <a class="button button--ghost" href="/properties/">Ver todos os imóveis em Cumbuco</a>
       </div>
       <div class="property-grid">{examples.map((property) => <PropertyCard property={property} />)}</div>
     </div>
@@ -172,14 +172,14 @@ const structuredData = [
   <section class="section">
     <div class="shell match-grid">
       <div>
-        <p class="eyebrow">Ask for a personal match</p>
-        <h2>Tell us how you want the holiday to feel.</h2>
+        <p class="eyebrow">Peça uma recomendação pessoal</p>
+        <h2>Conte como você imagina suas férias.</h2>
       </div>
       <div class="prose">
-        <p>Share your dates, number of guests, preferred bedrooms, budget range, transport plans, and the activities that matter. We will compare the practical fit of the available properties rather than simply sending the longest list.</p>
+        <p>Informe as datas, o número de hóspedes e quartos, a faixa de orçamento, os planos de transporte e as atividades mais importantes. Compararemos os imóveis disponíveis para encontrar a opção mais adequada ao grupo.</p>
         <div class="actions">
-          <a class="button" href="/contact-cumbuco-rentals/">Ask for rental advice</a>
-          <a class="button button--ghost" href="/city/cumbuco/travel-information/">Plan the journey</a>
+          <a class="button" href="/contact-cumbuco-rentals/">Pedir orientação</a>
+          <a class="button button--ghost" href="/city/cumbuco/travel-information/">Planejar a viagem</a>
         </div>
       </div>
     </div>
@@ -187,15 +187,15 @@ const structuredData = [
 
   <BusinessHighlights
     categories={["hotel", "pousada"]}
-    eyebrow="Other places to know"
-    title="Current local accommodation contacts."
-    description="If a Cumbuco Rental is not the right fit, these established local stays offer direct alternatives worth comparing."
+    eyebrow="Outras hospedagens"
+    title="Contatos locais de hospedagem."
+    description="Se nossos imóveis não forem a opção ideal, estas hospedagens locais oferecem alternativas que vale a pena comparar."
   />
 
   <section class="section faq-section">
     <div class="shell">
-      <p class="eyebrow">Common questions</p>
-      <h2>Choosing accommodation in Cumbuco.</h2>
+      <p class="eyebrow">Perguntas frequentes</p>
+      <h2>Como escolher onde ficar em Cumbuco.</h2>
       <div class="faq-grid">
         {faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}
       </div>

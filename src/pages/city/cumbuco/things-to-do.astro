@@ -2,8 +2,8 @@
 import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-const title = "Things to Do in Cumbuco: Dunes, Lagoons & Beach Days";
-const description = "Plan the best things to do in Cumbuco: dune buggy trips, lagoons, kitesurfing, beach days, village life, Fortaleza day trips, and family ideas.";
+const title = "O que Fazer em Cumbuco: Dunas, Lagoas, Praia e Kitesurf";
+const description = "Planeje o que fazer em Cumbuco: passeios de buggy, lagoas, kitesurf, dias de praia, o centro da vila, Fortaleza e atividades para famílias.";
 const image = "/images/content/cumbuco/cumbuco-dune-buggy-1800.jpg";
 const faqItems = [
   { question: "What are the best things to do in Cumbuco besides kitesurfing?", answer: "Explore the dunes with an authorised buggy operator, visit a lagoon, enjoy a long beach lunch, walk through the village, spend a pool day at your rental, or use Cumbuco as a base for Fortaleza and the Ceará coast." },
@@ -12,11 +12,11 @@ const faqItems = [
   { question: "How many days do I need in Cumbuco?", answer: "Three or four days cover a beach day, dunes and lagoons, and time in the village. A week gives kitesurfers and families more flexibility for wind, weather, and genuinely unplanned days." },
 ];
 const structuredData = [
-  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/things-to-do/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/things-to-do/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
   { "@type": "BreadcrumbList", itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
-    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
-    { "@type": "ListItem", position: 3, name: "Things to do", item: "https://www.cumbuco.net.br/city/cumbuco/things-to-do/" },
+    { "@type": "ListItem", position: 1, name: "Início", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Guia de Cumbuco", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "O que fazer", item: "https://www.cumbuco.net.br/city/cumbuco/things-to-do/" },
   ]},
   { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
 ];
@@ -27,13 +27,13 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.avif 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.avif 1800w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.webp 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.webp 1800w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.jpg 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.jpg 1800w" sizes="100vw" width="1800" height="1192" alt="Dune buggy crossing the golden dunes near Cumbuco" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.jpg 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.jpg 1800w" sizes="100vw" width="1800" height="1192" alt="Buggy atravessando as dunas douradas perto de Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Things to do in Cumbuco</p>
-      <h1>Follow the wind—or ignore the clock.</h1>
-      <p>Cross the dunes, find freshwater, learn a new sport, or stay exactly where you are. Cumbuco rewards both adventure and deliberate idleness.</p>
+      <p class="eyebrow">O que fazer em Cumbuco</p>
+      <h1>Siga o vento ou esqueça o relógio.</h1>
+      <p>Atravesse as dunas, conheça as lagoas, aprenda um novo esporte ou simplesmente fique onde está. Cumbuco combina aventura e descanso.</p>
     </div>
   </section>
 
