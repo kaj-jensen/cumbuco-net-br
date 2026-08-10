@@ -7,10 +7,10 @@ const title = "Kitesurf em Cumbuco: Temporada de Vento, Aulas e Segurança";
 const description = "Planeje sua viagem de kitesurf a Cumbuco: temporada de vento, aulas, condições de praia e lagoa, equipamento, downwind, segurança e hospedagem.";
 const image = "/images/content/cumbuco/kitesurfing-1440.jpg";
 const faqItems = [
-  { question: "When is the best wind season in Cumbuco?", answer: "The core season normally runs from July through December, with useful trade-wind conditions often continuing into January. Daily strength, direction, tide, and sea state still require a current local check." },
-  { question: "Is Cumbuco suitable for beginner kiteboarders?", answer: "Yes when beginners learn with a qualified school that selects the location, equipment, and lesson plan for the student and current conditions. A famous kite destination is not automatically safe for unsupervised learning." },
-  { question: "Should I bring my own kite equipment?", answer: "Experienced riders staying for several days often value their own equipment, but airlines, transfers, storage, and the range of kite sizes need planning. Beginners are usually better served by lesson equipment chosen by the school." },
-  { question: "Can I do a downwinder from Cumbuco?", answer: "Experienced independent riders can join supported downwind trips, but route knowledge, changing conditions, landing options, communication, and vehicle support matter. Book an established local service and be honest about your level." },
+  { question: "Qual é a melhor temporada de vento em Cumbuco?", answer: "A temporada principal normalmente vai de julho a dezembro, com bons ventos alísios muitas vezes continuando em janeiro. Intensidade, direção, maré e estado do mar devem ser conferidos localmente todos os dias." },
+  { question: "Cumbuco é adequado para iniciantes no kitesurf?", answer: "Sim, quando o iniciante aprende com uma escola qualificada que escolhe local, equipamento e plano de aula conforme o aluno e as condições. Um destino famoso não é automaticamente seguro para aprender sem supervisão." },
+  { question: "Devo levar meu próprio equipamento de kite?", answer: "Velejadores experientes em estadias de vários dias costumam preferir o próprio material, mas precisam planejar regras da companhia aérea, traslado, armazenamento e tamanhos de kite. Iniciantes normalmente se beneficiam do equipamento escolhido pela escola." },
+  { question: "Posso fazer um downwind saindo de Cumbuco?", answer: "Velejadores independentes e experientes podem participar de downwinds com apoio. Conhecimento da rota, mudanças nas condições, pontos de chegada, comunicação e resgate em veículo são essenciais. Contrate um serviço local estabelecido e seja honesto sobre seu nível." },
 ];
 const structuredData = [
   { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/kiteboarding/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "SportsActivityLocation", name: "Área de kitesurf em Cumbuco", address: { "@type": "PostalAddress", addressLocality: "Cumbuco", addressRegion: "Ceará", addressCountry: "BR" } }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
@@ -28,7 +28,7 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/kitesurfing-720.avif 720w, /images/content/cumbuco/kitesurfing-1440.avif 1440w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/kitesurfing-720.webp 720w, /images/content/cumbuco/kitesurfing-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/kitesurfing-720.jpg 720w, /images/content/cumbuco/kitesurfing-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Kiteboarder riding the Atlantic wind at Cumbuco Beach" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/kitesurfing-720.jpg 720w, /images/content/cumbuco/kitesurfing-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Kitesurfista navegando com o vento do Atlântico na Praia de Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
@@ -41,24 +41,24 @@ const structuredData = [
   <DestinationGuideNav current="kiteboarding" />
 
   <section class="facts">
-    <div class="shell fact-grid"><p><strong>July–December</strong><span>core wind season</span></p><p><strong>Warm water</strong><span>throughout the year</span></p><p><strong>Beach + lagoons</strong><span>different skills and conditions</span></p><p><strong>Lessons first</strong><span>for every new rider</span></p></div>
+    <div class="shell fact-grid"><p><strong>Julho–dezembro</strong><span>principal temporada de vento</span></p><p><strong>Água quente</strong><span>durante todo o ano</span></p><p><strong>Praia + lagoas</strong><span>habilidades e condições diferentes</span></p><p><strong>Aulas primeiro</strong><span>para todo iniciante</span></p></div>
   </section>
 
   <section class="section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">Why riders return</p><h2>A serious kite base with an easy village around it.</h2></div>
-      <div class="prose"><p>The coast of Ceará receives steady trade winds in the second half of the year. Cumbuco adds warm Atlantic water, a long shoreline, lagoons within the wider area, qualified schools, repair and rental services, and a community organised around time on the water.</p><p>That variety is the strength—and the reason not to reduce Cumbuco to one “perfect spot.” Beach chop, waves, tide, crowds, freshwater depth, and wind quality change. Good riders and good schools choose the session that fits the day.</p></div>
+      <div><p class="eyebrow">Por que os velejadores voltam</p><h2>Uma base de kite completa com uma vila acolhedora ao redor.</h2></div>
+      <div class="prose"><p>O litoral do Ceará recebe ventos alísios constantes no segundo semestre. Cumbuco soma água quente do Atlântico, praia extensa, lagoas na região, escolas qualificadas, serviços de reparo e aluguel e uma comunidade organizada em torno do tempo na água.</p><p>Essa variedade é a força do destino e o motivo para não reduzi-lo a um único “pico perfeito”. Mar mexido, ondas, maré, movimento, profundidade das lagoas e qualidade do vento mudam. Bons velejadores e escolas escolhem a sessão adequada ao dia.</p></div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">Choose by experience</p><h2>Match ambition to ability.</h2></div><p class="section-intro">Your independent riding level matters more than how long you have owned equipment.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Escolha pelo nível</p><h2>Combine ambição com habilidade.</h2></div><p class="section-intro">Seu nível de navegação independente importa mais do que o tempo que você possui equipamento.</p></div>
       <div class="level-grid">
-        <article><span>New to kiteboarding</span><h3>Book a complete lesson pathway</h3><p>Start with site assessment, equipment, safety systems, kite control, and assisted practice. Do not buy a board and ask a friend for a quick launch.</p><strong>Priority: qualified instruction</strong></article>
-        <article><span>Progressing rider</span><h3>Use coaching to unlock the destination</h3><p>A school can select flatter or more forgiving conditions, refine transitions and upwind riding, and assess whether independent beach sessions are appropriate.</p><strong>Priority: honest level assessment</strong></article>
-        <article><span>Independent rider</span><h3>Check the spot every session</h3><p>Understand local launch zones, hazards, tide, crowd patterns, right-of-way, equipment needs, and safe alternatives before rigging.</p><strong>Priority: local briefing</strong></article>
-        <article><span>Advanced traveller</span><h3>Treat downwinders as expeditions</h3><p>Long coastal routes require reliable self-rescue skills, route knowledge, communication, landing options, weather judgement, and vehicle support.</p><strong>Priority: established local support</strong></article>
+        <article><span>Iniciante</span><h3>Reserve uma sequência completa de aulas</h3><p>Comece pela avaliação do local, equipamento, sistemas de segurança, controle do kite e prática assistida. Não compre uma prancha e peça apenas uma ajuda rápida a um amigo.</p><strong>Prioridade: instrução qualificada</strong></article>
+        <article><span>Em evolução</span><h3>Use aulas para aproveitar melhor o destino</h3><p>Uma escola pode escolher condições mais planas, aperfeiçoar transições e a navegação contra o vento e avaliar se sessões independentes na praia são adequadas.</p><strong>Prioridade: avaliação honesta do nível</strong></article>
+        <article><span>Independente</span><h3>Avalie o pico em cada sessão</h3><p>Entenda áreas de montagem e saída, perigos, maré, movimento, prioridades, equipamento necessário e alternativas seguras antes de montar.</p><strong>Prioridade: orientação local</strong></article>
+        <article><span>Avançado</span><h3>Trate downwinds como expedições</h3><p>Rotas costeiras longas exigem autorresgate confiável, conhecimento do percurso, comunicação, opções de chegada, leitura do tempo e apoio em veículo.</p><strong>Prioridade: apoio local estabelecido</strong></article>
       </div>
     </div>
   </section>
@@ -68,72 +68,72 @@ const structuredData = [
       <picture>
         <source type="image/avif" srcset="/images/content/cumbuco/sunny-kitesurfing-720.avif 720w, /images/content/cumbuco/sunny-kitesurfing-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
         <source type="image/webp" srcset="/images/content/cumbuco/sunny-kitesurfing-720.webp 720w, /images/content/cumbuco/sunny-kitesurfing-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
-        <img src="/images/content/cumbuco/sunny-kitesurfing-1440.jpg" srcset="/images/content/cumbuco/sunny-kitesurfing-720.jpg 720w, /images/content/cumbuco/sunny-kitesurfing-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Colourful kites in the clear sky above Cumbuco Beach" />
+        <img src="/images/content/cumbuco/sunny-kitesurfing-1440.jpg" srcset="/images/content/cumbuco/sunny-kitesurfing-720.jpg 720w, /images/content/cumbuco/sunny-kitesurfing-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Kites coloridos no céu da Praia de Cumbuco" />
       </picture>
       <div>
-        <p class="eyebrow">Wind through the year</p><h2>Plan for a season, then read the day.</h2>
+        <p class="eyebrow">O vento ao longo do ano</p><h2>Planeje pela temporada e avalie cada dia.</h2>
         <div class="timeline">
-          <article><span>Jul–Aug</span><p>Trade winds become established as the rainy period recedes. A strong opening to the season with somewhat less peak-month pressure.</p></article>
-          <article><span>Sep–Nov</span><p>The heart of international kite season: generally the most reliable wind, busiest schools, and strongest accommodation demand.</p></article>
-          <article><span>Dec–Jan</span><p>Warm holiday energy and often useful wind, though reliability can ease as January advances.</p></article>
-          <article><span>Feb–Jun</span><p>More variable wind and the principal rainy period from February to May. Travel can still be rewarding, but not as a guaranteed kite holiday.</p></article>
+          <article><span>Jul–ago</span><p>Os ventos alísios se estabelecem com o fim do período chuvoso. É uma abertura forte da temporada, ainda com menos pressão do que nos meses de pico.</p></article>
+          <article><span>Set–nov</span><p>O coração da temporada internacional: vento geralmente mais confiável, escolas movimentadas e maior procura por hospedagem.</p></article>
+          <article><span>Dez–jan</span><p>Clima de férias e vento muitas vezes aproveitável, embora a regularidade possa diminuir ao longo de janeiro.</p></article>
+          <article><span>Fev–jun</span><p>Vento mais variável e principal período chuvoso entre fevereiro e maio. A viagem ainda pode ser ótima, mas não como férias de kite garantidas.</p></article>
         </div>
-        <p class="source-note">Visit Brasil describes steady Ceará winds from July to January. FUNCEME identifies February–May as Ceará's principal rainy period. Neither replaces a daily marine and spot assessment.</p>
+        <p class="source-note">O Visit Brasil descreve ventos constantes no Ceará de julho a janeiro. A FUNCEME identifica fevereiro a maio como o principal período chuvoso. Nenhuma dessas referências substitui a avaliação diária do mar e do pico.</p>
       </div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell conditions-grid">
-      <div><p class="eyebrow">Beach or lagoon?</p><h2>Different water asks different questions.</h2></div>
+      <div><p class="eyebrow">Praia ou lagoa?</p><h2>Cada tipo de água exige uma avaliação diferente.</h2></div>
       <div class="condition-cards">
-        <article><h3>Atlantic beach</h3><p>Expect moving water, shore break or waves, tide, chop, swimmers, other riders, and a wind-affected launch. The exact character changes along the shoreline.</p><ul><li>Ask where riders should rig and launch</li><li>Respect swimmers and beach users</li><li>Check tide and downwind clearance</li></ul></article>
-        <article><h3>Freshwater lagoon</h3><p>Flatter water can look easier, but shallow areas, gusts, crowds, changing depth, obstacles, and limited space create their own risks.</p><ul><li>Confirm current water level</li><li>Understand circulation and priority</li><li>Do not assume “flat” means beginner-safe</li></ul></article>
+        <article><h3>Praia atlântica</h3><p>Espere água em movimento, shorebreak ou ondas, maré, chop, banhistas, outros velejadores e uma saída afetada pelo vento. As características mudam ao longo da praia.</p><ul><li>Pergunte onde montar e entrar na água</li><li>Respeite banhistas e demais usuários</li><li>Confira maré e espaço livre a sotavento</li></ul></article>
+        <article><h3>Lagoa de água doce</h3><p>A água mais lisa parece fácil, mas áreas rasas, rajadas, movimento, profundidade variável, obstáculos e espaço limitado criam riscos próprios.</p><ul><li>Confirme o nível atual da água</li><li>Entenda a circulação e as prioridades</li><li>Não suponha que água lisa seja segura para iniciantes</li></ul></article>
       </div>
     </div>
   </section>
 
   <section class="section safety-section">
     <div class="shell safety-grid">
-      <div><p class="eyebrow">Non-negotiable</p><h2>Safety is part of the sport, not a disclaimer.</h2><p>The International Kiteboarding Organization's beginner pathway starts with assessing the spot and environment, equipment set-up, safety systems, pre-flight checks, and assisted launching and landing before independent riding.</p><a class="text-link" href="https://www.ikointl.com/course/kiteboarder/discovery" target="_blank" rel="noopener noreferrer">See the IKO beginner pathway ↗</a></div>
+      <div><p class="eyebrow">Inegociável</p><h2>Segurança faz parte do esporte.</h2><p>O programa para iniciantes da International Kiteboarding Organization começa pela avaliação do pico e do ambiente, montagem do equipamento, sistemas de segurança, verificações antes do voo e saída e pouso assistidos antes da navegação independente.</p><a class="text-link" href="https://www.ikointl.com/course/kiteboarder/discovery" target="_blank" rel="noopener noreferrer">Conheça o programa para iniciantes da IKO ↗</a></div>
       <ol>
-        <li><strong>Take qualified instruction.</strong><span>Friends and videos do not replace a trained instructor and a structured progression.</span></li>
-        <li><strong>Inspect equipment and safety systems.</strong><span>Use the right size and configuration for your level, weight, and the actual conditions.</span></li>
-        <li><strong>Keep a clear launch and landing zone.</strong><span>Lines, people, buildings, vehicles, trees, and downwind obstacles require distance.</span></li>
-        <li><strong>Never ride beyond your recovery plan.</strong><span>Know self-rescue, where you can land, and how help would reach you.</span></li>
-        <li><strong>Stop before judgement fades.</strong><span>Heat, dehydration, fatigue, and overconfidence can turn a good session into a poor decision.</span></li>
+        <li><strong>Faça aulas qualificadas.</strong><span>Amigos e vídeos não substituem um instrutor treinado e uma progressão estruturada.</span></li>
+        <li><strong>Inspecione equipamento e sistemas de segurança.</strong><span>Use tamanho e configuração adequados ao nível, peso e condições reais.</span></li>
+        <li><strong>Mantenha livre a área de saída e pouso.</strong><span>Linhas, pessoas, construções, veículos, árvores e obstáculos a sotavento exigem distância.</span></li>
+        <li><strong>Nunca veleje além do seu plano de recuperação.</strong><span>Domine o autorresgate, saiba onde pode chegar e como receber ajuda.</span></li>
+        <li><strong>Pare antes que o julgamento piore.</strong><span>Calor, desidratação, cansaço e excesso de confiança transformam uma boa sessão em uma decisão ruim.</span></li>
       </ol>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell logistics-grid">
-      <div><p class="eyebrow">Kite-trip logistics</p><h2>Make the equipment easy before arrival.</h2></div>
+      <div><p class="eyebrow">Logística da viagem de kite</p><h2>Facilite o equipamento antes de chegar.</h2></div>
       <div class="logistics-list">
-        <article><h3>Flying with gear</h3><p>Check airline dimensions, weight rules, sports-equipment fees, connections, and damage coverage before buying the ticket.</p></article>
-        <article><h3>Airport transfer</h3><p>Send the number and dimensions of bags in advance. A vehicle that fits four passengers may not fit four passengers plus board bags.</p></article>
-        <article><h3>Rental storage</h3><p>Ask where equipment can be stored, rinsed, and dried, and whether carrying it to the beach requires stairs, gates, or transport.</p></article>
-        <article><h3>Repair and rental</h3><p>Confirm current local availability before relying on a specific kite size, board type, spare part, or same-day repair.</p></article>
+        <article><h3>Voo com equipamento</h3><p>Confira dimensões, limites de peso, tarifas esportivas, conexões e cobertura contra danos antes de comprar a passagem.</p></article>
+        <article><h3>Traslado do aeroporto</h3><p>Informe antecipadamente a quantidade e as dimensões das bolsas. Um veículo para quatro passageiros pode não comportar quatro pessoas e boardbags.</p></article>
+        <article><h3>Armazenamento no imóvel</h3><p>Pergunte onde guardar, lavar e secar o equipamento e se o caminho até a praia envolve escadas, portões ou transporte.</p></article>
+        <article><h3>Reparo e aluguel</h3><p>Confirme a disponibilidade local antes de depender de um tamanho específico de kite, tipo de prancha, peça ou reparo no mesmo dia.</p></article>
       </div>
     </div>
   </section>
 
   <BusinessHighlights
     categories={["kite-school"]}
-    eyebrow="Schools to contact directly"
-    title="Start with a current kite-school shortlist."
-    description="Compare the lesson approach, current availability, certification, languages, and launch conditions directly before booking."
+    eyebrow="Escolas para contato direto"
+    title="Comece com uma seleção atual de escolas de kite."
+    description="Antes de reservar, compare diretamente a metodologia, disponibilidade, certificação, idiomas e condições de saída."
   />
 
   <section class="section cta">
     <div class="shell cta-grid">
-      <div><p class="eyebrow">Choose a kite-friendly base</p><h2>Beach access is only one part of the stay.</h2></div>
-      <div><p>Storage, rinsing, drying, transfers, walking distance, non-rider comfort, and the right sleeping arrangement matter every day.</p><div class="actions"><a class="button" href="/city/cumbuco/where-to-stay/">Where to stay</a><a class="button button--ghost" href="/contact-cumbuco-rentals/">Ask for a rental match</a></div></div>
+      <div><p class="eyebrow">Escolha uma base adequada ao kite</p><h2>Acesso à praia é apenas parte da estadia.</h2></div>
+      <div><p>Armazenamento, lavagem, secagem, traslados, distância a pé, conforto de quem não veleja e camas adequadas importam todos os dias.</p><div class="actions"><a class="button" href="/city/cumbuco/where-to-stay/">Onde ficar</a><a class="button button--ghost" href="/contact-cumbuco-rentals/">Pedir recomendação de imóvel</a></div></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><p class="eyebrow">Kite-trip questions</p><h2>Before packing the board bag.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+    <div class="shell"><p class="eyebrow">Perguntas sobre a viagem de kite</p><h2>Antes de arrumar a boardbag.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
   </section>
 </BaseLayout>
 
