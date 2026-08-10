@@ -1,0 +1,59 @@
+---
+interface Props { property: any; priority?: boolean; }
+const { property, priority = false } = Astro.props;
+const data = property.data ?? property;
+const typeLabels = { apartment: "Apartamento", house: "Casa", villa: "Villa" };
+const typeLabel = typeLabels[data.propertyType as keyof typeof typeLabels];
+const cardImage = data.gallery[0].src.replace(/\.[^.]+$/, "-card.jpg");
+const cardImageSmall = data.gallery[0].src.replace(/\.[^.]+$/, "-card-480.jpg");
+const cardImageAvif = cardImage.replace(/\.jpg$/, ".avif");
+const cardImageSmallAvif = cardImageSmall.replace(/\.jpg$/, ".avif");
+const cardImageWebp = cardImage.replace(/\.jpg$/, ".webp");
+const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
+---
+
+<article class="card">
+  <a class="image-link" href={`/properties/${data.slug}/`} aria-label={`Ver ${data.title}`}>
+    <picture>
+      <source type="image/avif" srcset={`${cardImageSmallAvif} 480w, ${cardImageAvif} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
+      <source type="image/webp" srcset={`${cardImageSmallWebp} 480w, ${cardImageWebp} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
+      <img
+        src={cardImage}
+        srcset={`${cardImageSmall} 480w, ${cardImage} 720w`}
+        sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px"
+        width="720"
+        height="540"
+        alt={`${data.title} para aluguel em Cumbuco`}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+      />
+    </picture>
+    <span class="type">{typeLabel}</span>
+  </a>
+  <div class="card-body">
+    <div>
+      <h3><a href={`/properties/${data.slug}/`}>{data.title}</a></h3>
+      <p>Cumbuco, Ceará</p>
+    </div>
+    <ul aria-label="Detalhes do imóvel">
+      <li>{data.metrics.guests} hóspedes</li>
+      <li>{data.metrics.bedrooms} quartos</li>
+      <li>{data.metrics.baths} banheiros</li>
+    </ul>
+  </div>
+</article>
+
+<style>
+  .card { overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); transition: transform 180ms ease, box-shadow 180ms ease; }
+  .card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .image-link { position: relative; display: block; aspect-ratio: 4 / 3; overflow: hidden; background: var(--seafoam); }
+  picture { display: block; width: 100%; height: 100%; }
+  img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+  .card:hover img { transform: scale(1.035); }
+  .type { position: absolute; top: 0.9rem; left: 0.9rem; padding: 0.4rem 0.7rem; border-radius: 999px; background: rgb(255 253 248 / 92%); color: var(--ocean-deep); font-size: 0.72rem; font-weight: 800; text-transform: uppercase; }
+  .card-body { padding: 1.25rem; }
+  h3 { min-height: 2.35em; font-size: clamp(1.2rem, 1.7vw, 1.45rem); line-height: 1.15; text-wrap: balance; }
+  h3 a { text-decoration: none; }
+  .card-body p { margin-top: 0.35rem; color: var(--ink-soft); font-size: 0.84rem; }
+  ul { display: flex; flex-wrap: wrap; gap: 0.45rem 1rem; margin: 1rem 0 0; padding: 1rem 0 0; border-top: 1px solid var(--line); color: var(--ink-soft); font-size: 0.79rem; list-style: none; }
+</style>

@@ -1,0 +1,180 @@
+---
+import { getCollection } from "astro:content";
+import BusinessCard from "../../../components/BusinessCard.astro";
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { businessCategories } from "../../../config/destination";
+
+const title = "Cumbuco Local Businesses: Restaurants, Kite Schools & Stays";
+const description = "Explore the restaurants, kite schools, hotels, and pousadas visitors look for in Cumbuco, with opportunities for selected local businesses to be featured.";
+const image = "/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg";
+const businesses = (await getCollection("businesses", ({ data }) => data.status === "published"))
+  .sort((a, b) => Number(b.data.featuredPartner) - Number(a.data.featuredPartner) || b.data.featuredPriority - a.data.featuredPriority || a.data.name.localeCompare(b.data.name));
+const counts = new Map<string, number>();
+for (const business of businesses) counts.set(business.data.category, (counts.get(business.data.category) || 0) + 1);
+const categories = businessCategories.filter((category) => counts.has(category.value));
+const schemaTypes = Object.fromEntries(businessCategories.map((category) => [category.value, category.schemaType]));
+const directoryUrl = "https://www.cumbuco.net.br/city/cumbuco/local-businesses/";
+const structuredData = [
+  {
+    "@type": "CollectionPage",
+    "@id": `${directoryUrl}#directory`,
+    name: title,
+    description,
+    url: directoryUrl,
+    about: [
+      { "@type": "Thing", name: "Restaurants in Cumbuco" },
+      { "@type": "Thing", name: "Kite schools in Cumbuco" },
+      { "@type": "Thing", name: "Hotels and pousadas in Cumbuco" },
+      { "@type": "Place", name: "Cumbuco, Ceará, Brazil" },
+    ],
+    inLanguage: "en",
+  },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Local businesses", item: directoryUrl },
+  ]},
+  {
+    "@type": "ItemList",
+    "@id": `${directoryUrl}#businesses`,
+    name: "Negócios locais em Cumbuco",
+    numberOfItems: businesses.length,
+    itemListElement: businesses.map((business, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": schemaTypes[business.data.category] || "LocalBusiness",
+        name: business.data.name,
+      },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/local-businesses/" image={image} structuredData={structuredData}>
+  <section class="directory-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Palm trees and the Atlantic shoreline in Cumbuco" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Cumbuco local guide</p>
+      <h1>Local categories. Clear context. Better planning.</h1>
+      <p>A carefully presented starting point for restaurants, kite schools, and places to stay. Confirmed local partners can be added without turning the guide into an automatically scraped list.</p>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="local-businesses" />
+
+  <section class="directory-intro">
+    <div class="shell intro-grid">
+      <div><p class="eyebrow">How to use the guide</p><h2>Explore the possibilities.</h2></div>
+      <div>
+        <p>Each card represents a type of local business visitors may want during their stay. Confirmed partners will receive their own name, direct contact options, and carefully checked information.</p>
+        <p>Future inclusion will remain selective rather than becoming a quality ranking or personal guarantee. Featured presentation will never change the factual way a business is described.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="directory-section">
+    <div class="shell">
+      <div class="directory-toolbar">
+        <div>
+          <p class="eyebrow">Browse the directory</p>
+          <h2><span data-visible-count>{businesses.length}</span> available placements</h2>
+        </div>
+        <div class="filters" role="group" aria-label="Filter businesses by category">
+          <button type="button" class="is-active" data-filter="all" aria-pressed="true">All <span>{businesses.length}</span></button>
+          {categories.map((category) => <button type="button" data-filter={category.value} aria-pressed="false">{category.label} <span>{counts.get(category.value)}</span></button>)}
+        </div>
+      </div>
+      <div class="business-grid" data-business-grid>
+        {businesses.map((business) => <BusinessCard business={business} placeholder={true} />)}
+      </div>
+      <p class="no-results" data-no-results hidden>No available placements match this filter yet.</p>
+    </div>
+  </section>
+
+  <section class="partner-section">
+    <div class="shell partner-grid">
+      <div><p class="eyebrow">For local businesses</p><h2>Reach visitors while they are planning Cumbuco.</h2></div>
+      <div><p>Featured Partners receive a clearly marked enhanced presentation, stronger placement within relevant guides, and direct links to their own contact channels. We do not publish partnership pricing on the website.</p><a class="button" href="/featured-partners/">Explore Featured Partnership</a></div>
+    </div>
+  </section>
+
+  <section class="section next-section">
+    <div class="shell next-grid">
+      <a href="/city/cumbuco/restaurants/"><span>Eat</span><h3>Restaurant guide</h3><p>Understand Cumbuco's dining scene before choosing a table.</p></a>
+      <a href="/city/cumbuco/kiteboarding/"><span>Ride</span><h3>Kiteboarding guide</h3><p>Wind season, lessons, safety, equipment, and trip planning.</p></a>
+      <a href="/city/cumbuco/where-to-stay/"><span>Stay</span><h3>Where to stay</h3><p>Compare the village, beachfront living, houses, and villas.</p></a>
+    </div>
+  </section>
+
+  <script>
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>("[data-filter]");
+    const cards = document.querySelectorAll<HTMLElement>("[data-category]");
+    const visibleCount = document.querySelector<HTMLElement>("[data-visible-count]");
+    const noResults = document.querySelector<HTMLElement>("[data-no-results]");
+
+    filterButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const selected = button.dataset.filter || "all";
+        let count = 0;
+        filterButtons.forEach((item) => {
+          const active = item === button;
+          item.classList.toggle("is-active", active);
+          item.setAttribute("aria-pressed", String(active));
+        });
+        cards.forEach((card) => {
+          const visible = selected === "all" || card.dataset.category === selected;
+          card.hidden = !visible;
+          if (visible) count += 1;
+        });
+        if (visibleCount) visibleCount.textContent = String(count);
+        if (noResults) noResults.hidden = count !== 0;
+      });
+    });
+  </script>
+</BaseLayout>
+
+<style>
+  .directory-hero { position: relative; min-height: 33rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .directory-hero picture, .directory-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .directory-hero img { object-fit: cover; object-position: center 55%; }
+  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 85%), rgb(3 43 45 / 36%) 62%, rgb(3 43 45 / 8%)), linear-gradient(0deg, rgb(3 35 38 / 52%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 5.5rem); }
+  .hero-copy h1 { max-width: 12ch; }
+  .hero-copy > p:last-child { max-width: 44rem; margin-top: 1rem; font-size: clamp(1.05rem, 2vw, 1.25rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+  .directory-intro { padding-block: clamp(2.8rem, 6vw, 5rem); background: var(--seafoam); }
+  .intro-grid, .partner-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+  .intro-grid h2, .partner-grid h2 { max-width: 13ch; }
+  .intro-grid > div:last-child { display: grid; gap: .8rem; color: var(--ink-soft); }
+  .directory-section { padding-block: clamp(3rem, 7vw, 6rem); background: var(--sand); }
+  .directory-toolbar { display: grid; grid-template-columns: .65fr 1.35fr; gap: 2rem 4rem; align-items: end; }
+  .directory-toolbar h2 { max-width: 13ch; }
+  .filters { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: flex-end; }
+  .filters button { padding: .58rem .8rem; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); font: inherit; font-size: .76rem; font-weight: 800; cursor: pointer; }
+  .filters button span { margin-left: .25rem; color: var(--ink-soft); }
+  .filters button:hover, .filters button.is-active { border-color: var(--ocean); background: var(--ocean); color: white; }
+  .filters button.is-active span { color: rgb(255 255 255 / 72%); }
+  .business-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; margin-top: 2rem; }
+  .business-grid > [hidden] { display: none; }
+  .no-results { margin-top: 2rem; padding: 2rem; text-align: center; border: 1px dashed var(--line); border-radius: 1rem; color: var(--ink-soft); }
+  .partner-section { padding-block: clamp(3rem, 7vw, 5.5rem); background: var(--ocean); color: white; }
+  .partner-grid > div:last-child p { color: rgb(255 255 255 / 78%); }
+  .partner-grid .button { margin-top: 1.25rem; background: var(--sun); color: var(--ink); }
+  .next-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-block: 1px solid var(--line); }
+  .next-grid a { padding: 1.6rem; border-right: 1px solid var(--line); text-decoration: none; }
+  .next-grid a:last-child { border-right: 0; }
+  .next-grid span { color: var(--coral); font-size: .72rem; font-weight: 900; text-transform: uppercase; }
+  .next-grid h3 { margin-top: 1.6rem; }
+  .next-grid p { margin-top: .6rem; color: var(--ink-soft); }
+  .next-grid a:hover { background: var(--sand); }
+  @media (max-width: 900px) { .business-grid { grid-template-columns: 1fr 1fr; } .directory-toolbar { grid-template-columns: 1fr; } .filters { justify-content: flex-start; } }
+  @media (max-width: 720px) { .directory-hero { min-height: 31rem; } .intro-grid, .partner-grid, .next-grid { grid-template-columns: 1fr; } .next-grid a { border-right: 0; border-bottom: 1px solid var(--line); } .next-grid a:last-child { border-bottom: 0; } }
+  @media (max-width: 560px) { .business-grid { grid-template-columns: 1fr; } }
+</style>

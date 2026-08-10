@@ -1,0 +1,302 @@
+---
+import { site } from "../config/site";
+---
+
+<header class="site-header">
+  <div class="shell header-inner">
+    <a class="brand" href="/" aria-label={`${site.shortName} — início`}>
+      <span class="brand-name">Cumbuco</span><span class="brand-detail">Aluguéis</span>
+    </a>
+
+    <nav class="desktop-navigation" aria-label="Navegação principal">
+      <ul class="primary-list">
+        {site.primaryNavigation.map((item) => (
+          <li class={"children" in item ? "has-children" : undefined}>
+            <a href={item.href}>{item.label}</a>
+            {"children" in item && item.children && (
+              <ul class="submenu">
+                {item.children.map((child) => (
+                  <li><a href={child.href}>{child.label}</a></li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <a class="header-cta" href="/contact-cumbuco-rentals/">Planeje sua estadia</a>
+
+    <details class="mobile-menu">
+      <summary>Menu</summary>
+      <nav aria-label="Navegação móvel">
+        <ul class="mobile-list">
+          {site.primaryNavigation.map((item) => (
+            <li class={"children" in item ? "mobile-group" : undefined}>
+              <a href={item.href}>{item.label}</a>
+              {"children" in item && item.children && (
+                <ul class="mobile-submenu">
+                  {item.children.map((child) => (
+                    <li><a href={child.href}>{child.label}</a></li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: relative;
+    z-index: 10;
+    border-bottom: 1px solid var(--line);
+    background: rgb(255 255 255 / 96%);
+  }
+
+  .header-inner {
+    min-height: 5.25rem;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2vw, 2rem);
+  }
+
+  .brand {
+    display: inline-flex;
+    flex: 0 0 auto;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .brand-name { color: var(--ocean-deep); font-family: "Fraunces", Georgia, serif; font-size: clamp(1.5rem, 2.5vw, 2rem); font-weight: 700; line-height: 1; }
+  .brand-detail { margin-left: 0.42rem; color: var(--coral); font-size: 0.78rem; font-weight: 900; letter-spacing: 0.12em; text-transform: uppercase; }
+
+  .desktop-navigation {
+    margin-left: auto;
+  }
+
+  .primary-list,
+  .submenu,
+  .mobile-list,
+  .mobile-submenu {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .primary-list {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.85rem, 1.7vw, 1.7rem);
+  }
+
+  .primary-list > li {
+    position: relative;
+  }
+
+  nav a {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  nav a:hover,
+  nav a:focus-visible {
+    color: var(--ocean);
+  }
+
+  .has-children > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.38rem;
+  }
+
+  .has-children > a::after {
+    width: 0.42rem;
+    height: 0.42rem;
+    border-right: 1.5px solid currentColor;
+    border-bottom: 1.5px solid currentColor;
+    content: "";
+    transform: translateY(-0.12rem) rotate(45deg);
+  }
+
+  .submenu {
+    position: absolute;
+    top: calc(100% + 0.8rem);
+    left: -1rem;
+    min-width: 12.5rem;
+    padding: 0.55rem;
+    border: 1px solid var(--line);
+    border-radius: 0.85rem;
+    background: var(--paper);
+    box-shadow: var(--shadow);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-0.4rem);
+    transition: opacity 160ms ease, transform 160ms ease, visibility 160ms ease;
+  }
+
+  .submenu::before {
+    position: absolute;
+    right: 0;
+    bottom: 100%;
+    left: 0;
+    height: 0.9rem;
+    content: "";
+  }
+
+  .has-children:hover .submenu,
+  .has-children:focus-within .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .submenu a {
+    display: block;
+    padding: 0.65rem 0.75rem;
+    border-radius: 0.55rem;
+    white-space: nowrap;
+  }
+
+  .submenu a:hover,
+  .submenu a:focus-visible {
+    background: var(--sand);
+  }
+
+  .header-cta {
+    flex: 0 0 auto;
+    padding: 0.65rem 1.05rem;
+    border-radius: 999px;
+    background: var(--coral);
+    color: white;
+    font-size: 0.88rem;
+    font-weight: 800;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .header-cta:hover {
+    background: var(--ocean);
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 980px) {
+    .header-inner {
+      gap: 0.65rem;
+    }
+
+    .desktop-navigation {
+      display: none;
+    }
+
+    .header-cta {
+      margin-left: auto;
+    }
+
+    .mobile-menu {
+      position: relative;
+      display: block;
+    }
+
+    .mobile-menu summary {
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--ocean);
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 800;
+      list-style: none;
+    }
+
+    .mobile-menu summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .mobile-menu[open] summary {
+      border-color: var(--ocean);
+      background: var(--ocean);
+      color: white;
+    }
+
+    .mobile-menu nav {
+      position: absolute;
+      top: calc(100% + 0.6rem);
+      right: 0;
+      display: block;
+      width: min(18rem, calc(100vw - 2rem));
+      max-height: min(34rem, calc(100vh - 7rem));
+      overflow-y: auto;
+      margin: 0;
+      padding: 0.65rem;
+      border: 1px solid var(--line);
+      border-radius: 0.9rem;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .mobile-list > li > a {
+      display: block;
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.55rem;
+    }
+
+    .mobile-list > li > a:hover,
+    .mobile-list > li > a:focus-visible {
+      background: var(--sand);
+    }
+
+    .mobile-group {
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 0.4rem;
+    }
+
+    .mobile-submenu {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.2rem;
+      padding: 0 0.5rem 0.35rem;
+    }
+
+    .mobile-submenu a {
+      display: block;
+      padding: 0.48rem 0.35rem;
+      color: var(--ocean);
+      font-size: 0.78rem;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .header-inner {
+      min-height: 4.75rem;
+    }
+
+    .brand img {
+      width: min(46vw, 180px);
+    }
+
+    .header-cta {
+      padding: 0.55rem 0.7rem;
+      font-size: 0.76rem;
+    }
+  }
+
+  @media (max-width: 390px) {
+    .header-cta {
+      display: none;
+    }
+
+    .mobile-menu {
+      margin-left: auto;
+    }
+  }
+</style>

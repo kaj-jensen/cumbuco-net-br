@@ -1,0 +1,232 @@
+---
+import { getCollection } from "astro:content";
+import AvailabilityCalendar from "../../components/AvailabilityCalendar.astro";
+import EnquiryForm from "../../components/EnquiryForm.astro";
+import VillaBrancaReviews from "../../components/VillaBrancaReviews.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { brazilianPropertySlugs } from "../../config/site";
+export async function getStaticPaths() {
+  const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
+  return properties.map((property) => ({ params: { slug: property.data.slug }, props: { property } }));
+}
+const { property } = Astro.props;
+const p = property.data;
+const heroImages = p.gallery.slice(0, 5);
+const heroImageBase = p.gallery[0].src.replace(/\.(?:jpe?g|png)$/i, "-card");
+const optimizedHero = {
+  avif: `${heroImageBase}.avif`,
+  webp: `${heroImageBase}.webp`,
+  fallback: `${heroImageBase}.jpg`,
+};
+const typeLabels = { apartment: "Apartamento", house: "Casa", villa: "Villa" };
+const typeLabel = typeLabels[p.propertyType];
+const propertyUrl = new URL(`/properties/${p.slug}/`, Astro.site).toString();
+const propertyStructuredData = [
+  {
+    "@type": "VacationRental",
+    "@id": `${propertyUrl}#vacation-rental`,
+    url: propertyUrl,
+    identifier: p.postId,
+    name: p.title,
+    description: p.seo.description,
+    image: p.gallery.map((image) => new URL(image.src, Astro.site).toString()),
+    latitude: p.coordinates?.latitude,
+    longitude: p.coordinates?.longitude,
+    geo: p.coordinates ? {
+      "@type": "GeoCoordinates",
+      latitude: p.coordinates.latitude,
+      longitude: p.coordinates.longitude,
+    } : undefined,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Cumbuco",
+      addressRegion: "Ceará",
+      addressCountry: "BR",
+    },
+    checkinTime: p.details["Check-in Hour"] || undefined,
+    checkoutTime: p.details["Check-Out Hour"] || undefined,
+    additionalType: typeLabel,
+    containedInPlace: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" },
+    brand: { "@id": "https://www.cumbuco.net.br/#organization" },
+    mainEntityOfPage: { "@id": `${propertyUrl}#webpage` },
+    containsPlace: {
+      "@type": ["Accommodation", p.propertyType === "apartment" ? "Apartment" : "House"],
+      additionalType: p.rentalType === "entire-home" ? "EntirePlace" : typeLabel,
+      occupancy: p.metrics.guests ? {
+        "@type": "QuantitativeValue",
+        value: p.metrics.guests,
+      } : undefined,
+      numberOfBedrooms: p.metrics.bedrooms ?? undefined,
+      numberOfBathroomsTotal: p.metrics.baths ?? undefined,
+      numberOfRooms: p.details.Rooms ? Number.parseInt(p.details.Rooms, 10) : undefined,
+      amenityFeature: p.features.map((feature) => ({
+        "@type": "LocationFeatureSpecification",
+        name: feature,
+        value: true,
+      })),
+    },
+  },
+  {
+    "@type": "BreadcrumbList",
+    "@id": `${propertyUrl}#breadcrumb`,
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Cumbuco Aluguéis", item: "https://www.cumbuco.net.br/" },
+      { "@type": "ListItem", position: 2, name: "Imóveis", item: "https://www.cumbuco.net.br/properties/" },
+      { "@type": "ListItem", position: 3, name: p.title, item: propertyUrl },
+    ],
+  },
+];
+---
+
+<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical={`/properties/${p.slug}/`} image={p.gallery[0].src} imageAlt={`${p.title} para aluguel por temporada em Cumbuco`} structuredData={propertyStructuredData}>
+  <section class="property-head">
+    <div class="shell">
+      <p class="eyebrow">{typeLabel} · Cumbuco, Ceará</p>
+      <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire">Consultar este imóvel</a></div>
+      <ul class="quick-facts"><li>{p.metrics.guests} hóspedes</li><li>{p.metrics.bedrooms} quartos</li><li>{p.metrics.baths} banheiros</li><li>{p.gallery.length} fotos</li></ul>
+    </div>
+  </section>
+
+  <section class="shell gallery" aria-label={`Galeria de fotos de ${p.title}`}>
+    <picture>
+      <source type="image/avif" srcset={optimizedHero.avif} />
+      <source type="image/webp" srcset={optimizedHero.webp} />
+      <img src={optimizedHero.fallback} width="720" height="480" alt={`${p.title} para aluguel em Cumbuco`} loading="eager" fetchpriority="high" decoding="async" />
+    </picture>
+    {heroImages.slice(1).map((image, index) => <img src={image.src} width="1200" height="900" alt={`${p.title}, foto ${index + 2}`} loading="lazy" decoding="async" />)}
+  </section>
+
+  {p.gallery.length > 5 && (
+    <details class="full-gallery shell">
+      <summary><span>Ver todas as {p.gallery.length} fotos</span></summary>
+      <div class="full-gallery-grid" aria-label={`${p.title} complete photo gallery`}>
+        {p.gallery.map((image, index) => (
+          <img
+            src={image.src}
+            width="1200"
+            height="900"
+            alt={`${p.title}, foto da galeria ${index + 1}`}
+            loading="lazy"
+            decoding="async"
+          />
+        ))}
+      </div>
+    </details>
+  )}
+
+  <section class="section">
+    <div class="shell detail-grid">
+      <article>
+        <p class="eyebrow">O imóvel</p>
+        <div class="prose" set:html={p.descriptionHtml}></div>
+      </article>
+      <aside>
+        <div class="fact-box">
+          <h2>Informações</h2>
+          <dl>
+            <div><dt>Tipo</dt><dd>{typeLabel}</dd></div>
+            <div><dt>Quartos</dt><dd>{p.metrics.bedrooms}</dd></div>
+            <div><dt>Banheiros</dt><dd>{p.metrics.baths}</dd></div>
+            <div><dt>Hóspedes</dt><dd>{p.metrics.guests}</dd></div>
+            {p.details["Property Size"] && <div><dt>Área</dt><dd>{p.details["Property Size"]}</dd></div>}
+          </dl>
+        </div>
+        <div class="amenities">
+          <h2>Comodidades</h2>
+          <ul>{p.features.map((feature) => <li>{feature}</li>)}</ul>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  {p.slug === "villa-branca" && (
+    <section class="section section--sand">
+      <div class="shell">
+        <VillaBrancaReviews />
+      </div>
+    </section>
+  )}
+
+  <section class={`section ${p.slug === "villa-branca" ? "" : "section--sand"}`}>
+    <div class="shell">
+      <AvailabilityCalendar property={p.title} slug={p.slug} reservedDates={p.reservedDates} />
+    </div>
+  </section>
+
+  <section id="enquire" class="section section--ocean enquiry">
+    <div class="shell">
+      <EnquiryForm property={p.title} slug={p.slug} maxGuests={p.metrics.guests} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .property-head { padding-block: clamp(3rem, 6vw, 5rem) 2rem; }
+  .title-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem; }
+  h1 { max-width: 18ch; font-size: clamp(2.75rem, 5vw, 4.75rem); text-wrap: balance; }
+  .quick-facts { display: flex; flex-wrap: wrap; gap: 0.75rem 2rem; margin: 1.5rem 0 0; padding: 0; color: var(--ink-soft); list-style: none; }
+  .gallery { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: repeat(2, 14rem); gap: 0.65rem; overflow: hidden; border-radius: var(--radius); }
+  .gallery picture, .gallery img { width: 100%; height: 100%; }
+  .gallery picture { display: block; grid-row: 1 / 3; }
+  .gallery img { object-fit: cover; }
+  .full-gallery { margin-top: 1rem; }
+  .full-gallery summary {
+    display: flex;
+    width: fit-content;
+    margin-left: auto;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1.05rem;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--paper);
+    color: var(--ocean-deep);
+    font-weight: 800;
+    cursor: pointer;
+    list-style: none;
+    box-shadow: 0 0.6rem 1.5rem rgb(14 71 79 / 8%);
+  }
+  .full-gallery summary::-webkit-details-marker { display: none; }
+  .full-gallery summary::after { content: "+"; color: var(--coral); font-size: 1.25rem; line-height: 1; }
+  .full-gallery[open] summary::after { content: "−"; }
+  .full-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+  .full-gallery-grid img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 0.9rem;
+    background: var(--seafoam);
+  }
+  .detail-grid { display: grid; grid-template-columns: minmax(0, 1.7fr) minmax(17rem, 0.8fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
+  aside { display: grid; gap: 1.25rem; }
+  .fact-box, .amenities { padding: 1.5rem; border: 1px solid var(--line); border-radius: var(--radius); }
+  aside h2 { font-size: 1.5rem; }
+  dl { margin: 1rem 0 0; }
+  dl div { display: flex; justify-content: space-between; gap: 1rem; padding-block: 0.65rem; border-bottom: 1px solid var(--line); }
+  dt { color: var(--ink-soft); }
+  dd { margin: 0; font-weight: 700; }
+  .amenities ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin: 1rem 0 0; padding: 0; font-size: 0.85rem; list-style: none; }
+  .amenities li::before { content: "✓"; margin-right: 0.45rem; color: var(--coral); font-weight: 900; }
+  @media (max-width: 780px) {
+    .title-row { grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
+    .title-row .button { width: fit-content; }
+    .gallery { grid-template-columns: 2fr 1fr; grid-template-rows: repeat(3, 10rem); }
+    .gallery picture { grid-row: 1 / 3; }
+    .detail-grid { grid-template-columns: 1fr; }
+    .full-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 520px) {
+    .gallery { display: flex; overflow-x: auto; border-radius: 0; width: calc(100% - 0.625rem); margin-left: 0.625rem; scrollbar-width: none; scroll-snap-type: x proximity; }
+    .gallery::-webkit-scrollbar { display: none; }
+    .gallery picture, .gallery > img { flex: 0 0 88%; height: 18rem; border-radius: 0.9rem; scroll-snap-align: start; overflow: hidden; }
+    .gallery picture img { border-radius: 0.9rem; }
+    .full-gallery summary { margin-inline: auto; }
+    .full-gallery-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,613 @@
+{
+  "source": "https://www.cumbuco.net.br",
+  "exportedAt": "2026-08-10T17:10:54.972Z",
+  "sitemapCount": 8,
+  "indexedUrlCount": 67,
+  "propertyCount": 9,
+  "imageReferenceCount": 173,
+  "routes": [
+    {
+      "pathname": "/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/action/entire-home/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Entire home • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/action/entire-home/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/action/imovel/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Imóvel • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/action/imovel/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/add-new-listing/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Add New Listing • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/add-new-listing/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/add-new-property/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Add New Property • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/add-new-property/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/advanced-search-2-2/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Advanced Search • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/advanced-search-2-2/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/advanced-search-2/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Advanced Search • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/advanced-search-2/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/advanced-search/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Advanced Search • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/advanced-search/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/all-in-one-calendar-2/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/all-in-one-calendar/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/alugue-com-seguranca/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Alugue com segurança • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/alugue-com-seguranca/",
+      "description": "Alugue com segurança, procure corretores e imobiliárias credenciadas antes de alugar seu apartamento. Cumbuco Alugueis por Temporada esta credenciada",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/apartamentos/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Apartamentos Archives • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/apartamentos/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/area/cumbuco/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Cumbuco • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/area/cumbuco/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/blog-list/",
+      "status": 500,
+      "kind": "page-or-taxonomy",
+      "title": "Blog List • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/blog-list/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/casas/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Casas Archives • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/casas/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/city/cumbuco/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Cumbuco • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/city/cumbuco/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/contact/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Contact • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/contact/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/contato/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Contato • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/contato/",
+      "description": "Cumbuco Alugueis Contato. info@cumbuco.net.br - Telefone 085. 98813 9402 (WhatsApp) Oferecemos casas e apartamentos para aluguel em Cumbuco.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/cumbuco-alguel-por-temporada/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alguel Por temporada • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/cumbuco-alguel-por-temporada/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/cumbuco-aluguel-por-temporada/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Aluguel Por temporada Archives • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/cumbuco-aluguel-por-temporada/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/cumbuco-apartamentos-dream-village/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Apartamentos Dream Village",
+      "canonical": "https://www.cumbuco.net.br/cumbuco-apartamentos-dream-village/",
+      "description": "Cumbuco Apartamentos Dream Village para aluguel. Condomínio com varias piscinas para adultos e crianças. Todos os apartamentos virados para piscina e o mar.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/cumbuco-kitesurf/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Kitesurf",
+      "canonical": "https://www.cumbuco.net.br/cumbuco-kitesurf/",
+      "description": "Cumbuco Kitesurf - Um destino imperdível para os amantes do kitesurf. Cumbuco Alugue por Temporada oferece apartamentos e casas na praia de Cumbuco.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/cumbuco/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Archives • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/cumbuco/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/custom-widgets/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Custom Widgets • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/custom-widgets/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/edit-listing/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/favorite-listings/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/google-maps/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Google Maps • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/google-maps/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/ical-feed/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "",
+      "canonical": "",
+      "description": "",
+      "robots": ""
+    },
+    {
+      "pathname": "/ical/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "",
+      "canonical": "",
+      "description": "",
+      "robots": ""
+    },
+    {
+      "pathname": "/inbox/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/invoices/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/listings/apartamento/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Apartamento • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/listings/apartamento/",
+      "description": "Apartamentos para aluguel em Cumbuco. Apartamentos de alto nível de frente para o mar em Cumbuco. Aluguel de apartamentos para familias.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/listings/casa/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivos Casa • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/listings/casa/",
+      "description": "Casa para aluguel em Cumbuco. Casa de frente para o mar de alto nível. Casas com piscina, churrasqueira e lazer para familias e pequenos grupos em Cumbuco.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/main-homepage/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Main Homepage • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/main-homepage/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/modified-vc-shortcodes/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Modified VC Shortcodes • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/modified-vc-shortcodes/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/my-bookings/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/my-profile/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/my-reservations/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/my-subscription/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/obrigado/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Obrigado pela solicitação de reservas",
+      "canonical": "https://www.cumbuco.net.br/obrigado/",
+      "description": "Cumbuco Aluguel de casas e apartamentos.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/owners-list/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Owners List • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/owners-list/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/owners-sidebar-left/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Owners - Sidebar Left • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/owners-sidebar-left/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/owners-sidebar-right/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Owners - Sidebar Right • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/owners-sidebar-right/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/paypal-processor/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "",
+      "canonical": "",
+      "description": "",
+      "robots": ""
+    },
+    {
+      "pathname": "/profile/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties-list-half-map/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Properties List - Half Map • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties-list-half-map/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties-list-sidebar-left/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Properties List - Sidebar Left • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties-list-sidebar-left/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties-list-sidebar-right/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Properties List - Sidebar Right • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties-list-sidebar-right/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties-list-standard/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Properties List - Standard • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties-list-standard/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Arquivo Properties • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/beach-sun-cumbuco/",
+      "status": 200,
+      "kind": "property",
+      "title": "Beach Sun Cumbuco • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/beach-sun-cumbuco/",
+      "description": "Apartamento Beach Sun Cumbuco. Apartamento com 2 quartos mobiliado, inclusive com utensílios domésticos, pronto para morar, frente mar na praia do Cumbuco.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/casa-chick/",
+      "status": 200,
+      "kind": "property",
+      "title": "Casa Chick • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/casa-chick/",
+      "description": "é uma casa no alto das dunas com linda vista para o mar no Cumbuco. A casa conta com 5 suítes muito bem ventilados devido à localização da mesma.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/casa-vermelha/",
+      "status": 200,
+      "kind": "property",
+      "title": "Casa Vermelha • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/casa-vermelha/",
+      "description": "Alugue casa em Cumbuco, Casa Vermelha uma casa de moderna estrutura com 3 suítes sala, cozinha e jardim com piscina. 100 metros da praia.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/dream-village-301-h/",
+      "status": 200,
+      "kind": "property",
+      "title": "Dream Village 301-H • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/dream-village-301-h/",
+      "description": "Apartamento 301-H no condomínio Dream Village de 2 quartos, cozinha e sala. Condomínio com piscina de frente para o mar. Quartos com ar condicionado.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/dream-village-301-v/",
+      "status": 200,
+      "kind": "property",
+      "title": "Dream Village 301-V • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/dream-village-301-v/",
+      "description": "Dream Village Cumbuco aluguel apartamento 301-V no térreo está composto por dois quartos sendo uma suíte Sala com TV e cozinha com maquina de lavar roupa",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/dream-village-401-h/",
+      "status": 200,
+      "kind": "property",
+      "title": "Dream Village 401-H • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/dream-village-401-h/",
+      "description": "Cumbuco Apartamento Dream Village 401-H está localizado no térreo poucos metros da piscina e da praia e oferece dois quartos ar condicionados. Vista mar.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/dunas-village-cumbuco/",
+      "status": 200,
+      "kind": "property",
+      "title": "Dunas Village Cumbuco • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/dunas-village-cumbuco/",
+      "description": "Dunas Village Casas Cumbuco. Localizada nas dunas. A casa é composta por 3 quartos sendo 2 suítes, sala e cozinha. Espaçosa varanda com móveis.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/jardim-reale-cumbuco/",
+      "status": 200,
+      "kind": "property",
+      "title": "Jardim Reale Cumbuco • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/jardim-reale-cumbuco/",
+      "description": "Jardim Reale Cumbuco apartamento de frenta para o mar com dois quarto 128 metros quadrados. Apartamento completo com maquina lavar wifi e ar.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/properties/villa-branca/",
+      "status": 200,
+      "kind": "property",
+      "title": "Villa Branca • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/properties/villa-branca/",
+      "description": "Cumbuco aluguel de casas - Alugue Villa Branca de frente para o mar em Cumbuco com piscina, bar, churrasqueira e lindo jardim na praia de Cumbuco.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/sample-page/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Sample Page • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/sample-page/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/shortcode-tes/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Shortcode Tes • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/shortcode-tes/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/sobre-cumbuco-alugueis/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Sobre Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/sobre-cumbuco-alugueis/",
+      "description": "Cumbuco Alugueis - Casas e apartamentos para alugar em Cumbuco. Imóveis mobiliados de alto nível. Casas e apartamentos com piscina de frente para o mar,",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/solicitacao-de-reservas/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Solicitação de reservas • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/solicitacao-de-reservas/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/stripe-processor/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "",
+      "canonical": "",
+      "description": "",
+      "robots": ""
+    },
+    {
+      "pathname": "/termos-e-condicoes/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Termos e Condições • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/termos-e-condicoes/",
+      "description": "Termos e Condições para Cumbuco Alugueis. Descrição dos nossos termos e condições incluindo regras para cancellamentos entre outros informalçoes uteis.",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/user-dashboard/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "Cumbuco Alugueis • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/",
+      "description": "Cumbuco aluguel de casas e apartamentos na praia de Cumbuco. Excelentes apartamentos e casas para temporada de frente para o mar no Cumbuco",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    },
+    {
+      "pathname": "/wp-rentals-shortcodes/",
+      "status": 200,
+      "kind": "page-or-taxonomy",
+      "title": "WP Rentals Shortcodes • Cumbuco Aluguel por Temporada | Casas e Apartamentos",
+      "canonical": "https://www.cumbuco.net.br/wp-rentals-shortcodes/",
+      "description": "",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    }
+  ]
+}

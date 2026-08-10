@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.env.*
+!.env.example
+.dev.vars
+*.log
+
+# Reproducible rendered snapshots from the legacy Brazilian WordPress site.
+migration/raw-br/html/
+
+# Temporary browser asset copies; canonical migrated media lives in originals/.
+public/images/properties/*/*
+!public/images/properties/*/originals/
+!public/images/properties/*/originals/**

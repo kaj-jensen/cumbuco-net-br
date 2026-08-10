@@ -1,0 +1,34 @@
+{
+  "slug": "br-kite-school",
+  "status": "published",
+  "name": "BR Kite School",
+  "category": "kite-school",
+  "subcategory": "Kiteboarding school",
+  "summary": "A Cumbuco kiteboarding school offering lessons with instructors and equipment for people starting or progressing in the sport.",
+  "descriptionHtml": "<p>BR Kite School presents structured kiteboarding instruction in Cumbuco with certified instructors and equipment. Its official site accepts lesson enquiries and states that the principal wind period runs from July to January.</p><p>Confirm instructor credentials, lesson location, equipment, insurance, cancellation policy, and current conditions directly with the school.</p>",
+  "images": [],
+  "contact": {
+    "website": "https://escola.brkite.com.br/",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=BR+Kite+School+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco"
+  },
+  "openingHours": [],
+  "priceRange": "$$$",
+  "tags": [
+    "kiteboarding",
+    "lessons",
+    "beginners",
+    "certified instructors"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-07-25",
+  "seo": {
+    "title": "BR Kite School in Cumbuco",
+    "description": "Direct information and contact links for BR Kite School in Cumbuco.",
+    "modified": "2026-07-25T12:00:00+02:00",
+    "ogImage": "/images/content/cumbuco/sunny-kitesurfing-1440.jpg"
+  }
+}

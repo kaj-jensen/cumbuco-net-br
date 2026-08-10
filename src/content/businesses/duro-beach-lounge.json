@@ -1,0 +1,47 @@
+{
+  "slug": "duro-beach-lounge",
+  "status": "published",
+  "name": "Duro Beach Lounge",
+  "category": "restaurant",
+  "subcategory": "Beach restaurant and lounge",
+  "summary": "A public beachfront restaurant and bar for local and international dishes, snacks, cocktails, açaí, and long afternoons beneath the palms.",
+  "descriptionHtml": "<p>Duro Beach Lounge sits directly on Cumbuco beach and combines a restaurant, bar, beach seating, and ocean views. Its official site describes local and international dishes, appetizers, cocktails, juices, and açaí.</p><p>Opening patterns and events can change. Check the official website directly before planning a special visit.</p>",
+  "images": [
+    {
+      "src": "/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg",
+      "alt": "Tables beneath palm trees at Duro Beach Lounge in Cumbuco",
+      "width": 1440,
+      "height": 1080,
+      "sourceUrl": "https://www.durobeach.com/restaurante/"
+    }
+  ],
+  "contact": {
+    "website": "https://www.durobeach.com/restaurante/",
+    "phone": "+55 85 98713 4345",
+    "email": "contact@durobeach.com",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Duro+Beach+Lounge+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco",
+    "address": "Rua Beatriz Correia, 64, Praia do Cumbuco, Caucaia, Ceará"
+  },
+  "openingHours": [
+    "Official website states that the restaurant opens daily; confirm current service hours directly."
+  ],
+  "priceRange": "$$",
+  "tags": [
+    "beachfront",
+    "local and international food",
+    "cocktails",
+    "daytime"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-07-25",
+  "seo": {
+    "title": "Duro Beach Lounge in Cumbuco",
+    "description": "Visitor information and direct contact links for Duro Beach Lounge, a beachfront restaurant and bar in Cumbuco.",
+    "modified": "2026-07-25T12:00:00+02:00",
+    "ogImage": "/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg"
+  }
+}

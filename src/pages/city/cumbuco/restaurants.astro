@@ -1,0 +1,172 @@
+---
+import BusinessHighlights from "../../../components/BusinessHighlights.astro";
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const title = "Best Restaurants in Cumbuco: A Local Dining Guide";
+const description = "Discover how to eat well in Cumbuco, from beach lunches and Ceará seafood to village restaurants, cafés, pizza, and relaxed evening drinks.";
+const image = "/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg";
+const faqItems = [
+  { question: "What food is Cumbuco known for?", answer: "Cumbuco's menus reflect coastal Ceará: fresh fish and seafood, grilled meats, rice and beans, regional ingredients, fruit juices, tapioca, and relaxed beach food. The village also has international choices shaped by its long-standing international kite community." },
+  { question: "Do I need restaurant reservations in Cumbuco?", answer: "Usually not for an ordinary weekday meal, but reservations are sensible for larger groups, popular beachfront tables, weekends, public holidays, and the busiest kite-season evenings." },
+  { question: "Are there vegetarian options in Cumbuco?", answer: "Many restaurants can offer salads, tapioca, pizza, pasta, rice, beans, vegetables, and fruit-based dishes, but choice varies. Ask clearly about ingredients and preparation if you have dietary restrictions." },
+  { question: "Can I pay by card?", answer: "Cards and Pix are widely used, but a small amount of Brazilian reais is useful for beach vendors, small purchases, or a temporary connection problem. Confirm accepted payment methods before ordering when it matters." },
+];
+const structuredData = [
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/restaurants/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Restaurants", item: "https://www.cumbuco.net.br/city/cumbuco/restaurants/" },
+  ]},
+  { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/restaurants/" image={image} structuredData={structuredData}>
+  <section class="sub-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/duro-beach/duro-beach-bar-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Tables beneath palm trees beside Cumbuco beach" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Eat and drink in Cumbuco</p>
+      <h1>Beach lunches. Village evenings. No hurry.</h1>
+      <p>Cumbuco dining is at its best when the setting becomes part of the meal—from bare feet in the sand to an easy walk through the village after sunset.</p>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="restaurants" />
+
+  <section class="section">
+    <div class="shell intro-grid">
+      <div><p class="eyebrow">How Cumbuco eats</p><h2>Small village, surprisingly broad table.</h2></div>
+      <div class="prose">
+        <p>Cumbuco grew from a fishing village and still feels connected to the sea, but its international kite community has added cafés, pizza, European influences, casual bars, and familiar comfort food to the local cooking.</p>
+        <p>There is no need to chase a checklist. Choose the atmosphere first: lunch beside the Atlantic, something quick between sessions, a family dinner near the village square, or a slower evening with drinks and music.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">Choose by moment</p><h2>Four good ways to eat here.</h2></div><p class="section-intro">Opening days, menus, and service hours change with season and demand. Check directly before making a special journey.</p></div>
+      <div class="moment-grid">
+        <article><span>01</span><h3>Lunch on the beach</h3><p>Fresh fish, grilled food, cold drinks, sea views, and shade beneath palms or beach umbrellas. Arrive earlier for a quieter table.</p></article>
+        <article><span>02</span><h3>Village dinner</h3><p>The compact centre offers the widest choice within walking distance: Brazilian cooking, seafood, pizza, pasta, burgers, and international menus.</p></article>
+        <article><span>03</span><h3>Quick kite-day fuel</h3><p>Juices, açaí, tapioca, sandwiches, and simple plates fit easily around lessons or a wind window. Hydration matters more than a heavy lunch.</p></article>
+        <article><span>04</span><h3>Drinks after sunset</h3><p>Move from beach light into a relaxed village bar. Ask what is happening locally rather than assuming every venue has live music every night.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section feature">
+    <div class="shell feature-grid">
+      <picture>
+        <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
+        <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
+        <img src="/images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Ocean view from a palm-framed beachfront table in Cumbuco" />
+      </picture>
+      <div>
+        <p class="eyebrow">A taste of the setting</p>
+        <h2>Duro Beach: Cumbuco at table.</h2>
+        <p>Duro Beach is one local example of the village's beachfront appeal: a place where palms, sand, Atlantic light, music, food, and a long afternoon come together.</p>
+        <p>We present it as an example rather than a ranked recommendation. Stage 6 will introduce clearly labelled local listings and Featured Partners, with current details separated from independent editorial guidance.</p>
+        <a class="text-link" href="https://www.instagram.com/durobeach/" target="_blank" rel="noopener noreferrer">Check Duro Beach directly before visiting ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell useful-grid">
+      <div><p class="eyebrow">Order with confidence</p><h2>A few words make the meal easier.</h2></div>
+      <div class="phrase-grid">
+        <article><strong>Sem pimenta, por favor.</strong><span>No chilli, please.</span></article>
+        <article><strong>Tenho alergia a…</strong><span>I am allergic to…</span></article>
+        <article><strong>Sem carne / sem peixe.</strong><span>Without meat / without fish.</span></article>
+        <article><strong>A conta, por favor.</strong><span>The bill, please.</span></article>
+      </div>
+      <div class="note"><strong>Dietary needs</strong><p>Do not rely only on a translated menu. Explain allergies directly, ask about sauces and cross-contact, and carry appropriate medication if a reaction could be serious.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell day-grid">
+      <div><p class="eyebrow">A simple food day</p><h2>Let the beach set the timetable.</h2></div>
+      <ol>
+        <li><span>Morning</span><p>Coffee, tropical fruit, tapioca, or eggs before the heat and wind build.</p></li>
+        <li><span>Lunch</span><p>A shaded beach table, fresh fish or a light plate, and enough water for the afternoon.</p></li>
+        <li><span>Late afternoon</span><p>A juice, açaí, coconut water, or cold drink as the beach changes colour.</p></li>
+        <li><span>Evening</span><p>Walk into the village and choose by atmosphere, appetite, and what is genuinely open.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <BusinessHighlights
+    categories={["restaurant", "cafe", "bar", "beach-club"]}
+    eyebrow="Verified direct links"
+    title="Continue with current local businesses."
+    description="A small, useful selection checked against each business’s own current website. These are direct contacts, not a paid ranking."
+  />
+
+  <section class="section cta">
+    <div class="shell cta-grid">
+      <div><p class="eyebrow">Stay close to the evening</p><h2>Want restaurants within an easy walk?</h2></div>
+      <div><p>Tell us that village access matters when requesting a rental. We will compare the location rather than treating every “central” property as identical.</p><a class="button" href="/contact-cumbuco-rentals/">Ask for a personal match</a></div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell"><p class="eyebrow">Dining questions</p><h2>Before choosing a table.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-hero { position: relative; min-height: 34rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sub-hero img { object-fit: cover; object-position: center 58%; }
+  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 84%), rgb(3 43 45 / 40%) 60%, rgb(3 43 45 / 12%)), linear-gradient(0deg, rgb(3 35 38 / 55%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .hero-copy h1 { max-width: 12ch; }
+  .hero-copy > p:last-child { max-width: 43rem; margin-top: 1.1rem; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+  .intro-grid, .day-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+  .intro-grid h2, .day-grid h2, .cta-grid h2 { max-width: 13ch; }
+  .section-intro { max-width: 34rem; color: var(--ink-soft); }
+  .moment-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; border-block: 1px solid var(--line); }
+  .moment-grid article { padding: 1.6rem; border-right: 1px solid var(--line); }
+  .moment-grid article:last-child { border-right: 0; }
+  .moment-grid span { color: var(--coral); font-weight: 800; }
+  .moment-grid h3 { margin-top: 2rem; }
+  .moment-grid p, .feature p, .cta-grid p { margin-top: .75rem; color: var(--ink-soft); }
+  .feature-grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .feature picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .feature img { width: 100%; height: 100%; object-fit: cover; }
+  .feature h2 { max-width: 12ch; }
+  .feature .text-link { display: inline-block; margin-top: 1.25rem; color: var(--ocean); font-weight: 800; text-decoration: none; }
+  .useful-grid { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem 5rem; }
+  .phrase-grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--line); }
+  .phrase-grid article { display: grid; gap: .2rem; padding: 1rem 1rem 1rem 0; border-bottom: 1px solid var(--line); }
+  .phrase-grid span { color: var(--ink-soft); font-size: .85rem; }
+  .note { grid-column: 2; padding: 1.2rem; background: var(--seafoam); border-radius: 1rem; }
+  .note p { margin-top: .3rem; color: var(--ink-soft); }
+  .day-grid ol { margin: 0; padding: 0; list-style: none; }
+  .day-grid li { display: grid; grid-template-columns: 8rem 1fr; gap: 1rem; padding: 1rem 0; border-top: 1px solid var(--line); }
+  .day-grid span { color: var(--coral); font-weight: 800; }
+  .cta { background: var(--ocean); color: white; }
+  .cta-grid p { color: rgb(255 255 255 / 80%); }
+  .cta-grid .button { margin-top: 1.25rem; background: var(--sun); color: var(--ink); }
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-section h2 { max-width: 14ch; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .faq-grid article:nth-child(even) { padding-left: 1.5rem; }
+  .faq-grid h3 { font-size: 1.2rem; }
+  .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
+  @media (max-width: 850px) { .moment-grid { grid-template-columns: 1fr 1fr; } .moment-grid article:nth-child(2) { border-right: 0; } .moment-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--line); } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .day-grid, .cta-grid, .feature-grid, .useful-grid, .faq-grid { grid-template-columns: 1fr; } .note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 520px) { .moment-grid, .phrase-grid { grid-template-columns: 1fr; } .moment-grid article { border-right: 0; border-bottom: 1px solid var(--line); } .day-grid li { grid-template-columns: 6.5rem 1fr; } }
+</style>

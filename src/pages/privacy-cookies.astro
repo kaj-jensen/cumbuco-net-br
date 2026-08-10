@@ -1,0 +1,7 @@
+---
+import { getCollection } from "astro:content";
+import ContentPage from "../components/ContentPage.astro";
+const entry = (await getCollection("pages")).find((item) => item.data.slug === "privacy-cookies");
+if (!entry) throw new Error("Privacy content missing");
+---
+<ContentPage entry={entry} eyebrow="Information" />

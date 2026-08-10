@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import PropertyArchive from "../../components/PropertyArchive.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { brazilianPropertySlugs } from "../../config/site";
+const labels = { apartment: "Apartamentos", house: "Casas", villa: "Villas" } as const;
+export async function getStaticPaths() {
+  const labels = { apartment: "Apartamentos", house: "Casas", villa: "Villas" } as const;
+  const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
+  return Object.entries(labels).map(([type, title]) => ({ params: { type }, props: { title, properties: properties.filter((item) => item.data.propertyType === type) } }));
+}
+const { title, properties } = Astro.props;
+---
+<BaseLayout title={`${title} em Cumbuco`} description={`Veja ${title.toLowerCase()} para aluguel por temporada em Cumbuco, com detalhes dos imóveis e atendimento pessoal pelo WhatsApp.`}>
+  <PropertyArchive properties={properties} eyebrow="Escolha seu imóvel" title={`${title} em Cumbuco.`} description={`${title} selecionados para aproveitar o mar, as dunas e os ventos do litoral cearense.`} />
+</BaseLayout>

@@ -1,0 +1,125 @@
+{
+  "canonical": "https://www.cumbuco.net/contact-cumbuco-rentals/",
+  "contentHtml": "<div class=\"col-md-4 contact_page_company_picture\"><div class=\"company_headline \"><h3>Cumbuco Rentals</h3><div class=\"agent_detail contact_detail\"><i class=\"fa fa-phone\"></i><a href=\"tel:+55 (85) 98813 9402 (WhatsApp)\">+55 (85) 98813 9402 (WhatsApp)</a></div><div class=\"agent_detail contact_detail\"><i class=\"fa fa-mobile\"></i><a href=\"tel:+55 (85) 98813 9402\">+55 (85) 98813 9402</a></div><div class=\"header_social\"></div></div></div><div class=\"col-md-8 contact_page_company_details\"><div class=\"agent_contanct_form\"><div class=\"alert-box-contact-page error\"><div class=\"alert-message\" id=\"alert-agent-contact\"></div></div><p class=\"third-form  \"> <input type=\"text\" id=\"contact_name\" size=\"40\" name=\"contact_name\" class=\"form-control\" placeholder=\"Full Name\" value=\"\"></p><p class=\"third-form  \"> <input type=\"text\" id=\"contact_email\" size=\"40\" name=\"contact_email\" class=\"form-control\" placeholder=\"Email\" value=\"\"></p><p class=\"third-form last-third\"> <input type=\"text\" id=\"contact_website\" size=\"40\" name=\"contact_website\" class=\"form-control\" placeholder=\"Website\" value=\"\"></p><textarea id=\"agent_comment\" name=\"comment\" class=\"form-control\" cols=\"45\" rows=\"8\" aria-required=\"true\" placeholder=\"Your Message\"></textarea><input type=\"submit\" class=\"wpb_btn-info wpb_btn-small wpestate_vc_button  vc_button\" id=\"agent_submit_contact\" value=\"Send Message\"> <input type=\"hidden\" name=\"contact_ajax_nonce\" id=\"agent_property_ajax_nonce\" value=\"01c9b6d358\"></div></div>",
+  "contentText": "Cumbuco Rentals+55 (85) 98813 9402 (WhatsApp)+55 (85) 98813 9402",
+  "form": {
+    "company": "Cumbuco Rentals",
+    "fields": [
+      {
+        "id": "contact_name",
+        "name": "contact_name",
+        "placeholder": "Full Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "contact_email",
+        "name": "contact_email",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "contact_website",
+        "name": "contact_website",
+        "placeholder": "Website",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "agent_comment",
+        "name": "comment",
+        "placeholder": "Your Message",
+        "tag": "textarea",
+        "type": "textarea",
+        "value": ""
+      },
+      {
+        "id": "agent_submit_contact",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "submit",
+        "value": "Send Message"
+      }
+    ],
+    "phones": [
+      {
+        "href": "tel:+55 (85) 98813 9402 (WhatsApp)",
+        "label": "+55 (85) 98813 9402 (WhatsApp)"
+      },
+      {
+        "href": "tel:+55 (85) 98813 9402",
+        "label": "+55 (85) 98813 9402"
+      }
+    ]
+  },
+  "images": [],
+  "seo": {
+    "description": "Contact Cumbuco Rentals for inquiries about rentals in Cumbuco. Houses, apartments and vacation rentals in Cumbuco Brazil.",
+    "modified": "2026-05-29T06:53:42+00:00",
+    "ogImage": "",
+    "title": "Contact Cumbuco Rentals - Vacation Rentals Cumbuco"
+  },
+  "slug": "contact-cumbuco-rentals",
+  "title": "Contact Cumbuco Rentals",
+  "contact": {
+    "company": "Cumbuco Rentals",
+    "fields": [
+      {
+        "id": "contact_name",
+        "name": "contact_name",
+        "placeholder": "Full Name",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "contact_email",
+        "name": "contact_email",
+        "placeholder": "Email",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "contact_website",
+        "name": "contact_website",
+        "placeholder": "Website",
+        "tag": "input",
+        "type": "text",
+        "value": ""
+      },
+      {
+        "id": "agent_comment",
+        "name": "comment",
+        "placeholder": "Your Message",
+        "tag": "textarea",
+        "type": "textarea",
+        "value": ""
+      },
+      {
+        "id": "agent_submit_contact",
+        "name": "",
+        "placeholder": "",
+        "tag": "input",
+        "type": "submit",
+        "value": "Send Message"
+      }
+    ],
+    "phones": [
+      {
+        "href": "tel:+55 (85) 98813 9402 (WhatsApp)",
+        "label": "+55 (85) 98813 9402 (WhatsApp)"
+      },
+      {
+        "href": "tel:+55 (85) 98813 9402",
+        "label": "+55 (85) 98813 9402"
+      }
+    ]
+  },
+  "legacyUrl": "https://www.cumbuco.net/contact-cumbuco-rentals/"
+}

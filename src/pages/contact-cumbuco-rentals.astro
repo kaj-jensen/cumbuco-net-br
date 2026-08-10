@@ -1,0 +1,70 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import EnquiryForm from "../components/EnquiryForm.astro";
+
+const entry = (await getCollection("pages")).find((item) => item.data.slug === "contact-cumbuco-rentals");
+if (!entry) throw new Error("Contact content missing");
+const p = entry.data;
+const phone = (p.contact as any)?.phones?.at(-1);
+const whatsappUrl = "https://wa.me/5585988139402";
+const properties = (await getCollection("properties"))
+  .map((item) => ({ title: item.data.title, slug: item.data.slug, maxGuests: item.data.metrics.guests }))
+  .sort((a, b) => a.title.localeCompare(b.title));
+const contactUrl = new URL("/contact-cumbuco-rentals/", Astro.site).toString();
+const structuredData = [{
+  "@type": "BreadcrumbList",
+  "@id": `${contactUrl}#breadcrumb`,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Cumbuco Rentals", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Contact", item: contactUrl },
+  ],
+}];
+---
+<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical="/contact-cumbuco-rentals/" pageType="ContactPage" structuredData={structuredData}>
+  <section class="page-hero"><div class="shell"><p class="eyebrow">Let's plan your stay</p><h1>Talk to someone who knows Cumbuco.</h1><p class="lede">Share your dates, group size, and the kind of stay you have in mind. We'll help narrow the options.</p></div></section>
+  <section class="section">
+    <div class="shell contact-grid">
+      <div><p class="eyebrow">Choose what suits you</p><h2>Email or WhatsApp—either reaches us directly.</h2><p class="lede">Use the secure form below for an email reply, or start a WhatsApp conversation. Every enquiry is answered personally.</p></div>
+      <aside>
+        <p class="small">Phone & WhatsApp</p>
+        <a class="whatsapp-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Chat with Cumbuco Rentals on WhatsApp at ${phone?.label}`}>
+          <span class="whatsapp-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" role="img">
+              <path class="bubble" d="M12 2a9 9 0 0 0-7.7 13.7L3 21l5.4-1.3A9 9 0 1 0 12 2Z" />
+              <path class="phone" d="M8.1 6.8c.3-.2.7-.1.9.2l1.1 2c.2.3.1.6-.1.9l-.8.9c.7 1.5 1.8 2.6 3.3 3.3l.9-.8c.3-.2.6-.3.9-.1l2 1.1c.3.2.4.6.2.9l-.7 1.2c-.3.5-.9.8-1.5.7-4.1-.7-7.3-3.9-8-8-.1-.6.2-1.2.7-1.5l1.1-.8Z" />
+            </svg>
+          </span>
+          <span class="whatsapp-copy"><strong>Chat on WhatsApp</strong><small>Open a direct conversation</small></span>
+          <span class="arrow" aria-hidden="true">→</span>
+          <span class="contact-number">{phone?.label}</span>
+        </a>
+        <p>Include the property, arrival and departure dates, and number of guests so we can help quickly.</p>
+      </aside>
+    </div>
+  </section>
+  <section id="enquire" class="section section--ocean">
+    <div class="shell"><EnquiryForm properties={properties} compact /></div>
+  </section>
+</BaseLayout>
+<style>
+  .contact-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: clamp(3rem, 9vw, 8rem); align-items: start; }
+  .contact-grid h2 { max-width: 15ch; }
+  .contact-grid .lede { margin-top: 1.5rem; }
+  aside { padding: 2rem; border-radius: var(--radius); background: var(--ocean-deep); color: white; box-shadow: var(--shadow); }
+  .whatsapp-link { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.9rem; margin: 0.75rem 0 1.5rem; padding: 1rem; border: 1px solid rgb(255 255 255 / 14%); border-radius: 1rem; background: rgb(255 255 255 / 8%); color: white; text-decoration: none; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
+  .whatsapp-link:hover { transform: translateY(-2px); border-color: rgb(37 211 102 / 65%); background: rgb(255 255 255 / 13%); }
+  .whatsapp-icon { display: grid; width: 3.5rem; height: 3.5rem; place-items: center; border-radius: 50%; background: #25d366; box-shadow: 0 0.65rem 1.5rem rgb(0 0 0 / 18%); }
+  .whatsapp-icon svg { width: 2.25rem; height: 2.25rem; }
+  .whatsapp-icon .bubble { fill: white; }
+  .whatsapp-icon .phone { fill: #25d366; }
+  .whatsapp-copy { display: grid; min-width: 0; gap: 0.15rem; }
+  .whatsapp-copy strong { font-size: 1rem; line-height: 1.1; }
+  .whatsapp-copy small { color: #c7dcd7; font-size: 0.78rem; font-weight: 700; }
+  .contact-number { grid-column: 1 / -1; padding-top: 0.15rem; font-size: clamp(1.45rem, 2vw, 1.75rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; white-space: nowrap; }
+  .arrow { color: #25d366; font-size: 1.4rem; font-weight: 800; }
+  aside p:last-child { color: #c7dcd7; }
+  .small { color: var(--coral-light); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
+  @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } aside { padding: 1.35rem; } .whatsapp-link { gap: 0.75rem; padding: 0.85rem; } .whatsapp-icon { width: 3rem; height: 3rem; } .whatsapp-icon svg { width: 2rem; height: 2rem; } }
+  @media (max-width: 380px) { .arrow { display: none; } .contact-number { font-size: 1.3rem; } }
+</style>

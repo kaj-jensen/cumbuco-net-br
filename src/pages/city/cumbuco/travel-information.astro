@@ -1,0 +1,344 @@
+---
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const title = "Cumbuco Travel Information: Airport, Weather, Money & Packing";
+const description = "Plan a Cumbuco holiday with practical information on Fortaleza airport transfers, weather, Brazilian currency, 220V power, packing, transport, and arrival.";
+const image = "/images/content/cumbuco/cumbuco-dune-buggy-1800.jpg";
+
+const faqItems = [
+  {
+    question: "Which airport should I use for Cumbuco?",
+    answer: "Fortaleza International Airport (FOR) is the normal arrival airport. Cumbuco is roughly 40 kilometres from the terminal, and the road journey commonly takes about 45 to 60 minutes depending on traffic and the exact property.",
+  },
+  {
+    question: "Do I need Brazilian cash in Cumbuco?",
+    answer: "Cards are widely useful, while Brazil's Pix payment system is common locally but may not be practical for every international visitor. Carrying a modest amount of Brazilian reais is sensible for small purchases, transport, tips, or moments when a card terminal is unavailable.",
+  },
+  {
+    question: "What voltage is used in Cumbuco?",
+    answer: "The official voltage in Fortaleza and the surrounding area is 220V. Brazil uses sockets with two or three round pins, commonly known as type N. Check every appliance and bring a suitable adapter rather than assuming a plug adapter also converts voltage.",
+  },
+  {
+    question: "What should I pack for Cumbuco?",
+    answer: "Bring light clothing, strong sun protection, swimwear, comfortable sandals, one pair of closed shoes, a reusable water bottle, personal medication, and a light rain layer. Kitesurfers should confirm airline and transfer rules before travelling with equipment.",
+  },
+  {
+    question: "Can I get around Cumbuco without a rental car?",
+    answer: "Yes, especially from a central property. Restaurants, the village, and the nearby beach can often be reached on foot. Transfers, taxis, app-based rides, or authorised local operators are useful for the airport, lagoons, dunes, and more distant accommodation.",
+  },
+];
+
+const structuredData = [
+  {
+    "@type": "Article",
+    "@id": "https://www.cumbuco.net.br/city/cumbuco/travel-information/#article",
+    headline: title,
+    description,
+    image: new URL(image, Astro.site).toString(),
+    about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" },
+    publisher: { "@id": "https://www.cumbuco.net.br/#organization" },
+    dateModified: "2026-07-25",
+    inLanguage: "en",
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+      { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+      { "@type": "ListItem", position: 3, name: "Plan your trip", item: "https://www.cumbuco.net.br/city/cumbuco/travel-information/" },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/travel-information/" image={image} structuredData={structuredData}>
+  <section class="sub-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.avif 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.avif 1800w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.webp 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.webp 1800w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.jpg 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.jpg 1800w" sizes="100vw" width="1800" height="1192" alt="Dune buggy travelling across the golden landscape near Cumbuco" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Practical Cumbuco travel guide</p>
+      <h1>Arrive prepared. Relax sooner.</h1>
+      <p>From Fortaleza airport to beach days, Brazilian reais, 220V sockets, and the right things to pack.</p>
+      <small>Travel information reviewed July 2026</small>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="travel-information" />
+
+  <section class="quick-facts" aria-label="Cumbuco travel essentials">
+    <div class="shell fact-grid">
+      <div><strong>FOR</strong><span>Fortaleza International Airport</span></div>
+      <div><strong>BRL</strong><span>Brazilian real</span></div>
+      <div><strong>220V</strong><span>two or three round pins</span></div>
+      <div><strong>PT-BR</strong><span>Brazilian Portuguese</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell intro-grid">
+      <div>
+        <p class="eyebrow">Before you travel</p>
+        <h2>Confirm the essentials before the beach takes over.</h2>
+      </div>
+      <div class="prose">
+        <p>Entry requirements, airline baggage rules, insurance cover, and health advice depend on your nationality and personal circumstances. Check official information and your airline before departure rather than relying on an old screenshot or travel forum.</p>
+        <div class="official-links">
+          <a href="https://visitbrasil.com/en/info/about-brazil/" target="_blank" rel="noopener noreferrer"><strong>Visit Brasil</strong><span>Entry, currency, health, communications, and national travel essentials ↗</span></a>
+          <a href="https://fortaleza-airport.com.br/pt/viajar/guia-do-passageiro" target="_blank" rel="noopener noreferrer"><strong>Fortaleza Airport</strong><span>Current passenger, baggage, mobility, and ground-transport information ↗</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand" id="getting-here">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Fortaleza airport to Cumbuco</p>
+          <h2>The holiday begins with a simple transfer plan.</h2>
+        </div>
+        <p class="section-intro">Fortaleza International Airport is roughly 40 kilometres from Cumbuco. Traffic, arrival time, luggage, and the exact rental location affect the journey.</p>
+      </div>
+      <div class="transport-grid">
+        <article>
+          <span>01</span>
+          <h3>Pre-arranged transfer</h3>
+          <p>The easiest arrival with children, several suitcases, or kite bags. Send the flight number, landing time, passenger count, and equipment dimensions in advance.</p>
+          <strong>Best for: a low-friction first arrival</strong>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Official taxi or app ride</h3>
+          <p>Fortaleza Airport lists 24-hour taxi services and a designated Uber pick-up area. Confirm the Cumbuco journey and luggage capacity before loading.</p>
+          <strong>Best for: flexible, lighter travel</strong>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Rental car</h3>
+          <p>Useful for a longer Ceará itinerary or independent coastal travel. Confirm parking at the rental and never treat dunes or beaches as ordinary roads.</p>
+          <strong>Best for: regional independence</strong>
+        </article>
+      </div>
+      <div class="arrival-note">
+        <strong>Send us your flight details.</strong>
+        <p>When you enquire about a rental, we can explain the practical arrival options for that property. Transport is never added automatically.</p>
+        <a href="/contact-cumbuco-rentals/">Ask about arrival arrangements →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell practical-layout">
+      <div class="practical-image">
+        <picture>
+          <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 45vw" />
+          <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 45vw" />
+          <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 45vw" width="1200" height="800" loading="lazy" alt="Palm trees casting shade across warm sand by the sea in Cumbuco" />
+        </picture>
+      </div>
+      <div>
+        <p class="eyebrow">Money, power, and connection</p>
+        <h2>Small details that make the stay easier.</h2>
+        <div class="detail-list">
+          <article><h3>Brazilian reais</h3><p>Brazil's currency is the real (BRL). Cards are useful and Pix is common locally, but a modest amount of cash remains practical for small purchases and backup.</p></article>
+          <article><h3>220V electricity</h3><p>The Fortaleza area uses 220V. Brazilian sockets commonly accept two or three round pins. Check device voltage and bring the correct adapter.</p></article>
+          <article><h3>Mobile data</h3><p>Property Wi-Fi and mobile coverage vary. Travellers who need reliable work calls should confirm the individual property's connection and arrange a data backup.</p></article>
+          <article><h3>Brazilian Portuguese</h3><p>Tourism businesses may speak English, Spanish, or other languages, but Portuguese remains the everyday language. A few local phrases make simple interactions warmer.</p></article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--ocean packing-section" id="packing">
+    <div class="shell packing-layout">
+      <div>
+        <p class="eyebrow">What to pack</p>
+        <h2>Pack for sun, wind, water, and easy evenings.</h2>
+        <p>Keep luggage light enough for transfers, but do not leave the practical protection to chance.</p>
+      </div>
+      <div class="packing-grid">
+        <article><span>Wear</span><p>Light breathable clothes, swimwear, comfortable sandals, closed shoes, and one light layer for breezy evenings.</p></article>
+        <article><span>Protect</span><p>High-protection sunscreen, hat, sunglasses, insect repellent, and a light rain layer for tropical showers.</p></article>
+        <article><span>Carry</span><p>Reusable water bottle, waterproof pouch, copies of essential documents, chargers, adapter, and personal medication.</p></article>
+        <article><span>Ride</span><p>Confirm airline size limits, transfer capacity, storage, and equipment insurance before travelling with kite gear.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="weather">
+    <div class="shell season-layout">
+      <div>
+        <p class="eyebrow">Weather and seasons</p>
+        <h2>Warm all year, with very different rhythms.</h2>
+        <p class="lede">A season describes the usual pattern—not the weather for a particular day.</p>
+      </div>
+      <div class="season-grid">
+        <article><strong>July–December</strong><h3>Trade-wind season</h3><p>The core period for stronger and more reliable kitesurfing conditions, with peak demand during the international wind months.</p></article>
+        <article><strong>December–January</strong><h3>Brazilian summer</h3><p>Holiday energy, warm beach days, and changing wind reliability as the year turns.</p></article>
+        <article><strong>February–May</strong><h3>Principal rainy period</h3><p>Ceará's wetter months bring greener scenery and quieter kite-focused travel. Tropical rain can be concentrated rather than continuous.</p></article>
+      </div>
+      <p class="source-note">For current regional forecasts and Ceará climate information, consult <a href="https://www.funceme.br/" target="_blank" rel="noopener noreferrer">FUNCEME</a>.</p>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell local-grid">
+      <div>
+        <p class="eyebrow">Once you arrive</p>
+        <h2>Move around Cumbuco with the day in mind.</h2>
+      </div>
+      <div class="local-options">
+        <article><h3>Walk</h3><p>Central stays can place the village, restaurants, and nearby beach within a manageable walk. Check the real route before booking.</p></article>
+        <article><h3>Taxi or app ride</h3><p>Useful for evenings, shopping, airport journeys, or accommodation beyond comfortable walking distance.</p></article>
+        <article><h3>Authorised local operator</h3><p>Use experienced authorised operators for dunes, lagoons, buggy excursions, and activities that depend on local access and conditions.</p></article>
+        <article><h3>Rental car</h3><p>Helpful for broader Ceará travel, but not essential for every Cumbuco holiday. Parking and road confidence should be part of the decision.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell">
+      <p class="eyebrow">Planning questions</p>
+      <h2>Practical answers before departure.</h2>
+      <div class="faq-grid">
+        {faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section final-cta">
+    <div class="shell cta-grid">
+      <div><p class="eyebrow">Ready to choose your base?</p><h2>Match the journey with the right Cumbuco stay.</h2></div>
+      <div class="cta-actions">
+        <a class="button" href="/properties/">Explore rentals</a>
+        <a class="button button--ghost" href="/city/cumbuco/where-to-stay/">Compare where to stay</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-hero { position: relative; min-height: 36rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sub-hero picture { display: block; }
+  .sub-hero img { object-fit: cover; object-position: center 58%; }
+  .shade { background: linear-gradient(90deg, rgb(3 44 47 / 84%) 0%, rgb(3 44 47 / 46%) 52%, rgb(3 44 47 / 8%) 100%), linear-gradient(0deg, rgb(3 38 41 / 54%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .hero-copy h1 { max-width: 10ch; }
+  .hero-copy > p:not(.eyebrow) { max-width: 39rem; margin-top: 1.1rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+  .hero-copy small { display: block; margin-top: 1.1rem; color: rgb(255 255 255 / 72%); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+
+  .quick-facts { border-bottom: 1px solid var(--line); background: var(--paper); }
+  .fact-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+  .fact-grid div { display: grid; gap: 0.2rem; padding: 1.6rem; border-right: 1px solid var(--line); }
+  .fact-grid div:last-child { border-right: 0; }
+  .fact-grid strong { color: var(--ocean); font-family: "Fraunces", Georgia, serif; font-size: clamp(1.8rem, 4vw, 3rem); line-height: 1; }
+  .fact-grid span { color: var(--ink-soft); font-size: 0.78rem; }
+
+  .intro-grid, .season-layout, .local-grid, .cta-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
+  .intro-grid h2, .local-grid h2 { max-width: 14ch; }
+  .official-links { display: grid; gap: 0.75rem; margin-top: 1.5rem; }
+  .official-links a { display: grid; gap: 0.2rem; padding: 1rem 1.1rem; border: 1px solid var(--line); border-radius: var(--radius); color: var(--ink); text-decoration: none; }
+  .official-links a:hover { border-color: var(--ocean); background: var(--seafoam); }
+  .official-links span { color: var(--ink-soft); font-size: 0.85rem; }
+
+  .section-intro { max-width: 35rem; color: var(--ink-soft); }
+  .transport-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2.5rem; border-block: 1px solid var(--line); }
+  .transport-grid article { padding: 1.75rem; border-right: 1px solid var(--line); }
+  .transport-grid article:last-child { border-right: 0; }
+  .transport-grid span { color: var(--coral); font-size: 0.74rem; font-weight: 800; }
+  .transport-grid h3 { margin-top: 2.2rem; }
+  .transport-grid p { margin-top: 0.75rem; color: var(--ink-soft); }
+  .transport-grid strong { display: block; margin-top: 1.1rem; color: var(--ocean); font-size: 0.8rem; }
+  .arrival-note { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 1.25rem; align-items: center; margin-top: 2rem; padding: 1.25rem 1.5rem; border-radius: var(--radius); background: var(--seafoam); }
+  .arrival-note p { color: var(--ink-soft); }
+  .arrival-note a { color: var(--ocean); font-size: 0.86rem; font-weight: 800; }
+
+  .practical-layout { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .practical-image picture { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .practical-image img { width: 100%; height: 100%; object-fit: cover; }
+  .practical-layout h2 { max-width: 13ch; }
+  .detail-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .detail-list article { padding: 1.25rem; border: 1px solid var(--line); border-radius: var(--radius); }
+  .detail-list h3 { font-size: 1.2rem; }
+  .detail-list p { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.9rem; }
+
+  .packing-section { color: white; }
+  .packing-layout { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr); gap: clamp(3rem, 8vw, 7rem); }
+  .packing-layout .eyebrow { color: #ffd46c; }
+  .packing-layout h2 { max-width: 12ch; }
+  .packing-layout > div:first-child > p:last-child { margin-top: 1rem; color: rgb(255 255 255 / 74%); }
+  .packing-grid { display: grid; grid-template-columns: 1fr 1fr; border-block: 1px solid rgb(255 255 255 / 22%); }
+  .packing-grid article { padding: 1.5rem; border-right: 1px solid rgb(255 255 255 / 22%); border-bottom: 1px solid rgb(255 255 255 / 22%); }
+  .packing-grid article:nth-child(even) { border-right: 0; }
+  .packing-grid article:nth-child(n + 3) { border-bottom: 0; }
+  .packing-grid span { color: var(--coral-light); font-size: 0.74rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+  .packing-grid p { margin-top: 0.8rem; color: rgb(255 255 255 / 78%); }
+
+  .season-layout > div:first-child { position: sticky; top: 5rem; }
+  .season-layout h2 { max-width: 13ch; }
+  .season-grid { display: grid; }
+  .season-grid article { padding: 1.5rem 0; border-top: 1px solid var(--line); }
+  .season-grid strong { color: var(--coral); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .season-grid h3 { margin-top: 0.4rem; }
+  .season-grid p { margin-top: 0.6rem; color: var(--ink-soft); }
+  .source-note { margin-top: 1rem; color: var(--ink-soft); font-size: 0.86rem; }
+  .source-note a { color: var(--ocean); }
+
+  .local-options { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .local-options article { padding: 1.35rem; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  .local-options h3 { font-size: 1.2rem; }
+  .local-options p { margin-top: 0.65rem; color: var(--ink-soft); }
+
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-section h2 { max-width: 14ch; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.75rem 1.75rem 1.75rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .faq-grid article:nth-child(even) { padding-left: 1.75rem; }
+  .faq-grid h3 { font-size: 1.25rem; }
+  .faq-grid p { margin-top: 0.7rem; color: var(--ink-soft); }
+  .cta-grid { align-items: end; }
+  .cta-grid h2 { max-width: 14ch; }
+  .cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: flex-end; }
+
+  @media (max-width: 850px) {
+    .fact-grid, .transport-grid { grid-template-columns: 1fr 1fr; }
+    .fact-grid div:nth-child(2), .transport-grid article:nth-child(2) { border-right: 0; }
+    .fact-grid div:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+    .transport-grid article:last-child { grid-column: 1 / -1; border-top: 1px solid var(--line); }
+    .arrival-note { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .sub-hero { min-height: 32rem; }
+    .intro-grid, .practical-layout, .packing-layout, .season-layout, .local-grid, .faq-grid, .cta-grid { grid-template-columns: 1fr; }
+    .practical-image picture { aspect-ratio: 16 / 10; }
+    .season-layout > div:first-child { position: static; }
+    .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.35rem 0; border-right: 0; }
+    .cta-actions { justify-content: flex-start; }
+  }
+
+  @media (max-width: 520px) {
+    .fact-grid, .transport-grid, .detail-list, .packing-grid, .local-options { grid-template-columns: 1fr; }
+    .fact-grid div, .transport-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
+    .transport-grid article:last-child { grid-column: auto; border-top: 0; }
+    .packing-grid article { border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 22%); }
+    .packing-grid article:nth-child(n + 3) { border-bottom: 1px solid rgb(255 255 255 / 22%); }
+    .packing-grid article:last-child { border-bottom: 0; }
+  }
+</style>

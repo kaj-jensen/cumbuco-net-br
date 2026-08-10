@@ -1,0 +1,80 @@
+{
+  "canonical": "https://www.cumbuco.net.br/properties/beach-sun-cumbuco/",
+  "coordinates": {
+    "latitude": -3.630677,
+    "longitude": -38.71902
+  },
+  "descriptionHtml": "<p>Apartamento mobiliado, inclusive com utensílios domésticos, pronto para morar, frente mar na praia do Cumbuco. Apartamento no térreo com 120m², construído em 2012.</p>\n<p>O apartamento está composto por 2 quartos, sendo uma suíte com cama casal box e outro quarto com cama casal mais uma cama solteira. 2 banheiros, ar condicionado nos quartos, sala de estar/jantar integrada à cozinha, varanda com vista para o mar. Acesso à internet e TV a cabo já instalado. 1 vaga de garagem.<br />\nIncluso na diária Lençóis e toalhas para 4 pessoas mais uma troca, gás é internet WiFi.</p>\n<p>Não incluso: Eletricidade. Limpeza troca de lençóis e toalhas é cobrado R$ 85/vez – favor solicitar no ato de reserva. Limpeza final é cobrado R$ 100,00. As diárias encerram as 13:00 horas.</p>",
+  "descriptionText": "Apartamento mobiliado, inclusive com utensílios domésticos, pronto para morar, frente mar na praia do Cumbuco. Apartamento no térreo com 120m², construído em 2012.\nO apartamento está composto por 2 quartos, sendo uma suíte com cama casal box e outro quarto com cama casal mais uma cama solteira. 2 banheiros, ar condicionado nos quartos, sala de estar/jantar integrada à cozinha, varanda com vista para o mar. Acesso à internet e TV a cabo já instalado. 1 vaga de garagem.\nIncluso na diária Lençóis e toalhas para 4 pessoas mais uma troca, gás é internet WiFi.\nNão incluso: Eletricidade. Limpeza troca de lençóis e toalhas é cobrado R$ 85/vez – favor solicitar no ato de reserva. Limpeza final é cobrado R$ 100,00. As diárias encerram as 13:00 horas.",
+  "details": {
+    "Bathrooms": "2",
+    "Bedrooms": "2",
+    "Check-Out Hour": "12:00",
+    "Check-in Hour": "12:00",
+    "City": "Cumbuco",
+    "Country": "Brazil",
+    "Property ID": "2108",
+    "Property Lot Size": "0 m2",
+    "Property Size": "100 m2",
+    "Rooms": "2"
+  },
+  "features": [
+    "Cozinha",
+    "TV",
+    "Piscina",
+    "Jacuzzi",
+    "Estacionamento",
+    "WiFi",
+    "Ar Condicionado",
+    "Segurança",
+    "Piscina Infantil",
+    "Frente Mar"
+  ],
+  "gallery": [
+    {
+      "src": "/images/properties/beach-sun-cumbuco/originals/2017-02-Beach-Sun-Cumbuco-2.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Beach-Sun-Cumbuco-2.jpg"
+    },
+    {
+      "src": "/images/properties/beach-sun-cumbuco/originals/2017-02-Beach-Sun-Cumbuco-5.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Beach-Sun-Cumbuco-5.jpg"
+    },
+    {
+      "src": "/images/properties/beach-sun-cumbuco/originals/2017-02-Beach-Sun-Cumbuco-1.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Beach-Sun-Cumbuco-1.jpg"
+    },
+    {
+      "src": "/images/properties/beach-sun-cumbuco/originals/2017-02-Beach-Sun-Cumbuco-6.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Beach-Sun-Cumbuco-6.jpg"
+    }
+  ],
+  "metrics": {
+    "baths": 2,
+    "bedrooms": 2,
+    "guests": 4
+  },
+  "postId": "6904",
+  "reservedDates": [],
+  "seo": {
+    "title": "Beach Sun Cumbuco | Aluguel por temporada em Cumbuco",
+    "description": "Apartamento mobiliado, inclusive com utensílios domésticos, pronto para morar, frente mar na praia do Cumbuco. Apartamento… Consulte disponibilidade pelo WhatsApp.",
+    "modified": "2026-08-10T00:00:00-03:00",
+    "ogImage": "/images/properties/beach-sun-cumbuco/originals/2017-02-Beach-Sun-Cumbuco-2.jpg"
+  },
+  "slug": "beach-sun-cumbuco",
+  "taxonomy": [
+    {
+      "label": "Apartment",
+      "url": "https://www.cumbuco.net/action/apartment/"
+    },
+    {
+      "label": "Apartment",
+      "url": "https://www.cumbuco.net/listings/apartment/"
+    }
+  ],
+  "title": "Beach Sun Cumbuco",
+  "youtubeId": null,
+  "legacyUrl": "https://www.cumbuco.net.br/properties/beach-sun-cumbuco/",
+  "propertyType": "apartment",
+  "rentalType": "apartment"
+}

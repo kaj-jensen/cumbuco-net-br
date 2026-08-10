@@ -1,0 +1,61 @@
+{
+  "source": "https://www.cumbuco.net",
+  "properties": 13,
+  "pages": 5,
+  "sourceImageReferences": 220,
+  "duplicateImageReferences": 1,
+  "logicalPropertyImages": 219,
+  "propertyTypes": {
+    "apartment": 7,
+    "house": 2,
+    "villa": 4
+  },
+  "propertyImagesBySlug": {
+    "villa-branca": 20,
+    "casa-chick": 31,
+    "casa-vermelha": 30,
+    "villa-priscila": 21,
+    "dunas-village": 9,
+    "dream-village-301-v": 10,
+    "dream-village-301-h": 11,
+    "dream-village-302-v": 17,
+    "dream-village-401-h": 15,
+    "beach-sun-cumbuco": 4,
+    "breezes-cumbuco": 30,
+    "casa-maria-flor-cumbuco": 20,
+    "beach-sun-cumbuco-2": 1
+  },
+  "legacyRoutes": [
+    "/",
+    "/about-us/",
+    "/contact-cumbuco-rentals/",
+    "/terms-and-conditions/",
+    "/privacy-cookies/",
+    "/city/cumbuco/",
+    "/listings/apartment/",
+    "/listings/house/",
+    "/listings/villa/",
+    "/action/apartment/",
+    "/action/entire-home/",
+    "/page/2/",
+    "/properties/villa-branca/",
+    "/properties/casa-chick/",
+    "/properties/casa-vermelha/",
+    "/properties/villa-priscila/",
+    "/properties/dunas-village/",
+    "/properties/dream-village-301-v/",
+    "/properties/dream-village-301-h/",
+    "/properties/dream-village-302-v/",
+    "/properties/dream-village-401-h/",
+    "/properties/beach-sun-cumbuco/",
+    "/properties/breezes-cumbuco/",
+    "/properties/casa-maria-flor-cumbuco/",
+    "/properties/beach-sun-cumbuco-2/"
+  ],
+  "notes": [
+    "Property content was extracted from the rendered public WordPress pages.",
+    "Gallery files are original WordPress uploads, not thumbnails.",
+    "Casa Chick contained two differently encoded references to the same image; the duplicate is intentionally removed.",
+    "The legacy route list is retained for URL parity and redirect planning."
+  ]
+}

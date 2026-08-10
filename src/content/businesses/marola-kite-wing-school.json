@@ -1,0 +1,34 @@
+{
+  "slug": "marola-kite-wing-school",
+  "status": "published",
+  "name": "Marola Kite & Wing School",
+  "category": "kite-school",
+  "subcategory": "Kiteboarding and wingfoil school",
+  "summary": "A Cumbuco school offering kiteboarding and wingfoil lessons for beginners and advanced riders with certified instructors.",
+  "descriptionHtml": "<p>Marola Kite & Wing School operates in Cumbuco and offers kiteboarding and wingfoil classes for beginner and advanced riders. Its official site provides lesson, spot, WhatsApp, and Google Maps information.</p><p>Ask the school to assess your level and explain the planned location, equipment, instructor qualification, insurance, and weather policy before booking.</p>",
+  "images": [],
+  "contact": {
+    "website": "https://www.marolaschool.com/",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Marola+Kite+Wing+School+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco"
+  },
+  "openingHours": [],
+  "priceRange": "$$$",
+  "tags": [
+    "kiteboarding",
+    "wingfoil",
+    "lessons",
+    "equipment"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-07-25",
+  "seo": {
+    "title": "Marola Kite & Wing School in Cumbuco",
+    "description": "Direct information and contact links for Marola Kite & Wing School in Cumbuco.",
+    "modified": "2026-07-25T12:00:00+02:00",
+    "ogImage": "/images/content/cumbuco/kitesurfing-1440.jpg"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "Cumbuco Vacation Rentals",
+  "short_name": "Cumbuco Rentals",
+  "description": "Beachfront apartments, villas, and vacation homes in Cumbuco, Brazil.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#fffdf7",
+  "theme_color": "#064f55",
+  "lang": "en",
+  "categories": [
+    "travel",
+    "lifestyle"
+  ],
+  "icons": [
+    {
+      "src": "/images/brand/cumbuco-app-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Browse rentals",
+      "short_name": "Rentals",
+      "url": "/properties/"
+    },
+    {
+      "name": "Cumbuco travel guide",
+      "short_name": "Guide",
+      "url": "/city/cumbuco/"
+    }
+  ]
+}

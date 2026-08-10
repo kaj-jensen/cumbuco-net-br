@@ -1,0 +1,76 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { businessCategories } from "../config/destination";
+
+interface Props {
+  business: CollectionEntry<"businesses">;
+  compact?: boolean;
+  placeholder?: boolean;
+}
+
+const { business, compact = false, placeholder = false } = Astro.props;
+const { data } = business;
+const category = businessCategories.find((item) => item.value === data.category);
+const image = data.images[0];
+const imageSmall = image?.src.replace(/-1440(?=\.[^.]+$)/, "-720");
+const displayName = placeholder ? "Your business could be featured here" : data.name;
+const initials = placeholder ? "Your business" : data.name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("");
+const whatsappDigits = data.contact.whatsapp?.replace(/\D/g, "");
+const checked = new Intl.DateTimeFormat("en", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${data.verifiedAt}T12:00:00Z`));
+---
+
+<article class:list={["business-card", { "business-card--compact": compact, "business-card--featured": data.featuredPartner }]} data-category={data.category}>
+  <div class="business-card__visual">
+    {image ? (
+      <img src={image.src} srcset={imageSmall !== image.src ? `${imageSmall} 720w, ${image.src} 1440w` : undefined} sizes="(max-width: 560px) calc(100vw - 1.25rem), (max-width: 900px) calc(50vw - 1.5rem), 384px" width={image.width || 1200} height={image.height || 800} loading="lazy" decoding="async" fetchpriority="low" alt={image.alt} />
+    ) : (
+      <div class="business-card__fallback" aria-hidden="true"><span>{initials}</span><small>{category?.label || data.category}</small></div>
+    )}
+    {!placeholder && data.featuredPartner && <span class="partner-badge">Featured Partner</span>}
+  </div>
+  <div class="business-card__body">
+    <div class="business-card__meta">
+      <span>{data.subcategory || category?.label}</span>
+      <span>{placeholder ? "Placement available" : `Checked ${checked}`}</span>
+    </div>
+    <h3>{displayName}</h3>
+    <p>{data.summary}</p>
+    {!compact && data.tags.length > 0 && <ul class="tag-list" aria-label={placeholder ? "Business category highlights" : `${data.name} highlights`}>{data.tags.slice(0, 4).map((tag) => <li>{tag}</li>)}</ul>}
+    <div class="business-card__links">
+      {placeholder ? (
+        <a href="/featured-partners/">Feature your business →</a>
+      ) : (
+        <>
+          {data.contact.website && <a href={data.contact.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${data.name} website in a new tab`}>Website ↗</a>}
+          {whatsappDigits && <a href={`https://wa.me/${whatsappDigits}`} target="_blank" rel="noopener noreferrer" aria-label={`Contact ${data.name} on WhatsApp in a new tab`}>WhatsApp ↗</a>}
+          {data.contact.googleMaps && <a href={data.contact.googleMaps} target="_blank" rel="noopener noreferrer" aria-label={`Open ${data.name} in Google Maps in a new tab`}>Map ↗</a>}
+        </>
+      )}
+    </div>
+  </div>
+</article>
+
+<style>
+  .business-card { display: grid; grid-template-rows: 12.5rem 1fr; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 1.25rem; background: var(--paper); box-shadow: 0 .8rem 2.3rem rgb(1 60 64 / 7%); }
+  .business-card__visual { position: relative; min-height: 0; overflow: hidden; background: linear-gradient(145deg, var(--ocean), #16999c); }
+  .business-card__visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+  .business-card:hover .business-card__visual img { transform: scale(1.025); }
+  .business-card__fallback { height: 100%; display: grid; place-content: center; gap: .25rem; text-align: center; color: white; background: radial-gradient(circle at 85% 15%, rgb(255 212 108 / 32%), transparent 25%), linear-gradient(145deg, #064f53, #138b90); }
+  .business-card__fallback span { max-width: 12rem; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.35rem, 4vw, 2rem); font-weight: 700; line-height: 1.05; }
+  .business-card__fallback small { color: rgb(255 255 255 / 74%); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .partner-badge { position: absolute; top: .8rem; left: .8rem; padding: .42rem .65rem; border-radius: 999px; background: var(--sun); color: var(--ink); font-size: .68rem; font-weight: 900; letter-spacing: .04em; }
+  .business-card__body { display: flex; flex-direction: column; padding: 1.25rem; }
+  .business-card__meta { display: flex; justify-content: space-between; gap: .75rem; color: var(--ocean); font-size: .69rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+  .business-card__meta span:last-child { color: var(--ink-soft); text-align: right; text-transform: none; letter-spacing: 0; }
+  .business-card h3 { margin-top: .65rem; font-size: clamp(1.55rem, 3vw, 2rem); }
+  .business-card__body > p { margin-top: .6rem; color: var(--ink-soft); font-size: .94rem; }
+  .tag-list { display: flex; flex-wrap: wrap; gap: .35rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+  .tag-list li { padding: .28rem .5rem; border-radius: 999px; background: var(--seafoam); color: var(--ocean); font-size: .67rem; font-weight: 800; }
+  .business-card__links { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: auto; padding-top: 1.15rem; }
+  .business-card__links a { color: var(--ocean); font-size: .78rem; font-weight: 900; text-decoration: none; }
+  .business-card__links a:hover { color: var(--coral); }
+  .business-card--featured { border-color: rgb(255 183 37 / 62%); box-shadow: 0 1rem 2.8rem rgb(1 60 64 / 12%); }
+  .business-card--compact { grid-template-rows: 9rem 1fr; }
+  .business-card--compact .tag-list { display: none; }
+  @media (max-width: 520px) { .business-card { grid-template-rows: 11rem 1fr; } }
+</style>

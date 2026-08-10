@@ -1,0 +1,7 @@
+---
+import { getCollection } from "astro:content";
+import ContentPage from "../components/ContentPage.astro";
+const entry = (await getCollection("pages")).find((item) => item.data.slug === "terms-and-conditions");
+if (!entry) throw new Error("Terms content missing");
+---
+<ContentPage entry={entry} eyebrow="Information" />

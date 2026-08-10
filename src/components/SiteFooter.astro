@@ -1,0 +1,33 @@
+---
+import { site } from "../config/site";
+---
+
+<footer>
+  <div class="shell footer-grid">
+    <div>
+      <p class="footer-brand">{site.shortName}</p>
+      <p class="footer-copy">Casas especiais, mar quente, vento constante e um jeito mais fácil de se hospedar em Cumbuco.</p>
+    </div>
+    <div>
+      <p class="footer-label">Explore</p>
+      {site.primaryNavigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+    <div>
+      <p class="footer-label">Informações</p>
+      {site.footerNavigation.map((item) => <a href={item.href}>{item.label}</a>)}
+    </div>
+  </div>
+  <div class="shell footer-bottom">© {new Date().getFullYear()} {site.shortName}. Cumbuco, Ceará, Brasil.</div>
+</footer>
+
+<style>
+  footer { padding-top: 5rem; background: #102e2d; color: #d8e5e1; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem; padding-bottom: 4rem; }
+  .footer-brand { color: white; font-family: "Fraunces", Georgia, serif; font-size: 2rem; }
+  .footer-copy { max-width: 27rem; margin-top: 1rem; color: #aac1bb; }
+  .footer-label { margin-bottom: 1rem; color: var(--coral-light); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
+  a { display: block; width: fit-content; margin-top: 0.65rem; color: inherit; text-decoration: none; }
+  a:hover { color: white; }
+  .footer-bottom { padding-block: 1.25rem; border-top: 1px solid rgb(255 255 255 / 12%); color: #8da8a1; font-size: 0.82rem; }
+  @media (max-width: 650px) { .footer-grid { grid-template-columns: 1fr 1fr; } .footer-grid > div:first-child { grid-column: 1 / -1; } }
+</style>

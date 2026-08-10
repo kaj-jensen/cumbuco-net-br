@@ -1,0 +1,36 @@
+{
+  "slug": "windtown-brazil",
+  "status": "published",
+  "name": "Windtown Brazil",
+  "category": "hotel",
+  "subcategory": "Beach hotel, apartments and kite centre",
+  "summary": "A beachfront hotel and apartment complex with a kite and wing centre, restaurant, beach bar, spa, pool, and day-use options.",
+  "descriptionHtml": "<p>Windtown combines ocean-facing hotel rooms and apartments with a kite and wing centre, restaurant, beach bar, spa, and pool. The official site states that its lessons are IKO-certified and that equipment rental and supervision are available.</p><p>Day use, lessons, accommodation, and facilities should be reserved or confirmed directly because availability and conditions change.</p>",
+  "images": [],
+  "contact": {
+    "website": "https://www.windtown-brazil.com/",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Windtown+Brazil+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco",
+    "address": "Beachfront, approximately 800 metres from Cumbuco village centre"
+  },
+  "openingHours": [],
+  "priceRange": "$$$",
+  "tags": [
+    "beachfront",
+    "hotel",
+    "apartments",
+    "kite school",
+    "restaurant"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-07-25",
+  "seo": {
+    "title": "Windtown Brazil in Cumbuco",
+    "description": "Direct information for Windtown Brazil, a beachfront hotel, apartment complex and kite centre in Cumbuco.",
+    "modified": "2026-07-25T12:00:00+02:00",
+    "ogImage": "/images/content/cumbuco/sunny-beach-1440.jpg"
+  }
+}

@@ -1,0 +1,7 @@
+---
+import { getCollection } from "astro:content";
+import ContentPage from "../components/ContentPage.astro";
+const entry = (await getCollection("pages")).find((item) => item.data.slug === "about-us");
+if (!entry) throw new Error("About page content missing");
+---
+<ContentPage entry={entry} eyebrow="Local roots" intro="A practical, personal way to find the right place in Cumbuco." />

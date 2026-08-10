@@ -1,0 +1,73 @@
+---
+interface Props {
+  current?: "hub" | "where-to-stay" | "restaurants" | "things-to-do" | "beaches" | "kiteboarding" | "travel-information" | "local-businesses";
+}
+
+const { current = "hub" } = Astro.props;
+const items = [
+  { key: "hub", label: "Guide overview", href: "/city/cumbuco/" },
+  { key: "where-to-stay", label: "Where to stay", href: "/city/cumbuco/where-to-stay/" },
+  { key: "restaurants", label: "Restaurants", href: "/city/cumbuco/restaurants/" },
+  { key: "things-to-do", label: "Things to do", href: "/city/cumbuco/things-to-do/" },
+  { key: "beaches", label: "Beaches & lagoons", href: "/city/cumbuco/beaches/" },
+  { key: "kiteboarding", label: "Kiteboarding", href: "/city/cumbuco/kiteboarding/" },
+  { key: "travel-information", label: "Plan your trip", href: "/city/cumbuco/travel-information/" },
+  { key: "local-businesses", label: "Local directory", href: "/city/cumbuco/local-businesses/" },
+] as const;
+---
+
+<nav class="destination-sections" aria-label="Cumbuco destination guide">
+  <div class="shell">
+    {items.map((item) => (
+      <a href={item.href} aria-current={item.key === current ? "page" : undefined}>{item.label}</a>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .destination-sections {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    border-bottom: 1px solid var(--line);
+    background: rgb(255 253 248 / 95%);
+    backdrop-filter: blur(0.8rem);
+  }
+
+  .destination-sections .shell {
+    display: flex;
+    gap: clamp(1.25rem, 4vw, 3rem);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .destination-sections .shell::-webkit-scrollbar {
+    display: none;
+  }
+
+  .destination-sections a {
+    position: relative;
+    flex: 0 0 auto;
+    padding-block: 0.95rem;
+    color: var(--ink-soft);
+    font-size: 0.84rem;
+    font-weight: 800;
+    text-decoration: none;
+  }
+
+  .destination-sections a:hover,
+  .destination-sections a[aria-current="page"] {
+    color: var(--ocean);
+  }
+
+  .destination-sections a[aria-current="page"]::after {
+    position: absolute;
+    right: 0;
+    bottom: -1px;
+    left: 0;
+    height: 0.2rem;
+    border-radius: 999px 999px 0 0;
+    background: var(--coral);
+    content: "";
+  }
+</style>

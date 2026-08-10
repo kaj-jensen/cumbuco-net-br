@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import BusinessCard from "./BusinessCard.astro";
+import type { BusinessCategory } from "../config/destination";
+
+interface Props {
+  categories: BusinessCategory[];
+  eyebrow?: string;
+  title: string;
+  description: string;
+  limit?: number;
+}
+
+const {
+  categories,
+  eyebrow = "Current local contacts",
+  title,
+  description,
+  limit = 3,
+} = Astro.props;
+
+const businesses = (await getCollection("businesses"))
+  .filter(({ data }) => data.status === "published" && categories.includes(data.category))
+  .sort((a, b) =>
+    Number(b.data.featuredPartner) - Number(a.data.featuredPartner) ||
+    b.data.featuredPriority - a.data.featuredPriority ||
+    a.data.name.localeCompare(b.data.name)
+  )
+  .slice(0, limit);
+---
+
+{businesses.length > 0 && (
+  <section class="business-highlights">
+    <div class="shell">
+      <div class="business-highlights__heading">
+        <div>
+          <p class="eyebrow">{eyebrow}</p>
+          <h2>{title}</h2>
+        </div>
+        <div>
+          <p>{description}</p>
+          <a href="/city/cumbuco/local-businesses/">Browse the complete local directory →</a>
+        </div>
+      </div>
+      <div class="business-highlights__grid">
+        {businesses.map((business) => <BusinessCard business={business} compact />)}
+      </div>
+      <p class="business-highlights__note">Details were checked from the businesses’ own current channels. Hours and services can change, so confirm directly before travelling.</p>
+    </div>
+  </section>
+)}
+
+<style>
+  .business-highlights { padding-block: clamp(3rem, 7vw, 5.5rem); background: linear-gradient(145deg, #effbf7, var(--sky)); border-block: 1px solid var(--line); }
+  .business-highlights__heading { display: grid; grid-template-columns: .85fr 1.15fr; gap: clamp(2rem, 7vw, 6rem); align-items: end; }
+  .business-highlights__heading h2 { max-width: 14ch; }
+  .business-highlights__heading > div:last-child p { max-width: 39rem; color: var(--ink-soft); }
+  .business-highlights__heading a { display: inline-block; margin-top: .8rem; color: var(--ocean); font-weight: 900; text-decoration: none; }
+  .business-highlights__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.1rem; margin-top: 2rem; }
+  .business-highlights__note { margin-top: 1rem; color: var(--ink-soft); font-size: .78rem; }
+  @media (max-width: 880px) { .business-highlights__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 680px) { .business-highlights__heading, .business-highlights__grid { grid-template-columns: 1fr; } }
+</style>

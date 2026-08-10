@@ -1,0 +1,202 @@
+---
+interface Props {
+  property: string;
+  slug: string;
+  reservedDates: string[];
+}
+
+const { property, slug, reservedDates } = Astro.props;
+---
+
+<section
+  class="availability"
+  aria-labelledby="availability-heading"
+  data-availability-calendar
+  data-property-slug={slug}
+  data-imported-reserved-dates={JSON.stringify(reservedDates)}
+>
+  <div class="availability-copy">
+    <p class="eyebrow">Disponibilidade</p>
+    <h2 id="availability-heading">Escolha suas datas.</h2>
+    <p>Datas sem bloqueio podem ser consultadas. Confirmamos pessoalmente cada estadia antes da reserva.</p>
+    <div class="legend" aria-label="Legenda do calendário">
+      <span><i class="open"></i> Disponível para consulta</span>
+      <span><i class="blocked"></i> Indisponível</span>
+    </div>
+    <p class="calendar-status" data-calendar-status>A disponibilidade final é confirmada pessoalmente em cada consulta.</p>
+    <p class="calendar-selection" data-calendar-selection>Selecione uma data de chegada disponível e depois a saída.</p>
+  </div>
+
+  <div class="calendars" aria-label={`Disponibilidade de ${property}`} data-calendar-months></div>
+</section>
+
+<script>
+  const calendar = document.querySelector<HTMLElement>('[data-availability-calendar]');
+  if (calendar) {
+    const slug = calendar.dataset.propertySlug;
+    const status = calendar.querySelector<HTMLElement>('[data-calendar-status]');
+    const monthsContainer = calendar.querySelector<HTMLElement>('[data-calendar-months]');
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const year = today.getFullYear();
+    const isoDate = (date: Date) =>
+      `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+    const todayIso = isoDate(today);
+    const yearEndIso = `${year}-12-31`;
+    const selectionStatus = calendar.querySelector<HTMLElement>('[data-calendar-selection]');
+    let selectedArrival = '';
+    let selectedDeparture = '';
+    let blockedDates = new Set<string>();
+    let importedDates: string[] = [];
+    try {
+      importedDates = JSON.parse(calendar.dataset.importedReservedDates || '[]');
+    } catch {
+      importedDates = [];
+    }
+
+    const currentYearDates = (dates: string[]) =>
+      new Set(dates.filter((date) => date >= todayIso && date <= yearEndIso));
+
+    const renderMonths = (dates: string[]) => {
+      if (!monthsContainer) return;
+      blockedDates = currentYearDates(dates);
+      monthsContainer.replaceChildren();
+
+      for (let monthIndex = today.getMonth(); monthIndex <= 11; monthIndex += 1) {
+        const first = new Date(year, monthIndex, 1);
+        const last = new Date(year, monthIndex + 1, 0);
+        const article = document.createElement('article');
+        article.className = 'month';
+
+        const heading = document.createElement('h3');
+        heading.textContent = first.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+        article.append(heading);
+
+        const weekdays = document.createElement('div');
+        weekdays.className = 'weekdays';
+        weekdays.setAttribute('aria-hidden', 'true');
+        ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].forEach((label) => {
+          const day = document.createElement('span');
+          day.textContent = label;
+          weekdays.append(day);
+        });
+        article.append(weekdays);
+
+        const days = document.createElement('div');
+        days.className = 'days';
+        const leading = (first.getDay() + 6) % 7;
+        for (let index = 0; index < leading; index += 1) {
+          const blank = document.createElement('span');
+          blank.className = 'blank';
+          days.append(blank);
+        }
+
+        for (let dayNumber = 1; dayNumber <= last.getDate(); dayNumber += 1) {
+          const date = new Date(year, monthIndex, dayNumber);
+          const iso = isoDate(date);
+          const isPast = date < today;
+          const isBlocked = !isPast && blockedDates.has(iso);
+          const day = document.createElement(isPast || isBlocked ? 'span' : 'button');
+          day.className = `day${isPast ? ' past' : ''}${isBlocked ? ' blocked' : ''}`;
+          day.dataset.date = iso;
+          day.dataset.past = isPast ? 'true' : 'false';
+          day.textContent = String(dayNumber);
+          const state = isPast ? 'data passada' : isBlocked ? 'indisponível' : 'disponível para consulta';
+          day.setAttribute('aria-label', `${iso}: ${state}`);
+          day.title = state[0].toUpperCase() + state.slice(1);
+          if (day instanceof HTMLButtonElement) {
+            day.type = 'button';
+            day.addEventListener('click', () => selectDate(iso));
+          }
+          days.append(day);
+        }
+        article.append(days);
+        monthsContainer.append(article);
+      }
+      updateSelectedDates();
+    };
+
+    const addOneDay = (iso: string) => {
+      const date = new Date(`${iso}T12:00:00`);
+      date.setDate(date.getDate() + 1);
+      return isoDate(date);
+    };
+
+    const rangeIsAvailable = (arrival: string, departure: string) => {
+      for (let date = arrival; date < departure; date = addOneDay(date)) {
+        if (blockedDates.has(date)) return false;
+      }
+      return true;
+    };
+
+    const updateSelectedDates = () => {
+      calendar.querySelectorAll<HTMLElement>('[data-date]').forEach((day) => {
+        const iso = day.dataset.date || '';
+        day.classList.toggle('selected', iso === selectedArrival || iso === selectedDeparture);
+        day.classList.toggle('in-range', Boolean(selectedArrival && selectedDeparture && iso > selectedArrival && iso < selectedDeparture));
+      });
+    };
+
+    const selectDate = (iso: string) => {
+      if (!selectedArrival || selectedDeparture || iso <= selectedArrival) {
+        selectedArrival = iso;
+        selectedDeparture = '';
+        if (selectionStatus) selectionStatus.textContent = `Chegada selecionada: ${iso}. Agora escolha uma data de saída posterior.`;
+      } else if (!rangeIsAvailable(selectedArrival, iso)) {
+        if (selectionStatus) selectionStatus.textContent = 'Este período inclui datas indisponíveis. Escolha outra data de saída.';
+        return;
+      } else {
+        selectedDeparture = iso;
+        if (selectionStatus) selectionStatus.textContent = `${selectedArrival} a ${selectedDeparture} selecionado. O formulário está pronto abaixo.`;
+        calendar.dispatchEvent(new CustomEvent('availability:dates-selected', {
+          bubbles: true,
+          detail: { slug, arrival: selectedArrival, departure: selectedDeparture },
+        }));
+      }
+      updateSelectedDates();
+    };
+
+    renderMonths(importedDates);
+    fetch(`/api/availability?property=${encodeURIComponent(slug || '')}`)
+      .then(async (response) => {
+        if (!response.ok) throw new Error('A disponibilidade ao vivo ainda não está configurada.');
+        return response.json();
+      })
+      .then((data: { reservedDates?: string[] }) => {
+        renderMonths(data.reservedDates || []);
+        if (status) status.textContent = 'Disponibilidade sincronizada com o Google Calendar. A confirmação final ainda é necessária.';
+      })
+      .catch(() => {
+        // Imported dates remain visible until the secure Google Calendar feeds are configured.
+      });
+  }
+</script>
+
+<style>
+  .availability { display: grid; grid-template-columns: minmax(15rem, 0.65fr) minmax(0, 1.35fr); gap: clamp(2rem, 6vw, 5rem); align-items: start; }
+  .availability-copy { position: sticky; top: 6rem; }
+  .availability-copy h2 { max-width: 9ch; }
+  .availability-copy > p:not(.eyebrow) { max-width: 30rem; margin-top: 1.25rem; color: var(--ink-soft); }
+  .legend { display: flex; flex-wrap: wrap; gap: 0.75rem 1.25rem; margin-top: 1.5rem; color: var(--ink-soft); font-size: 0.82rem; }
+  .legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .legend i { width: 0.8rem; height: 0.8rem; border-radius: 0.25rem; border: 1px solid var(--line); background: var(--paper); }
+  .legend i.blocked { border-color: var(--coral); background: color-mix(in srgb, var(--coral) 18%, white); }
+  .calendar-status { margin-top: 1rem; color: var(--ink-soft); font-size: 0.78rem; }
+  .calendar-selection { margin-top: 0.65rem; color: var(--ocean); font-size: 0.82rem; font-weight: 700; }
+  .calendars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .availability :global(.month) { padding: clamp(1rem, 2vw, 1.5rem); border: 1px solid var(--line); border-radius: var(--radius); background: white; }
+  .availability :global(.month h3) { margin-bottom: 1rem; font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; font-size: 1rem; letter-spacing: 0; }
+  .availability :global(.weekdays), .availability :global(.days) { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.3rem; }
+  .availability :global(.weekdays) { margin-bottom: 0.4rem; color: var(--ink-soft); font-size: 0.64rem; font-weight: 700; text-align: center; text-transform: uppercase; }
+  .availability :global(.day), .availability :global(.blank) { display: grid; min-width: 0; aspect-ratio: 1; place-items: center; border-radius: 0.45rem; font-size: 0.78rem; }
+  .availability :global(.day) { border: 1px solid var(--line); background: var(--paper); color: inherit; font: inherit; }
+  .availability :global(button.day) { cursor: pointer; transition: border-color 150ms ease, background 150ms ease, color 150ms ease, transform 150ms ease; }
+  .availability :global(button.day:hover) { transform: translateY(-1px); border-color: var(--ocean); }
+  .availability :global(button.day:focus-visible) { outline: 3px solid color-mix(in srgb, var(--coral) 35%, transparent); outline-offset: 1px; }
+  .availability :global(.day.in-range) { border-color: color-mix(in srgb, var(--ocean) 22%, var(--line)); background: color-mix(in srgb, var(--ocean) 8%, white); }
+  .availability :global(.day.selected) { border-color: var(--ocean); background: var(--ocean); color: white; font-weight: 800; }
+  .availability :global(.day.blocked) { border-color: color-mix(in srgb, var(--coral) 55%, var(--line)); background: color-mix(in srgb, var(--coral) 18%, white); color: #843b2d; text-decoration: line-through; }
+  .availability :global(.day.past) { border-color: transparent; background: transparent; color: #aab2af; }
+  @media (max-width: 900px) { .availability { grid-template-columns: 1fr; } .availability-copy { position: static; } .availability-copy h2 { max-width: none; } }
+  @media (max-width: 620px) { .calendars { grid-template-columns: 1fr; } .availability :global(.month) { padding: 1rem; } }
+</style>

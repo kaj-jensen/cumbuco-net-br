@@ -1,0 +1,145 @@
+{
+  "canonical": "https://www.cumbuco.net.br/properties/dunas-village-cumbuco/",
+  "coordinates": {
+    "latitude": -3.627929,
+    "longitude": -38.730932
+  },
+  "descriptionHtml": "<p>O Dunas Village Cumbuco é composto por 18 casas duplex independentes localizados apenas a 180 metros. da praia e a 50 metros das dunas do Cumbuco. Cada lote de 300 m², com 122 m² de área construída. A casa é composta por 3 quartos sendo 2 suítes, sala e cozinha.</p>\n<p>Na entrada da casa têm uma varanda com móveis para curtir a bela natureza ao redor do condomínio. O condomínio oferece uma área de lazer grande com piscina para adultos e crianças.</p>\n<p>Guarita com vigilância 24 horas.</p>\n<p>Incluso na diária Lençóis e toalhas para 6 pessoas mais uma troca e gás.</p>\n<p>Não incluso: A taxa de energia R$ 1,00 o kW, limpeza final e lavanderia R$ 300,00 A casa inclui roupas de cama e banho no total 2 para cada quarto. Não é oferecido café da manhã. As diárias encerram as 13:00 horas.</p>",
+  "descriptionText": "O Dunas Village Cumbuco é composto por 18 casas duplex independentes localizados apenas a 180 metros. da praia e a 50 metros das dunas do Cumbuco. Cada lote de 300 m², com 122 m² de área construída. A casa é composta por 3 quartos sendo 2 suítes, sala e cozinha.\nNa entrada da casa têm uma varanda com móveis para curtir a bela natureza ao redor do condomínio. O condomínio oferece uma área de lazer grande com piscina para adultos e crianças.\nGuarita com vigilância 24 horas.\nIncluso na diária Lençóis e toalhas para 6 pessoas mais uma troca e gás.\nNão incluso: A taxa de energia R$ 1,00 o kW, limpeza final e lavanderia R$ 300,00 A casa inclui roupas de cama e banho no total 2 para cada quarto. Não é oferecido café da manhã. As diárias encerram as 13:00 horas.",
+  "details": {
+    "Bathrooms": "2",
+    "Bedrooms": "3",
+    "Check-Out Hour": "12:00",
+    "Check-in Hour": "12:00",
+    "City": "Cumbuco",
+    "Country": "Brazil",
+    "Property ID": "1975",
+    "Property Lot Size": "0 m2",
+    "Property Size": "115 m2",
+    "Rooms": "3"
+  },
+  "features": [
+    "Cozinha",
+    "Internet",
+    "TV",
+    "Piscina",
+    "Jacuzzi",
+    "Estacionamento",
+    "WiFi",
+    "Ar Condicionado",
+    "Segurança",
+    "Piscina Infantil",
+    "Churrasqueira",
+    "TV a Cabo"
+  ],
+  "gallery": [
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-1.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-1.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2017-02-Dunas-Village-Cumbuco-2.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Dunas-Village-Cumbuco-2.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2017-02-Dunas-Village-Cumbuco-3.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Dunas-Village-Cumbuco-3.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-3-1.jpeg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-3-1.jpeg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-6.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-6.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-16.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-16.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-17.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-17.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-19.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-19.jpg"
+    },
+    {
+      "src": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-23.jpg",
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2022/12/DunasVillageCumbuco-23.jpg"
+    }
+  ],
+  "metrics": {
+    "baths": 2,
+    "bedrooms": 3,
+    "guests": 6
+  },
+  "postId": "6868",
+  "reservedDates": [
+    "2026-07-26",
+    "2026-07-27",
+    "2026-07-28",
+    "2026-07-29",
+    "2026-07-30",
+    "2026-07-31",
+    "2026-08-01",
+    "2026-08-02",
+    "2026-08-03",
+    "2026-08-04",
+    "2026-08-05",
+    "2026-08-06",
+    "2026-08-07",
+    "2026-08-08",
+    "2026-08-09",
+    "2026-08-10",
+    "2026-08-11",
+    "2026-08-12",
+    "2026-08-13",
+    "2026-08-14",
+    "2026-08-15",
+    "2026-08-16",
+    "2026-09-04",
+    "2026-09-05",
+    "2026-09-06",
+    "2026-09-07",
+    "2026-09-08",
+    "2026-09-09",
+    "2026-09-10",
+    "2026-09-11",
+    "2026-09-12",
+    "2026-09-13",
+    "2026-09-18",
+    "2026-09-19",
+    "2026-09-20",
+    "2026-09-21",
+    "2026-09-22",
+    "2026-09-23",
+    "2026-09-24",
+    "2026-09-25",
+    "2026-09-26",
+    "2026-09-27"
+  ],
+  "seo": {
+    "title": "Dunas Village Cumbuco | Aluguel por temporada em Cumbuco",
+    "description": "O Dunas Village Cumbuco é composto por 18 casas duplex independentes localizados apenas a 180 metros. da praia e a 50 metros… Consulte disponibilidade pelo WhatsApp.",
+    "modified": "2026-08-10T00:00:00-03:00",
+    "ogImage": "/images/properties/dunas-village/originals/2022-12-DunasVillageCumbuco-1.jpg"
+  },
+  "slug": "dunas-village-cumbuco",
+  "taxonomy": [
+    {
+      "label": "Entire home",
+      "url": "https://www.cumbuco.net/action/entire-home/"
+    },
+    {
+      "label": "House",
+      "url": "https://www.cumbuco.net/listings/house/"
+    }
+  ],
+  "title": "Dunas Village Cumbuco",
+  "youtubeId": null,
+  "legacyUrl": "https://www.cumbuco.net.br/properties/dunas-village-cumbuco/",
+  "propertyType": "house",
+  "rentalType": "entire-home"
+}

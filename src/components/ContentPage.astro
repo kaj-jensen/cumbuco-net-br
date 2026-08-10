@@ -1,0 +1,27 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+interface Props { entry: any; eyebrow?: string; intro?: string; }
+const { entry, eyebrow = "Cumbuco Rentals", intro } = Astro.props;
+const p = entry.data ?? entry;
+const pageUrl = new URL(`/${p.slug}/`, Astro.site).toString();
+const breadcrumbData = {
+  "@type": "BreadcrumbList",
+  "@id": `${pageUrl}#breadcrumb`,
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Cumbuco Rentals", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: p.title, item: pageUrl },
+  ],
+};
+const contentHtml = p.contentHtml
+  .replace(/<h1[^>]*class="[^"]*\bentry-title\b[^"]*"[^>]*>[\s\S]*?<\/h1>/i, "")
+  .replace(/<div[^>]*class="[^"]*\bmeta-element-head\b[^"]*"[^>]*>[\s\S]*?<\/div>/i, "")
+  .replace(/^<h4><strong>Privacy &amp; Cookies<\/strong><\/h4>/i, "")
+  .replace(/^<h4>About Us<\/h4>/i, "")
+  .replace(/<img\b[^>]*data-src="[^"]*Ana-Ceres-Teixeira[^"]*"[^>]*><noscript>[\s\S]*?<\/noscript>/i, '<img class="portrait" src="/images/content/ana-ceres-teixeira.jpg" alt="Ana Ceres Teixeira" width="480" height="640" loading="lazy">')
+  .replace("Cumbuco Rentals is a subsidiary of Fortaleza Real Estate in Fortaleza Brazil.", 'Cumbuco Rentals is a subsidiary of <a href="https://www.fortalezarealestate.com.br/" target="_blank" rel="noopener noreferrer">Fortaleza Real Estate</a> in Fortaleza, Brazil.')
+  .replace(/<p>(?:&nbsp;|\s)*<\/p>/gi, "");
+---
+<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical={`/${p.slug}/`} pageType={p.slug === "about-us" ? "AboutPage" : "WebPage"} structuredData={[breadcrumbData]}>
+  <section class="page-hero"><div class="shell"><p class="eyebrow">{eyebrow}</p><h1>{p.title}</h1>{intro && <p class="lede">{intro}</p>}</div></section>
+  <section class="section"><div class="shell prose" set:html={contentHtml}></div></section>
+</BaseLayout>

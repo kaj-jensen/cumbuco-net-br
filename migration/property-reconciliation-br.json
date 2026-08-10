@@ -1,0 +1,202 @@
+[
+  {
+    "property": "Beach Sun Cumbuco",
+    "brazilianSlug": "beach-sun-cumbuco",
+    "englishSlug": "beach-sun-cumbuco",
+    "br": {
+      "guests": 6,
+      "bedrooms": 3,
+      "baths": 2
+    },
+    "en": {
+      "baths": 2,
+      "bedrooms": 2,
+      "guests": 4
+    },
+    "brImages": 2,
+    "enImages": 4,
+    "status": "shared"
+  },
+  {
+    "property": "Casa Chick",
+    "brazilianSlug": "casa-chick",
+    "englishSlug": "casa-chick",
+    "br": {
+      "guests": 14,
+      "bedrooms": 5,
+      "baths": 7
+    },
+    "en": {
+      "baths": 7,
+      "bedrooms": 5,
+      "guests": 14
+    },
+    "brImages": 29,
+    "enImages": 31,
+    "status": "shared"
+  },
+  {
+    "property": "Casa Vermelha",
+    "brazilianSlug": "casa-vermelha",
+    "englishSlug": "casa-vermelha",
+    "br": {
+      "guests": 10,
+      "bedrooms": 3,
+      "baths": 4
+    },
+    "en": {
+      "baths": 3,
+      "bedrooms": 3,
+      "guests": 10
+    },
+    "brImages": 32,
+    "enImages": 30,
+    "status": "shared"
+  },
+  {
+    "property": "Dream Village 301-H",
+    "brazilianSlug": "dream-village-301-h",
+    "englishSlug": "dream-village-301-h",
+    "br": {
+      "guests": 4,
+      "bedrooms": 2,
+      "baths": 2
+    },
+    "en": {
+      "baths": 2,
+      "bedrooms": 2,
+      "guests": 4
+    },
+    "brImages": 13,
+    "enImages": 11,
+    "status": "shared"
+  },
+  {
+    "property": "Dream Village 301-V",
+    "brazilianSlug": "dream-village-301-v",
+    "englishSlug": "dream-village-301-v",
+    "br": {
+      "guests": 4,
+      "bedrooms": 2,
+      "baths": 2
+    },
+    "en": {
+      "baths": 2,
+      "bedrooms": 2,
+      "guests": 4
+    },
+    "brImages": 11,
+    "enImages": 10,
+    "status": "shared"
+  },
+  {
+    "property": "Dream Village 401-H",
+    "brazilianSlug": "dream-village-401-h",
+    "englishSlug": "dream-village-401-h",
+    "br": {
+      "guests": 4,
+      "bedrooms": 2,
+      "baths": 2
+    },
+    "en": {
+      "baths": 2,
+      "bedrooms": 2,
+      "guests": 4
+    },
+    "brImages": 14,
+    "enImages": 15,
+    "status": "shared"
+  },
+  {
+    "property": "Dunas Village Cumbuco",
+    "brazilianSlug": "dunas-village-cumbuco",
+    "englishSlug": "dunas-village",
+    "br": {
+      "guests": 6,
+      "bedrooms": 3,
+      "baths": 2
+    },
+    "en": {
+      "baths": 2,
+      "bedrooms": 3,
+      "guests": 6
+    },
+    "brImages": 12,
+    "enImages": 9,
+    "status": "shared"
+  },
+  {
+    "property": "Jardim Reale Cumbuco",
+    "brazilianSlug": "jardim-reale-cumbuco",
+    "englishSlug": null,
+    "br": {
+      "guests": 4,
+      "bedrooms": 2,
+      "baths": 2
+    },
+    "en": null,
+    "brImages": 30,
+    "enImages": 0,
+    "status": "brazil-only"
+  },
+  {
+    "property": "Villa Branca",
+    "brazilianSlug": "villa-branca",
+    "englishSlug": "villa-branca",
+    "br": {
+      "guests": 16,
+      "bedrooms": 6,
+      "baths": 8
+    },
+    "en": {
+      "baths": 8,
+      "bedrooms": 6,
+      "guests": 20
+    },
+    "brImages": 21,
+    "enImages": 20,
+    "status": "shared"
+  },
+  {
+    "property": "Breezes Cumbuco",
+    "brazilianSlug": null,
+    "englishSlug": "breezes-cumbuco",
+    "br": null,
+    "en": {
+      "baths": 2,
+      "bedrooms": 3,
+      "guests": 4
+    },
+    "brImages": 0,
+    "enImages": 30,
+    "status": "english-only"
+  },
+  {
+    "property": "Casa Maria Flor Cumbuco",
+    "brazilianSlug": null,
+    "englishSlug": "casa-maria-flor-cumbuco",
+    "br": null,
+    "en": {
+      "baths": 5,
+      "bedrooms": 4,
+      "guests": 14
+    },
+    "brImages": 0,
+    "enImages": 20,
+    "status": "english-only"
+  },
+  {
+    "property": "Dream Village 302-V",
+    "brazilianSlug": null,
+    "englishSlug": "dream-village-302-v",
+    "br": null,
+    "en": {
+      "baths": 2,
+      "bedrooms": 2,
+      "guests": 4
+    },
+    "brImages": 0,
+    "enImages": 17,
+    "status": "english-only"
+  }
+]

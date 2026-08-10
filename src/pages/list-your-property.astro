@@ -1,0 +1,615 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const ownerEmail =
+  "mailto:info@cumbuco.net?subject=List%20my%20property%20in%20Cumbuco";
+const ownerWhatsApp =
+  "https://wa.me/5585988139402?text=Hello%20Cumbuco%20Rentals%2C%20I%20would%20like%20to%20discuss%20listing%20my%20property.";
+const hero = "/images/content/cumbuco/sunny-beach-1440.jpg";
+
+const benefits = [
+  {
+    number: "01",
+    title: "Free property listing",
+    text: "There is no setup fee or upfront marketing cost. We invest our time before a rental is made.",
+  },
+  {
+    number: "02",
+    title: "Professional presentation",
+    text: "We visit your property, take photographs, and write a clear description that helps guests understand its value.",
+  },
+  {
+    number: "03",
+    title: "Marketing handled for you",
+    text: "We publish and promote the property through our website and other relevant channels while you focus on ownership.",
+  },
+  {
+    number: "04",
+    title: "Local Cumbuco knowledge",
+    text: "We understand the village, the seasons, guest expectations, and how different homes fit different stays.",
+  },
+  {
+    number: "05",
+    title: "Personal guest communication",
+    text: "Every enquiry is handled directly. We answer questions and review the request before confirming anything.",
+  },
+  {
+    number: "06",
+    title: "A more secure process",
+    text: "We arrange deposits and verify reservations, adding reassurance for both the property owner and the guest.",
+  },
+];
+
+const steps = [
+  {
+    title: "Start with a conversation",
+    text: "Tell us about the property, its location, availability, and what you expect from a rental partnership.",
+  },
+  {
+    title: "We prepare the presentation",
+    text: "We visit, photograph, and write the listing. Owners do not need to build or manage the page themselves.",
+  },
+  {
+    title: "We market the property",
+    text: "Your home is presented on Cumbuco Rentals and promoted through relevant channels to reach suitable visitors.",
+  },
+  {
+    title: "We review every enquiry",
+    text: "We speak with potential guests, clarify the stay, arrange the deposit, and only then confirm the reservation.",
+  },
+  {
+    title: "We coordinate the confirmed stay",
+    text: "Once you approve the rental terms, we handle the guest communication, deposit, and reservation details.",
+  },
+];
+
+const faqs = [
+  {
+    question: "Is listing my property really free?",
+    answer:
+      "Yes. There is no fee to visit the property, prepare the photographs and description, or publish the listing. Any commercial terms are explained personally before you decide to proceed.",
+  },
+  {
+    question: "Can I continue advertising on Airbnb or Booking.com?",
+    answer:
+      "Yes. The partnership does not prevent you from using other channels. We simply ask that availability is kept accurate so guests never receive conflicting confirmations.",
+  },
+  {
+    question: "Who decides the rental price?",
+    answer:
+      "You approve the rental terms and pricing before the property is promoted. We can discuss market conditions and positioning with you, but nothing is published without your agreement.",
+  },
+  {
+    question: "Who communicates with potential guests?",
+    answer:
+      "Cumbuco Rentals handles the enquiries, answers questions, and discusses the proposed stay directly with each guest before a reservation is accepted.",
+  },
+  {
+    question: "How are bookings confirmed?",
+    answer:
+      "A booking is confirmed only after we have reviewed the request, communicated with the guest, agreed the details, and arranged the required deposit.",
+  },
+  {
+    question: "Why is there no instant booking?",
+    answer:
+      "Personal review provides an additional layer of care. It allows us to check that the property suits the group and that the dates, expectations, and booking details are clear for everyone.",
+  },
+  {
+    question: "What happens after I contact you?",
+    answer:
+      "We begin with an informal discussion about the property and your expectations. If the partnership appears suitable, we arrange a visit and explain the next steps. There is no obligation simply for starting the conversation.",
+  },
+];
+
+const faqStructuredData = {
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+};
+---
+
+<BaseLayout
+  title="List Your Property in Cumbuco | Cumbuco Rentals"
+  description="List your property in Cumbuco for free. We photograph, write, market, and personally manage rental enquiries while you remain in control."
+  canonical="/list-your-property/"
+  image={hero}
+  structuredData={[faqStructuredData]}
+>
+  <section class="owner-hero">
+    <picture class="owner-hero__picture">
+      <source
+        type="image/avif"
+        srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w"
+        sizes="100vw"
+      />
+      <source
+        type="image/webp"
+        srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w"
+        sizes="100vw"
+      />
+      <img
+        src={hero}
+        srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w"
+        sizes="100vw"
+        width="1440"
+        height="1080"
+        alt="Beachfront homes, palms, and turquoise water in Cumbuco"
+        fetchpriority="high"
+      />
+    </picture>
+    <div class="owner-hero__shade"></div>
+    <div class="shell owner-hero__inner">
+      <div class="owner-hero__copy">
+        <p class="eyebrow">For property owners in Cumbuco</p>
+        <h1>More rental income. Less work for you.</h1>
+        <p>
+          You provide the property. We create the presentation, market it, speak
+          with guests, and carefully manage each booking request.
+        </p>
+        <div class="hero-actions">
+          <a class="button button--sun" href="#start-conversation"
+            >Contact us about your property</a
+          >
+          <a class="hero-link" href="#how-it-works">See how the partnership works</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Partnership at a glance">
+        <p class="hero-card__label">A local rental partnership</p>
+        <ul>
+          <li><strong>Free</strong><span>to prepare and list</span></li>
+          <li><strong>Hands-on</strong><span>photography and marketing</span></li>
+          <li><strong>Personal</strong><span>terms agreed directly</span></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading owner-heading">
+        <div>
+          <p class="eyebrow">Why partner with us</p>
+          <h2>A complete service, not another listing account.</h2>
+        </div>
+        <p>
+          Owners do not upload photographs, write advertisements, or answer every
+          enquiry. Cumbuco Rentals handles the work required to present the
+          property professionally.
+        </p>
+      </div>
+      <div class="benefit-grid">
+        {
+          benefits.map((benefit) => (
+            <article class="benefit-card">
+              <span>{benefit.number}</span>
+              <h3>{benefit.title}</h3>
+              <p>{benefit.text}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="how-it-works" class="section process-section">
+    <div class="shell process-layout">
+      <div class="process-intro">
+        <p class="eyebrow">Our process</p>
+        <h2>From first visit to confirmed guest.</h2>
+        <p>
+          The relationship stays personal from beginning to end. We agree on the
+          working arrangement together, then manage the marketing and guest contact
+          on your behalf.
+        </p>
+        <picture class="process-image">
+          <source
+            type="image/avif"
+            srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w"
+            sizes="(max-width: 800px) 100vw, 38vw"
+          />
+          <source
+            type="image/webp"
+            srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w"
+            sizes="(max-width: 800px) 100vw, 38vw"
+          />
+          <img
+            src="/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg"
+            srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w"
+            sizes="(max-width: 800px) 100vw, 38vw"
+            width="1200"
+            height="1500"
+            loading="lazy"
+            alt="Oceanfront villa, palms, turquoise water, and kitesurfing in Cumbuco"
+          />
+        </picture>
+      </div>
+      <ol class="process-list">
+        {
+          steps.map((step, index) => (
+            <li>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="section section--ocean model-section">
+    <div class="shell model-layout">
+      <div>
+        <p class="eyebrow">A simple way to get started</p>
+        <h2>Professional preparation, without upfront listing fees.</h2>
+      </div>
+      <div class="model-copy">
+        <p>
+          We visit your property, prepare the photographs and description, and
+          present it professionally to suitable guests.
+        </p>
+        <p>
+          There is no charge simply for being listed. The commercial arrangement
+          is explained and agreed personally with each owner before the property
+          is included on Cumbuco Rentals.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell trust-layout">
+      <div>
+        <p class="eyebrow">A partnership built on control</p>
+        <h2>Your property remains yours.</h2>
+      </div>
+      <div class="trust-grid">
+        <article>
+          <h3>No long-term obligation</h3>
+          <p>Every partnership starts with a conversation, not a binding commitment.</p>
+        </article>
+        <article>
+          <h3>Pricing agreed together</h3>
+          <p>You approve the rental terms and pricing before your property is promoted.</p>
+        </article>
+        <article>
+          <h3>No automatic reservations</h3>
+          <p>Each guest and proposed stay is personally reviewed before confirmation.</p>
+        </article>
+        <article>
+          <h3>Quality over quantity</h3>
+          <p>We focus on suitable properties, realistic presentation, and well-matched guests.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell faq-layout">
+      <div class="faq-intro">
+        <p class="eyebrow">Questions from owners</p>
+        <h2>Clear answers before you decide.</h2>
+        <p>
+          If your question is not covered here, contact us directly. We would
+          rather explain the process properly than make assumptions about your
+          property.
+        </p>
+      </div>
+      <div class="faq-list">
+        {
+          faqs.map((faq) => (
+            <details>
+              <summary>{faq.question}</summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section id="start-conversation" class="owner-cta">
+    <div class="shell owner-cta__inner">
+      <div>
+        <p class="eyebrow">No obligation. Just a conversation.</p>
+        <h2>Let’s talk about your property.</h2>
+        <p>
+          Tell us what you own and what you hope to achieve. We will explain
+          whether Cumbuco Rentals is a good fit and what the next step would be.
+        </p>
+      </div>
+      <div class="cta-actions">
+        <a class="button button--sun" href={ownerWhatsApp} target="_blank" rel="noopener noreferrer"
+          >Start on WhatsApp</a
+        >
+        <a class="button button--light" href={ownerEmail}>Send an email</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .owner-hero {
+    position: relative;
+    min-height: min(46rem, calc(100vh - 5.25rem));
+    display: grid;
+    overflow: hidden;
+    color: white;
+  }
+  .owner-hero__picture,
+  .owner-hero__shade {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .owner-hero__picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 58%;
+  }
+  .owner-hero__shade {
+    background:
+      linear-gradient(90deg, rgb(3 48 52 / 88%) 0%, rgb(3 58 62 / 68%) 48%, rgb(3 54 58 / 26%) 100%),
+      linear-gradient(0deg, rgb(3 38 42 / 52%), transparent 58%);
+  }
+  .owner-hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.62fr);
+    gap: clamp(2rem, 7vw, 6rem);
+    align-items: end;
+    padding-block: clamp(4.5rem, 9vw, 7.5rem);
+  }
+  .owner-hero__copy h1 { max-width: 10ch; }
+  .owner-hero__copy > p:not(.eyebrow) {
+    max-width: 39rem;
+    margin-top: 1.4rem;
+    color: rgb(255 255 255 / 86%);
+    font-size: clamp(1.05rem, 2vw, 1.28rem);
+  }
+  .owner-hero .eyebrow { color: #ffd46c; }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.35rem;
+    margin-top: 2rem;
+  }
+  .hero-link {
+    color: white;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .hero-link:hover { text-decoration: underline; text-underline-offset: 0.25rem; }
+  .hero-card {
+    padding: 1.6rem;
+    border: 1px solid rgb(255 255 255 / 22%);
+    border-radius: var(--radius);
+    background: rgb(4 67 71 / 78%);
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(0.75rem);
+  }
+  .hero-card__label {
+    color: #ffd46c;
+    font-size: 0.73rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .hero-card ul { margin: 1rem 0 0; padding: 0; list-style: none; }
+  .hero-card li {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 1rem;
+    padding-block: 0.8rem;
+    border-top: 1px solid rgb(255 255 255 / 16%);
+  }
+  .hero-card strong { color: white; }
+  .hero-card span { color: rgb(255 255 255 / 72%); font-size: 0.87rem; }
+  .owner-heading { align-items: start; }
+  .owner-heading h2 { max-width: 13ch; }
+  .owner-heading > p {
+    max-width: 34rem;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+  .benefit-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .benefit-card {
+    min-height: 17rem;
+    padding: 1.7rem;
+    border: 1px solid rgb(6 79 85 / 8%);
+    border-radius: var(--radius);
+    background: rgb(255 255 255 / 82%);
+    box-shadow: 0 0.8rem 2.5rem rgb(6 79 85 / 7%);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+  }
+  .benefit-card:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: var(--shadow);
+  }
+  .benefit-card > span {
+    color: var(--coral);
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+  .benefit-card h3 { margin-top: 3rem; }
+  .benefit-card p { margin-top: 0.85rem; color: var(--ink-soft); }
+  .process-section { background: linear-gradient(145deg, var(--paper), var(--sky)); }
+  .process-layout {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.82fr) minmax(0, 1.1fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+  .process-intro { position: sticky; top: 2rem; }
+  .process-intro h2 { max-width: 12ch; }
+  .process-intro > p:not(.eyebrow) {
+    max-width: 34rem;
+    margin-top: 1.2rem;
+    color: var(--ink-soft);
+  }
+  .process-image {
+    display: block;
+    height: 21rem;
+    margin-top: 2rem;
+    overflow: hidden;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .process-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 63%;
+  }
+  .process-list { margin: 0; padding: 0; list-style: none; counter-reset: process; }
+  .process-list li {
+    display: grid;
+    grid-template-columns: 3.5rem 1fr;
+    gap: 1.5rem;
+    padding-block: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+  .process-list li:last-child { border-bottom: 1px solid var(--line); }
+  .process-list > li > span {
+    color: var(--coral);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.5rem;
+  }
+  .process-list p { margin-top: 0.65rem; color: var(--ink-soft); }
+  .model-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.1fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+  .model-layout h2 { max-width: 12ch; }
+  .model-copy {
+    display: grid;
+    gap: 1.2rem;
+    color: rgb(255 255 255 / 82%);
+    font-size: 1.05rem;
+  }
+  .trust-layout {
+    display: grid;
+    grid-template-columns: minmax(17rem, 0.72fr) minmax(0, 1.25fr);
+    gap: clamp(3rem, 8vw, 7rem);
+  }
+  .trust-layout h2 { max-width: 10ch; }
+  .trust-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .trust-grid article { padding: 1.7rem; border-top: 1px solid var(--line); }
+  .trust-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .trust-grid p { margin-top: 0.7rem; color: var(--ink-soft); }
+  .faq-section { background: var(--seafoam); }
+  .faq-layout {
+    display: grid;
+    grid-template-columns: minmax(18rem, 0.72fr) minmax(0, 1.2fr);
+    gap: clamp(3rem, 8vw, 7rem);
+    align-items: start;
+  }
+  .faq-intro { position: sticky; top: 2rem; }
+  .faq-intro h2 { max-width: 11ch; }
+  .faq-intro > p:not(.eyebrow) { margin-top: 1.2rem; color: var(--ink-soft); }
+  .faq-list { border-top: 1px solid rgb(6 79 85 / 18%); }
+  .faq-list details { border-bottom: 1px solid rgb(6 79 85 / 18%); }
+  .faq-list summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    color: var(--ink);
+    cursor: pointer;
+    font-size: 1.04rem;
+    font-weight: 800;
+    list-style: none;
+  }
+  .faq-list summary::-webkit-details-marker { display: none; }
+  .faq-list summary::after {
+    content: "+";
+    display: grid;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    place-items: center;
+    border-radius: 50%;
+    background: white;
+    color: var(--ocean);
+  }
+  .faq-list details[open] summary::after { content: "−"; }
+  .faq-list details p {
+    max-width: 45rem;
+    padding: 0 3rem 1.4rem 0;
+    color: var(--ink-soft);
+  }
+  .owner-cta {
+    padding-block: clamp(4rem, 8vw, 6.5rem);
+    background: linear-gradient(120deg, #073f43, var(--ocean-deep) 58%, var(--ocean));
+    color: white;
+  }
+  .owner-cta__inner {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+  .owner-cta h2 { max-width: 12ch; }
+  .owner-cta .eyebrow { color: #ffd46c; }
+  .owner-cta__inner > div:first-child > p:last-child {
+    max-width: 42rem;
+    margin-top: 1.2rem;
+    color: rgb(255 255 255 / 78%);
+  }
+  .cta-actions {
+    display: flex;
+    flex: 0 0 auto;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-width: 15rem;
+  }
+  @media (max-width: 900px) {
+    .owner-hero__inner,
+    .process-layout,
+    .model-layout,
+    .trust-layout,
+    .faq-layout {
+      grid-template-columns: 1fr;
+    }
+    .owner-hero__copy { max-width: 45rem; }
+    .hero-card { max-width: 32rem; }
+    .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .process-intro,
+    .faq-intro { position: static; }
+  }
+  @media (max-width: 620px) {
+    .owner-hero { min-height: 47rem; }
+    .owner-hero__inner { align-content: end; padding-block: 3.5rem 2rem; }
+    .hero-actions,
+    .owner-cta__inner {
+      align-items: stretch;
+      flex-direction: column;
+    }
+    .hero-link { text-align: center; }
+    .hero-card { padding: 1.2rem; }
+    .hero-card li { grid-template-columns: 6rem 1fr; }
+    .owner-heading { flex-direction: column; }
+    .benefit-grid,
+    .trust-grid { grid-template-columns: 1fr; }
+    .benefit-card { min-height: auto; }
+    .benefit-card h3 { margin-top: 2rem; }
+    .process-list li { grid-template-columns: 2.7rem 1fr; gap: 0.9rem; }
+    .trust-grid article:nth-child(odd) { border-right: 0; }
+    .owner-cta__inner { align-items: stretch; }
+    .cta-actions { min-width: 0; }
+  }
+</style>

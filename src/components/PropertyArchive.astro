@@ -1,0 +1,22 @@
+---
+import PropertyCard from "./PropertyCard.astro";
+interface Props { properties: any[]; title: string; eyebrow?: string; description: string; showDestinationLink?: boolean; }
+const { properties, title, eyebrow = "Aluguéis em Cumbuco", description, showDestinationLink = false } = Astro.props;
+---
+
+<section class="page-hero">
+  <div class="shell"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="lede">{description}</p></div>
+</section>
+<section class="section">
+  <div class="shell archive-head">
+    <p>{properties.length} {properties.length === 1 ? "imóvel" : "imóveis"} · Todos localizados em Cumbuco, Ceará</p>
+    {showDestinationLink && <a href="/city/cumbuco/">Conheça Cumbuco: praias, temporada de vento e dicas locais →</a>}
+  </div>
+  <div class="shell property-grid">{properties.map((property) => <PropertyCard property={property} />)}</div>
+</section>
+
+<style>
+  .archive-head { display: flex; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.5rem; color: var(--ink-soft); font-size: 0.85rem; }
+  .archive-head a { color: var(--ocean); font-weight: 700; text-align: right; text-underline-offset: 0.2em; }
+  @media (max-width: 520px) { .archive-head { align-items: start; flex-direction: column; } .archive-head a { text-align: left; } }
+</style>

@@ -1,0 +1,265 @@
+---
+import { getCollection } from "astro:content";
+import BusinessHighlights from "../../../components/BusinessHighlights.astro";
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import PropertyCard from "../../../components/PropertyCard.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const title = "Where to Stay in Cumbuco: Areas, Villas & Beachfront Rentals";
+const description = "Compare Cumbuco village, beachfront condominiums, private houses, and villas. Choose the right area and rental style for your beach holiday.";
+const image = "/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg";
+
+const properties = await getCollection("properties");
+const exampleSlugs = ["villa-branca", "dream-village-302-v", "casa-vermelha"];
+const examples = exampleSlugs
+  .map((slug) => properties.find((property) => property.data.slug === slug))
+  .filter(Boolean);
+
+const faqItems = [
+  {
+    question: "What is the best area to stay in Cumbuco without a car?",
+    answer: "A property close to the village centre and beach usually makes restaurants, small shops, and evening walks easiest. Confirm the walking route and exact location before booking because Cumbuco properties described as central can still vary noticeably in distance.",
+  },
+  {
+    question: "Should I choose a beachfront apartment or a private villa?",
+    answer: "Beachfront apartments suit travellers who value direct sea access, shared pools, and simpler maintenance. Villas suit larger groups and guests who want more bedrooms, social space, gardens, and often a private pool.",
+  },
+  {
+    question: "Where should kitesurfers stay in Cumbuco?",
+    answer: "Prioritise safe equipment storage, practical beach access, space to rinse and dry gear, and transport arrangements for sessions away from the property. The closest beach is not automatically the right launch area for every ability or condition.",
+  },
+  {
+    question: "Are Cumbuco rentals suitable for families?",
+    answer: "Yes. Many apartments, houses, and villas work well for families, but pool barriers, stairs, balconies, sleeping arrangements, walking distances, and transport needs should be checked property by property.",
+  },
+];
+
+const structuredData = [
+  {
+    "@type": "Article",
+    "@id": "https://www.cumbuco.net.br/city/cumbuco/where-to-stay/#article",
+    headline: title,
+    description,
+    image: new URL(image, Astro.site).toString(),
+    about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" },
+    publisher: { "@id": "https://www.cumbuco.net.br/#organization" },
+    inLanguage: "en",
+  },
+  {
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+      { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+      { "@type": "ListItem", position: 3, name: "Where to stay", item: "https://www.cumbuco.net.br/city/cumbuco/where-to-stay/" },
+    ],
+  },
+  {
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/where-to-stay/" image={image} structuredData={structuredData}>
+  <section class="sub-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.avif 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.avif 1200w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.webp 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.webp 1200w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-palms-ocean-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-ocean-1200.jpg 1200w" sizes="100vw" width="1200" height="800" alt="Palm trees, sand, and ocean on the Cumbuco coastline" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Where to stay in Cumbuco</p>
+      <h1>Choose the rhythm before the room.</h1>
+      <p>The best Cumbuco rental is the one that places your group close to the days you actually want—beach, village, kite sessions, privacy, or all four.</p>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="where-to-stay" />
+
+  <section class="section intro-section">
+    <div class="shell intro-grid">
+      <div>
+        <p class="eyebrow">Start with location</p>
+        <h2>There is no single “best” part of Cumbuco.</h2>
+      </div>
+      <div class="prose">
+        <p>Cumbuco is compact, but the experience changes between a home beside the village, a beachfront condominium, and a quieter private house. A few extra minutes on foot or by car can make a meaningful difference when you travel with children, kite equipment, or a large group.</p>
+        <p>Decide which moments should be effortless. If dinner on foot matters, start near the village. If the sea should be outside the gate, prioritise verified beachfront access. If privacy, bedrooms, and shared time matter most, compare houses and villas.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Four useful ways to stay</p>
+          <h2>Match the setting to your holiday.</h2>
+        </div>
+        <p class="section-intro">These are practical styles rather than strict neighbourhood borders. Always check the individual property location and access.</p>
+      </div>
+      <div class="area-grid">
+        <article>
+          <span>01</span>
+          <h3>Near the village centre</h3>
+          <p>Best for restaurants, cafés, small shops, and an evening walk without arranging transport. Ask about street noise and the exact walking route.</p>
+          <strong>Good for: first visits, couples, sociable groups</strong>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Beachfront condominiums</h3>
+          <p>Direct or near-direct access to the sand, shared pools, gardens, and the convenience of an apartment. Confirm whether “sea view” also means practical beach access.</p>
+          <strong>Good for: beach days, smaller groups, easy living</strong>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Private houses</h3>
+          <p>More independence, kitchens, outdoor areas, and room to settle in. Location, parking, pool layout, and walking distance vary considerably.</p>
+          <strong>Good for: families, longer stays, privacy</strong>
+        </article>
+        <article>
+          <span>04</span>
+          <h3>Large villas</h3>
+          <p>Multiple bedrooms and generous social spaces make it easier for friends or extended families to stay together without living on top of one another.</p>
+          <strong>Good for: celebrations, groups, shared holidays</strong>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section choice-section">
+    <div class="shell choice-grid">
+      <div class="choice-image">
+        <picture>
+          <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
+          <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
+          <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="1080" loading="lazy" alt="Palm-lined beach and calm morning light in Cumbuco" />
+        </picture>
+      </div>
+      <div>
+        <p class="eyebrow">Before choosing</p>
+        <h2>Six questions that prevent the wrong booking.</h2>
+        <ol class="question-list">
+          <li><strong>How often will you walk into the village?</strong><span>Daily convenience may matter more than an extra facility.</span></li>
+          <li><strong>Do you need true beachfront access?</strong><span>A sea view, beach proximity, and a gate onto the sand are different things.</span></li>
+          <li><strong>How will everyone sleep?</strong><span>Count proper beds and suitable rooms—not only the maximum guest number.</span></li>
+          <li><strong>Will you carry kite equipment?</strong><span>Ask about storage, rinsing, drying, transfers, and launch guidance.</span></li>
+          <li><strong>Does anyone have limited mobility?</strong><span>Check stairs, lifts, entrances, bathrooms, and the route outside the property.</span></li>
+          <li><strong>What should be private?</strong><span>Clarify pools, gardens, entrances, parking, and any shared condominium facilities.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Three different bases</p>
+          <h2>See how the rental styles compare.</h2>
+        </div>
+        <a class="button button--ghost" href="/properties/">View every Cumbuco rental</a>
+      </div>
+      <div class="property-grid">{examples.map((property) => <PropertyCard property={property} />)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell match-grid">
+      <div>
+        <p class="eyebrow">Ask for a personal match</p>
+        <h2>Tell us how you want the holiday to feel.</h2>
+      </div>
+      <div class="prose">
+        <p>Share your dates, number of guests, preferred bedrooms, budget range, transport plans, and the activities that matter. We will compare the practical fit of the available properties rather than simply sending the longest list.</p>
+        <div class="actions">
+          <a class="button" href="/contact-cumbuco-rentals/">Ask for rental advice</a>
+          <a class="button button--ghost" href="/city/cumbuco/travel-information/">Plan the journey</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <BusinessHighlights
+    categories={["hotel", "pousada"]}
+    eyebrow="Other places to know"
+    title="Current local accommodation contacts."
+    description="If a Cumbuco Rental is not the right fit, these established local stays offer direct alternatives worth comparing."
+  />
+
+  <section class="section faq-section">
+    <div class="shell">
+      <p class="eyebrow">Common questions</p>
+      <h2>Choosing accommodation in Cumbuco.</h2>
+      <div class="faq-grid">
+        {faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-hero { position: relative; min-height: 36rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sub-hero picture { display: block; }
+  .sub-hero img { object-fit: cover; object-position: center 56%; }
+  .shade { background: linear-gradient(90deg, rgb(3 48 52 / 78%) 0%, rgb(3 48 52 / 38%) 55%, rgb(3 48 52 / 8%) 100%), linear-gradient(0deg, rgb(3 40 43 / 46%), transparent 56%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .hero-copy h1 { max-width: 11ch; }
+  .hero-copy > p:last-child { max-width: 42rem; margin-top: 1.15rem; font-size: clamp(1.05rem, 2vw, 1.3rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+
+  .intro-grid, .match-grid { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
+  .intro-grid h2, .match-grid h2 { max-width: 14ch; }
+  .section-intro { max-width: 35rem; color: var(--ink-soft); }
+  .area-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2.5rem; border-block: 1px solid var(--line); }
+  .area-grid article { padding: 1.75rem; border-right: 1px solid var(--line); }
+  .area-grid article:last-child { border-right: 0; }
+  .area-grid span { color: var(--coral); font-size: 0.74rem; font-weight: 800; }
+  .area-grid h3 { margin-top: 2.2rem; }
+  .area-grid p { margin-top: 0.8rem; color: var(--ink-soft); }
+  .area-grid strong { display: block; margin-top: 1.25rem; color: var(--ocean); font-size: 0.8rem; }
+
+  .choice-grid { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .choice-image picture { display: block; aspect-ratio: 4 / 5; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .choice-image img { width: 100%; height: 100%; object-fit: cover; }
+  .choice-grid h2 { max-width: 13ch; }
+  .question-list { display: grid; gap: 0; margin: 2rem 0 0; padding: 0; list-style: none; counter-reset: choices; }
+  .question-list li { position: relative; display: grid; gap: 0.25rem; padding: 1rem 0 1rem 2.7rem; border-top: 1px solid var(--line); counter-increment: choices; }
+  .question-list li::before { position: absolute; top: 1rem; left: 0; color: var(--coral); content: "0" counter(choices); font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; }
+  .question-list span { color: var(--ink-soft); font-size: 0.9rem; }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-section h2 { max-width: 15ch; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2.5rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.75rem 1.75rem 1.75rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .faq-grid article:nth-child(even) { padding-left: 1.75rem; }
+  .faq-grid h3 { font-size: 1.25rem; }
+  .faq-grid p { margin-top: 0.7rem; color: var(--ink-soft); }
+
+  @media (max-width: 900px) {
+    .area-grid { grid-template-columns: 1fr 1fr; }
+    .area-grid article:nth-child(2) { border-right: 0; }
+    .area-grid article:nth-child(-n + 2) { border-bottom: 1px solid var(--line); }
+  }
+
+  @media (max-width: 720px) {
+    .sub-hero { min-height: 32rem; }
+    .intro-grid, .choice-grid, .match-grid, .faq-grid { grid-template-columns: 1fr; }
+    .choice-image picture { aspect-ratio: 16 / 10; }
+    .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.35rem 0; border-right: 0; }
+  }
+
+  @media (max-width: 520px) {
+    .area-grid { grid-template-columns: 1fr; }
+    .area-grid article { border-right: 0; border-bottom: 1px solid var(--line); }
+    .area-grid article:last-child { border-bottom: 0; }
+  }
+</style>

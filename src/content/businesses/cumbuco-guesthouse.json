@@ -1,0 +1,38 @@
+{
+  "slug": "cumbuco-guesthouse",
+  "status": "published",
+  "name": "Cumbuco Guesthouse",
+  "category": "pousada",
+  "subcategory": "Guesthouse and pousada",
+  "summary": "A guesthouse with air-conditioned rooms, breakfast, garden-facing balconies, pool, hydromassage, and help arranging local activities.",
+  "descriptionHtml": "<p>Cumbuco Guesthouse offers air-conditioned rooms with private bathrooms, breakfast, Wi-Fi, and balconies. Its official website also presents a pool, hydromassage, airport transfers, buggy arrangements, and kite lessons through local providers.</p><p>Confirm current room types, rates, transfer prices, and activity arrangements directly before booking.</p>",
+  "images": [],
+  "contact": {
+    "website": "https://www.cumbuco-guesthouse.com.br/",
+    "whatsapp": "+5585987680658",
+    "phone": "+55 85 98768 0658",
+    "email": "cumbucoguesthouse@icloud.com",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Cumbuco+Guesthouse+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco",
+    "address": "Rua G, 199, Praia do Cumbuco, Caucaia, Ceará"
+  },
+  "openingHours": [],
+  "priceRange": "$$",
+  "tags": [
+    "pousada",
+    "breakfast",
+    "pool",
+    "families"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-07-25",
+  "seo": {
+    "title": "Cumbuco Guesthouse",
+    "description": "Direct information for Cumbuco Guesthouse, including facilities and contact links.",
+    "modified": "2026-07-25T12:00:00+02:00",
+    "ogImage": "/images/content/cumbuco/sunny-beach-1440.jpg"
+  }
+}

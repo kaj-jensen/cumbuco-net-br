@@ -1,0 +1,252 @@
+---
+import { getCollection } from "astro:content";
+import PropertyCard from "../components/PropertyCard.astro";
+import VillaBrancaReviews from "../components/VillaBrancaReviews.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../config/site";
+import { brazilianPropertySlugs } from "../config/site";
+
+const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
+const featuredSlugs = [
+  "villa-branca",
+  "casa-chick",
+  "casa-vermelha",
+  "dream-village-301-v",
+  "dunas-village-cumbuco",
+  "dream-village-401-h",
+  "jardim-reale-cumbuco",
+  "dream-village-301-h",
+  "beach-sun-cumbuco",
+];
+const featured = featuredSlugs.map((slug) => properties.find((item) => item.data.slug === slug)).filter(Boolean);
+const hero = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
+const heroSmall = "/images/content/cumbuco/sunny-kitesurfing-720.jpg";
+const heroLarge = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
+const heroSmallAvif = "/images/content/cumbuco/sunny-kitesurfing-720.avif";
+const heroLargeAvif = "/images/content/cumbuco/sunny-kitesurfing-1440.avif";
+const heroSmallWebp = "/images/content/cumbuco/sunny-kitesurfing-720.webp";
+const heroLargeWebp = "/images/content/cumbuco/sunny-kitesurfing-1440.webp";
+---
+
+<BaseLayout
+  title="Cumbuco Aluguéis por Temporada: Casas e Apartamentos"
+  description="Casas, villas e apartamentos para aluguel por temporada em Cumbuco, Ceará. Consulte disponibilidade e receba uma cotação pessoal pelo WhatsApp."
+  image={hero}
+>
+  <section class="hero">
+    <picture class="hero-picture">
+      <source type="image/avif" srcset={`${heroSmallAvif} 720w, ${heroLargeAvif} 1440w`} sizes="100vw" />
+      <source type="image/webp" srcset={`${heroSmallWebp} 720w, ${heroLargeWebp} 1440w`} sizes="100vw" />
+      <img
+        class="hero-image"
+        src={heroLarge}
+        srcset={`${heroSmall} 720w, ${heroLarge} 1440w`}
+        sizes="100vw"
+        width="1440"
+        height="1080"
+        alt="Kitesurfistas aproveitando o vento e o mar quente na praia de Cumbuco"
+        fetchpriority="high"
+      />
+    </picture>
+    <div class="hero-shade"></div>
+    <div class="shell hero-content">
+      <p class="eyebrow">Cumbuco · Ceará · Brasil</p>
+      <h1>Acorde onde o vento encontra o mar quente.</h1>
+      <p>Escolha um apartamento, uma villa ou uma casa de temporada em Cumbuco e aproveite cada dia à beira-mar com nosso conhecimento local.</p>
+      <div class="hero-actions">
+        <a class="button button--sun" href="/properties/">Encontre seu imóvel</a>
+        <a class="text-link" href="/city/cumbuco/">Descubra Cumbuco →</a>
+      </div>
+    </div>
+    <div class="hero-pulse" aria-label="Cumbuco em poucas palavras">
+      <div class="shell pulse-grid">
+        <p><strong>Mar quente</strong><span>Praia o ano inteiro</span></p>
+        <p><strong>Vento reconhecido no mundo</strong><span>Temporada de kite a partir de julho</span></p>
+        <p><strong>A 30 km de Fortaleza</strong><span>Fácil acesso pelo aeroporto</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">Imóveis em destaque</p><h2>Encontre seu lugar perto do mar.</h2></div>
+        <a class="button button--ghost" href="/properties/">Ver todos os imóveis</a>
+      </div>
+      <div class="property-grid">{featured.map((property) => <PropertyCard property={property} />)}</div>
+    </div>
+  </section>
+
+  <section class="section destination-feature">
+    <div class="shell destination-layout">
+      <div class="destination-copy">
+        <p class="eyebrow">Isto é Cumbuco</p>
+        <h2>Uma vila de praia com um horizonte imenso.</h2>
+        <p>Comece o dia com café sob os coqueiros, acompanhe o vento no mar, atravesse dunas douradas e lagoas de água doce e termine a tarde caminhando até a vila.</p>
+        <p>Nosso guia reúne praias, restaurantes, temporada de kite, dicas de chegada e informações práticas para facilitar sua estadia.</p>
+        <div class="guide-topics" aria-label="Assuntos do guia de Cumbuco">
+          <a href="/city/cumbuco/where-to-stay/">Onde ficar</a>
+          <a href="/city/cumbuco/restaurants/">Restaurantes</a>
+          <a href="/city/cumbuco/things-to-do/">O que fazer</a>
+          <a href="/city/cumbuco/beaches/">Praias e lagoas</a>
+          <a href="/city/cumbuco/kiteboarding/">Kitesurf</a>
+          <a href="/city/cumbuco/travel-information/">Informações de viagem</a>
+          <a href="/city/cumbuco/local-businesses/">Guia local</a>
+        </div>
+        <a class="button button--ghost" href="/city/cumbuco/">Conheça o guia completo</a>
+      </div>
+      <div class="destination-collage">
+        <picture class="destination-picture destination-picture--wide">
+          <source type="image/avif" srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
+          <source type="image/webp" srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 48vw" />
+          <img src="/images/content/cumbuco/sunny-beach-1440.jpg" srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 48vw" width="1440" height="1080" loading="lazy" alt="Praia ensolarada e mar azul em Cumbuco" />
+        </picture>
+        <picture class="destination-picture destination-picture--portrait">
+          <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-720.avif 720w, /images/content/cumbuco/cumbuco-palms-1200.avif 1200w" sizes="(max-width: 760px) 42vw, 17rem" />
+          <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-720.webp 720w, /images/content/cumbuco/cumbuco-palms-1200.webp 1200w" sizes="(max-width: 760px) 42vw, 17rem" />
+          <img src="/images/content/cumbuco/cumbuco-palms-720.jpg" srcset="/images/content/cumbuco/cumbuco-palms-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-1200.jpg 1200w" sizes="(max-width: 760px) 42vw, 17rem" width="720" height="1087" loading="lazy" alt="Coqueiros inclinados em direção à Praia de Cumbuco" />
+        </picture>
+        <p class="destination-note"><span>03° 37′ S</span>Vento alísio, luz nas dunas e o Atlântico.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="shell">
+      <VillaBrancaReviews />
+    </div>
+  </section>
+
+  <section class="section stay-types">
+    <div class="shell">
+      <p class="eyebrow">Escolha seu ritmo</p>
+      <div class="type-grid">
+        <a href="/listings/villa/"><span>01</span><h3>Villas</h3><p>Espaço, piscinas privativas e conforto para todo o grupo.</p></a>
+        <a href="/listings/house/"><span>02</span><h3>Casas</h3><p>Imóveis independentes com conforto e privacidade.</p></a>
+        <a href="/listings/apartment/"><span>03</span><h3>Apartamentos</h3><p>Praticidade perto da praia, de piscinas, jardins e da vila.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand quote-section">
+    <div class="shell quote-grid">
+      <div>
+        <p class="eyebrow">Cotação pessoal</p>
+        <h2>O imóvel certo importa mais do que uma tarifa genérica.</h2>
+      </div>
+      <div class="quote-copy">
+        <p>Cada cotação considera o imóvel, as datas, o número de noites e hóspedes, a temporada e os serviços opcionais.</p>
+        <p>Confirmamos a disponibilidade e o custo completo antes de qualquer decisão. Este site não recebe pagamentos nem faz reservas automáticas.</p>
+        <a class="button button--ghost" href="/contact-cumbuco-rentals/">Solicitar uma cotação</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="owner-strip">
+    <div class="shell owner-strip__inner">
+      <div>
+        <p class="eyebrow">Para proprietários</p>
+        <h2>Dê ao seu imóvel em Cumbuco a apresentação que ele merece.</h2>
+      </div>
+      <p>Criamos uma apresentação clara e atraente, atendemos cada consulta e ajudamos os hóspedes certos a encontrar seu imóvel.</p>
+      <a class="button button--ghost" href="/list-your-property/">Anuncie seu imóvel</a>
+    </div>
+  </section>
+
+  <section class="cta">
+    <picture class="cta-picture">
+      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.avif 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.avif 1800w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.webp 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.webp 1800w" sizes="100vw" />
+      <img src="/images/content/cumbuco/cumbuco-dune-buggy-1800.jpg" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.jpg 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.jpg 1800w" sizes="100vw" width="1800" height="1192" loading="lazy" alt="Buggy atravessando as dunas douradas perto de Cumbuco ao pôr do sol" />
+    </picture>
+    <div class="cta-shade"></div>
+    <div class="shell cta-inner">
+      <div><p class="eyebrow">Seu lugar em Cumbuco</p><h2>Venha pela praia. Fique por tudo que existe ao redor.</h2><p>Conte suas datas, o tamanho do grupo e o que mais importa. Ajudaremos você a escolher um imóvel adequado à sua viagem.</p></div>
+      <a class="button button--sun" href="/contact-cumbuco-rentals/">Planeje sua estadia</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero { position: relative; min-height: min(49rem, calc(100vh - 5.25rem)); display: grid; grid-template-rows: 1fr auto; overflow: hidden; color: white; }
+  .hero-picture, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero-picture { display: block; }
+  .hero-image { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+  .hero-shade { background: linear-gradient(90deg, rgb(3 48 52 / 82%) 0%, rgb(3 63 68 / 48%) 46%, rgb(3 63 68 / 8%) 78%), linear-gradient(0deg, rgb(3 38 42 / 58%), transparent 55%); }
+  .hero-content { position: relative; align-self: end; padding-block: clamp(4rem, 9vw, 7rem) clamp(2.5rem, 5vw, 4rem); }
+  .hero h1 { max-width: 10ch; text-shadow: 0 0.2rem 1.5rem rgb(0 35 38 / 26%); }
+  .hero-content > p:not(.eyebrow) { max-width: 39rem; margin-top: 1.35rem; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+  .hero-actions { display: flex; align-items: center; gap: 1.4rem; margin-top: 2rem; }
+  .text-link { color: white; font-weight: 700; text-decoration: none; }
+  .hero .eyebrow { color: #ffd46c; }
+  .hero-pulse { position: relative; border-top: 1px solid rgb(255 255 255 / 24%); background: rgb(3 56 60 / 72%); backdrop-filter: blur(0.7rem); }
+  .pulse-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .pulse-grid p { display: grid; gap: 0.05rem; padding: 1rem clamp(0.8rem, 3vw, 2rem); border-right: 1px solid rgb(255 255 255 / 18%); }
+  .pulse-grid p:first-child { padding-left: 0; }
+  .pulse-grid p:last-child { border-right: 0; }
+  .pulse-grid strong { color: white; font-size: 0.9rem; }
+  .pulse-grid span { color: rgb(255 255 255 / 72%); font-size: 0.78rem; }
+  .destination-feature { overflow: hidden; padding-block: clamp(3.5rem, 7vw, 6.5rem); background: linear-gradient(155deg, #effbf7 0%, var(--sky) 100%); }
+  .destination-layout { display: grid; grid-template-columns: minmax(18rem, 0.8fr) minmax(0, 1.25fr); gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .destination-picture { display: block; overflow: hidden; border-radius: 1.25rem; box-shadow: var(--shadow); }
+  .destination-picture img { width: 100%; height: 100%; object-fit: cover; }
+  .destination-copy { display: flex; flex-direction: column; align-items: flex-start; }
+  .destination-copy h2 { max-width: 12ch; }
+  .destination-copy > p:not(.eyebrow) { max-width: 36rem; margin-top: 1rem; color: var(--ink-soft); }
+  .destination-copy .button { margin-top: 1.5rem; }
+  .guide-topics { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.4rem; }
+  .guide-topics a { padding: 0.48rem 0.7rem; border: 1px solid rgb(6 105 109 / 22%); border-radius: 999px; background: rgb(255 255 255 / 64%); color: var(--ocean); font-size: 0.76rem; font-weight: 800; text-decoration: none; }
+  .guide-topics a:hover { border-color: var(--ocean); background: white; transform: translateY(-1px); }
+  .destination-collage { position: relative; min-height: 35rem; }
+  .destination-picture--wide { position: absolute; inset: 0 0 3rem 5rem; }
+  .destination-picture--portrait { position: absolute; bottom: 0; left: 0; width: min(45%, 17rem); height: 23rem; border: 0.45rem solid var(--paper); }
+  .destination-note { position: absolute; right: 1.5rem; bottom: 0; max-width: 12rem; color: var(--ink-soft); font-size: 0.8rem; line-height: 1.35; }
+  .destination-note span { display: block; color: var(--coral); font-family: "Fraunces", Georgia, serif; font-size: 1.8rem; }
+  .type-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2rem; border-block: 1px solid var(--line); }
+  .type-grid a { padding: 2.25rem; border-right: 1px solid var(--line); text-decoration: none; }
+  .type-grid a:last-child { border-right: 0; }
+  .type-grid span { color: var(--coral); font-size: 0.72rem; font-weight: 800; }
+  .type-grid h3 { margin-top: 3rem; }
+  .type-grid p { margin-top: 0.75rem; color: var(--ink-soft); }
+  .type-grid a:hover { background: var(--sand); }
+  .quote-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(3rem, 8vw, 7rem); align-items: start; }
+  .quote-grid h2 { max-width: 13ch; }
+  .quote-copy { display: grid; gap: 1.25rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .quote-copy .button { margin-top: 0.5rem; width: fit-content; }
+  .owner-strip { padding-block: clamp(2.5rem, 5vw, 4rem); border-top: 1px solid var(--line); background: var(--seafoam); }
+  .owner-strip__inner { display: grid; grid-template-columns: minmax(18rem, 1fr) minmax(18rem, 0.8fr) auto; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+  .owner-strip h2 { max-width: 17ch; font-size: clamp(2rem, 4vw, 3.5rem); }
+  .owner-strip__inner > p { max-width: 36rem; color: var(--ink-soft); }
+  .owner-strip .button { white-space: nowrap; }
+  .cta { position: relative; min-height: 32rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .cta-picture, .cta-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .cta-picture img { width: 100%; height: 100%; object-fit: cover; object-position: center 58%; }
+  .cta-shade { background: linear-gradient(90deg, rgb(3 46 48 / 88%) 0%, rgb(3 46 48 / 58%) 54%, rgb(3 46 48 / 14%) 100%); }
+  .cta-inner { position: relative; display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-block: clamp(4rem, 8vw, 6.5rem); }
+  .cta h2 { max-width: 12ch; }
+  .cta .eyebrow { color: #ffd46c; }
+  .cta-inner > div > p:last-child { max-width: 37rem; margin-top: 1.25rem; color: rgb(255 255 255 / 82%); font-size: 1.05rem; }
+  @media (max-width: 850px) {
+    .destination-layout, .type-grid, .quote-grid, .owner-strip__inner { grid-template-columns: 1fr; }
+    .owner-strip__inner { align-items: start; }
+    .owner-strip .button { width: fit-content; }
+    .destination-copy { max-width: 38rem; }
+    .destination-collage { min-height: 29rem; }
+    .type-grid a { border-right: 0; border-bottom: 1px solid var(--line); }
+    .type-grid a:last-child { border-bottom: 0; }
+  }
+  @media (max-width: 620px) {
+    .hero { min-height: 43rem; }
+    .hero-content { padding-block: 4rem 2.5rem; }
+    .hero-actions, .cta-inner { align-items: stretch; flex-direction: column; }
+    .pulse-grid { grid-template-columns: 1fr; padding-block: 0.35rem; }
+    .pulse-grid p { display: flex; justify-content: space-between; gap: 1rem; padding: 0.55rem 0; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 14%); }
+    .pulse-grid p:last-child { border-bottom: 0; }
+    .destination-collage { min-height: 24rem; }
+    .destination-picture--wide { inset: 0 0 2.5rem 2.5rem; }
+    .destination-picture--portrait { width: 43%; height: 15rem; }
+    .destination-note { right: 0; max-width: 9.5rem; }
+    .destination-note span { font-size: 1.35rem; }
+    .cta { min-height: 36rem; }
+  }
+</style>

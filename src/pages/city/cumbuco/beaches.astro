@@ -1,0 +1,164 @@
+---
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const title = "Cumbuco Beaches & Lagoons: Where to Swim, Relax and Explore";
+const description = "Explore Cumbuco Beach, the dunes and freshwater lagoons near Cumbuco. Learn what each landscape offers, how conditions change, and how to visit responsibly.";
+const image = "/images/content/cumbuco/sunny-beach-1440.jpg";
+const faqItems = [
+  { question: "Is Cumbuco Beach safe for swimming?", answer: "Conditions vary with wind, tide, waves, currents, and the exact stretch of beach. Choose a populated area, ask locally, supervise children closely, and stay out when the sea looks stronger than your ability." },
+  { question: "Which lagoon should I visit near Cumbuco?", answer: "Lagoa do Parnamirim is commonly included in local dune trips, while the Cauípe landscape is internationally known for kiteboarding and protected natural surroundings. The best choice depends on current water, access, activity, and crowd conditions." },
+  { question: "Do the lagoons have water all year?", answer: "Water levels change with rainfall, season, maintenance, and local conditions. Never plan from an old photograph alone; ask for a current update shortly before visiting." },
+  { question: "Can I drive on the dunes or beach?", answer: "Do not take an ordinary rental vehicle onto dunes or beaches. Access can be restricted, conditions are deceptive, and the environment is fragile. Use authorised local operators where off-road access is required." },
+];
+const structuredData = [
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/beaches/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Beaches and lagoons", item: "https://www.cumbuco.net.br/city/cumbuco/beaches/" },
+  ]},
+  { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/beaches/" image={image} structuredData={structuredData}>
+  <section class="sub-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Golden sand and bright Atlantic water at Cumbuco Beach" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Cumbuco beaches & lagoons</p>
+      <h1>Salt water in front. Fresh water beyond the dunes.</h1>
+      <p>Cumbuco is not one postcard. It is an Atlantic shoreline, a moving dune landscape, and lagoons whose character changes with wind and rain.</p>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="beaches" />
+
+  <section class="section">
+    <div class="shell intro-grid">
+      <div><p class="eyebrow">Read the landscape</p><h2>The conditions are part of the place.</h2></div>
+      <div class="prose"><p>The coast can feel gentle in the morning and energetic after the trade wind builds. Lagoons can expand after the rainy period and contract later in the year. Sand moves, water levels change, and access evolves.</p><p>That is not an inconvenience to edit out—it is the nature of Cumbuco. Use photographs for inspiration, then ask locally about today's water, wind, tide, access, and facilities.</p></div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell place-grid">
+      <article class="place-card place-card--wide">
+        <div><span>Atlantic</span><h2>Praia do Cumbuco</h2><p>A long, warm-water beach for morning walks, beach restaurants, sunset light, and the colourful spectacle of kite season. The central stretch feels sociable; walk farther and the horizon opens.</p><ul><li>Best for beach days, walking, atmosphere, and watching kiteboarding</li><li>Conditions become windier and busier through the afternoon in kite season</li><li>Swimming suitability changes by time and location</li></ul></div>
+      </article>
+      <article><span>Freshwater</span><h3>Lagoa do Parnamirim</h3><p>A well-known dune-and-lagoon stop near Cumbuco, often combined with authorised buggy routes. Water and activity options vary with the season.</p><strong>Check: water level, access, and current activities</strong></article>
+      <article><span>Protected landscape</span><h3>Lagamar do Cauípe</h3><p>The Cauípe area combines lagoon, river, dunes, coastal vegetation, local community life, and internationally recognised kite conditions within an environmentally sensitive landscape.</p><strong>Check: wind, water, crowding, and protected-area guidance</strong></article>
+      <article><span>Local reference</span><h3>Lagoa do Banana</h3><p>A lagoon name long associated with the Cumbuco area. Visitor access and the quality of the experience can change, so obtain a recent local report rather than relying on historic marketing.</p><strong>Check: current access and water conditions</strong></article>
+    </div>
+  </section>
+
+  <section class="section image-feature">
+    <div class="shell feature-grid">
+      <picture>
+        <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
+        <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
+        <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Palm-lined shoreline in Cumbuco in soft morning light" />
+      </picture>
+      <div>
+        <p class="eyebrow">A better beach day</p><h2>Begin before the wind does.</h2>
+        <p>Morning usually brings softer light and a calmer atmosphere for a walk, a swim where conditions allow, or time with young children. By afternoon, the wind can strengthen and kites can dominate parts of the shoreline.</p>
+        <div class="tip-list"><p><strong>Shade</strong><span>Use a beach restaurant, umbrella, or property rather than treating midday sun casually.</span></p><p><strong>Water</strong><span>Carry more drinking water than you expect to need, especially during active days.</span></p><p><strong>Feet</strong><span>Sand, shells, hot surfaces, and equipment lines make suitable footwear useful.</span></p><p><strong>Belongings</strong><span>Bring only what you need and keep valuables attended.</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell seasons-grid">
+      <div><p class="eyebrow">Water through the year</p><h2>Rain changes the freshwater story.</h2><p>Ceará's principal rainy period is February through May, with March and April normally the wettest months according to FUNCEME. The landscape often becomes greener and lagoons can hold more water, but each year differs.</p></div>
+      <div class="season-cards">
+        <article><span>February–May</span><h3>Principal rainy period</h3><p>Greener dunes and replenished freshwater are possible, alongside more variable beach weather.</p></article>
+        <article><span>June–July</span><h3>Transition</h3><p>Rainfall generally decreases, water from the rainy period can remain, and trade winds begin to establish.</p></article>
+        <article><span>August–January</span><h3>Drier, windier months</h3><p>The coast becomes more reliable for kite travel while some freshwater areas may gradually contract.</p></article>
+      </div>
+      <p class="source-note">These are typical seasonal patterns, not a guarantee of lagoon depth or daily weather. Check <a href="https://www.funceme.br/" target="_blank" rel="noopener noreferrer">FUNCEME</a> and ask locally before travelling.</p>
+    </div>
+  </section>
+
+  <section class="section responsible">
+    <div class="shell responsible-grid">
+      <div><p class="eyebrow">Visit with care</p><h2>These landscapes are living places.</h2></div>
+      <div class="rules">
+        <article><span>01</span><div><h3>Use authorised access</h3><p>Stay on permitted routes and use an authorised operator where dunes or off-road travel are involved.</p></div></article>
+        <article><span>02</span><div><h3>Leave the dunes intact</h3><p>Do not drive, climb, or park where access damages vegetation, nesting areas, or fragile sand formations.</p></div></article>
+        <article><span>03</span><div><h3>Respect the community</h3><p>Lagoons and beaches are workplaces and neighbourhoods as well as visitor attractions.</p></div></article>
+        <article><span>04</span><div><h3>Take everything away</h3><p>Reduce single-use items, secure loose waste in the wind, and never leave fishing line, plastic, or cigarette ends.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="shell cta-grid">
+      <div><p class="eyebrow">Stay close to the water</p><h2>Beachfront means different things.</h2></div>
+      <div><p>Sea view, near the beach, and direct gate access are not interchangeable. Compare the actual location and route before choosing your rental.</p><div class="actions"><a class="button" href="/city/cumbuco/where-to-stay/">Choose where to stay</a><a class="button button--ghost" href="/properties/">Browse rentals</a></div></div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell"><p class="eyebrow">Water questions</p><h2>Before heading out.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-hero { position: relative; min-height: 34rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sub-hero img { object-fit: cover; object-position: center 58%; }
+  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 82%), rgb(3 43 45 / 35%) 62%, rgb(3 43 45 / 8%)), linear-gradient(0deg, rgb(3 35 38 / 52%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .hero-copy h1 { max-width: 12ch; }
+  .hero-copy > p:last-child { max-width: 45rem; margin-top: 1.1rem; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+  .intro-grid, .responsible-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+  .intro-grid h2, .responsible-grid h2, .cta-grid h2 { max-width: 13ch; }
+  .place-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .place-grid article { min-height: 22rem; display: flex; flex-direction: column; padding: 1.7rem; border: 1px solid var(--line); background: var(--paper); border-radius: 1.2rem; }
+  .place-grid .place-card--wide { grid-column: 1/-1; min-height: auto; background: var(--ocean); color: white; }
+  .place-card--wide div { display: grid; grid-template-columns: .45fr .8fr 1.2fr; gap: 2rem; align-items: start; }
+  .place-grid span { color: var(--coral); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
+  .place-grid h3 { margin-top: 2rem; }
+  .place-grid p { margin-top: .75rem; color: var(--ink-soft); }
+  .place-card--wide p, .place-card--wide li { color: rgb(255 255 255 / 80%); }
+  .place-grid strong { margin-top: auto; padding-top: 1.2rem; color: var(--ocean); font-size: .8rem; }
+  .place-card--wide ul { margin: 0; padding-left: 1.2rem; }
+  .feature-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .feature-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .feature-grid img { width: 100%; height: 100%; object-fit: cover; }
+  .feature-grid h2 { max-width: 11ch; }
+  .feature-grid > div > p { margin-top: .75rem; color: var(--ink-soft); }
+  .tip-list { margin-top: 1.25rem; border-top: 1px solid var(--line); }
+  .tip-list p { display: grid; grid-template-columns: 6rem 1fr; gap: 1rem; padding: .8rem 0; border-bottom: 1px solid var(--line); }
+  .tip-list span { color: var(--ink-soft); }
+  .seasons-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 2rem 5rem; }
+  .seasons-grid h2 { max-width: 12ch; }
+  .seasons-grid > div:first-child > p:last-child { margin-top: 1rem; color: var(--ink-soft); }
+  .season-cards { display: grid; gap: .8rem; }
+  .season-cards article { padding: 1.2rem; border-left: .22rem solid var(--coral); background: var(--paper); }
+  .season-cards span { color: var(--ocean); font-weight: 800; }
+  .season-cards p { margin-top: .4rem; color: var(--ink-soft); }
+  .source-note { grid-column: 2; color: var(--ink-soft); font-size: .85rem; }
+  .rules { border-top: 1px solid var(--line); }
+  .rules article { display: grid; grid-template-columns: 3rem 1fr; gap: 1rem; padding: 1rem 0; border-bottom: 1px solid var(--line); }
+  .rules span { color: var(--coral); font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; }
+  .rules p, .cta-grid p { margin-top: .35rem; color: var(--ink-soft); }
+  .cta { background: var(--seafoam); }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-section h2 { max-width: 13ch; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .faq-grid article:nth-child(even) { padding-left: 1.5rem; }
+  .faq-grid h3 { font-size: 1.2rem; }
+  .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
+  @media (max-width: 800px) { .place-grid { grid-template-columns: 1fr; } .place-card--wide div { grid-template-columns: 1fr; } .place-grid article { min-height: auto; } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .feature-grid, .seasons-grid, .responsible-grid, .cta-grid, .faq-grid { grid-template-columns: 1fr; } .source-note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+</style>

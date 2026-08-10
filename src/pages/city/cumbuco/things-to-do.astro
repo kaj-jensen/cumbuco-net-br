@@ -1,0 +1,170 @@
+---
+import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+const title = "Things to Do in Cumbuco: Dunes, Lagoons & Beach Days";
+const description = "Plan the best things to do in Cumbuco: dune buggy trips, lagoons, kitesurfing, beach days, village life, Fortaleza day trips, and family ideas.";
+const image = "/images/content/cumbuco/cumbuco-dune-buggy-1800.jpg";
+const faqItems = [
+  { question: "What are the best things to do in Cumbuco besides kitesurfing?", answer: "Explore the dunes with an authorised buggy operator, visit a lagoon, enjoy a long beach lunch, walk through the village, spend a pool day at your rental, or use Cumbuco as a base for Fortaleza and the Ceará coast." },
+  { question: "Are Cumbuco buggy tours suitable for children?", answer: "Suitability depends on the child's age, restraint arrangements, route, weather, and the operator. Ask for a calmer route, verify safety details before departure, and never treat the dunes as an unregulated playground." },
+  { question: "Can I visit Cumbuco's lagoons independently?", answer: "Some locations are accessible by road, while others are easier with local transport. Access, water levels, facilities, and road conditions change, so confirm locally and use authorised providers for dune routes." },
+  { question: "How many days do I need in Cumbuco?", answer: "Three or four days cover a beach day, dunes and lagoons, and time in the village. A week gives kitesurfers and families more flexibility for wind, weather, and genuinely unplanned days." },
+];
+const structuredData = [
+  { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/things-to-do/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brazil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "en" },
+  { "@type": "BreadcrumbList", itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://www.cumbuco.net.br/" },
+    { "@type": "ListItem", position: 2, name: "Cumbuco guide", item: "https://www.cumbuco.net.br/city/cumbuco/" },
+    { "@type": "ListItem", position: 3, name: "Things to do", item: "https://www.cumbuco.net.br/city/cumbuco/things-to-do/" },
+  ]},
+  { "@type": "FAQPage", mainEntity: faqItems.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })) },
+];
+---
+
+<BaseLayout title={title} description={description} canonical="/city/cumbuco/things-to-do/" image={image} structuredData={structuredData}>
+  <section class="sub-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.avif 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.avif 1800w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.webp 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.webp 1800w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/cumbuco-dune-buggy-900.jpg 900w, /images/content/cumbuco/cumbuco-dune-buggy-1800.jpg 1800w" sizes="100vw" width="1800" height="1192" alt="Dune buggy crossing the golden dunes near Cumbuco" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
+    <div class="shell hero-copy">
+      <p class="eyebrow">Things to do in Cumbuco</p>
+      <h1>Follow the wind—or ignore the clock.</h1>
+      <p>Cross the dunes, find freshwater, learn a new sport, or stay exactly where you are. Cumbuco rewards both adventure and deliberate idleness.</p>
+    </div>
+  </section>
+
+  <DestinationGuideNav current="things-to-do" />
+
+  <section class="section">
+    <div class="shell intro-grid">
+      <div><p class="eyebrow">Build a better day</p><h2>Choose one main experience, not five rushed stops.</h2></div>
+      <div class="prose"><p>Cumbuco looks compact on a map, but the beach, village, dunes, and lagoons each have their own rhythm. The best days leave space for the weather, the tide, and an unplanned lunch.</p><p>Use this guide to understand the experience before choosing a provider. Stage 6 will add properly labelled local businesses and Featured Partners without confusing paid visibility with editorial advice.</p></div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell">
+      <div class="section-heading"><div><p class="eyebrow">Six Cumbuco experiences</p><h2>From first light to the last drink.</h2></div><p class="section-intro">Nature sets the conditions. Confirm access, timing, weather, and operator details locally before departure.</p></div>
+      <div class="experience-grid">
+        <article><span>01</span><h3>Ride across the dunes</h3><p>An authorised buggy trip reveals the landscape behind the beach: sweeping sand, viewpoints, and freshwater stops. Choose “with emotion” or “without emotion” deliberately—not as a joke after departure.</p><strong>Allow: half a day</strong></article>
+        <article><span>02</span><h3>Spend time at a lagoon</h3><p>Water levels and access change with the seasons. Lagoa do Parnamirim and the wider Cauípe landscape show a softer, freshwater side of the coast.</p><strong>Allow: 2–4 hours</strong></article>
+        <article><span>03</span><h3>Learn to kiteboard</h3><p>Book a qualified school, expect land-based safety training first, and let the instructor choose the right location and equipment for that day's conditions.</p><strong>Allow: several lessons</strong></article>
+        <article><span>04</span><h3>Live the beach slowly</h3><p>Walk early, swim only where conditions feel appropriate, find shade for lunch, and watch the shoreline transform when the afternoon wind fills the sky with kites.</p><strong>Allow: as long as possible</strong></article>
+        <article><span>05</span><h3>Make the rental part of the trip</h3><p>A pool, garden, barbecue, terrace, or sea view is not “doing nothing.” For families and groups, a well-chosen home can be one of the holiday's best experiences.</p><strong>Allow: one unscheduled day</strong></article>
+        <article><span>06</span><h3>Explore beyond Cumbuco</h3><p>Fortaleza adds markets, museums, urban beaches, and restaurants; the Ceará coast opens into fishing villages, surf spots, and longer journeys west.</p><strong>Allow: a full day or longer</strong></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section split-feature">
+    <div class="shell split-grid">
+      <picture>
+        <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+        <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
+        <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 50vw" width="1200" height="800" loading="lazy" alt="Palm trees and golden sand near the Cumbuco dunes" />
+      </picture>
+      <div>
+        <p class="eyebrow">Dune-trip essentials</p>
+        <h2>Adventure needs a responsible operator.</h2>
+        <ul>
+          <li>Use a properly authorised provider and confirm what vehicle and route are included.</li>
+          <li>Tell the operator about children, pregnancy, mobility limitations, or back and neck concerns.</li>
+          <li>Agree whether you want a calmer or more adventurous ride before leaving.</li>
+          <li>Carry water, sun protection, secure footwear, and a protected phone or camera.</li>
+          <li>Respect restricted areas, vegetation, wildlife, residents, and the fragile dune landscape.</li>
+        </ul>
+        <p class="source-note">Visit Brasil recommends certified providers that comply with technical standards for ecotourism and adventure activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="shell itinerary">
+      <div><p class="eyebrow">Three-day first visit</p><h2>Enough structure. Plenty of air.</h2></div>
+      <div class="days">
+        <article><span>Day one</span><h3>Arrive into village life</h3><p>Settle into the rental, walk to the beach, learn your immediate surroundings, and choose dinner without a timetable.</p></article>
+        <article><span>Day two</span><h3>Dunes and freshwater</h3><p>Take an authorised morning buggy trip, stop at a lagoon, return for a late lunch, then keep the evening open.</p></article>
+        <article><span>Day three</span><h3>Choose your Cumbuco</h3><p>Book a first kite lesson, spend the day at the beach, or enjoy the property. The best choice depends on your energy—not a checklist.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section audience-section">
+    <div class="shell">
+      <p class="eyebrow">Different travellers, different days</p><h2>Make Cumbuco fit the people with you.</h2>
+      <div class="audience-grid">
+        <article><h3>Families</h3><p>Build around shade, hydration, meal timing, safe pool arrangements, shorter transfers, and activities suitable for the youngest person.</p></article>
+        <article><h3>Couples</h3><p>Mix one active morning with a slow beach lunch, a sunset walk, and a rental where private outdoor space matters.</p></article>
+        <article><h3>Kite groups</h3><p>Prioritise storage, beach logistics, lesson levels, wind flexibility, recovery time, and a reliable plan for non-riders.</p></article>
+        <article><h3>Long stays</h3><p>Alternate excursion days with ordinary village life: groceries, cooking, exercise, work, and quiet time at home.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="shell cta-grid">
+      <div><p class="eyebrow">Start with the right base</p><h2>Your rental changes what feels easy.</h2></div>
+      <div><p>Tell us whether the priority is the village, beach access, kite storage, a pool, or space for the whole group. We will help compare the practical fit.</p><div class="actions"><a class="button" href="/properties/">Browse Cumbuco rentals</a><a class="button button--ghost" href="/city/cumbuco/beaches/">Explore beaches & lagoons</a></div></div>
+    </div>
+  </section>
+
+  <section class="section faq-section">
+    <div class="shell"><p class="eyebrow">Planning questions</p><h2>Before filling the days.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .sub-hero { position: relative; min-height: 34rem; display: grid; align-items: end; overflow: hidden; color: white; }
+  .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .sub-hero img { object-fit: cover; object-position: center 58%; }
+  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 84%), rgb(3 43 45 / 38%) 62%, rgb(3 43 45 / 10%)), linear-gradient(0deg, rgb(3 35 38 / 55%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
+  .hero-copy h1 { max-width: 11ch; }
+  .hero-copy > p:last-child { max-width: 44rem; margin-top: 1.1rem; font-size: clamp(1.05rem, 2vw, 1.28rem); }
+  .hero-copy .eyebrow { color: #ffd46c; }
+  .intro-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
+  .intro-grid h2, .cta-grid h2 { max-width: 13ch; }
+  .section-intro { max-width: 34rem; color: var(--ink-soft); }
+  .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2rem; border-top: 1px solid var(--line); }
+  .experience-grid article { padding: 1.7rem 1.7rem 1.7rem 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .experience-grid article:nth-child(3n+2), .experience-grid article:nth-child(3n+3) { padding-left: 1.7rem; }
+  .experience-grid article:nth-child(3n) { border-right: 0; }
+  .experience-grid span { color: var(--coral); font-weight: 800; }
+  .experience-grid h3 { margin-top: 1.6rem; }
+  .experience-grid p { margin-top: .7rem; color: var(--ink-soft); }
+  .experience-grid strong { display: block; margin-top: 1rem; color: var(--ocean); font-size: .8rem; }
+  .split-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
+  .split-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .split-grid img { width: 100%; height: 100%; object-fit: cover; }
+  .split-grid h2 { max-width: 12ch; }
+  .split-grid ul { display: grid; gap: .8rem; margin: 1.5rem 0 0; padding-left: 1.2rem; color: var(--ink-soft); }
+  .source-note { margin-top: 1.2rem; padding: 1rem; background: var(--seafoam); border-radius: .8rem; color: var(--ink-soft); font-size: .85rem; }
+  .itinerary { display: grid; grid-template-columns: .65fr 1.35fr; gap: clamp(3rem, 8vw, 7rem); }
+  .itinerary h2 { max-width: 11ch; }
+  .days { border-top: 1px solid var(--line); }
+  .days article { display: grid; grid-template-columns: 6rem 13rem 1fr; gap: 1.25rem; padding: 1.2rem 0; border-bottom: 1px solid var(--line); }
+  .days span { color: var(--coral); font-weight: 800; }
+  .days p { color: var(--ink-soft); }
+  .audience-section h2 { max-width: 13ch; }
+  .audience-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; border-block: 1px solid var(--line); }
+  .audience-grid article { padding: 1.5rem; border-right: 1px solid var(--line); }
+  .audience-grid article:last-child { border-right: 0; }
+  .audience-grid p, .cta-grid p { margin-top: .65rem; color: var(--ink-soft); }
+  .cta { background: var(--seafoam); }
+  .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.25rem; }
+  .faq-section { border-top: 1px solid var(--line); }
+  .faq-section h2 { max-width: 13ch; }
+  .faq-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 2rem; border-top: 1px solid var(--line); }
+  .faq-grid article { padding: 1.5rem 1.5rem 1.5rem 0; border-bottom: 1px solid var(--line); }
+  .faq-grid article:nth-child(odd) { border-right: 1px solid var(--line); }
+  .faq-grid article:nth-child(even) { padding-left: 1.5rem; }
+  .faq-grid h3 { font-size: 1.2rem; }
+  .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
+  @media (max-width: 850px) { .experience-grid { grid-template-columns: 1fr 1fr; } .experience-grid article, .experience-grid article:nth-child(3n+2), .experience-grid article:nth-child(3n+3) { padding: 1.4rem; border-right: 1px solid var(--line); } .experience-grid article:nth-child(even) { border-right: 0; } .audience-grid { grid-template-columns: 1fr 1fr; } .audience-grid article:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); } .audience-grid article:first-child { border-bottom: 1px solid var(--line); } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .cta-grid, .split-grid, .itinerary, .faq-grid { grid-template-columns: 1fr; } .days article { grid-template-columns: 5.5rem 1fr; } .days p { grid-column: 2; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 520px) { .experience-grid, .audience-grid { grid-template-columns: 1fr; } .experience-grid article, .experience-grid article:nth-child(3n+2), .experience-grid article:nth-child(3n+3), .audience-grid article { padding: 1.3rem 0; border-right: 0; border-bottom: 1px solid var(--line); } }
+</style>

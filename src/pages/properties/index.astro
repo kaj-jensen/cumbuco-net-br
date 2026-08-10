@@ -1,0 +1,10 @@
+---
+import { getCollection } from "astro:content";
+import PropertyArchive from "../../components/PropertyArchive.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { brazilianPropertySlugs } from "../../config/site";
+const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug)).sort((a, b) => b.data.gallery.length - a.data.gallery.length);
+---
+<BaseLayout title="Imóveis para aluguel em Cumbuco: casas e apartamentos" description="Encontre casas, villas e apartamentos para aluguel por temporada em Cumbuco, Ceará, com atendimento pessoal pelo WhatsApp.">
+  <PropertyArchive properties={properties} title="Imóveis feitos para viver Cumbuco." description="De villas privativas para toda a família a apartamentos perto da praia, conheça nossa seleção local de imóveis por temporada." showDestinationLink={true} />
+</BaseLayout>

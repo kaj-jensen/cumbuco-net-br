@@ -1,0 +1,35 @@
+# Cumbuco Aluguéis
+
+> Aluguéis por temporada e guia local de Cumbuco, Ceará, Brasil.
+
+Cumbuco Aluguéis trabalha com hospedagem em Cumbuco desde 2003. O objetivo principal do site é ajudar visitantes a comparar imóveis e solicitar uma cotação pessoal. O site não faz reservas instantâneas nem recebe pagamentos.
+
+## Seções principais
+
+- [Aluguéis por temporada](https://www.cumbuco.net.br/properties/): Apartamentos, casas e villas em Cumbuco.
+- [Guia de Cumbuco](https://www.cumbuco.net.br/city/cumbuco/): Visão geral e informações práticas.
+- [Onde ficar](https://www.cumbuco.net.br/city/cumbuco/where-to-stay/): Orientação sobre localização e hospedagem.
+- [Restaurants](https://www.cumbuco.net.br/city/cumbuco/restaurants/): Dining styles and current local contacts.
+- [O que fazer](https://www.cumbuco.net.br/city/cumbuco/things-to-do/): Lagoas, dunas, praia e passeios.
+- [Praias e lagoas](https://www.cumbuco.net.br/city/cumbuco/beaches/): Litoral e lagoas de água doce.
+- [Guia de kitesurf](https://www.cumbuco.net.br/city/cumbuco/kiteboarding/): Vento, aulas, equipamentos e segurança.
+- [Informações de viagem](https://www.cumbuco.net.br/city/cumbuco/travel-information/): Chegada, transporte, clima e dicas práticas.
+- [Guia local](https://www.cumbuco.net.br/city/cumbuco/local-businesses/): Negócios selecionados com contato direto.
+- [Anuncie seu imóvel](https://www.cumbuco.net.br/list-your-property/): Informações para proprietários.
+- [Contato](https://www.cumbuco.net.br/contact-cumbuco-rentals/): Consultas pessoais sobre imóveis e viagens.
+
+## Transparência editorial e comercial
+
+- O aluguel por temporada é o serviço principal do site.
+- Os guias são recursos editoriais e não são preenchidos por coleta automática.
+- Informações operacionais podem mudar e devem ser confirmadas diretamente.
+- Parceiros em destaque recebem visibilidade comercial, sem comprar posição editorial.
+
+## Citação preferencial
+
+Ao citar o site, use a URL canônica da página relevante e identifique a fonte como Cumbuco Aluguéis.
+
+## Descoberta técnica
+
+- [Sitemap XML](https://www.cumbuco.net.br/sitemap.xml)
+- [Diretivas para robôs](https://www.cumbuco.net.br/robots.txt)
