@@ -7,10 +7,10 @@ const title = "Melhores Restaurantes em Cumbuco: Guia Gastronômico Local";
 const description = "Descubra onde comer em Cumbuco: almoços na praia, frutos do mar do Ceará, restaurantes no centro, cafés, pizzas e bares descontraídos.";
 const image = "/images/content/cumbuco/duro-beach/duro-beach-bar-1440.jpg";
 const faqItems = [
-  { question: "What food is Cumbuco known for?", answer: "Cumbuco's menus reflect coastal Ceará: fresh fish and seafood, grilled meats, rice and beans, regional ingredients, fruit juices, tapioca, and relaxed beach food. The village also has international choices shaped by its long-standing international kite community." },
-  { question: "Do I need restaurant reservations in Cumbuco?", answer: "Usually not for an ordinary weekday meal, but reservations are sensible for larger groups, popular beachfront tables, weekends, public holidays, and the busiest kite-season evenings." },
-  { question: "Are there vegetarian options in Cumbuco?", answer: "Many restaurants can offer salads, tapioca, pizza, pasta, rice, beans, vegetables, and fruit-based dishes, but choice varies. Ask clearly about ingredients and preparation if you have dietary restrictions." },
-  { question: "Can I pay by card?", answer: "Cards and Pix are widely used, but a small amount of Brazilian reais is useful for beach vendors, small purchases, or a temporary connection problem. Confirm accepted payment methods before ordering when it matters." },
+  { question: "Por qual comida Cumbuco é conhecido?", answer: "Os cardápios refletem o litoral cearense: peixes e frutos do mar frescos, carnes grelhadas, arroz e feijão, ingredientes regionais, sucos, tapioca e pratos informais de praia. A comunidade internacional do kite também trouxe opções de várias cozinhas do mundo." },
+  { question: "Preciso reservar restaurantes em Cumbuco?", answer: "Normalmente não durante a semana, mas é recomendável reservar para grupos grandes, mesas disputadas à beira-mar, fins de semana, feriados e noites movimentadas da temporada de kite." },
+  { question: "Existem opções vegetarianas em Cumbuco?", answer: "Muitos restaurantes oferecem saladas, tapioca, pizza, massas, arroz, feijão, legumes e pratos com frutas, mas a variedade muda. Se houver restrições alimentares, pergunte claramente sobre os ingredientes e o preparo." },
+  { question: "Posso pagar com cartão?", answer: "Cartões e Pix são amplamente aceitos, mas é útil levar uma pequena quantia em reais para vendedores de praia, compras menores ou falhas temporárias de conexão. Quando necessário, confirme a forma de pagamento antes de pedir." },
 ];
 const structuredData = [
   { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/restaurants/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
@@ -42,22 +42,22 @@ const structuredData = [
 
   <section class="section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">How Cumbuco eats</p><h2>Small village, surprisingly broad table.</h2></div>
+      <div><p class="eyebrow">Como Cumbuco come</p><h2>Uma vila pequena com uma mesa surpreendentemente variada.</h2></div>
       <div class="prose">
-        <p>Cumbuco grew from a fishing village and still feels connected to the sea, but its international kite community has added cafés, pizza, European influences, casual bars, and familiar comfort food to the local cooking.</p>
-        <p>There is no need to chase a checklist. Choose the atmosphere first: lunch beside the Atlantic, something quick between sessions, a family dinner near the village square, or a slower evening with drinks and music.</p>
+        <p>Cumbuco nasceu como vila de pescadores e continua ligado ao mar. A comunidade internacional do kite acrescentou cafés, pizzas, influências europeias, bares informais e pratos conhecidos à culinária local.</p>
+        <p>Escolha primeiro o ambiente: almoço diante do Atlântico, algo rápido entre sessões, jantar em família perto da praça ou uma noite tranquila com bebidas e música.</p>
       </div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">Choose by moment</p><h2>Four good ways to eat here.</h2></div><p class="section-intro">Opening days, menus, and service hours change with season and demand. Check directly before making a special journey.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Escolha pelo momento</p><h2>Quatro boas maneiras de comer aqui.</h2></div><p class="section-intro">Dias de funcionamento, cardápios e horários mudam conforme a temporada. Confirme diretamente antes de fazer um deslocamento especial.</p></div>
       <div class="moment-grid">
-        <article><span>01</span><h3>Lunch on the beach</h3><p>Fresh fish, grilled food, cold drinks, sea views, and shade beneath palms or beach umbrellas. Arrive earlier for a quieter table.</p></article>
-        <article><span>02</span><h3>Village dinner</h3><p>The compact centre offers the widest choice within walking distance: Brazilian cooking, seafood, pizza, pasta, burgers, and international menus.</p></article>
-        <article><span>03</span><h3>Quick kite-day fuel</h3><p>Juices, açaí, tapioca, sandwiches, and simple plates fit easily around lessons or a wind window. Hydration matters more than a heavy lunch.</p></article>
-        <article><span>04</span><h3>Drinks after sunset</h3><p>Move from beach light into a relaxed village bar. Ask what is happening locally rather than assuming every venue has live music every night.</p></article>
+        <article><span>01</span><h3>Almoço na praia</h3><p>Peixe fresco, grelhados, bebidas geladas, vista para o mar e sombra sob coqueiros ou guarda-sóis. Chegue cedo para encontrar uma mesa mais tranquila.</p></article>
+        <article><span>02</span><h3>Jantar no centro</h3><p>O centro compacto reúne a maior variedade a poucos passos: comida brasileira, frutos do mar, pizza, massas, hambúrgueres e cardápios internacionais.</p></article>
+        <article><span>03</span><h3>Lanche entre sessões</h3><p>Sucos, açaí, tapioca, sanduíches e pratos simples se encaixam entre aulas ou janelas de vento. Hidratação é mais importante do que um almoço pesado.</p></article>
+        <article><span>04</span><h3>Bebidas após o pôr do sol</h3><p>Saia da praia para um bar descontraído no centro. Pergunte pela programação local, pois nem todos os lugares têm música ao vivo todas as noites.</p></article>
       </div>
     </div>
   </section>
@@ -67,59 +67,59 @@ const structuredData = [
       <picture>
         <source type="image/avif" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.avif 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
         <source type="image/webp" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.webp 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
-        <img src="/images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Ocean view from a palm-framed beachfront table in Cumbuco" />
+        <img src="/images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg" srcset="/images/content/cumbuco/duro-beach/duro-beach-view-720.jpg 720w, /images/content/cumbuco/duro-beach/duro-beach-view-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Vista do mar em uma mesa entre coqueiros na praia de Cumbuco" />
       </picture>
       <div>
-        <p class="eyebrow">A taste of the setting</p>
-        <h2>Duro Beach: Cumbuco at table.</h2>
-        <p>Duro Beach is one local example of the village's beachfront appeal: a place where palms, sand, Atlantic light, music, food, and a long afternoon come together.</p>
-        <p>We present it as an example rather than a ranked recommendation. Stage 6 will introduce clearly labelled local listings and Featured Partners, with current details separated from independent editorial guidance.</p>
-        <a class="text-link" href="https://www.instagram.com/durobeach/" target="_blank" rel="noopener noreferrer">Check Duro Beach directly before visiting ↗</a>
+        <p class="eyebrow">Um pouco do ambiente</p>
+        <h2>Duro Beach: Cumbuco à mesa.</h2>
+        <p>O Duro Beach é um exemplo do charme à beira-mar: coqueiros, areia, luz do Atlântico, música, comida e uma longa tarde no mesmo lugar.</p>
+        <p>Ele aparece como exemplo local, não como classificação. Informações atuais e parcerias comerciais são identificadas claramente e permanecem separadas da orientação editorial.</p>
+        <a class="text-link" href="https://www.instagram.com/durobeach/" target="_blank" rel="noopener noreferrer">Confira o Duro Beach antes de visitar ↗</a>
       </div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell useful-grid">
-      <div><p class="eyebrow">Order with confidence</p><h2>A few words make the meal easier.</h2></div>
+      <div><p class="eyebrow">Peça com confiança</p><h2>Algumas palavras facilitam a refeição.</h2></div>
       <div class="phrase-grid">
-        <article><strong>Sem pimenta, por favor.</strong><span>No chilli, please.</span></article>
-        <article><strong>Tenho alergia a…</strong><span>I am allergic to…</span></article>
-        <article><strong>Sem carne / sem peixe.</strong><span>Without meat / without fish.</span></article>
-        <article><strong>A conta, por favor.</strong><span>The bill, please.</span></article>
+        <article><strong>Sem pimenta, por favor.</strong><span>Confirme se o molho também não leva pimenta.</span></article>
+        <article><strong>Tenho alergia a…</strong><span>Explique claramente o ingrediente.</span></article>
+        <article><strong>Sem carne / sem peixe.</strong><span>Pergunte também sobre caldos e molhos.</span></article>
+        <article><strong>A conta, por favor.</strong><span>Cartão e Pix são comuns.</span></article>
       </div>
-      <div class="note"><strong>Dietary needs</strong><p>Do not rely only on a translated menu. Explain allergies directly, ask about sauces and cross-contact, and carry appropriate medication if a reaction could be serious.</p></div>
+      <div class="note"><strong>Restrições alimentares</strong><p>Não dependa apenas do cardápio. Explique alergias diretamente, pergunte sobre molhos e contaminação cruzada e leve a medicação apropriada em casos de risco.</p></div>
     </div>
   </section>
 
   <section class="section">
     <div class="shell day-grid">
-      <div><p class="eyebrow">A simple food day</p><h2>Let the beach set the timetable.</h2></div>
+      <div><p class="eyebrow">Um dia gastronômico simples</p><h2>Deixe a praia definir o horário.</h2></div>
       <ol>
-        <li><span>Morning</span><p>Coffee, tropical fruit, tapioca, or eggs before the heat and wind build.</p></li>
-        <li><span>Lunch</span><p>A shaded beach table, fresh fish or a light plate, and enough water for the afternoon.</p></li>
-        <li><span>Late afternoon</span><p>A juice, açaí, coconut water, or cold drink as the beach changes colour.</p></li>
-        <li><span>Evening</span><p>Walk into the village and choose by atmosphere, appetite, and what is genuinely open.</p></li>
+        <li><span>Manhã</span><p>Café, frutas tropicais, tapioca ou ovos antes que o calor e o vento aumentem.</p></li>
+        <li><span>Almoço</span><p>Uma mesa à sombra na praia, peixe fresco ou prato leve e bastante água para a tarde.</p></li>
+        <li><span>Fim da tarde</span><p>Suco, açaí, água de coco ou bebida gelada enquanto a praia muda de cor.</p></li>
+        <li><span>Noite</span><p>Caminhe pelo centro e escolha conforme o ambiente, o apetite e o que estiver realmente aberto.</p></li>
       </ol>
     </div>
   </section>
 
   <BusinessHighlights
     categories={["restaurant", "cafe", "bar", "beach-club"]}
-    eyebrow="Verified direct links"
-    title="Continue with current local businesses."
-    description="A small, useful selection checked against each business’s own current website. These are direct contacts, not a paid ranking."
+    eyebrow="Links diretos verificados"
+    title="Conheça empresas locais em atividade."
+    description="Uma seleção pequena e útil, conferida nos canais oficiais de cada empresa. São contatos diretos, não uma classificação paga."
   />
 
   <section class="section cta">
     <div class="shell cta-grid">
-      <div><p class="eyebrow">Stay close to the evening</p><h2>Want restaurants within an easy walk?</h2></div>
-      <div><p>Tell us that village access matters when requesting a rental. We will compare the location rather than treating every “central” property as identical.</p><a class="button" href="/contact-cumbuco-rentals/">Ask for a personal match</a></div>
+      <div><p class="eyebrow">Fique perto da vida noturna</p><h2>Quer chegar aos restaurantes a pé?</h2></div>
+      <div><p>Informe que o acesso ao centro é importante ao pedir um imóvel. Compararemos as localizações, pois nem toda propriedade anunciada como “central” fica à mesma distância.</p><a class="button" href="/contact-cumbuco-rentals/">Pedir uma recomendação</a></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><p class="eyebrow">Dining questions</p><h2>Before choosing a table.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+    <div class="shell"><p class="eyebrow">Perguntas sobre alimentação</p><h2>Antes de escolher uma mesa.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
   </section>
 </BaseLayout>
 

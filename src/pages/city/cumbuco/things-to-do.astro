@@ -6,10 +6,10 @@ const title = "O que Fazer em Cumbuco: Dunas, Lagoas, Praia e Kitesurf";
 const description = "Planeje o que fazer em Cumbuco: passeios de buggy, lagoas, kitesurf, dias de praia, o centro da vila, Fortaleza e atividades para famílias.";
 const image = "/images/content/cumbuco/cumbuco-dune-buggy-1800.jpg";
 const faqItems = [
-  { question: "What are the best things to do in Cumbuco besides kitesurfing?", answer: "Explore the dunes with an authorised buggy operator, visit a lagoon, enjoy a long beach lunch, walk through the village, spend a pool day at your rental, or use Cumbuco as a base for Fortaleza and the Ceará coast." },
-  { question: "Are Cumbuco buggy tours suitable for children?", answer: "Suitability depends on the child's age, restraint arrangements, route, weather, and the operator. Ask for a calmer route, verify safety details before departure, and never treat the dunes as an unregulated playground." },
-  { question: "Can I visit Cumbuco's lagoons independently?", answer: "Some locations are accessible by road, while others are easier with local transport. Access, water levels, facilities, and road conditions change, so confirm locally and use authorised providers for dune routes." },
-  { question: "How many days do I need in Cumbuco?", answer: "Three or four days cover a beach day, dunes and lagoons, and time in the village. A week gives kitesurfers and families more flexibility for wind, weather, and genuinely unplanned days." },
+  { question: "O que fazer em Cumbuco além do kitesurf?", answer: "Explore as dunas com um bugueiro autorizado, visite uma lagoa, almoce sem pressa na praia, caminhe pelo centro, aproveite a piscina do imóvel ou use Cumbuco como base para conhecer Fortaleza e o litoral cearense." },
+  { question: "Passeios de buggy em Cumbuco são adequados para crianças?", answer: "Depende da idade, dos dispositivos de segurança, do percurso, do clima e do operador. Peça uma rota tranquila, confira as condições de segurança antes da saída e nunca trate as dunas como um parque sem regras." },
+  { question: "Posso visitar as lagoas de Cumbuco por conta própria?", answer: "Alguns locais têm acesso por estrada; outros são mais fáceis com transporte local. Acesso, nível da água, estrutura e condições das vias mudam. Confirme localmente e use operadores autorizados nas rotas pelas dunas." },
+  { question: "Quantos dias preciso para conhecer Cumbuco?", answer: "Três ou quatro dias permitem aproveitar a praia, as dunas, as lagoas e o centro. Uma semana oferece mais flexibilidade para kitesurfistas e famílias diante do vento, do clima e de dias sem programação." },
 ];
 const structuredData = [
   { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/things-to-do/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
@@ -41,21 +41,21 @@ const structuredData = [
 
   <section class="section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">Build a better day</p><h2>Choose one main experience, not five rushed stops.</h2></div>
-      <div class="prose"><p>Cumbuco looks compact on a map, but the beach, village, dunes, and lagoons each have their own rhythm. The best days leave space for the weather, the tide, and an unplanned lunch.</p><p>Use this guide to understand the experience before choosing a provider. Stage 6 will add properly labelled local businesses and Featured Partners without confusing paid visibility with editorial advice.</p></div>
+      <div><p class="eyebrow">Planeje um dia melhor</p><h2>Escolha uma experiência principal, não cinco paradas apressadas.</h2></div>
+      <div class="prose"><p>Cumbuco parece compacto no mapa, mas praia, centro, dunas e lagoas têm ritmos próprios. Os melhores dias deixam espaço para o clima, a maré e um almoço sem planejamento.</p><p>Use este guia para entender cada experiência antes de escolher um prestador. Empresas locais e parceiros são identificados claramente, sem confundir visibilidade comercial com orientação editorial.</p></div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell">
-      <div class="section-heading"><div><p class="eyebrow">Six Cumbuco experiences</p><h2>From first light to the last drink.</h2></div><p class="section-intro">Nature sets the conditions. Confirm access, timing, weather, and operator details locally before departure.</p></div>
+      <div class="section-heading"><div><p class="eyebrow">Seis experiências em Cumbuco</p><h2>Da primeira luz à última bebida.</h2></div><p class="section-intro">A natureza define as condições. Confirme acesso, horário, clima e dados do operador antes de sair.</p></div>
       <div class="experience-grid">
-        <article><span>01</span><h3>Ride across the dunes</h3><p>An authorised buggy trip reveals the landscape behind the beach: sweeping sand, viewpoints, and freshwater stops. Choose “with emotion” or “without emotion” deliberately—not as a joke after departure.</p><strong>Allow: half a day</strong></article>
-        <article><span>02</span><h3>Spend time at a lagoon</h3><p>Water levels and access change with the seasons. Lagoa do Parnamirim and the wider Cauípe landscape show a softer, freshwater side of the coast.</p><strong>Allow: 2–4 hours</strong></article>
-        <article><span>03</span><h3>Learn to kiteboard</h3><p>Book a qualified school, expect land-based safety training first, and let the instructor choose the right location and equipment for that day's conditions.</p><strong>Allow: several lessons</strong></article>
-        <article><span>04</span><h3>Live the beach slowly</h3><p>Walk early, swim only where conditions feel appropriate, find shade for lunch, and watch the shoreline transform when the afternoon wind fills the sky with kites.</p><strong>Allow: as long as possible</strong></article>
-        <article><span>05</span><h3>Make the rental part of the trip</h3><p>A pool, garden, barbecue, terrace, or sea view is not “doing nothing.” For families and groups, a well-chosen home can be one of the holiday's best experiences.</p><strong>Allow: one unscheduled day</strong></article>
-        <article><span>06</span><h3>Explore beyond Cumbuco</h3><p>Fortaleza adds markets, museums, urban beaches, and restaurants; the Ceará coast opens into fishing villages, surf spots, and longer journeys west.</p><strong>Allow: a full day or longer</strong></article>
+        <article><span>01</span><h3>Atravesse as dunas</h3><p>Um passeio autorizado de buggy revela a paisagem atrás da praia: grandes extensões de areia, mirantes e paradas em água doce. Escolha conscientemente entre “com emoção” e “sem emoção”.</p><strong>Reserve: meio dia</strong></article>
+        <article><span>02</span><h3>Passe algumas horas em uma lagoa</h3><p>O nível da água e o acesso mudam conforme a estação. A Lagoa do Parnamirim e a região do Cauípe mostram o lado mais tranquilo e doce do litoral.</p><strong>Reserve: 2 a 4 horas</strong></article>
+        <article><span>03</span><h3>Aprenda kitesurf</h3><p>Escolha uma escola qualificada, comece pelo treinamento de segurança em terra e deixe o instrutor definir local e equipamento para as condições do dia.</p><strong>Reserve: várias aulas</strong></article>
+        <article><span>04</span><h3>Aproveite a praia devagar</h3><p>Caminhe cedo, nade apenas quando as condições forem adequadas, almoce à sombra e veja o céu se encher de kites com o vento da tarde.</p><strong>Reserve: o máximo possível</strong></article>
+        <article><span>05</span><h3>Faça do imóvel parte da viagem</h3><p>Piscina, jardim, churrasqueira, terraço ou vista para o mar não significam “não fazer nada”. Para famílias e grupos, a casa certa pode ser uma das melhores experiências.</p><strong>Reserve: um dia livre</strong></article>
+        <article><span>06</span><h3>Explore além de Cumbuco</h3><p>Fortaleza oferece mercados, museus, praias urbanas e restaurantes. O litoral do Ceará segue por vilas de pescadores, picos de surf e viagens mais longas para oeste.</p><strong>Reserve: um dia inteiro ou mais</strong></article>
       </div>
     </div>
   </section>
@@ -65,55 +65,55 @@ const structuredData = [
       <picture>
         <source type="image/avif" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.avif 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.avif 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
         <source type="image/webp" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.webp 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.webp 1200w" sizes="(max-width: 760px) 100vw, 50vw" />
-        <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 50vw" width="1200" height="800" loading="lazy" alt="Palm trees and golden sand near the Cumbuco dunes" />
+        <img src="/images/content/cumbuco/cumbuco-palms-sand-1200.jpg" srcset="/images/content/cumbuco/cumbuco-palms-sand-720.jpg 720w, /images/content/cumbuco/cumbuco-palms-sand-1200.jpg 1200w" sizes="(max-width: 760px) 100vw, 50vw" width="1200" height="800" loading="lazy" alt="Coqueiros e areia dourada perto das dunas de Cumbuco" />
       </picture>
       <div>
-        <p class="eyebrow">Dune-trip essentials</p>
-        <h2>Adventure needs a responsible operator.</h2>
+        <p class="eyebrow">Cuidados no passeio pelas dunas</p>
+        <h2>Aventura exige um operador responsável.</h2>
         <ul>
-          <li>Use a properly authorised provider and confirm what vehicle and route are included.</li>
-          <li>Tell the operator about children, pregnancy, mobility limitations, or back and neck concerns.</li>
-          <li>Agree whether you want a calmer or more adventurous ride before leaving.</li>
-          <li>Carry water, sun protection, secure footwear, and a protected phone or camera.</li>
-          <li>Respect restricted areas, vegetation, wildlife, residents, and the fragile dune landscape.</li>
+          <li>Use um prestador autorizado e confirme o veículo e o percurso incluídos.</li>
+          <li>Avise sobre crianças, gestantes, mobilidade reduzida ou problemas de coluna e pescoço.</li>
+          <li>Defina antes da saída se prefere um passeio tranquilo ou mais aventureiro.</li>
+          <li>Leve água, proteção solar, calçado seguro e proteja o celular ou a câmera.</li>
+          <li>Respeite áreas restritas, vegetação, animais, moradores e a fragilidade das dunas.</li>
         </ul>
-        <p class="source-note">Visit Brasil recommends certified providers that comply with technical standards for ecotourism and adventure activities.</p>
+        <p class="source-note">O Visit Brasil recomenda prestadores certificados que cumpram as normas técnicas de ecoturismo e turismo de aventura.</p>
       </div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell itinerary">
-      <div><p class="eyebrow">Three-day first visit</p><h2>Enough structure. Plenty of air.</h2></div>
+      <div><p class="eyebrow">Primeira visita em três dias</p><h2>Planejamento suficiente, sem perder a liberdade.</h2></div>
       <div class="days">
-        <article><span>Day one</span><h3>Arrive into village life</h3><p>Settle into the rental, walk to the beach, learn your immediate surroundings, and choose dinner without a timetable.</p></article>
-        <article><span>Day two</span><h3>Dunes and freshwater</h3><p>Take an authorised morning buggy trip, stop at a lagoon, return for a late lunch, then keep the evening open.</p></article>
-        <article><span>Day three</span><h3>Choose your Cumbuco</h3><p>Book a first kite lesson, spend the day at the beach, or enjoy the property. The best choice depends on your energy—not a checklist.</p></article>
+        <article><span>Dia 1</span><h3>Entre no ritmo da vila</h3><p>Acomode-se, caminhe até a praia, conheça os arredores e escolha o jantar sem horário rígido.</p></article>
+        <article><span>Dia 2</span><h3>Dunas e água doce</h3><p>Faça um passeio autorizado de buggy pela manhã, pare em uma lagoa, volte para um almoço tardio e deixe a noite livre.</p></article>
+        <article><span>Dia 3</span><h3>Escolha seu Cumbuco</h3><p>Marque a primeira aula de kite, passe o dia na praia ou aproveite o imóvel. A melhor escolha depende da sua energia, não de uma lista.</p></article>
       </div>
     </div>
   </section>
 
   <section class="section audience-section">
     <div class="shell">
-      <p class="eyebrow">Different travellers, different days</p><h2>Make Cumbuco fit the people with you.</h2>
+      <p class="eyebrow">Viajantes diferentes, dias diferentes</p><h2>Adapte Cumbuco às pessoas que estão com você.</h2>
       <div class="audience-grid">
-        <article><h3>Families</h3><p>Build around shade, hydration, meal timing, safe pool arrangements, shorter transfers, and activities suitable for the youngest person.</p></article>
-        <article><h3>Couples</h3><p>Mix one active morning with a slow beach lunch, a sunset walk, and a rental where private outdoor space matters.</p></article>
-        <article><h3>Kite groups</h3><p>Prioritise storage, beach logistics, lesson levels, wind flexibility, recovery time, and a reliable plan for non-riders.</p></article>
-        <article><h3>Long stays</h3><p>Alternate excursion days with ordinary village life: groceries, cooking, exercise, work, and quiet time at home.</p></article>
+        <article><h3>Famílias</h3><p>Planeje sombra, hidratação, horários das refeições, segurança na piscina, traslados curtos e atividades adequadas à criança mais nova.</p></article>
+        <article><h3>Casais</h3><p>Combine uma manhã ativa com almoço tranquilo na praia, caminhada ao pôr do sol e um imóvel com área externa privativa.</p></article>
+        <article><h3>Grupos de kite</h3><p>Priorize armazenamento, logística de praia, níveis das aulas, flexibilidade com o vento, descanso e um bom plano para quem não veleja.</p></article>
+        <article><h3>Estadias longas</h3><p>Alterne passeios com a vida cotidiana: compras, cozinha, exercícios, trabalho e tempo tranquilo em casa.</p></article>
       </div>
     </div>
   </section>
 
   <section class="section cta">
     <div class="shell cta-grid">
-      <div><p class="eyebrow">Start with the right base</p><h2>Your rental changes what feels easy.</h2></div>
-      <div><p>Tell us whether the priority is the village, beach access, kite storage, a pool, or space for the whole group. We will help compare the practical fit.</p><div class="actions"><a class="button" href="/properties/">Browse Cumbuco rentals</a><a class="button button--ghost" href="/city/cumbuco/beaches/">Explore beaches & lagoons</a></div></div>
+      <div><p class="eyebrow">Comece com a base certa</p><h2>O imóvel muda tudo o que parece fácil.</h2></div>
+      <div><p>Diga se a prioridade é o centro, acesso à praia, espaço para kite, piscina ou lugar para todo o grupo. Ajudaremos a comparar o que funciona na prática.</p><div class="actions"><a class="button" href="/properties/">Ver imóveis em Cumbuco</a><a class="button button--ghost" href="/city/cumbuco/beaches/">Conhecer praias e lagoas</a></div></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><p class="eyebrow">Planning questions</p><h2>Before filling the days.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+    <div class="shell"><p class="eyebrow">Perguntas de planejamento</p><h2>Antes de preencher os dias.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
   </section>
 </BaseLayout>
 
