@@ -7,7 +7,7 @@ import { businessCategories } from "../../../config/destination";
 
 const title = "Guia Local de Cumbuco: Restaurantes, Escolas de Kite e Pousadas";
 const description = "Conheça restaurantes, escolas de kite, hotéis e pousadas de Cumbuco, com espaço para destacar empresas locais cuidadosamente selecionadas.";
-const image = "/images/content/cumbuco/cumbuco-palms-ocean-1200.jpg";
+const image = "/images/content/cumbuco/local-businesses-1440.jpg";
 const businesses = (await getCollection("businesses", ({ data }) => data.status === "published"))
   .sort((a, b) => Number(b.data.featuredPartner) - Number(a.data.featuredPartner) || b.data.featuredPriority - a.data.featuredPriority || a.data.name.localeCompare(b.data.name));
 const counts = new Map<string, number>();
@@ -54,6 +54,12 @@ const structuredData = [
 
 <BaseLayout title={title} description={description} canonical="/city/cumbuco/local-businesses/" image={image} structuredData={structuredData}>
   <section class="directory-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/local-businesses-720.avif 720w, /images/content/cumbuco/local-businesses-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/local-businesses-720.webp 720w, /images/content/cumbuco/local-businesses-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/local-businesses-720.jpg 720w, /images/content/cumbuco/local-businesses-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Estrutura de praia com vista para o mar e os kites de Cumbuco" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
     <div class="shell hero-copy">
       <p class="eyebrow">Guia local de Cumbuco</p>
       <h1>Contatos locais para planejar melhor.</h1>
@@ -135,10 +141,10 @@ const structuredData = [
 </BaseLayout>
 
 <style>
-  .directory-hero { position: relative; min-height: 33rem; display: grid; align-items: end; overflow: hidden; color: white; background: radial-gradient(circle at 78% 22%, rgb(255 212 108 / 28%), transparent 24%), linear-gradient(135deg, #063f43 0%, #08777a 58%, #78cfc3 100%); }
+  .directory-hero { position: relative; min-height: 36rem; display: grid; align-items: end; overflow: hidden; color: white; background: var(--ocean-deep); }
   .directory-hero picture, .directory-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
   .directory-hero img { object-fit: cover; object-position: center 55%; }
-  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 85%), rgb(3 43 45 / 36%) 62%, rgb(3 43 45 / 8%)), linear-gradient(0deg, rgb(3 35 38 / 52%), transparent 58%); }
+  .shade { background: linear-gradient(90deg, rgb(3 43 45 / 88%), rgb(3 43 45 / 56%) 55%, rgb(3 43 45 / 16%)), linear-gradient(0deg, rgb(3 35 38 / 64%), transparent 58%); }
   .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 5.5rem); }
   .hero-copy h1 { max-width: 12ch; }
   .hero-copy > p:last-child { max-width: 44rem; margin-top: 1rem; font-size: clamp(1.05rem, 2vw, 1.25rem); }

@@ -12,6 +12,14 @@ const editorialSources = [
   { source: "cumbuco-palms-ocean-pexels-original.jpg", output: "cumbuco-palms-ocean", widths: [720, 1200] },
   { source: "cumbuco-palms-sand-pexels-original.jpg", output: "cumbuco-palms-sand", widths: [720, 1200] },
   { source: "cumbuco-dune-buggy-pexels-original.jpg", output: "cumbuco-dune-buggy", widths: [900, 1800] },
+  { source: "local-beach-original.jpg", output: "local-beach", widths: [720, 1440] },
+  { source: "local-kitesurf-original.jpg", output: "local-kitesurf", widths: [720, 1440] },
+  { source: "local-buggy-original.jpg", output: "local-buggy", widths: [720, 1440] },
+  { source: "local-accommodation-original.jpg", output: "local-accommodation", widths: [720, 1440] },
+  { source: "local-travel-original.jpg", output: "local-travel", widths: [720, 1440] },
+  { source: "local-businesses-original.jpg", output: "local-businesses", widths: [720, 1440] },
+  { source: "local-partners-original.jpg", output: "local-partners", widths: [720, 1440] },
+  { source: "local-about-original.jpg", output: "local-about", widths: [720, 1440] },
 ];
 
 async function filesIn(directory) {
@@ -36,7 +44,9 @@ const destinationImages = (await filesIn(destinationRoot))
 const sourceImages = [...heroImages, ...destinationImages, ...cardImages];
 
 for (const image of editorialSources) {
-  const source = path.join(destinationRoot, image.source);
+  const source = image.source.startsWith("local-")
+    ? path.join(root, "assets/images/content/cumbuco", image.source)
+    : path.join(destinationRoot, image.source);
 
   for (const width of image.widths) {
     const output = path.join(destinationRoot, `${image.output}-${width}`);

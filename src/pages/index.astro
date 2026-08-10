@@ -3,22 +3,10 @@ import { getCollection } from "astro:content";
 import PropertyCard from "../components/PropertyCard.astro";
 import VillaBrancaReviews from "../components/VillaBrancaReviews.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../config/site";
-import { brazilianPropertySlugs } from "../config/site";
+import { brazilianPropertySlugs, propertyDisplayOrder, site } from "../config/site";
 
 const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
-const featuredSlugs = [
-  "villa-branca",
-  "casa-chick",
-  "casa-vermelha",
-  "dream-village-301-v",
-  "dunas-village-cumbuco",
-  "dream-village-401-h",
-  "jardim-reale-cumbuco",
-  "dream-village-301-h",
-  "beach-sun-cumbuco",
-];
-const featured = featuredSlugs.map((slug) => properties.find((item) => item.data.slug === slug)).filter(Boolean);
+const featured = propertyDisplayOrder.map((slug) => properties.find((item) => item.data.slug === slug)).filter(Boolean);
 const hero = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
 const heroSmall = "/images/content/cumbuco/sunny-kitesurfing-720.jpg";
 const heroLarge = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";

@@ -59,3 +59,23 @@ export const brazilianPropertySlugs = new Set([
   "jardim-reale-cumbuco",
   "villa-branca",
 ]);
+
+export const propertyDisplayOrder = [
+  "villa-branca",
+  "casa-chick",
+  "casa-vermelha",
+  "dream-village-301-v",
+  "dunas-village-cumbuco",
+  "dream-village-401-h",
+  "jardim-reale-cumbuco",
+  "dream-village-301-h",
+  "beach-sun-cumbuco",
+] as const;
+
+export const comparePropertyEntries = (a: any, b: any) => {
+  const aSlug = a.data?.slug ?? a.slug;
+  const bSlug = b.data?.slug ?? b.slug;
+  const aIndex = propertyDisplayOrder.indexOf(aSlug);
+  const bIndex = propertyDisplayOrder.indexOf(bSlug);
+  return (aIndex < 0 ? Number.MAX_SAFE_INTEGER : aIndex) - (bIndex < 0 ? Number.MAX_SAFE_INTEGER : bIndex);
+};

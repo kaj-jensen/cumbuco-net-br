@@ -3,7 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const title = "Empresas em Destaque no Guia de Cumbuco";
 const description = "Apresente seu restaurante, pousada, escola de kite, passeio, loja ou serviço a pessoas que já estão planejando uma viagem a Cumbuco.";
-const image = "/images/content/cumbuco/cumbuco-palms-sand-1200.jpg";
+const image = "/images/content/cumbuco/local-partners-1440.jpg";
 const whatsapp = "https://wa.me/5585988139402?text=Ola%2C%20gostaria%20de%20conversar%20sobre%20destacar%20minha%20empresa%20no%20guia%20de%20Cumbuco.";
 const faqItems = [
   { question: "Quais empresas podem solicitar destaque?", answer: "Empresas que atendem visitantes de Cumbuco, como restaurantes, hospedagens, escolas de kite, passeios, transportes, lojas e serviços. Cada empresa é avaliada antes da publicação." },
@@ -19,6 +19,12 @@ const structuredData = [
 
 <BaseLayout title={title} description={description} canonical="/featured-partners/" image={image} structuredData={structuredData}>
   <section class="partner-hero">
+    <picture>
+      <source type="image/avif" srcset="/images/content/cumbuco/local-partners-720.avif 720w, /images/content/cumbuco/local-partners-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/local-partners-720.webp 720w, /images/content/cumbuco/local-partners-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/local-partners-720.jpg 720w, /images/content/cumbuco/local-partners-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Piscina e jardim de uma hospedagem local em Cumbuco" fetchpriority="high" />
+    </picture>
+    <div class="shade"></div>
     <div class="shell hero-copy">
       <p class="eyebrow">Empresas em destaque</p>
       <h1>Sua empresa no momento em que o visitante decide.</h1>

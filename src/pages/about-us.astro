@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 const image = "/images/content/ana-ceres-teixeira.jpg";
+const heroImage = "/images/content/cumbuco/local-about-1440.jpg";
 const title = "Sobre o Cumbuco Aluguéis";
 const description = "Conheça Ana Ceres Teixeira e o atendimento local do Cumbuco Aluguéis para casas, villas e apartamentos por temporada em Cumbuco.";
 const structuredData = [
@@ -13,7 +14,7 @@ const structuredData = [
 ---
 
 <BaseLayout title={title} description={description} canonical="/about-us/" image={image} pageType="AboutPage" structuredData={structuredData}>
-  <section class="about-hero"><div class="shell"><p class="eyebrow">Atendimento local desde 2003</p><h1>Conhecimento de Cumbuco, conversa direta e imóveis bem explicados.</h1><p>O Cumbuco Aluguéis ajuda hóspedes a encontrar casas, villas e apartamentos adequados ao tamanho do grupo e ao ritmo da viagem.</p></div></section>
+  <section class="about-hero"><picture><source type="image/avif" srcset="/images/content/cumbuco/local-about-720.avif 720w, /images/content/cumbuco/local-about-1440.avif 1440w" sizes="100vw" /><source type="image/webp" srcset="/images/content/cumbuco/local-about-720.webp 720w, /images/content/cumbuco/local-about-1440.webp 1440w" sizes="100vw" /><img src={heroImage} srcset="/images/content/cumbuco/local-about-720.jpg 720w, /images/content/cumbuco/local-about-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Jardim de um condomínio à beira-mar em Cumbuco" fetchpriority="high" /></picture><div class="hero-shade"></div><div class="shell hero-copy"><p class="eyebrow">Atendimento local desde 2003</p><h1>Conhecimento de Cumbuco, conversa direta e imóveis bem explicados.</h1><p>O Cumbuco Aluguéis ajuda hóspedes a encontrar casas, villas e apartamentos adequados ao tamanho do grupo e ao ritmo da viagem.</p></div></section>
   <section class="section"><div class="shell about-grid">
     <figure><img src={image} width="480" height="640" alt="Ana Ceres Teixeira, fundadora do Cumbuco Aluguéis" loading="eager" /><figcaption>Ana Ceres Teixeira · CRECI 5653</figcaption></figure>
     <div class="prose"><p class="eyebrow">Quem está por trás</p><h2>Uma relação construída pessoalmente.</h2><p>Ana Ceres Teixeira fundou a operação em 2003 para oferecer locações de temporada com atendimento direto e conhecimento real dos imóveis.</p><p>Formada originalmente em enfermagem e corretora de imóveis registrada no Ceará sob o CRECI 5653, Ana combina cuidado no atendimento com experiência no mercado imobiliário de Fortaleza e Cumbuco.</p><p>O Cumbuco Aluguéis faz parte da <a href="https://www.fortalezarealestate.com.br/" target="_blank" rel="noopener noreferrer">Fortaleza Real Estate</a>. O objetivo não é oferecer reserva automática: é entender datas, grupo e prioridades, confirmar a disponibilidade e preparar uma cotação clara.</p><div class="actions"><a class="button" href="/properties/">Ver imóveis</a><a class="button button--ghost" href="/contact-cumbuco-rentals/">Falar conosco</a></div></div>
@@ -22,13 +23,17 @@ const structuredData = [
 </BaseLayout>
 
 <style>
-  .about-hero { padding-block: clamp(4rem, 10vw, 8rem); background: radial-gradient(circle at 82% 18%, rgb(255 212 108 / 28%), transparent 24rem), linear-gradient(135deg, var(--ocean-deep), var(--ocean)); color: white; }
+  .about-hero { position: relative; min-height: 36rem; display: grid; align-items: end; overflow: hidden; color: white; background: var(--ocean-deep); }
+  .about-hero picture, .about-hero picture img, .hero-shade { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .about-hero picture img { object-fit: cover; object-position: center 58%; }
+  .hero-shade { background: linear-gradient(90deg, rgb(3 43 45 / 88%), rgb(3 43 45 / 48%) 60%, rgb(3 43 45 / 10%)), linear-gradient(0deg, rgb(3 35 38 / 62%), transparent 58%); }
+  .hero-copy { position: relative; padding-block: clamp(4rem, 10vw, 7rem); }
   .about-hero h1 { max-width: 17ch; }
   .about-hero p:last-child { max-width: 45rem; margin-top: 1.2rem; color: rgb(255 255 255 / 80%); font-size: clamp(1.05rem, 2vw, 1.25rem); }
   .about-hero .eyebrow { color: #ffd46c; }
   .about-grid { display: grid; grid-template-columns: minmax(15rem, .62fr) minmax(0, 1.38fr); gap: clamp(3rem, 9vw, 8rem); align-items: center; }
-  figure { margin: 0; }
-  figure img { width: 100%; max-width: 26rem; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  figure { width: min(100%, 26rem); margin: 0; }
+  figure img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: contain; border-radius: 1.4rem; box-shadow: var(--shadow); }
   figcaption { margin-top: .8rem; color: var(--ink-soft); font-size: .82rem; font-weight: 700; }
   .prose h2 { max-width: 14ch; }
   .actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1.5rem; }
@@ -39,5 +44,5 @@ const structuredData = [
   .values-grid span { color: var(--coral); font-weight: 900; }
   .values-grid h3 { margin-top: 1.3rem; }
   .values-grid p { margin-top: .5rem; color: var(--ink-soft); }
-  @media (max-width: 720px) { .about-grid, .values-grid { grid-template-columns: 1fr; } figure img { max-width: 20rem; } .values-grid article { padding: 1.25rem 0; border-right: 0; border-bottom: 1px solid var(--line); } }
+  @media (max-width: 720px) { .about-grid, .values-grid { grid-template-columns: 1fr; } figure { max-width: 20rem; } .values-grid article { padding: 1.25rem 0; border-right: 0; border-bottom: 1px solid var(--line); } }
 </style>

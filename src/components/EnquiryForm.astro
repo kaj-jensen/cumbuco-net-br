@@ -22,7 +22,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
   <div class="form-heading">
     <p class="eyebrow">{fixedProperty ? `Consulte ${property}` : "Consulta de aluguel"}</p>
     <h2>Conte como será sua estadia.</h2>
-    <p>Envie os dados pelo WhatsApp e confirmaremos pessoalmente a disponibilidade e o valor completo. A opção de e-mail será ativada depois da configuração do Zoho.</p>
+    <p>Preencha as datas, o número de hóspedes e seu nome. Abriremos uma mensagem pronta no WhatsApp para confirmarmos disponibilidade e valor.</p>
   </div>
 
   <div class="form-body">
@@ -59,7 +59,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
       </label>
       <label class="wide">
         <span>Seu e-mail</span>
-        <input type="email" name="email" autocomplete="email" maxlength="254" placeholder="Opcional para consultas pelo WhatsApp" />
+        <input type="email" name="email" autocomplete="email" maxlength="254" placeholder="Opcional" />
       </label>
       <label class="wide">
         <span>Algo que devemos saber?</span>
@@ -73,17 +73,15 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
         <input type="checkbox" name="consent" required />
         <span>Concordo que Cumbuco Aluguéis use estes dados para responder à minha consulta. Veja nossa <a href="/privacy-cookies/">política de privacidade</a>.</span>
       </label>
-      {turnstileSiteKey && <div class="turnstile wide"><div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="dark" data-size="flexible"></div></div>}
+      {turnstileSiteKey && <div class="turnstile wide"><div class="cf-turnstile" data-sitekey={turnstileSiteKey} data-theme="light" data-size="flexible"></div></div>}
     </div>
 
     <div class="form-actions">
-      <button class="button button--light" type="submit" disabled={!turnstileSiteKey}>Enviar por e-mail</button>
-      <button class="button button--outline" type="button" data-whatsapp-submit>Enviar pelo WhatsApp</button>
+      {turnstileSiteKey && <button class="button button--email" type="submit">Enviar por e-mail</button>}
+      <button class="button button--whatsapp" type="button" data-whatsapp-submit>Enviar consulta pelo WhatsApp <span aria-hidden="true">→</span></button>
     </div>
-    <p class="form-note">Você recebe o valor completo antes de decidir. Nenhum pagamento ou reserva automática é feito neste site.</p>
-    <p class="form-status" data-form-status role="status" aria-live="polite">
-      {!turnstileSiteKey && "As consultas por e-mail serão ativadas com o Zoho. O WhatsApp já funciona."}
-    </p>
+    <p class="form-note"><strong>Sem reserva automática:</strong> você recebe a disponibilidade e o valor completo antes de decidir.</p>
+    <p class="form-status" data-form-status role="status" aria-live="polite"></p>
   </div>
 </form>
 
@@ -227,32 +225,36 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
   .enquiry-form { display: grid; grid-template-columns: minmax(15rem, 0.75fr) minmax(0, 1.25fr); gap: clamp(2rem, 7vw, 6rem); align-items: start; }
   .enquiry-form.compact { grid-template-columns: minmax(14rem, 0.65fr) minmax(0, 1.35fr); }
   .form-heading h2 { max-width: 10ch; }
-  .form-heading > p:not(.eyebrow) { max-width: 30rem; margin-top: 1.25rem; color: #c9dcd7; }
-  .form-body { min-width: 0; }
+  .form-heading > p:not(.eyebrow) { max-width: 30rem; margin-top: 1.25rem; color: #e2efec; font-size: 1.02rem; }
+  .form-body { min-width: 0; padding: clamp(1.25rem, 3vw, 2rem); border: 1px solid rgb(255 255 255 / 55%); border-radius: 1.25rem; background: #f8fbfa; color: var(--ink); box-shadow: 0 1.2rem 3.5rem rgb(1 45 48 / 24%); }
   .fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
   label { display: grid; gap: 0.45rem; }
-  label > span { color: #d8e7e2; font-size: 0.78rem; font-weight: 700; }
-  input, textarea, select { width: 100%; border: 1px solid rgb(255 255 255 / 22%); border-radius: 0.75rem; background: rgb(255 255 255 / 9%); color: white; outline: none; }
+  label > span { color: var(--ocean-deep); font-size: 0.8rem; font-weight: 800; }
+  input, textarea, select { width: 100%; border: 1px solid #b8ceca; border-radius: 0.75rem; background: white; color: var(--ink); outline: none; box-shadow: inset 0 1px 2px rgb(9 64 67 / 4%); }
+  input::placeholder, textarea::placeholder { color: #526a6a; opacity: 1; }
   input, select { min-height: 3.15rem; padding: 0.65rem 0.8rem; }
   select option { color: var(--ink); background: white; }
   textarea { resize: vertical; padding: 0.8rem; }
-  input:focus, textarea:focus, select:focus { border-color: var(--coral); box-shadow: 0 0 0 3px rgb(239 121 95 / 18%); }
-  input::-webkit-calendar-picker-indicator { filter: invert(1); }
+  input:focus, textarea:focus, select:focus { border-color: var(--ocean); box-shadow: 0 0 0 3px rgb(5 124 131 / 16%); }
+  input::-webkit-calendar-picker-indicator { filter: none; }
   .wide { grid-column: 1 / -1; }
   .honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
   .consent { grid-template-columns: auto 1fr; align-items: start; gap: 0.7rem; }
-  .consent input { width: 1.1rem; min-height: 1.1rem; margin-top: 0.15rem; accent-color: var(--coral); }
-  .consent span { font-weight: 400; }
-  .consent a { color: white; }
+  .consent input { width: 1.2rem; min-height: 1.2rem; margin-top: 0.1rem; accent-color: var(--ocean); }
+  .consent span { color: #334f50; font-size: 0.82rem; font-weight: 500; line-height: 1.5; }
+  .consent a { color: var(--ocean-deep); font-weight: 800; text-underline-offset: 0.18em; }
   .turnstile { min-height: 65px; }
   .form-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-  .button--outline { border-color: rgb(255 255 255 / 40%); background: transparent; color: white; }
-  .button--outline:hover { background: rgb(255 255 255 / 10%); }
+  .button--email { border-color: var(--ocean); background: white; color: var(--ocean-deep); }
+  .button--whatsapp { min-width: min(100%, 19rem); border-color: #25d366; background: #25d366; color: #073f27; box-shadow: 0 0.6rem 1.4rem rgb(37 211 102 / 20%); }
+  .button--whatsapp:hover { border-color: #45e17e; background: #45e17e; }
+  .button--whatsapp span { margin-left: 0.4rem; font-size: 1.1rem; }
   .button:disabled { cursor: not-allowed; opacity: 0.55; transform: none; }
-  .form-note { margin-top: 1rem; color: #b7cec8; font-size: 0.78rem; }
-  .form-status { min-height: 1.5em; margin-top: 0.75rem; color: #c9dcd7; font-weight: 700; }
-  .form-status[data-state="success"] { color: #9ce8c0; }
-  .form-status[data-state="error"] { color: #ffd0c6; }
+  .form-note { margin-top: 1rem; color: #496668; font-size: 0.78rem; }
+  .form-status { min-height: 1.5em; margin-top: 0.65rem; color: var(--ink-soft); font-weight: 700; }
+  .form-status:empty { display: none; }
+  .form-status[data-state="success"] { color: #087b45; }
+  .form-status[data-state="error"] { color: #a93625; }
   @media (max-width: 780px) { .enquiry-form, .enquiry-form.compact { grid-template-columns: 1fr; } .form-heading h2 { max-width: none; } }
   @media (max-width: 520px) { .fields { grid-template-columns: 1fr; } .wide { grid-column: 1; } .form-actions { align-items: stretch; flex-direction: column; } }
 </style>
