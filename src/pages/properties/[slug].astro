@@ -96,6 +96,14 @@ const propertyStructuredData = [
     {heroImages.slice(1).map((image, index) => <img src={image.src} width="1200" height="900" alt={`${p.title}, foto ${index + 2}`} loading="lazy" decoding="async" />)}
   </section>
 
+  <div class="shell availability-prompt" aria-label={`Consultar disponibilidade de ${p.title}`}>
+    <div>
+      <strong>Quer saber se {p.title} está disponível?</strong>
+      <span>Veja as datas livres e escolha sua chegada e saída.</span>
+    </div>
+    <a class="button availability-button" href="#availability">Ver disponibilidade <span aria-hidden="true">↓</span></a>
+  </div>
+
   {p.gallery.length > 5 && (
     <details class="full-gallery shell">
       <summary><span>Ver todas as {p.gallery.length} fotos</span></summary>
@@ -113,6 +121,12 @@ const propertyStructuredData = [
       </div>
     </details>
   )}
+
+  <section id="availability" class="section section--sand availability-section">
+    <div class="shell">
+      <AvailabilityCalendar property={p.title} slug={p.slug} reservedDates={p.reservedDates} />
+    </div>
+  </section>
 
   <section class="section">
     <div class="shell detail-grid">
@@ -147,12 +161,6 @@ const propertyStructuredData = [
     </section>
   )}
 
-  <section class={`section ${p.slug === "villa-branca" ? "" : "section--sand"}`}>
-    <div class="shell">
-      <AvailabilityCalendar property={p.title} slug={p.slug} reservedDates={p.reservedDates} />
-    </div>
-  </section>
-
   <section id="enquire" class="section section--ocean enquiry">
     <div class="shell">
       <EnquiryForm property={p.title} slug={p.slug} maxGuests={p.metrics.guests} />
@@ -169,6 +177,13 @@ const propertyStructuredData = [
   .gallery picture, .gallery img { width: 100%; height: 100%; }
   .gallery picture { display: block; grid-row: 1 / 3; }
   .gallery img { object-fit: cover; }
+  .availability-prompt { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; margin-top: 1rem; padding: 1.1rem 1.25rem; border: 1px solid color-mix(in srgb, var(--ocean) 22%, var(--line)); border-radius: 1rem; background: linear-gradient(110deg, var(--seafoam), white); box-shadow: 0 0.7rem 1.8rem rgb(6 79 85 / 8%); }
+  .availability-prompt > div { display: grid; gap: 0.12rem; }
+  .availability-prompt strong { color: var(--ocean-deep); font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; }
+  .availability-prompt span { color: var(--ink-soft); font-size: 0.88rem; }
+  .availability-button { min-height: 2.9rem; white-space: nowrap; }
+  .availability-button > span { color: inherit; font-size: 1rem; }
+  .availability-section { scroll-margin-top: 5.25rem; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
   .full-gallery { margin-top: 1rem; }
   .full-gallery summary {
     display: flex;
@@ -228,5 +243,7 @@ const propertyStructuredData = [
     .gallery picture img { border-radius: 0.9rem; }
     .full-gallery summary { margin-inline: auto; }
     .full-gallery-grid { grid-template-columns: 1fr; }
+    .availability-prompt { align-items: stretch; flex-direction: column; margin-top: 0.75rem; padding: 1rem; }
+    .availability-button { width: 100%; }
   }
 </style>
