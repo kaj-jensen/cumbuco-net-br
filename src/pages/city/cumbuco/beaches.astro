@@ -6,10 +6,10 @@ const title = "Praias e Lagoas de Cumbuco: Onde Nadar, Relaxar e Explorar";
 const description = "Conheça a Praia de Cumbuco, as dunas e lagoas de água doce. Veja o que cada paisagem oferece, como as condições mudam e como visitar com responsabilidade.";
 const image = "/images/content/cumbuco/sunny-beach-1440.jpg";
 const faqItems = [
-  { question: "Is Cumbuco Beach safe for swimming?", answer: "Conditions vary with wind, tide, waves, currents, and the exact stretch of beach. Choose a populated area, ask locally, supervise children closely, and stay out when the sea looks stronger than your ability." },
-  { question: "Which lagoon should I visit near Cumbuco?", answer: "Lagoa do Parnamirim is commonly included in local dune trips, while the Cauípe landscape is internationally known for kiteboarding and protected natural surroundings. The best choice depends on current water, access, activity, and crowd conditions." },
-  { question: "Do the lagoons have water all year?", answer: "Water levels change with rainfall, season, maintenance, and local conditions. Never plan from an old photograph alone; ask for a current update shortly before visiting." },
-  { question: "Can I drive on the dunes or beach?", answer: "Do not take an ordinary rental vehicle onto dunes or beaches. Access can be restricted, conditions are deceptive, and the environment is fragile. Use authorised local operators where off-road access is required." },
+  { question: "A Praia de Cumbuco é segura para banho?", answer: "As condições variam conforme vento, maré, ondas, correntes e o trecho da praia. Escolha uma área movimentada, pergunte localmente, supervisione as crianças e não entre quando o mar estiver além da sua capacidade." },
+  { question: "Qual lagoa devo visitar perto de Cumbuco?", answer: "A Lagoa do Parnamirim costuma fazer parte dos passeios pelas dunas. O Cauípe é conhecido internacionalmente pelo kitesurf e pela paisagem natural protegida. A melhor escolha depende do nível da água, acesso, atividade desejada e movimento no dia." },
+  { question: "As lagoas têm água o ano inteiro?", answer: "O nível muda conforme chuva, estação e condições locais. Não planeje apenas com base em uma fotografia antiga; peça informações recentes pouco antes da visita." },
+  { question: "Posso dirigir nas dunas ou na praia?", answer: "Não leve um carro comum de locadora para dunas ou praias. O acesso pode ser restrito, as condições enganam e o ambiente é frágil. Use operadores locais autorizados quando o trajeto exigir condução fora de estrada." },
 ];
 const structuredData = [
   { "@type": "Article", "@id": "https://www.cumbuco.net.br/city/cumbuco/beaches/#article", headline: title, description, image: new URL(image, Astro.site).toString(), about: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" }, publisher: { "@id": "https://www.cumbuco.net.br/#organization" }, inLanguage: "pt-BR" },
@@ -27,13 +27,13 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/sunny-beach-720.avif 720w, /images/content/cumbuco/sunny-beach-1440.avif 1440w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/sunny-beach-720.webp 720w, /images/content/cumbuco/sunny-beach-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Golden sand and bright Atlantic water at Cumbuco Beach" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/sunny-beach-720.jpg 720w, /images/content/cumbuco/sunny-beach-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Areia dourada e mar azul na Praia de Cumbuco" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
-      <p class="eyebrow">Cumbuco beaches & lagoons</p>
-      <h1>Salt water in front. Fresh water beyond the dunes.</h1>
-      <p>Cumbuco is not one postcard. It is an Atlantic shoreline, a moving dune landscape, and lagoons whose character changes with wind and rain.</p>
+      <p class="eyebrow">Praias e lagoas de Cumbuco</p>
+      <h1>Água salgada à frente. Água doce depois das dunas.</h1>
+      <p>Cumbuco não cabe em um único cartão-postal. É litoral atlântico, dunas em movimento e lagoas que mudam com o vento e a chuva.</p>
     </div>
   </section>
 
@@ -41,19 +41,19 @@ const structuredData = [
 
   <section class="section">
     <div class="shell intro-grid">
-      <div><p class="eyebrow">Read the landscape</p><h2>The conditions are part of the place.</h2></div>
-      <div class="prose"><p>The coast can feel gentle in the morning and energetic after the trade wind builds. Lagoons can expand after the rainy period and contract later in the year. Sand moves, water levels change, and access evolves.</p><p>That is not an inconvenience to edit out—it is the nature of Cumbuco. Use photographs for inspiration, then ask locally about today's water, wind, tide, access, and facilities.</p></div>
+      <div><p class="eyebrow">Entenda a paisagem</p><h2>As condições fazem parte do lugar.</h2></div>
+      <div class="prose"><p>O litoral pode estar tranquilo pela manhã e ganhar energia com os ventos alísios. As lagoas crescem depois do período chuvoso e podem diminuir ao longo do ano. A areia se move, o nível da água muda e os acessos evoluem.</p><p>Essa é a natureza de Cumbuco. Use as fotos como inspiração e depois confirme localmente a água, o vento, a maré, o acesso e a estrutura disponíveis no dia.</p></div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell place-grid">
       <article class="place-card place-card--wide">
-        <div><span>Atlantic</span><h2>Praia do Cumbuco</h2><p>A long, warm-water beach for morning walks, beach restaurants, sunset light, and the colourful spectacle of kite season. The central stretch feels sociable; walk farther and the horizon opens.</p><ul><li>Best for beach days, walking, atmosphere, and watching kiteboarding</li><li>Conditions become windier and busier through the afternoon in kite season</li><li>Swimming suitability changes by time and location</li></ul></div>
+        <div><span>Atlântico</span><h2>Praia do Cumbuco</h2><p>Uma praia extensa de água quente, ideal para caminhadas matinais, restaurantes à beira-mar, pôr do sol e o espetáculo colorido da temporada de kite. O trecho central é movimentado; mais adiante, o horizonte se abre.</p><ul><li>Boa para dias de praia, caminhadas e observar o kitesurf</li><li>O vento e o movimento aumentam à tarde durante a temporada</li><li>As condições para banho mudam conforme horário e local</li></ul></div>
       </article>
-      <article><span>Freshwater</span><h3>Lagoa do Parnamirim</h3><p>A well-known dune-and-lagoon stop near Cumbuco, often combined with authorised buggy routes. Water and activity options vary with the season.</p><strong>Check: water level, access, and current activities</strong></article>
-      <article><span>Protected landscape</span><h3>Lagamar do Cauípe</h3><p>The Cauípe area combines lagoon, river, dunes, coastal vegetation, local community life, and internationally recognised kite conditions within an environmentally sensitive landscape.</p><strong>Check: wind, water, crowding, and protected-area guidance</strong></article>
-      <article><span>Local reference</span><h3>Lagoa do Banana</h3><p>A lagoon name long associated with the Cumbuco area. Visitor access and the quality of the experience can change, so obtain a recent local report rather than relying on historic marketing.</p><strong>Check: current access and water conditions</strong></article>
+      <article><span>Água doce</span><h3>Lagoa do Parnamirim</h3><p>Uma parada conhecida entre dunas e lagoa perto de Cumbuco, muitas vezes incluída em rotas autorizadas de buggy. A água e as atividades variam conforme a estação.</p><strong>Confira: nível da água, acesso e atividades atuais</strong></article>
+      <article><span>Paisagem protegida</span><h3>Lagamar do Cauípe</h3><p>A região combina lagoa, rio, dunas, vegetação costeira, comunidade local e condições de kite reconhecidas internacionalmente em uma paisagem ambientalmente sensível.</p><strong>Confira: vento, água, movimento e regras da área protegida</strong></article>
+      <article><span>Referência local</span><h3>Lagoa do Banana</h3><p>Um nome há muito associado à região. O acesso e a experiência podem mudar; procure informações locais recentes em vez de depender de divulgação antiga.</p><strong>Confira: acesso e condições atuais da água</strong></article>
     </div>
   </section>
 
@@ -62,49 +62,49 @@ const structuredData = [
       <picture>
         <source type="image/avif" srcset="/images/content/cumbuco/beach-palms-720.avif 720w, /images/content/cumbuco/beach-palms-1440.avif 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
         <source type="image/webp" srcset="/images/content/cumbuco/beach-palms-720.webp 720w, /images/content/cumbuco/beach-palms-1440.webp 1440w" sizes="(max-width: 760px) 100vw, 52vw" />
-        <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Palm-lined shoreline in Cumbuco in soft morning light" />
+        <img src="/images/content/cumbuco/beach-palms-1440.jpg" srcset="/images/content/cumbuco/beach-palms-720.jpg 720w, /images/content/cumbuco/beach-palms-1440.jpg 1440w" sizes="(max-width: 760px) 100vw, 52vw" width="1440" height="1080" loading="lazy" alt="Praia com coqueiros na luz suave da manhã em Cumbuco" />
       </picture>
       <div>
-        <p class="eyebrow">A better beach day</p><h2>Begin before the wind does.</h2>
-        <p>Morning usually brings softer light and a calmer atmosphere for a walk, a swim where conditions allow, or time with young children. By afternoon, the wind can strengthen and kites can dominate parts of the shoreline.</p>
-        <div class="tip-list"><p><strong>Shade</strong><span>Use a beach restaurant, umbrella, or property rather than treating midday sun casually.</span></p><p><strong>Water</strong><span>Carry more drinking water than you expect to need, especially during active days.</span></p><p><strong>Feet</strong><span>Sand, shells, hot surfaces, and equipment lines make suitable footwear useful.</span></p><p><strong>Belongings</strong><span>Bring only what you need and keep valuables attended.</span></p></div>
+        <p class="eyebrow">Um dia melhor na praia</p><h2>Comece antes do vento.</h2>
+        <p>A manhã costuma trazer luz suave e ambiente tranquilo para caminhar, nadar onde for seguro ou ficar com crianças pequenas. À tarde, o vento pode aumentar e os kites tomam partes do litoral.</p>
+        <div class="tip-list"><p><strong>Sombra</strong><span>Use restaurante, guarda-sol ou o imóvel para evitar a exposição ao sol do meio-dia.</span></p><p><strong>Água</strong><span>Leve mais água do que imagina precisar, principalmente em dias ativos.</span></p><p><strong>Pés</strong><span>Areia quente, conchas e linhas de equipamentos tornam um calçado adequado bastante útil.</span></p><p><strong>Pertences</strong><span>Leve apenas o necessário e mantenha objetos de valor sob supervisão.</span></p></div>
       </div>
     </div>
   </section>
 
   <section class="section section--sand">
     <div class="shell seasons-grid">
-      <div><p class="eyebrow">Water through the year</p><h2>Rain changes the freshwater story.</h2><p>Ceará's principal rainy period is February through May, with March and April normally the wettest months according to FUNCEME. The landscape often becomes greener and lagoons can hold more water, but each year differs.</p></div>
+      <div><p class="eyebrow">A água ao longo do ano</p><h2>A chuva transforma as lagoas.</h2><p>O principal período chuvoso do Ceará vai de fevereiro a maio; março e abril costumam ser os meses mais úmidos, segundo a FUNCEME. A paisagem fica mais verde e as lagoas podem acumular mais água, mas cada ano é diferente.</p></div>
       <div class="season-cards">
-        <article><span>February–May</span><h3>Principal rainy period</h3><p>Greener dunes and replenished freshwater are possible, alongside more variable beach weather.</p></article>
-        <article><span>June–July</span><h3>Transition</h3><p>Rainfall generally decreases, water from the rainy period can remain, and trade winds begin to establish.</p></article>
-        <article><span>August–January</span><h3>Drier, windier months</h3><p>The coast becomes more reliable for kite travel while some freshwater areas may gradually contract.</p></article>
+        <article><span>Fevereiro–maio</span><h3>Principal período chuvoso</h3><p>Dunas mais verdes e lagoas renovadas são possíveis, com clima mais variável na praia.</p></article>
+        <article><span>Junho–julho</span><h3>Transição</h3><p>A chuva geralmente diminui, a água acumulada pode permanecer e os ventos alísios começam a se estabelecer.</p></article>
+        <article><span>Agosto–janeiro</span><h3>Meses mais secos e ventosos</h3><p>O litoral fica mais confiável para viagens de kite, enquanto algumas áreas de água doce podem diminuir gradualmente.</p></article>
       </div>
-      <p class="source-note">These are typical seasonal patterns, not a guarantee of lagoon depth or daily weather. Check <a href="https://www.funceme.br/" target="_blank" rel="noopener noreferrer">FUNCEME</a> and ask locally before travelling.</p>
+      <p class="source-note">Estes são padrões sazonais, não garantias sobre a profundidade das lagoas ou o clima diário. Consulte a <a href="https://www.funceme.br/" target="_blank" rel="noopener noreferrer">FUNCEME</a> e confirme localmente antes do passeio.</p>
     </div>
   </section>
 
   <section class="section responsible">
     <div class="shell responsible-grid">
-      <div><p class="eyebrow">Visit with care</p><h2>These landscapes are living places.</h2></div>
+      <div><p class="eyebrow">Visite com cuidado</p><h2>Estas paisagens são lugares vivos.</h2></div>
       <div class="rules">
-        <article><span>01</span><div><h3>Use authorised access</h3><p>Stay on permitted routes and use an authorised operator where dunes or off-road travel are involved.</p></div></article>
-        <article><span>02</span><div><h3>Leave the dunes intact</h3><p>Do not drive, climb, or park where access damages vegetation, nesting areas, or fragile sand formations.</p></div></article>
-        <article><span>03</span><div><h3>Respect the community</h3><p>Lagoons and beaches are workplaces and neighbourhoods as well as visitor attractions.</p></div></article>
-        <article><span>04</span><div><h3>Take everything away</h3><p>Reduce single-use items, secure loose waste in the wind, and never leave fishing line, plastic, or cigarette ends.</p></div></article>
+        <article><span>01</span><div><h3>Use acessos autorizados</h3><p>Permaneça nas rotas permitidas e use um operador autorizado para trajetos nas dunas ou fora de estrada.</p></div></article>
+        <article><span>02</span><div><h3>Preserve as dunas</h3><p>Não dirija, suba ou estacione onde o acesso danifique vegetação, áreas de reprodução ou formações frágeis.</p></div></article>
+        <article><span>03</span><div><h3>Respeite a comunidade</h3><p>Lagoas e praias são locais de trabalho e moradia, além de atrações para visitantes.</p></div></article>
+        <article><span>04</span><div><h3>Leve tudo de volta</h3><p>Reduza descartáveis, prenda o lixo contra o vento e nunca deixe linhas, plástico ou pontas de cigarro.</p></div></article>
       </div>
     </div>
   </section>
 
   <section class="section cta">
     <div class="shell cta-grid">
-      <div><p class="eyebrow">Stay close to the water</p><h2>Beachfront means different things.</h2></div>
-      <div><p>Sea view, near the beach, and direct gate access are not interchangeable. Compare the actual location and route before choosing your rental.</p><div class="actions"><a class="button" href="/city/cumbuco/where-to-stay/">Choose where to stay</a><a class="button button--ghost" href="/properties/">Browse rentals</a></div></div>
+      <div><p class="eyebrow">Fique perto da água</p><h2>“À beira-mar” pode significar coisas diferentes.</h2></div>
+      <div><p>Vista para o mar, proximidade da praia e portão direto para a areia não são equivalentes. Compare a localização e o percurso antes de escolher.</p><div class="actions"><a class="button" href="/city/cumbuco/where-to-stay/">Escolher onde ficar</a><a class="button button--ghost" href="/properties/">Ver imóveis</a></div></div>
     </div>
   </section>
 
   <section class="section faq-section">
-    <div class="shell"><p class="eyebrow">Water questions</p><h2>Before heading out.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
+    <div class="shell"><p class="eyebrow">Perguntas sobre praias e lagoas</p><h2>Antes de sair.</h2><div class="faq-grid">{faqItems.map((item) => <article><h3>{item.question}</h3><p>{item.answer}</p></article>)}</div></div>
   </section>
 </BaseLayout>
 
