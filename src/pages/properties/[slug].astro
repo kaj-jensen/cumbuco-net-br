@@ -26,8 +26,8 @@ const whatsappUrl = `https://wa.me/5585988139402?text=${encodeURIComponent(whats
 const propertyUrl = new URL(`/properties/${p.slug}/`, Astro.site).toString();
 const propertyStructuredData = [
   {
-    "@type": "VacationRental",
-    "@id": `${propertyUrl}#vacation-rental`,
+    "@type": p.propertyType === "apartment" ? "Apartment" : "House",
+    "@id": `${propertyUrl}#accommodation`,
     url: propertyUrl,
     identifier: p.postId,
     name: p.title,
@@ -50,24 +50,20 @@ const propertyStructuredData = [
     checkoutTime: p.details["Check-Out Hour"] || undefined,
     additionalType: typeLabel,
     containedInPlace: { "@type": "Place", name: "Cumbuco, Ceará, Brasil" },
-    brand: { "@id": "https://www.cumbuco.net.br/#organization" },
+    provider: { "@id": "https://www.cumbuco.net.br/#organization" },
     mainEntityOfPage: { "@id": `${propertyUrl}#webpage` },
-    containsPlace: {
-      "@type": ["Accommodation", p.propertyType === "apartment" ? "Apartment" : "House"],
-      additionalType: p.rentalType === "entire-home" ? "EntirePlace" : typeLabel,
-      occupancy: p.metrics.guests ? {
-        "@type": "QuantitativeValue",
-        value: p.metrics.guests,
-      } : undefined,
-      numberOfBedrooms: p.metrics.bedrooms ?? undefined,
-      numberOfBathroomsTotal: p.metrics.baths ?? undefined,
-      numberOfRooms: p.details.Rooms ? Number.parseInt(p.details.Rooms, 10) : undefined,
-      amenityFeature: p.features.map((feature) => ({
-        "@type": "LocationFeatureSpecification",
-        name: feature,
-        value: true,
-      })),
-    },
+    occupancy: p.metrics.guests ? {
+      "@type": "QuantitativeValue",
+      value: p.metrics.guests,
+    } : undefined,
+    numberOfBedrooms: p.metrics.bedrooms ?? undefined,
+    numberOfBathroomsTotal: p.metrics.baths ?? undefined,
+    numberOfRooms: p.details.Rooms ? Number.parseInt(p.details.Rooms, 10) : undefined,
+    amenityFeature: p.features.map((feature) => ({
+      "@type": "LocationFeatureSpecification",
+      name: feature,
+      value: true,
+    })),
   },
   {
     "@type": "BreadcrumbList",
