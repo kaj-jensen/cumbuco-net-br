@@ -20,6 +20,8 @@ const editorialSources = [
   { source: "local-businesses-original.jpg", output: "local-businesses", widths: [720, 1440] },
   { source: "local-partners-original.jpg", output: "local-partners", widths: [720, 1440] },
   { source: "local-about-original.jpg", output: "local-about", widths: [720, 1440] },
+  { source: "local-home-kite-original.jpg", output: "local-home-kite", widths: [720, 1440] },
+  { source: "local-home-caipirinha-original.jpg", output: "local-home-caipirinha", widths: [540, 900] },
 ];
 
 async function filesIn(directory) {
