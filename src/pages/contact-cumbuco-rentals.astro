@@ -9,6 +9,7 @@ if (!entry) throw new Error("Contact content missing");
 const p = entry.data;
 const phone = (p.contact as any)?.phones?.at(-1);
 const whatsappUrl = "https://wa.me/5585988139402";
+const emailAddress = "info@cumbuco.net.br";
 const properties = (await getCollection("properties"))
   .filter((item) => brazilianPropertySlugs.has(item.data.slug))
   .sort(comparePropertyEntries)
@@ -35,7 +36,7 @@ const structuredData = [{
   </section>
   <section class="section">
     <div class="shell contact-grid">
-      <div><p class="eyebrow">Escolha como falar conosco</p><h2>WhatsApp ou formulário: sua mensagem chega diretamente até nós.</h2><p class="lede">Enquanto preparamos o novo serviço de e-mail, envie o formulário ou inicie uma conversa pelo WhatsApp. Cada consulta é respondida pessoalmente.</p></div>
+      <div><p class="eyebrow">Escolha como falar conosco</p><h2>WhatsApp, e-mail ou formulário: sua mensagem chega diretamente até nós.</h2><p class="lede">Envie o formulário, escreva por e-mail ou inicie uma conversa pelo WhatsApp. Cada consulta é respondida pessoalmente.</p></div>
       <aside>
         <p class="small">Telefone e WhatsApp</p>
         <a class="whatsapp-link" href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label={`Fale com Cumbuco Aluguéis pelo WhatsApp no número ${phone?.label}`}>
@@ -48,6 +49,11 @@ const structuredData = [{
           <span class="whatsapp-copy"><strong>Conversar no WhatsApp</strong><small>Abrir uma conversa direta</small></span>
           <span class="arrow" aria-hidden="true">→</span>
           <span class="contact-number">{phone?.label}</span>
+        </a>
+        <p class="small">E-mail</p>
+        <a class="email-link" href={`mailto:${emailAddress}`}>
+          <span><strong>{emailAddress}</strong><small>Enviar uma mensagem por e-mail</small></span>
+          <span class="arrow" aria-hidden="true">→</span>
         </a>
         <p>Informe o imóvel, as datas de chegada e saída e o número de hóspedes para agilizar o atendimento.</p>
       </aside>
@@ -79,6 +85,11 @@ const structuredData = [{
   .whatsapp-copy { display: grid; min-width: 0; gap: 0.15rem; }
   .whatsapp-copy strong { font-size: 1rem; line-height: 1.1; }
   .whatsapp-copy small { color: #c7dcd7; font-size: 0.78rem; font-weight: 700; }
+  .email-link { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin: 0.75rem 0 1.5rem; padding: 1rem; border: 1px solid rgb(255 255 255 / 14%); border-radius: 1rem; background: rgb(255 255 255 / 8%); color: white; text-decoration: none; transition: background 180ms ease, border-color 180ms ease, transform 180ms ease; }
+  .email-link:hover { transform: translateY(-2px); border-color: var(--coral-light); background: rgb(255 255 255 / 13%); }
+  .email-link span:first-child { display: grid; min-width: 0; gap: 0.15rem; }
+  .email-link strong { overflow-wrap: anywhere; font-size: 1rem; }
+  .email-link small { color: #c7dcd7; font-size: 0.78rem; font-weight: 700; }
   .contact-number { grid-column: 1 / -1; padding-top: 0.15rem; font-size: clamp(1.45rem, 2vw, 1.75rem); font-weight: 800; letter-spacing: -0.025em; line-height: 1.05; white-space: nowrap; }
   .arrow { color: #25d366; font-size: 1.4rem; font-weight: 800; }
   aside p:last-child { color: #c7dcd7; }
