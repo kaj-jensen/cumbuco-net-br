@@ -43,9 +43,16 @@ const structuredData = [
   <section class="section">
     <div class="shell intro-grid">
       <div><p class="eyebrow">A cozinha local</p><h2>Da pesca artesanal aos sabores que chegaram com o kite.</h2></div>
-      <div class="prose">
+      <div class="prose intro-copy">
         <p>Cumbuco nasceu como vila de pescadores e continua ligado ao mar. A comunidade internacional do kite acrescentou cafés, pizzas, influências europeias, bares informais e pratos conhecidos à culinária local.</p>
         <p>Escolha primeiro o ambiente: almoço diante do Atlântico, algo rápido entre sessões, jantar em família perto da praça ou uma noite tranquila com bebidas e música.</p>
+        <figure class="intro-photo">
+          <picture>
+            <source type="image/avif" srcset="/images/content/cumbuco/restaurant-drinks-720.avif 720w, /images/content/cumbuco/restaurant-drinks-1200.avif 1200w" sizes="(max-width: 720px) calc(100vw - 2rem), 47rem" />
+            <source type="image/webp" srcset="/images/content/cumbuco/restaurant-drinks-720.webp 720w, /images/content/cumbuco/restaurant-drinks-1200.webp 1200w" sizes="(max-width: 720px) calc(100vw - 2rem), 47rem" />
+            <img src="/images/content/cumbuco/restaurant-drinks-1200.jpg" srcset="/images/content/cumbuco/restaurant-drinks-720.jpg 720w, /images/content/cumbuco/restaurant-drinks-1200.jpg 1200w" sizes="(max-width: 720px) calc(100vw - 2rem), 47rem" width="1200" height="800" loading="lazy" alt="Cervejas geladas em um balde com petiscos em uma barraca de praia de Cumbuco" />
+          </picture>
+        </figure>
       </div>
     </div>
   </section>
@@ -92,6 +99,8 @@ const structuredData = [
   .hero-copy .eyebrow { color: #ffd46c; }
   .intro-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
   .intro-grid h2, .cta-grid h2 { max-width: 13ch; }
+  .intro-photo { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
+  .intro-photo img { width: 100%; max-height: 22rem; border-radius: 1.5rem; object-fit: cover; object-position: center 58%; box-shadow: 0 1.5rem 3rem rgb(8 62 65 / 12%); }
   .section-intro { max-width: 34rem; color: var(--ink-soft); }
   .moment-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 2rem; border-block: 1px solid var(--line); }
   .moment-grid article { padding: 1.6rem; border-right: 1px solid var(--line); }
