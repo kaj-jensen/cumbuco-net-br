@@ -42,7 +42,7 @@ const structuredData = [
   <section class="section">
     <div class="shell intro-grid">
       <div><p class="eyebrow">Entenda a paisagem</p><h2>As condições fazem parte do lugar.</h2></div>
-      <div class="prose"><p>O litoral pode estar tranquilo pela manhã e ganhar energia com os ventos alísios. As lagoas crescem depois do período chuvoso e podem diminuir ao longo do ano. A areia se move, o nível da água muda e os acessos evoluem.</p><p>Essa é a natureza de Cumbuco. Use as fotos como inspiração e depois confirme localmente a água, o vento, a maré, o acesso e a estrutura disponíveis no dia.</p></div>
+      <div class="prose" style="padding-top: 2.25rem;"><p>O litoral pode estar tranquilo pela manhã e ganhar energia com os ventos alísios. As lagoas crescem depois do período chuvoso e podem diminuir ao longo do ano. A areia se move, o nível da água muda e os acessos evoluem.</p><p>Essa é a natureza de Cumbuco. Use as fotos como inspiração e depois confirme localmente a água, o vento, a maré, o acesso e a estrutura disponíveis no dia.</p></div>
     </div>
   </section>
 
@@ -164,5 +164,5 @@ const structuredData = [
   .faq-grid h3 { font-size: 1.2rem; }
   .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
   @media (max-width: 800px) { .place-grid { grid-template-columns: 1fr; } .place-card--wide div { grid-template-columns: 1fr; } .place-grid article { min-height: auto; } }
-  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .feature-grid, .seasons-grid, .responsible-grid, .cta-grid, .faq-grid, .place-card--wide .wide-content { grid-template-columns: 1fr; } .place-card--wide .wide-points { grid-column: 1; grid-template-columns: 1fr; } .wide-points li { padding-block: .75rem; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 18%); } .wide-points li:last-child { border-bottom: 0; } .wide-points li::before { top: 1.15rem; } .source-note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .feature-grid, .seasons-grid, .responsible-grid, .cta-grid, .faq-grid, .place-card--wide .wide-content { grid-template-columns: 1fr; } .intro-grid > .prose { padding-top: 0 !important; } .place-card--wide .wide-points { grid-column: 1; grid-template-columns: 1fr; } .wide-points li { padding-block: .75rem; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 18%); } .wide-points li:last-child { border-bottom: 0; } .wide-points li::before { top: 1.15rem; } .source-note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
 </style>
