@@ -184,6 +184,7 @@ test("validates Turnstile and sends a structured rental enquiry", async () => {
     assert.equal(sent[0].to, configuredEnv.ENQUIRY_TO);
     assert.equal(sent[0].from.email, "enquiries@cumbuco.net.br");
     assert.equal(sent[0].replyTo.email, "guest@example.com");
+    assert.match(sent[0].subject, /^Nova consulta pelo site/);
     assert.match(sent[0].subject, /Villa Branca/);
   } finally {
     globalThis.fetch = originalFetch;

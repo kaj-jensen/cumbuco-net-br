@@ -278,7 +278,7 @@ async function enquiry(request, env) {
 
   const reference = crypto.randomUUID().slice(0, 8).toUpperCase();
   const lines = [
-    `New Cumbuco Rentals enquiry (${reference})`,
+    `Nova consulta pelo site — Cumbuco Aluguéis (${reference})`,
     "",
     `Property: ${property}`,
     `Arrival: ${arrival}`,
@@ -304,9 +304,9 @@ async function enquiry(request, env) {
       to: env.ENQUIRY_TO,
       from: { email: "enquiries@cumbuco.net.br", name: "Cumbuco Aluguéis" },
       replyTo: { email, name },
-      subject: `Rental enquiry: ${property} · ${arrival} · ${reference}`,
+      subject: `Nova consulta pelo site — ${property} · ${arrival} · ${reference}`,
       text: lines.join("\n"),
-      html: `<h1>New rental enquiry</h1><table>${htmlRows}</table><p>Reply directly to this email to contact ${escapeHtml(name)}.</p>`,
+      html: `<h1>Nova consulta pelo site</h1><table>${htmlRows}</table><p>Responda diretamente a este e-mail para falar com ${escapeHtml(name)}.</p>`,
     });
     return json({ ok: true, reference }, 200);
   } catch (error) {
