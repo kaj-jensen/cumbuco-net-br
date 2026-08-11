@@ -3,6 +3,16 @@
   "name": "cumbuco-net-br",
   "compatibility_date": "2026-08-10",
   "main": "./worker/index.js",
+  "routes": [
+    {
+      "pattern": "cumbuco.net.br/*",
+      "zone_name": "cumbuco.net.br"
+    },
+    {
+      "pattern": "www.cumbuco.net.br/*",
+      "zone_name": "cumbuco.net.br"
+    }
+  ],
   "vars": {
     "ENQUIRY_MODE": "whatsapp"
   },
