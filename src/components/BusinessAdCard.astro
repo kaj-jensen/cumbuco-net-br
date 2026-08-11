@@ -1,0 +1,41 @@
+---
+interface Props {
+  title?: string;
+  category?: string;
+  compact?: boolean;
+}
+
+const {
+  title = "Cadastre seu negócio aqui",
+  category = "Espaço para empresas locais",
+  compact = false,
+} = Astro.props;
+---
+
+<article class:list={["business-ad", { "business-ad--compact": compact }]}>
+  <div class="business-ad__visual" aria-hidden="true">
+    <span>Seu negócio</span>
+    <small>Cumbuco</small>
+  </div>
+  <div class="business-ad__body">
+    <p class="business-ad__category">{category}</p>
+    <h3>{title}</h3>
+    <p>Apresente sua empresa às pessoas que estão planejando uma viagem a Cumbuco. Entre em contato para conhecer as opções de divulgação.</p>
+    <a href="/featured-partners/">Solicitar informações →</a>
+  </div>
+</article>
+
+<style>
+  .business-ad { display: grid; grid-template-rows: 12.5rem 1fr; min-width: 0; overflow: hidden; border: 1px dashed rgb(4 127 132 / 42%); border-radius: 1.25rem; background: rgb(255 255 255 / 66%); box-shadow: 0 .8rem 2.3rem rgb(1 60 64 / 5%); }
+  .business-ad__visual { display: grid; place-content: center; gap: .25rem; text-align: center; color: white; background: radial-gradient(circle at 85% 15%, rgb(255 212 108 / 34%), transparent 25%), linear-gradient(145deg, #064f53, #138b90); }
+  .business-ad__visual span { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 700; }
+  .business-ad__visual small { color: rgb(255 255 255 / 74%); font-size: .68rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+  .business-ad__body { display: flex; flex-direction: column; padding: 1.25rem; }
+  .business-ad__category { color: var(--coral); font-size: .69rem; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+  .business-ad h3 { margin-top: .65rem; font-size: clamp(1.55rem, 3vw, 2rem); }
+  .business-ad__body > p:not(.business-ad__category) { margin-top: .6rem; color: var(--ink-soft); font-size: .94rem; }
+  .business-ad a { margin-top: auto; padding-top: 1.15rem; color: var(--ocean); font-size: .8rem; font-weight: 900; text-decoration: none; }
+  .business-ad a:hover { color: var(--coral); }
+  .business-ad--compact { grid-template-rows: 9rem 1fr; }
+  @media (max-width: 520px) { .business-ad { grid-template-rows: 11rem 1fr; } }
+</style>

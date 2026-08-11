@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BusinessCard from "./BusinessCard.astro";
+import BusinessAdCard from "./BusinessAdCard.astro";
 import type { BusinessCategory } from "../config/destination";
 
 interface Props {
@@ -27,10 +28,22 @@ const businesses = (await getCollection("businesses"))
     a.data.name.localeCompare(b.data.name)
   )
   .slice(0, limit);
+
+const isKiteSchool = categories.length === 1 && categories[0] === "kite-school";
+const isAccommodation = categories.every((category) => ["hotel", "pousada"].includes(category));
+const adTitle = isKiteSchool
+  ? "Cadastre sua escola de kitesurf aqui"
+  : isAccommodation
+    ? "Cadastre sua hospedagem aqui"
+    : "Cadastre seu negócio aqui";
+const adCategory = isKiteSchool
+  ? "Divulgação para escolas de kitesurf"
+  : isAccommodation
+    ? "Divulgação para hospedagens"
+    : "Divulgação para empresas locais";
 ---
 
-{businesses.length > 0 && (
-  <section class="business-highlights">
+<section class="business-highlights">
     <div class="shell">
       <div class="business-highlights__heading">
         <div>
@@ -44,11 +57,10 @@ const businesses = (await getCollection("businesses"))
       </div>
       <div class="business-highlights__grid">
         {businesses.map((business) => <BusinessCard business={business} compact />)}
+        {businesses.length < limit && <BusinessAdCard title={adTitle} category={adCategory} compact />}
       </div>
-      <p class="business-highlights__note">Details were checked from the businesses’ own current channels. Hours and services can change, so confirm directly before travelling.</p>
     </div>
   </section>
-)}
 
 <style>
   .business-highlights { padding-block: clamp(3rem, 7vw, 5.5rem); background: linear-gradient(145deg, #effbf7, var(--sky)); border-block: 1px solid var(--line); }

@@ -25,6 +25,7 @@ const editorialSources = [
   { source: "local-home-kite-original.jpg", output: "local-home-kite", widths: [720, 1440] },
   { source: "local-home-caipirinha-original.jpg", output: "local-home-caipirinha", widths: [540, 900] },
   { source: "local-restaurant-drinks-original.png", output: "restaurant-drinks", widths: [720, 1200] },
+  { source: "local-owner-hammock-original.png", output: "owner-hammock", widths: [720, 1440] },
 ];
 
 async function filesIn(directory) {

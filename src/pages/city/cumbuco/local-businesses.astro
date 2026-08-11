@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BusinessCard from "../../../components/BusinessCard.astro";
+import BusinessAdCard from "../../../components/BusinessAdCard.astro";
 import DestinationGuideNav from "../../../components/DestinationGuideNav.astro";
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import { businessCategories } from "../../../config/destination";
@@ -73,8 +74,8 @@ const structuredData = [
     <div class="shell intro-grid">
       <div><p class="eyebrow">Como usar o guia</p><h2>Encontre o serviço certo para a sua estadia.</h2></div>
       <div>
-        <p>Use os filtros para localizar empresas por categoria e falar diretamente com cada estabelecimento.</p>
-        <p>A presença no diretório não representa ranking nem garantia pessoal. Informações comerciais e horários devem ser confirmados com a própria empresa.</p>
+        <p>Conheça as empresas parceiras e use os contatos diretos para confirmar serviços, horários e disponibilidade.</p>
+        <p>Os espaços comerciais são publicados mediante parceria de divulgação e não representam ranking nem garantia pessoal.</p>
       </div>
     </div>
   </section>
@@ -93,6 +94,7 @@ const structuredData = [
       </div>
       <div class="business-grid" data-business-grid>
         {businesses.map((business) => <BusinessCard business={business} />)}
+        <BusinessAdCard title="Cadastre seu negócio aqui" category="Espaço de divulgação em Cumbuco" />
       </div>
       <p class="no-results" data-no-results hidden>Ainda não há opções publicadas nesta categoria.</p>
     </div>
@@ -100,8 +102,8 @@ const structuredData = [
 
   <section class="partner-section">
     <div class="shell partner-grid">
-      <div><p class="eyebrow">Empresas de Cumbuco</p><h2>Mantenha suas informações claras e atualizadas.</h2></div>
-      <div><p>Empresas locais podem solicitar inclusão ou correção de dados. Destaques comerciais são identificados com transparência e não alteram a descrição factual do negócio.</p><a class="button" href="/featured-partners/">Conhecer as opções de destaque</a></div>
+      <div><p class="eyebrow">Empresas de Cumbuco</p><h2>Cadastre seu negócio no guia local.</h2></div>
+      <div><p>Empresas locais podem solicitar informações sobre os espaços de divulgação. Cada parceria é identificada com transparência e apresentada com contatos diretos.</p><a class="button" href="/featured-partners/">Conhecer as opções de divulgação</a></div>
     </div>
   </section>
 
