@@ -15,6 +15,7 @@ const editorialSources = [
   { source: "local-beach-original.jpg", output: "local-beach", widths: [720, 1440] },
   { source: "local-kitesurf-original.jpg", output: "local-kitesurf", widths: [720, 1440] },
   { source: "local-buggy-original.jpg", output: "local-buggy", widths: [720, 1440] },
+  { source: "local-yellow-buggy-original.jpg", output: "yellow-buggy", widths: [720, 1440] },
   { source: "local-accommodation-original.jpg", output: "local-accommodation", widths: [720, 1440] },
   { source: "local-travel-original.jpg", output: "local-travel", widths: [720, 1440] },
   { source: "local-businesses-original.jpg", output: "local-businesses", widths: [720, 1440] },

@@ -4,7 +4,7 @@ import BaseLayout from "../../../layouts/BaseLayout.astro";
 
 const title = "O que Fazer em Cumbuco: Dunas, Lagoas, Praia e Kitesurf";
 const description = "Planeje o que fazer em Cumbuco: passeios de buggy, lagoas, kitesurf, dias de praia, o centro da vila, Fortaleza e atividades para famílias.";
-const image = "/images/content/cumbuco/local-buggy-1440.jpg";
+const image = "/images/content/cumbuco/yellow-buggy-1440.jpg";
 const faqItems = [
   { question: "O que fazer em Cumbuco além do kitesurf?", answer: "Explore as dunas com um bugueiro autorizado, visite uma lagoa, almoce sem pressa na praia, caminhe pelo centro, aproveite a piscina do imóvel ou use Cumbuco como base para conhecer Fortaleza e o litoral cearense." },
   { question: "Passeios de buggy em Cumbuco são adequados para crianças?", answer: "Depende da idade, dos dispositivos de segurança, do percurso, do clima e do operador. Peça uma rota tranquila, confira as condições de segurança antes da saída e nunca trate as dunas como um parque sem regras." },
@@ -25,9 +25,9 @@ const structuredData = [
 <BaseLayout title={title} description={description} canonical="/city/cumbuco/things-to-do/" image={image} structuredData={structuredData}>
   <section class="sub-hero">
     <picture>
-      <source type="image/avif" srcset="/images/content/cumbuco/local-buggy-720.avif 720w, /images/content/cumbuco/local-buggy-1440.avif 1440w" sizes="100vw" />
-      <source type="image/webp" srcset="/images/content/cumbuco/local-buggy-720.webp 720w, /images/content/cumbuco/local-buggy-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/local-buggy-720.jpg 720w, /images/content/cumbuco/local-buggy-1440.jpg 1440w" sizes="100vw" width="1440" height="1080" alt="Buggy cor-de-rosa estacionado nas dunas diante da Praia de Cumbuco" fetchpriority="high" />
+      <source type="image/avif" srcset="/images/content/cumbuco/yellow-buggy-720.avif 720w, /images/content/cumbuco/yellow-buggy-1440.avif 1440w" sizes="100vw" />
+      <source type="image/webp" srcset="/images/content/cumbuco/yellow-buggy-720.webp 720w, /images/content/cumbuco/yellow-buggy-1440.webp 1440w" sizes="100vw" />
+      <img src={image} srcset="/images/content/cumbuco/yellow-buggy-720.jpg 720w, /images/content/cumbuco/yellow-buggy-1440.jpg 1440w" sizes="100vw" width="1440" height="960" alt="Buggy amarelo nas dunas de Cumbuco com vista para o mar" fetchpriority="high" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
@@ -114,7 +114,7 @@ const structuredData = [
 <style>
   .sub-hero { position: relative; min-height: 34rem; display: grid; align-items: end; overflow: hidden; color: white; }
   .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .sub-hero img { object-fit: cover; object-position: center 58%; }
+  .sub-hero img { object-fit: cover; object-position: center 54%; }
   .shade { background: linear-gradient(90deg, rgb(3 43 45 / 84%), rgb(3 43 45 / 38%) 62%, rgb(3 43 45 / 10%)), linear-gradient(0deg, rgb(3 35 38 / 55%), transparent 58%); }
   .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
   .hero-copy h1 { max-width: 11ch; }
