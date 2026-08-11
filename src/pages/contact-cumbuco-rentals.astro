@@ -67,10 +67,9 @@ const structuredData = [{
   .page-hero { padding-block: clamp(3rem, 6vw, 5.5rem); }
   .contact-hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(16rem, .55fr); gap: clamp(3rem, 8vw, 7rem); align-items: center; }
   .contact-hero > div { padding-block: 1rem; }
-  .contact-hero figure { position: relative; width: min(100%, 21rem); justify-self: end; margin: 0; }
-  .contact-hero figure::before { position: absolute; content: ""; inset: 1rem -1rem -1rem 1rem; border-radius: 1.4rem; background: var(--sun); opacity: .65; }
-  .contact-hero img { position: relative; display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 1.4rem; box-shadow: var(--shadow); }
-  .contact-hero figcaption { position: relative; display: grid; gap: .1rem; margin-top: .9rem; color: var(--ink-soft); font-size: .78rem; }
+  .contact-hero figure { width: min(100%, 21rem); justify-self: end; margin: 0; padding: .65rem .65rem 1rem; border: 1px solid rgb(7 74 78 / 12%); border-radius: 1.6rem; background: color-mix(in srgb, var(--sun) 58%, var(--paper)); box-shadow: var(--shadow); }
+  .contact-hero img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 4; object-fit: cover; object-position: center; border-radius: 1.15rem; }
+  .contact-hero figcaption { display: grid; gap: .12rem; padding: .85rem .55rem 0; color: var(--ink-soft); font-size: .78rem; line-height: 1.4; }
   .contact-hero figcaption strong { color: var(--ink); font-family: "Fraunces", Georgia, serif; font-size: 1rem; }
   .contact-grid { display: grid; grid-template-columns: 1.4fr 0.8fr; gap: clamp(3rem, 9vw, 8rem); align-items: start; }
   .contact-grid h2 { max-width: 15ch; }
@@ -94,6 +93,6 @@ const structuredData = [{
   .arrow { color: #25d366; font-size: 1.4rem; font-weight: 800; }
   aside p:last-child { color: #c7dcd7; }
   .small { color: var(--coral-light); font-size: 0.75rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-  @media (max-width: 700px) { .contact-hero, .contact-grid { grid-template-columns: 1fr; } .contact-hero figure { width: min(78%, 19rem); justify-self: start; } aside { padding: 1.35rem; } .whatsapp-link { gap: 0.75rem; padding: 0.85rem; } .whatsapp-icon { width: 3rem; height: 3rem; } .whatsapp-icon svg { width: 2rem; height: 2rem; } }
+  @media (max-width: 700px) { .contact-hero, .contact-grid { grid-template-columns: 1fr; } .contact-hero figure { width: min(88%, 19rem); justify-self: start; } aside { padding: 1.35rem; } .whatsapp-link { gap: 0.75rem; padding: 0.85rem; } .whatsapp-icon { width: 3rem; height: 3rem; } .whatsapp-icon svg { width: 2rem; height: 2rem; } }
   @media (max-width: 380px) { .arrow { display: none; } .contact-number { font-size: 1.3rem; } }
 </style>
