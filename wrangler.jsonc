@@ -3,6 +3,8 @@
   "name": "cumbuco-net-br",
   "compatibility_date": "2026-08-10",
   "main": "./worker/index.js",
+  "workers_dev": true,
+  "preview_urls": true,
   "routes": [
     {
       "pattern": "cumbuco.net.br/*",
