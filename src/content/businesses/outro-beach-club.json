@@ -1,0 +1,45 @@
+{
+  "slug": "outro-beach-club",
+  "status": "published",
+  "name": "Outro Beach Club",
+  "category": "beach-club",
+  "subcategory": "Beach club, restaurante e bar",
+  "summary": "Beach club aberto ao público à beira-mar, com café da manhã, almoço, petiscos, drinks e estrutura para quem pratica kitesurf.",
+  "descriptionHtml": "<p>O Outro Beach Club fica de frente para o mar em Cumbuco e recebe o público desde o café da manhã. O cardápio inclui almoço, frutos do mar, carnes, opções veganas, petiscos, hambúrgueres, tacos, drinks e vinhos.</p><p>O espaço também oferece estrutura voltada ao kitesurf. Consulte o site oficial para confirmar horários, cardápios e serviços antes da visita.</p>",
+  "images": [
+    {
+      "src": "/images/content/cumbuco/outro-beach-club/outro-beach-club-1440.jpg",
+      "alt": "Lounge do Outro Beach Club diante da praia e dos kites em Cumbuco",
+      "width": 1440,
+      "height": 1080,
+      "credit": "Imagem fornecida pelo proprietário do site"
+    }
+  ],
+  "contact": {
+    "website": "https://www.outrobeachclub.com/",
+    "googleMaps": "https://www.google.com/maps/search/?api=1&query=Outro+Beach+Club+Cumbuco"
+  },
+  "location": {
+    "area": "Cumbuco",
+    "address": "Avenida Desembargador Jurema, Praia de Cumbuco, Caucaia, Ceará"
+  },
+  "openingHours": [
+    "O site oficial informa funcionamento diário; confirme os horários atuais diretamente antes da visita."
+  ],
+  "priceRange": "$$",
+  "tags": [
+    "à beira-mar",
+    "café da manhã e almoço",
+    "drinks e petiscos",
+    "estrutura para kitesurf"
+  ],
+  "featuredPartner": false,
+  "featuredPriority": 0,
+  "verifiedAt": "2026-08-11",
+  "seo": {
+    "title": "Outro Beach Club em Cumbuco",
+    "description": "Informações e links diretos do Outro Beach Club, beach club e restaurante à beira-mar em Cumbuco.",
+    "modified": "2026-08-11T09:20:00+02:00",
+    "ogImage": "/images/content/cumbuco/outro-beach-club/outro-beach-club-1440.jpg"
+  }
+}
