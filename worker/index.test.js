@@ -13,6 +13,20 @@ const env = {
 
 const context = { waitUntil() {} };
 
+test("forwards incoming email to both verified contact addresses", async () => {
+  const destinations = [];
+  await worker.email({
+    async forward(destination) {
+      destinations.push(destination);
+    },
+  });
+
+  assert.deepEqual(destinations.sort(), [
+    "anaceres.teixeira@gmail.com",
+    "kaj.jensen@outlook.com",
+  ]);
+});
+
 test("keeps reserved dates throughout the two-year booking horizon", () => {
   assert.deepEqual(
     keepBookingHorizon(

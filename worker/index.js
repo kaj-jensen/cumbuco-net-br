@@ -23,6 +23,10 @@ const CONTENT_SECURITY_POLICY = [
 ].join("; ");
 
 const LEGACY_QUERY_PARAMETERS = ["currency", "mode"];
+const EMAIL_FORWARDING_DESTINATIONS = [
+  "anaceres.teixeira@gmail.com",
+  "kaj.jensen@outlook.com",
+];
 const LEGACY_PATH_REDIRECTS = new Map([
   ["/apartamentos/", "/listings/apartment/"],
   ["/casas/", "/listings/house/"],
@@ -345,6 +349,19 @@ async function availability(request, env, context) {
 }
 
 export default {
+  async email(message) {
+    const results = await Promise.allSettled(
+      EMAIL_FORWARDING_DESTINATIONS.map((destination) => message.forward(destination)),
+    );
+    const failures = results.filter((result) => result.status === "rejected");
+    if (failures.length > 0) {
+      throw new AggregateError(
+        failures.map((failure) => failure.reason),
+        "One or more email forwarding destinations failed.",
+      );
+    }
+  },
+
   async fetch(request, env, context) {
     const url = new URL(request.url);
     const productionHostname = url.hostname === "cumbuco.net.br" || url.hostname === "www.cumbuco.net.br";
