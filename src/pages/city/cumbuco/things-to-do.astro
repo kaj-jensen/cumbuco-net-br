@@ -27,7 +27,7 @@ const structuredData = [
     <picture>
       <source type="image/avif" srcset="/images/content/cumbuco/yellow-buggy-720.avif 720w, /images/content/cumbuco/yellow-buggy-1440.avif 1440w" sizes="100vw" />
       <source type="image/webp" srcset="/images/content/cumbuco/yellow-buggy-720.webp 720w, /images/content/cumbuco/yellow-buggy-1440.webp 1440w" sizes="100vw" />
-      <img src={image} srcset="/images/content/cumbuco/yellow-buggy-720.jpg 720w, /images/content/cumbuco/yellow-buggy-1440.jpg 1440w" sizes="100vw" width="1440" height="960" alt="Buggy amarelo nas dunas de Cumbuco com vista para o mar" fetchpriority="high" />
+      <img src={image} srcset="/images/content/cumbuco/yellow-buggy-720.jpg 720w, /images/content/cumbuco/yellow-buggy-1440.jpg 1440w" sizes="100vw" width="1440" height="960" alt="Buggy amarelo nas dunas de Cumbuco com vista para o mar" fetchpriority="high" style="filter: brightness(1.08) saturate(1.08) contrast(1.02);" />
     </picture>
     <div class="shade"></div>
     <div class="shell hero-copy">
@@ -120,7 +120,7 @@ const structuredData = [
 <style>
   .sub-hero { position: relative; min-height: 34rem; display: grid; align-items: end; overflow: hidden; color: white; }
   .sub-hero picture, .sub-hero picture img, .shade { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .sub-hero img { object-fit: cover; object-position: center 54%; filter: brightness(1.08) saturate(1.08) contrast(1.02); }
+  .sub-hero img { object-fit: cover; object-position: center 54%; }
   .shade { background: linear-gradient(90deg, rgb(3 43 45 / 72%) 0%, rgb(3 43 45 / 52%) 30%, rgb(3 43 45 / 18%) 60%, transparent 82%), linear-gradient(0deg, rgb(3 35 38 / 30%), transparent 48%); }
   .hero-copy { position: relative; padding-block: clamp(3.5rem, 8vw, 6rem); }
   .hero-copy h1 { max-width: 11ch; }
