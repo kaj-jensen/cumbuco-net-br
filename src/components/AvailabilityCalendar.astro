@@ -33,7 +33,30 @@ const { property, slug, reservedDates } = Astro.props;
     <p class="calendar-status" data-calendar-status>O calendário orienta sua consulta. A reserva só é confirmada depois da nossa resposta.</p>
   </div>
 
-  <div class="calendars" aria-label={`Disponibilidade de ${property}`} data-calendar-months></div>
+  <div class="calendar-preview">
+    <div class="calendars" aria-label={`Próximos meses disponíveis de ${property}`} data-calendar-months></div>
+    <button class="calendar-expand" type="button" data-calendar-open>
+      Ver calendário completo
+      <span aria-hidden="true">→</span>
+    </button>
+    <p class="calendar-horizon">Consulte e selecione datas até dois anos à frente.</p>
+  </div>
+
+  <dialog class="calendar-dialog" data-calendar-dialog aria-labelledby="calendar-dialog-title">
+    <div class="calendar-dialog__inner">
+      <header class="calendar-dialog__header">
+        <div><p class="eyebrow">Disponibilidade futura</p><h2 id="calendar-dialog-title">Escolha suas datas.</h2></div>
+        <button class="calendar-dialog__close" type="button" data-calendar-close aria-label="Fechar calendário">×</button>
+      </header>
+      <div class="calendar-nav" aria-label="Navegar pelos meses">
+        <button type="button" data-calendar-previous>← Meses anteriores</button>
+        <strong data-calendar-period></strong>
+        <button type="button" data-calendar-next>Próximos meses →</button>
+      </div>
+      <div class="calendars calendars--dialog" aria-label={`Calendário completo de ${property}`} data-calendar-dialog-months></div>
+      <p class="calendar-selection calendar-selection--dialog" data-calendar-dialog-selection role="status" aria-live="polite">Comece escolhendo uma data livre para a chegada.</p>
+    </div>
+  </dialog>
 </section>
 
 <script>
@@ -42,17 +65,28 @@ const { property, slug, reservedDates } = Astro.props;
     const slug = calendar.dataset.propertySlug;
     const status = calendar.querySelector<HTMLElement>('[data-calendar-status]');
     const monthsContainer = calendar.querySelector<HTMLElement>('[data-calendar-months]');
+    const dialogMonths = calendar.querySelector<HTMLElement>('[data-calendar-dialog-months]');
+    const dialog = calendar.querySelector<HTMLDialogElement>('[data-calendar-dialog]');
+    const openDialog = calendar.querySelector<HTMLButtonElement>('[data-calendar-open]');
+    const closeDialog = calendar.querySelector<HTMLButtonElement>('[data-calendar-close]');
+    const previousMonths = calendar.querySelector<HTMLButtonElement>('[data-calendar-previous]');
+    const nextMonths = calendar.querySelector<HTMLButtonElement>('[data-calendar-next]');
+    const period = calendar.querySelector<HTMLElement>('[data-calendar-period]');
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    const year = today.getFullYear();
+    const firstVisibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    const lastBookingMonth = new Date(today.getFullYear() + 2, today.getMonth(), 1);
     const isoDate = (date: Date) =>
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
     const todayIso = isoDate(today);
-    const yearEndIso = `${year}-12-31`;
+    const bookingHorizon = new Date(lastBookingMonth.getFullYear(), lastBookingMonth.getMonth() + 1, 0);
+    const bookingHorizonIso = isoDate(bookingHorizon);
     const selectionStatus = calendar.querySelector<HTMLElement>('[data-calendar-selection]');
+    const dialogSelection = calendar.querySelector<HTMLElement>('[data-calendar-dialog-selection]');
     let selectedArrival = '';
     let selectedDeparture = '';
     let blockedDates = new Set<string>();
+    let dialogStart = new Date(firstVisibleMonth);
     let importedDates: string[] = [];
     try {
       importedDates = JSON.parse(calendar.dataset.importedReservedDates || '[]');
@@ -60,66 +94,95 @@ const { property, slug, reservedDates } = Astro.props;
       importedDates = [];
     }
 
-    const currentYearDates = (dates: string[]) =>
-      new Set(dates.filter((date) => date >= todayIso && date <= yearEndIso));
+    const datesWithinHorizon = (dates: string[]) =>
+      new Set(dates.filter((date) => date >= todayIso && date <= bookingHorizonIso));
 
-    const renderMonths = (dates: string[]) => {
-      if (!monthsContainer) return;
-      blockedDates = currentYearDates(dates);
-      monthsContainer.replaceChildren();
+    const addMonths = (date: Date, amount: number) =>
+      new Date(date.getFullYear(), date.getMonth() + amount, 1);
 
-      for (let monthIndex = today.getMonth(); monthIndex <= 11; monthIndex += 1) {
-        const first = new Date(year, monthIndex, 1);
-        const last = new Date(year, monthIndex + 1, 0);
-        const article = document.createElement('article');
-        article.className = 'month';
+    const monthCount = () => window.matchMedia('(max-width: 620px)').matches ? 1 : 2;
 
-        const heading = document.createElement('h3');
-        heading.textContent = first.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
-        article.append(heading);
+    const createMonth = (first: Date) => {
+      const last = new Date(first.getFullYear(), first.getMonth() + 1, 0);
+      const article = document.createElement('article');
+      article.className = 'month';
 
-        const weekdays = document.createElement('div');
-        weekdays.className = 'weekdays';
-        weekdays.setAttribute('aria-hidden', 'true');
-        ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].forEach((label) => {
-          const day = document.createElement('span');
-          day.textContent = label;
-          weekdays.append(day);
-        });
-        article.append(weekdays);
+      const heading = document.createElement('h3');
+      heading.textContent = first.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+      article.append(heading);
 
-        const days = document.createElement('div');
-        days.className = 'days';
-        const leading = (first.getDay() + 6) % 7;
-        for (let index = 0; index < leading; index += 1) {
-          const blank = document.createElement('span');
-          blank.className = 'blank';
-          days.append(blank);
+      const weekdays = document.createElement('div');
+      weekdays.className = 'weekdays';
+      weekdays.setAttribute('aria-hidden', 'true');
+      ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'].forEach((label) => {
+        const day = document.createElement('span');
+        day.textContent = label;
+        weekdays.append(day);
+      });
+      article.append(weekdays);
+
+      const days = document.createElement('div');
+      days.className = 'days';
+      const leading = (first.getDay() + 6) % 7;
+      for (let index = 0; index < leading; index += 1) {
+        const blank = document.createElement('span');
+        blank.className = 'blank';
+        days.append(blank);
+      }
+
+      for (let dayNumber = 1; dayNumber <= last.getDate(); dayNumber += 1) {
+        const date = new Date(first.getFullYear(), first.getMonth(), dayNumber);
+        const iso = isoDate(date);
+        const isPast = date < today;
+        const isBlocked = !isPast && blockedDates.has(iso);
+        const day = document.createElement(isPast || isBlocked ? 'span' : 'button');
+        day.className = `day${isPast ? ' past' : ''}${isBlocked ? ' blocked' : ''}`;
+        day.dataset.date = iso;
+        day.dataset.past = isPast ? 'true' : 'false';
+        day.textContent = String(dayNumber);
+        const state = isPast ? 'data passada' : isBlocked ? 'indisponível' : 'disponível para consulta';
+        day.setAttribute('aria-label', `${iso}: ${state}`);
+        day.title = state[0].toUpperCase() + state.slice(1);
+        if (day instanceof HTMLButtonElement) {
+          day.type = 'button';
+          day.addEventListener('click', () => selectDate(iso));
         }
+        days.append(day);
+      }
+      article.append(days);
+      return article;
+    };
 
-        for (let dayNumber = 1; dayNumber <= last.getDate(); dayNumber += 1) {
-          const date = new Date(year, monthIndex, dayNumber);
-          const iso = isoDate(date);
-          const isPast = date < today;
-          const isBlocked = !isPast && blockedDates.has(iso);
-          const day = document.createElement(isPast || isBlocked ? 'span' : 'button');
-          day.className = `day${isPast ? ' past' : ''}${isBlocked ? ' blocked' : ''}`;
-          day.dataset.date = iso;
-          day.dataset.past = isPast ? 'true' : 'false';
-          day.textContent = String(dayNumber);
-          const state = isPast ? 'data passada' : isBlocked ? 'indisponível' : 'disponível para consulta';
-          day.setAttribute('aria-label', `${iso}: ${state}`);
-          day.title = state[0].toUpperCase() + state.slice(1);
-          if (day instanceof HTMLButtonElement) {
-            day.type = 'button';
-            day.addEventListener('click', () => selectDate(iso));
-          }
-          days.append(day);
-        }
-        article.append(days);
-        monthsContainer.append(article);
+    const renderMonthRange = (container: HTMLElement | null, start: Date, count: number) => {
+      if (!container) return;
+      container.replaceChildren();
+      for (let index = 0; index < count; index += 1) {
+        container.append(createMonth(addMonths(start, index)));
       }
       updateSelectedDates();
+    };
+
+    const updateNavigation = () => {
+      const count = monthCount();
+      if (previousMonths) previousMonths.disabled = dialogStart <= firstVisibleMonth;
+      if (nextMonths) nextMonths.disabled = addMonths(dialogStart, count) > lastBookingMonth;
+      if (period) {
+        const end = addMonths(dialogStart, count - 1);
+        const firstLabel = dialogStart.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+        const endLabel = end.toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' });
+        period.textContent = count === 1 ? firstLabel : `${firstLabel} — ${endLabel}`;
+      }
+    };
+
+    const renderDialogMonths = () => {
+      renderMonthRange(dialogMonths, dialogStart, monthCount());
+      updateNavigation();
+    };
+
+    const renderMonths = (dates: string[]) => {
+      blockedDates = datesWithinHorizon(dates);
+      renderMonthRange(monthsContainer, firstVisibleMonth, monthCount());
+      if (dialog?.open) renderDialogMonths();
     };
 
     const addOneDay = (iso: string) => {
@@ -145,17 +208,23 @@ const { property, slug, reservedDates } = Astro.props;
       });
     };
 
+    const setSelectionText = (message: string) => {
+      if (selectionStatus) selectionStatus.textContent = message;
+      if (dialogSelection) dialogSelection.textContent = message;
+    };
+
     const selectDate = (iso: string) => {
       if (!selectedArrival || selectedDeparture || iso <= selectedArrival) {
         selectedArrival = iso;
         selectedDeparture = '';
-        if (selectionStatus) selectionStatus.textContent = `Chegada: ${displayDate(iso)}. Agora escolha a data de saída.`;
+        setSelectionText(`Chegada: ${displayDate(iso)}. Agora escolha a data de saída.`);
       } else if (!rangeIsAvailable(selectedArrival, iso)) {
-        if (selectionStatus) selectionStatus.textContent = 'Este período inclui datas indisponíveis. Escolha outra data de saída.';
+        setSelectionText('Este período inclui datas indisponíveis. Escolha outra data de saída.');
         return;
       } else {
         selectedDeparture = iso;
-        if (selectionStatus) selectionStatus.textContent = `${displayDate(selectedArrival)} a ${displayDate(selectedDeparture)} selecionado. Levando você ao formulário de consulta…`;
+        setSelectionText(`${displayDate(selectedArrival)} a ${displayDate(selectedDeparture)} selecionado. Levando você ao formulário de consulta…`);
+        if (dialog?.open) dialog.close();
         calendar.dispatchEvent(new CustomEvent('availability:dates-selected', {
           bubbles: true,
           detail: { slug, arrival: selectedArrival, departure: selectedDeparture },
@@ -163,6 +232,32 @@ const { property, slug, reservedDates } = Astro.props;
       }
       updateSelectedDates();
     };
+
+    openDialog?.addEventListener('click', () => {
+      dialogStart = selectedArrival
+        ? new Date(`${selectedArrival.slice(0, 7)}-01T12:00:00`)
+        : new Date(firstVisibleMonth);
+      renderDialogMonths();
+      dialog?.showModal();
+    });
+    closeDialog?.addEventListener('click', () => dialog?.close());
+    dialog?.addEventListener('click', (event) => {
+      if (event.target === dialog) dialog.close();
+    });
+    previousMonths?.addEventListener('click', () => {
+      dialogStart = addMonths(dialogStart, -monthCount());
+      if (dialogStart < firstVisibleMonth) dialogStart = new Date(firstVisibleMonth);
+      renderDialogMonths();
+    });
+    nextMonths?.addEventListener('click', () => {
+      const candidate = addMonths(dialogStart, monthCount());
+      if (candidate <= lastBookingMonth) dialogStart = candidate;
+      renderDialogMonths();
+    });
+    window.matchMedia('(max-width: 620px)').addEventListener('change', () => {
+      renderMonthRange(monthsContainer, firstVisibleMonth, monthCount());
+      if (dialog?.open) renderDialogMonths();
+    });
 
     renderMonths(importedDates);
     fetch(`/api/availability?property=${encodeURIComponent(slug || '')}`)
@@ -197,7 +292,25 @@ const { property, slug, reservedDates } = Astro.props;
   .legend i.selected { border-color: var(--ocean); background: var(--ocean); }
   .calendar-status { margin-top: 1rem; color: var(--ink-soft); font-size: 0.78rem; }
   .calendar-selection { margin-top: 1.25rem; padding: 0.8rem 0.9rem; border-left: 0.25rem solid var(--coral); border-radius: 0 0.55rem 0.55rem 0; background: white; color: var(--ocean-deep); font-size: 0.88rem; font-weight: 800; }
+  .calendar-preview { min-width: 0; }
   .calendars { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
+  .calendar-expand { display: flex; width: 100%; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding: 1rem 1.15rem; border: 1px solid var(--ocean); border-radius: 0.9rem; background: white; color: var(--ocean); font: inherit; font-weight: 800; cursor: pointer; }
+  .calendar-expand:hover { background: var(--ocean); color: white; }
+  .calendar-expand span { font-size: 1.2rem; }
+  .calendar-horizon { margin-top: 0.65rem; color: var(--ink-soft); font-size: 0.78rem; text-align: center; }
+  .calendar-dialog { width: min(68rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 0; border-radius: 1.4rem; background: var(--paper); color: var(--ink); box-shadow: 0 2rem 5rem rgb(0 32 35 / 28%); }
+  .calendar-dialog::backdrop { background: rgb(1 28 31 / 65%); backdrop-filter: blur(0.25rem); }
+  .calendar-dialog__inner { padding: clamp(1.25rem, 4vw, 2.25rem); }
+  .calendar-dialog__header { display: flex; align-items: start; justify-content: space-between; gap: 2rem; }
+  .calendar-dialog__header h2 { max-width: none; font-size: clamp(2rem, 4vw, 3.2rem); }
+  .calendar-dialog__close { display: grid; flex: 0 0 auto; width: 2.8rem; height: 2.8rem; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--ocean-deep); font: inherit; font-size: 1.65rem; line-height: 1; cursor: pointer; }
+  .calendar-nav { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: center; margin: 1.5rem 0 1rem; }
+  .calendar-nav button { padding: 0.7rem 0.8rem; border: 1px solid var(--line); border-radius: 0.7rem; background: white; color: var(--ocean); font: inherit; font-size: 0.82rem; font-weight: 800; cursor: pointer; }
+  .calendar-nav button:last-child { justify-self: end; }
+  .calendar-nav button:disabled { opacity: 0.42; cursor: not-allowed; }
+  .calendar-nav strong { font-size: 0.88rem; text-align: center; text-transform: capitalize; }
+  .calendars--dialog { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .calendar-selection--dialog { margin-top: 1rem; background: var(--seafoam); }
   .availability :global(.month) { padding: clamp(1rem, 2vw, 1.5rem); border: 1px solid var(--line); border-radius: var(--radius); background: white; }
   .availability :global(.month h3) { margin-bottom: 1rem; font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif; font-size: 1rem; letter-spacing: 0; }
   .availability :global(.weekdays), .availability :global(.days) { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0.3rem; }
@@ -212,5 +325,5 @@ const { property, slug, reservedDates } = Astro.props;
   .availability :global(.day.blocked) { border-color: color-mix(in srgb, var(--coral) 55%, var(--line)); background: color-mix(in srgb, var(--coral) 18%, white); color: #843b2d; text-decoration: line-through; }
   .availability :global(.day.past) { border-color: transparent; background: transparent; color: #66706d; }
   @media (max-width: 900px) { .availability { grid-template-columns: 1fr; } .availability-copy { position: static; } .availability-copy h2 { max-width: none; } }
-  @media (max-width: 620px) { .calendars { grid-template-columns: 1fr; } .availability :global(.month) { padding: 1rem; } }
+  @media (max-width: 620px) { .calendars, .calendars--dialog { grid-template-columns: 1fr; } .availability :global(.month) { padding: 1rem; } .calendar-dialog { width: calc(100% - 1rem); max-height: calc(100dvh - 1rem); } .calendar-dialog__inner { padding: 1rem; } .calendar-dialog__header h2 { font-size: 2rem; } .calendar-nav { grid-template-columns: 1fr 1fr; } .calendar-nav strong { grid-column: 1/-1; grid-row: 1; } .calendar-nav button { grid-row: 2; } }
 </style>

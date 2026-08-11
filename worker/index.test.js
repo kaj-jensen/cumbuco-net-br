@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import worker, { currentDateInFortaleza } from "./index.js";
+import worker, { currentDateInFortaleza, keepBookingHorizon } from "./index.js";
 
 const env = {
   ASSETS: {
@@ -12,6 +12,16 @@ const env = {
 };
 
 const context = { waitUntil() {} };
+
+test("keeps reserved dates throughout the two-year booking horizon", () => {
+  assert.deepEqual(
+    keepBookingHorizon(
+      ["2026-08-10", "2026-12-31", "2027-06-15", "2028-08-11", "2028-08-12"],
+      "2026-08-11",
+    ),
+    ["2026-12-31", "2027-06-15", "2028-08-11"],
+  );
+});
 
 test("redirects the apex domain to www and preserves the path", async () => {
   const response = await worker.fetch(

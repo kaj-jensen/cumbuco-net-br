@@ -170,6 +170,13 @@ function keepCurrentYearFromToday(dates, today = currentDateInFortaleza()) {
   return dates.filter((date) => date >= today && date <= yearEnd);
 }
 
+function keepBookingHorizon(dates, today = currentDateInFortaleza()) {
+  const horizon = new Date(`${today}T12:00:00Z`);
+  horizon.setUTCFullYear(horizon.getUTCFullYear() + 2);
+  const horizonDate = horizon.toISOString().slice(0, 10);
+  return dates.filter((date) => date >= today && date <= horizonDate);
+}
+
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -308,7 +315,7 @@ async function enquiry(request, env) {
   }
 }
 
-export { currentDateInFortaleza, keepCurrentYearFromToday, parseReservedDates };
+export { currentDateInFortaleza, keepBookingHorizon, keepCurrentYearFromToday, parseReservedDates };
 
 async function availability(request, env, context) {
   const property = new URL(request.url).searchParams.get("property") || "";
@@ -329,7 +336,7 @@ async function availability(request, env, context) {
   if (!response.ok) return json({ error: "The calendar feed could not be loaded." }, 502);
 
   const result = json(
-    { property, live: true, reservedDates: keepCurrentYearFromToday(parseReservedDates(await response.text())) },
+    { property, live: true, reservedDates: keepBookingHorizon(parseReservedDates(await response.text())) },
     200,
     "public, max-age=300, s-maxage=900",
   );
