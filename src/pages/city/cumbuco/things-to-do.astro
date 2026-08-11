@@ -128,6 +128,7 @@ const structuredData = [
   .hero-copy .eyebrow { color: #ffd46c; }
   .intro-grid, .cta-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: clamp(3rem, 8vw, 7rem); }
   .intro-grid h2, .cta-grid h2 { max-width: 13ch; }
+  .intro-grid > .prose { padding-top: 2.25rem; }
   .section-intro { max-width: 34rem; color: var(--ink-soft); }
   .experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 2rem; border-top: 1px solid var(--line); }
   .experience-grid article { padding: 1.7rem 1.7rem 1.7rem 0; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -167,6 +168,6 @@ const structuredData = [
   .faq-grid h3 { font-size: 1.2rem; }
   .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
   @media (max-width: 850px) { .experience-grid { grid-template-columns: 1fr 1fr; } .experience-grid article, .experience-grid article:nth-child(3n+2), .experience-grid article:nth-child(3n+3) { padding: 1.4rem; border-right: 1px solid var(--line); } .experience-grid article:nth-child(even) { border-right: 0; } .audience-grid { grid-template-columns: 1fr 1fr; } .audience-grid article:nth-child(2) { border-right: 0; border-bottom: 1px solid var(--line); } .audience-grid article:first-child { border-bottom: 1px solid var(--line); } }
-  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .cta-grid, .split-grid, .itinerary, .faq-grid { grid-template-columns: 1fr; } .days article { grid-template-columns: 5.5rem 1fr; } .days p { grid-column: 2; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .cta-grid, .split-grid, .itinerary, .faq-grid { grid-template-columns: 1fr; } .intro-grid > .prose { padding-top: 0; } .days article { grid-template-columns: 5.5rem 1fr; } .days p { grid-column: 2; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
   @media (max-width: 520px) { .experience-grid, .audience-grid { grid-template-columns: 1fr; } .experience-grid article, .experience-grid article:nth-child(3n+2), .experience-grid article:nth-child(3n+3), .audience-grid article { padding: 1.3rem 0; border-right: 0; border-bottom: 1px solid var(--line); } }
 </style>
