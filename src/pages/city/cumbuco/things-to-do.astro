@@ -62,9 +62,10 @@ const structuredData = [
 
   <section class="section split-feature">
     <div class="shell split-grid">
-      <div>
+      <div class="safety-copy">
         <p class="eyebrow">Cuidados no passeio pelas dunas</p>
         <h2>Aventura exige um operador responsável.</h2>
+        <p class="safety-lead">Para contratar um passeio, procure uma equipe credenciada em Cumbuco. Recomendamos falar diretamente com a cooperativa local de bugueiros e confirmar, antes da saída, que o profissional e o veículo tenham credenciamento válido e identificação para operar nas rotas autorizadas do Parque das Dunas pela Prefeitura de Caucaia.</p>
         <ul>
           <li>Use um prestador autorizado e confirme o veículo e o percurso incluídos.</li>
           <li>Avise sobre crianças, gestantes, mobilidade reduzida ou problemas de coluna e pescoço.</li>
@@ -73,6 +74,11 @@ const structuredData = [
           <li>Respeite áreas restritas, vegetação, animais, moradores e a fragilidade das dunas.</li>
         </ul>
       </div>
+      <picture class="safety-photo">
+        <source type="image/avif" srcset="/images/content/cumbuco/buggy-safety-720.avif 720w, /images/content/cumbuco/buggy-safety-1440.avif 1440w" sizes="(max-width: 720px) calc(100vw - 2rem), 36rem" />
+        <source type="image/webp" srcset="/images/content/cumbuco/buggy-safety-720.webp 720w, /images/content/cumbuco/buggy-safety-1440.webp 1440w" sizes="(max-width: 720px) calc(100vw - 2rem), 36rem" />
+        <img src="/images/content/cumbuco/buggy-safety-1440.jpg" srcset="/images/content/cumbuco/buggy-safety-720.jpg 720w, /images/content/cumbuco/buggy-safety-1440.jpg 1440w" sizes="(max-width: 720px) calc(100vw - 2rem), 36rem" width="1440" height="960" loading="lazy" alt="Buggy amarelo estacionado em meio às dunas de Cumbuco" />
+      </picture>
     </div>
   </section>
 
@@ -131,10 +137,12 @@ const structuredData = [
   .experience-grid h3 { margin-top: 1.6rem; }
   .experience-grid p { margin-top: .7rem; color: var(--ink-soft); }
   .experience-grid strong { display: block; margin-top: 1rem; color: var(--ocean); font-size: .8rem; }
-  .split-grid { display: grid; grid-template-columns: minmax(0, 46rem); justify-content: center; }
-  .split-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
-  .split-grid img { width: 100%; height: 100%; object-fit: cover; }
+  .split-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(24rem, 1.1fr); gap: clamp(3rem, 7vw, 6rem); align-items: center; }
+  .safety-copy { min-width: 0; }
+  .safety-photo { display: block; aspect-ratio: 4/5; overflow: hidden; border-radius: 1.5rem; box-shadow: var(--shadow); }
+  .safety-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 54% center; }
   .split-grid h2 { max-width: 12ch; }
+  .safety-lead { margin-top: 1.5rem; padding: 1.2rem 1.3rem; border-left: .28rem solid var(--coral); background: var(--seafoam); color: var(--ink); }
   .split-grid ul { display: grid; gap: .8rem; margin: 1.5rem 0 0; padding-left: 1.2rem; color: var(--ink-soft); }
   .source-note { margin-top: 1.2rem; padding: 1rem; background: var(--seafoam); border-radius: .8rem; color: var(--ink-soft); font-size: .85rem; }
   .itinerary { display: grid; grid-template-columns: .65fr 1.35fr; gap: clamp(3rem, 8vw, 7rem); }
