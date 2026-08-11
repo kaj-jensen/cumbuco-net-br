@@ -1,4 +1,11 @@
-const origin = (process.argv[2] || "https://www.cumbuco.net").replace(/\/$/, "");
+const targetOrigin = (process.argv[2] || "https://www.cumbuco.net.br").replace(/\/$/, "");
+const canonicalOrigin = (process.argv[3] || targetOrigin).replace(/\/$/, "");
+const isPreview = targetOrigin !== canonicalOrigin;
+
+function targetUrl(url) {
+  const parsed = new URL(url, canonicalOrigin);
+  return `${targetOrigin}${parsed.pathname}${parsed.search}`;
+}
 
 async function get(url, options = {}) {
   const response = await fetch(url, { redirect: "manual", ...options });
@@ -7,7 +14,8 @@ async function get(url, options = {}) {
   return { response, text };
 }
 
-const sitemapUrl = `${origin}/sitemap.xml`;
+const sitemapUrl = `${targetOrigin}/sitemap.xml`;
+const canonicalSitemapUrl = `${canonicalOrigin}/sitemap.xml`;
 const sitemap = await get(sitemapUrl);
 const pages = [...sitemap.text.matchAll(/<loc>(.*?)<\/loc>/g)].map((match) => match[1]);
 const internalUrls = new Set(pages);
@@ -18,8 +26,9 @@ const pageSummaries = [];
 if (sitemap.response.status !== 200) issues.push(`Sitemap ${sitemap.response.status}: ${sitemapUrl}`);
 
 for (const url of pages) {
-  const { response, text } = await get(url);
-  if (response.status !== 200) issues.push(`${response.status} ${url}`);
+  const fetchedUrl = targetUrl(url);
+  const { response, text } = await get(fetchedUrl);
+  if (response.status !== 200) issues.push(`${response.status} ${fetchedUrl}`);
 
   const title = text.match(/<title>(.*?)<\/title>/i)?.[1];
   const description = text.match(/<meta name="description" content="([^"]*)"/i)?.[1];
@@ -60,7 +69,7 @@ for (const url of pages) {
 
   for (const match of text.matchAll(/(href|src)="([^"]+)"/g)) {
     const absolute = new URL(match[2], url);
-    if (absolute.origin !== origin || absolute.protocol !== "https:") continue;
+    if (absolute.origin !== canonicalOrigin || absolute.protocol !== "https:") continue;
     absolute.hash = "";
     if (match[1] === "src") images.add(absolute.href);
     else internalUrls.add(absolute.href);
@@ -68,25 +77,25 @@ for (const url of pages) {
 }
 
 for (const url of internalUrls) {
-  const response = await fetch(url, { method: "HEAD", redirect: "manual" });
+  const response = await fetch(targetUrl(url), { method: "HEAD", redirect: "manual" });
   if (![200, 301, 302, 308].includes(response.status)) issues.push(`Internal link ${response.status}: ${url}`);
 }
 
 for (const url of images) {
-  const response = await fetch(url, { method: "HEAD", redirect: "manual" });
+  const response = await fetch(targetUrl(url), { method: "HEAD", redirect: "manual" });
   if (response.status !== 200) issues.push(`Image ${response.status}: ${url}`);
 }
 
-const robots = await get(`${origin}/robots.txt`);
-if (robots.response.status !== 200) issues.push(`Robots ${robots.response.status}: ${origin}/robots.txt`);
-if (!robots.text.includes(sitemapUrl)) issues.push(`robots.txt does not declare ${sitemapUrl}`);
+const robots = await get(`${targetOrigin}/robots.txt`);
+if (robots.response.status !== 200) issues.push(`Robots ${robots.response.status}: ${targetOrigin}/robots.txt`);
+if (!robots.text.includes(canonicalSitemapUrl)) issues.push(`robots.txt does not declare ${canonicalSitemapUrl}`);
 
-const llms = await get(`${origin}/llms.txt`);
-if (llms.response.status !== 200) issues.push(`llms.txt ${llms.response.status}: ${origin}/llms.txt`);
+const llms = await get(`${targetOrigin}/llms.txt`);
+if (llms.response.status !== 200) issues.push(`llms.txt ${llms.response.status}: ${targetOrigin}/llms.txt`);
 if (!/^#\s+\S+/m.test(llms.text)) issues.push("llms.txt is missing an H1 heading");
-if (!llms.text.includes(`${origin}/city/cumbuco/`)) issues.push("llms.txt is missing the destination guide");
+if (!llms.text.includes(`${canonicalOrigin}/city/cumbuco/`)) issues.push("llms.txt is missing the destination guide");
 
-const homepage = await fetch(`${origin}/`, { redirect: "manual" });
+const homepage = await fetch(`${targetOrigin}/`, { redirect: "manual" });
 const requiredSecurityHeaders = [
   "strict-transport-security",
   "content-security-policy",
@@ -97,30 +106,39 @@ const requiredSecurityHeaders = [
 ];
 const securityHeaders = Object.fromEntries(requiredSecurityHeaders.map((name) => [name, homepage.headers.get(name)]));
 for (const [name, value] of Object.entries(securityHeaders)) if (!value) issues.push(`Missing security header: ${name}`);
+const previewRobotsHeader = homepage.headers.get("x-robots-tag");
+if (isPreview && previewRobotsHeader !== "noindex, nofollow") issues.push(`Preview indexing protection missing: ${previewRobotsHeader || "missing"}`);
+if (!isPreview && previewRobotsHeader) issues.push(`Unexpected production X-Robots-Tag: ${previewRobotsHeader}`);
 
 const redirectChecks = [];
-for (const [url, expected] of [
-  ["http://cumbuco.net/", "https://cumbuco.net/"],
-  ["https://cumbuco.net/", `${origin}/`],
-  ["http://www.cumbuco.net/", `${origin}/`],
-  [`${origin}/properties/beach-sun-cumbuco-2/`, "/properties/beach-sun-cumbuco/"],
-  [`${origin}/properties/villa-priscila/`, "/properties/"],
-]) {
-  const response = await fetch(url, { redirect: "manual" });
-  const location = response.headers.get("location");
-  redirectChecks.push({ url, status: response.status, location, expected });
-  if (![301, 308].includes(response.status) || location !== expected) {
-    issues.push(`Redirect mismatch: ${url} -> ${response.status} ${location || "missing"}; expected ${expected}`);
+if (!isPreview) {
+  for (const [url, expected] of [
+    [`http://cumbuco.net.br/`, `${canonicalOrigin}/`],
+    [`https://cumbuco.net.br/`, `${canonicalOrigin}/`],
+    [`http://www.cumbuco.net.br/`, `${canonicalOrigin}/`],
+    [`${canonicalOrigin}/properties/beach-sun-cumbuco-2/`, "/properties/beach-sun-cumbuco/"],
+    [`${canonicalOrigin}/properties/villa-priscila/`, "/properties/"],
+  ]) {
+    const response = await fetch(url, { redirect: "manual" });
+    const location = response.headers.get("location");
+    redirectChecks.push({ url, status: response.status, location, expected });
+    if (![301, 308].includes(response.status) || location !== expected) {
+      issues.push(`Redirect mismatch: ${url} -> ${response.status} ${location || "missing"}; expected ${expected}`);
+    }
   }
 }
 
 const result = {
+  targetOrigin,
+  canonicalOrigin,
+  isPreview,
   pages: pages.length,
   internalUrls: internalUrls.size,
   images: images.size,
   robotsStatus: robots.response.status,
   llmsStatus: llms.response.status,
   securityHeaders,
+  previewRobotsHeader,
   redirectChecks,
   pageSummaries,
   issues,

@@ -208,7 +208,7 @@ const { property, slug, reservedDates } = Astro.props;
   .availability :global(.day.in-range) { border-color: color-mix(in srgb, var(--ocean) 22%, var(--line)); background: color-mix(in srgb, var(--ocean) 8%, white); }
   .availability :global(.day.selected) { border-color: var(--ocean); background: var(--ocean); color: white; font-weight: 800; }
   .availability :global(.day.blocked) { border-color: color-mix(in srgb, var(--coral) 55%, var(--line)); background: color-mix(in srgb, var(--coral) 18%, white); color: #843b2d; text-decoration: line-through; }
-  .availability :global(.day.past) { border-color: transparent; background: transparent; color: #aab2af; }
+  .availability :global(.day.past) { border-color: transparent; background: transparent; color: #66706d; }
   @media (max-width: 900px) { .availability { grid-template-columns: 1fr; } .availability-copy { position: static; } .availability-copy h2 { max-width: none; } }
   @media (max-width: 620px) { .calendars { grid-template-columns: 1fr; } .availability :global(.month) { padding: 1rem; } }
 </style>

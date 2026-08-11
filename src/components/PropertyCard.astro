@@ -14,7 +14,7 @@ const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
 ---
 
 <article class:list={["card", { "card--featured": isFeatured }]}>
-  <a class="image-link" href={`/properties/${data.slug}/`} aria-label={`Ver ${data.title}`}>
+  <a class="image-link" href={`/properties/${data.slug}/`}>
     <picture>
       <source type="image/avif" srcset={`${cardImageSmallAvif} 480w, ${cardImageAvif} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
       <source type="image/webp" srcset={`${cardImageSmallWebp} 480w, ${cardImageWebp} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
