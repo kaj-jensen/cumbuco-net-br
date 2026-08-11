@@ -12,7 +12,7 @@ export const destinationGuide = {
     },
     {
       topic: "restaurants",
-      label: "Restaurants",
+      label: "Restaurantes",
       href: "/city/cumbuco/restaurants/",
       description: "Beach restaurants, local cooking, cafés, pizza, and bars.",
     },
@@ -50,7 +50,7 @@ export const destinationGuide = {
 } as const;
 
 export const businessCategories = [
-  { value: "restaurant", label: "Restaurants", schemaType: "Restaurant" },
+  { value: "restaurant", label: "Restaurantes", schemaType: "Restaurant" },
   { value: "cafe", label: "Cafés", schemaType: "CafeOrCoffeeShop" },
   { value: "bar", label: "Bars", schemaType: "BarOrPub" },
   { value: "hotel", label: "Hotels", schemaType: "Hotel" },
