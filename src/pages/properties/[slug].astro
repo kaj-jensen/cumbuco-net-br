@@ -4,7 +4,7 @@ import AvailabilityCalendar from "../../components/AvailabilityCalendar.astro";
 import EnquiryForm from "../../components/EnquiryForm.astro";
 import VillaBrancaReviews from "../../components/VillaBrancaReviews.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { brazilianPropertySlugs, site } from "../../config/site";
+import { brazilianPropertySlugs } from "../../config/site";
 export async function getStaticPaths() {
   const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
   return properties.map((property) => ({ params: { slug: property.data.slug }, props: { property } }));
@@ -20,6 +20,7 @@ const optimizedHero = {
 };
 const typeLabels = { apartment: "Apartamento", house: "Casa", villa: "Villa" };
 const typeLabel = typeLabels[p.propertyType];
+const whatsappDisplay = "(85) 98813 9402";
 const whatsappMessage = `Olá! Tenho interesse em ${p.title}. Gostaria de consultar disponibilidade e valores.`;
 const whatsappUrl = `https://wa.me/5585988139402?text=${encodeURIComponent(whatsappMessage)}`;
 const propertyUrl = new URL(`/properties/${p.slug}/`, Astro.site).toString();
@@ -112,7 +113,7 @@ const propertyStructuredData = [
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`Conversar sobre ${p.title} pelo WhatsApp no número ${site.phone}; abre em uma nova aba`}
+      aria-label={`Conversar sobre ${p.title} pelo WhatsApp no número ${whatsappDisplay}; abre em uma nova aba`}
     >
       <span class="whatsapp-icon" aria-hidden="true">
         <svg viewBox="0 0 32 32" role="img">
@@ -122,7 +123,7 @@ const propertyStructuredData = [
       <span class="whatsapp-copy">
         <small>Prefere uma conversa rápida?</small>
         <strong>Fale sobre {p.title} pelo WhatsApp</strong>
-        <span>{site.phone} · Mensagem com o imóvel já preenchido</span>
+        <span>{whatsappDisplay} · Mensagem com o imóvel já preenchido</span>
       </span>
       <span class="whatsapp-arrow" aria-hidden="true">→</span>
     </a>
