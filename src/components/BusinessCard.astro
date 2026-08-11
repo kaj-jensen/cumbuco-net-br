@@ -16,7 +16,6 @@ const imageSmall = image?.src.replace(/-1440(?=\.[^.]+$)/, "-720");
 const displayName = placeholder ? "Sua empresa pode aparecer aqui" : data.name;
 const initials = placeholder ? "Sua empresa" : data.name.split(/\s+/).slice(0, 2).map((part) => part[0]).join("");
 const whatsappDigits = data.contact.whatsapp?.replace(/\D/g, "");
-const checked = new Intl.DateTimeFormat("pt-BR", { month: "short", year: "numeric", timeZone: "UTC" }).format(new Date(`${data.verifiedAt}T12:00:00Z`));
 ---
 
 <article class:list={["business-card", { "business-card--compact": compact, "business-card--featured": data.featuredPartner }]} data-category={data.category}>
@@ -31,7 +30,7 @@ const checked = new Intl.DateTimeFormat("pt-BR", { month: "short", year: "numeri
   <div class="business-card__body">
     <div class="business-card__meta">
       <span>{data.subcategory || category?.label}</span>
-      <span>{placeholder ? "Espaço disponível" : `Verificado em ${checked}`}</span>
+      {placeholder && <span>Espaço disponível</span>}
     </div>
     <h3>{displayName}</h3>
     <p>{data.summary}</p>
