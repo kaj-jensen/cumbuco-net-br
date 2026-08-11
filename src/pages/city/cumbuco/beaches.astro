@@ -49,7 +49,11 @@ const structuredData = [
   <section class="section section--sand">
     <div class="shell place-grid">
       <article class="place-card place-card--wide">
-        <div><span>Atlântico</span><h2>Praia do Cumbuco</h2><p>Uma praia extensa de água quente, ideal para caminhadas matinais, restaurantes à beira-mar, pôr do sol e o espetáculo colorido da temporada de kite. O trecho central é movimentado; mais adiante, o horizonte se abre.</p><ul><li>Boa para dias de praia, caminhadas e observar o kitesurf</li><li>O vento e o movimento aumentam à tarde durante a temporada</li><li>As condições para banho mudam conforme horário e local</li></ul></div>
+        <div class="wide-content">
+          <div class="wide-heading"><span>Atlântico</span><h2>Praia do Cumbuco</h2></div>
+          <p class="wide-description">Uma praia extensa de água quente, ideal para caminhadas matinais, restaurantes à beira-mar, pôr do sol e o espetáculo colorido da temporada de kite. O trecho central é movimentado; mais adiante, o horizonte se abre.</p>
+          <ul class="wide-points"><li>Boa para dias de praia, caminhadas e observar o kitesurf</li><li>O vento e o movimento aumentam à tarde durante a temporada</li><li>As condições para banho mudam conforme horário e local</li></ul>
+        </div>
       </article>
       <article><span>Água doce</span><h3>Lagoa do Parnamirim</h3><p>Uma parada conhecida entre dunas e lagoa perto de Cumbuco, muitas vezes incluída em rotas autorizadas de buggy. A água e as atividades variam conforme a estação.</p><strong>Confira: nível da água, acesso e atividades atuais</strong></article>
       <article><span>Paisagem protegida</span><h3>Lagamar do Cauípe</h3><p>A região combina lagoa, rio, dunas, vegetação costeira, comunidade local e condições de kite reconhecidas internacionalmente em uma paisagem ambientalmente sensível.</p><strong>Confira: vento, água, movimento e regras da área protegida</strong></article>
@@ -117,13 +121,18 @@ const structuredData = [
   .place-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
   .place-grid article { min-height: 22rem; display: flex; flex-direction: column; padding: 1.7rem; border: 1px solid var(--line); background: var(--paper); border-radius: 1.2rem; }
   .place-grid .place-card--wide { grid-column: 1/-1; min-height: auto; background: var(--ocean); color: white; }
-  .place-card--wide div { display: grid; grid-template-columns: .45fr .8fr 1.2fr; gap: 2rem; align-items: start; }
+  .place-card--wide .wide-content { display: grid; grid-template-columns: minmax(18rem, .8fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+  .wide-heading h2 { max-width: 10ch; margin-top: .6rem; }
+  .place-card--wide .wide-description { max-width: 46rem; margin-top: .2rem; font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.65; }
   .place-grid span { color: var(--coral); font-size: .78rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; }
   .place-grid h3 { margin-top: 2rem; }
   .place-grid p { margin-top: .75rem; color: var(--ink-soft); }
   .place-card--wide p, .place-card--wide li { color: rgb(255 255 255 / 80%); }
   .place-grid strong { margin-top: auto; padding-top: 1.2rem; color: var(--ocean); font-size: .8rem; }
-  .place-card--wide ul { margin: 0; padding-left: 1.2rem; }
+  .place-card--wide .wide-points { grid-column: 1/-1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin: 0; padding: 1.4rem 0 0; border-top: 1px solid rgb(255 255 255 / 24%); list-style: none; }
+  .wide-points li { position: relative; padding: .1rem 1.5rem .1rem 2rem; border-right: 1px solid rgb(255 255 255 / 20%); }
+  .wide-points li::before { position: absolute; top: .5rem; left: .65rem; width: .45rem; height: .45rem; border-radius: 50%; background: var(--sun); content: ""; }
+  .wide-points li:last-child { border-right: 0; }
   .feature-grid { display: grid; grid-template-columns: minmax(0, 52rem); justify-content: center; }
   .feature-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
   .feature-grid img { width: 100%; height: 100%; object-fit: cover; }
@@ -155,5 +164,5 @@ const structuredData = [
   .faq-grid h3 { font-size: 1.2rem; }
   .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
   @media (max-width: 800px) { .place-grid { grid-template-columns: 1fr; } .place-card--wide div { grid-template-columns: 1fr; } .place-grid article { min-height: auto; } }
-  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .feature-grid, .seasons-grid, .responsible-grid, .cta-grid, .faq-grid { grid-template-columns: 1fr; } .source-note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 720px) { .sub-hero { min-height: 31rem; } .intro-grid, .feature-grid, .seasons-grid, .responsible-grid, .cta-grid, .faq-grid, .place-card--wide .wide-content { grid-template-columns: 1fr; } .place-card--wide .wide-points { grid-column: 1; grid-template-columns: 1fr; } .wide-points li { padding-block: .75rem; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 18%); } .wide-points li:last-child { border-bottom: 0; } .wide-points li::before { top: 1.15rem; } .source-note { grid-column: 1; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
 </style>
