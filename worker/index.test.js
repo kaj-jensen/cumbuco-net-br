@@ -85,16 +85,17 @@ test("prevents indexing of the workers.dev preview", async () => {
   assert.equal(response.headers.get("x-robots-tag"), "noindex, nofollow");
 });
 
-test("adds security headers to API errors", async () => {
+test("returns a quiet imported-calendar fallback with security headers", async () => {
   const response = await worker.fetch(
     new Request("https://www.cumbuco.net.br/api/availability?property=villa-branca"),
     env,
     context,
   );
 
-  assert.equal(response.status, 503);
+  assert.equal(response.status, 200);
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
-  assert.equal(response.headers.get("cache-control"), "no-store");
+  assert.equal(response.headers.get("cache-control"), "public, max-age=300, s-maxage=900");
+  assert.deepEqual(await response.json(), { property: "villa-branca", live: false });
 });
 
 test("keeps email enquiries unavailable until secure bindings are configured", async () => {

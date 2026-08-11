@@ -170,9 +170,11 @@ const { property, slug, reservedDates } = Astro.props;
         if (!response.ok) throw new Error('A disponibilidade ao vivo ainda não está configurada.');
         return response.json();
       })
-      .then((data: { reservedDates?: string[] }) => {
-        renderMonths(data.reservedDates || []);
-        if (status) status.textContent = 'Calendário atualizado. A reserva só é confirmada depois da nossa resposta.';
+      .then((data: { live?: boolean; reservedDates?: string[] }) => {
+        if (data.live && Array.isArray(data.reservedDates)) {
+          renderMonths(data.reservedDates);
+          if (status) status.textContent = 'Calendário atualizado. A reserva só é confirmada depois da nossa resposta.';
+        }
       })
       .catch(() => {
         // Imported dates remain visible until the secure Google Calendar feeds are configured.

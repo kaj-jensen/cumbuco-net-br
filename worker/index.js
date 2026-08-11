@@ -317,7 +317,7 @@ async function availability(request, env, context) {
   const feeds = parseGoogleCalendarFeeds(env.GOOGLE_CALENDAR_FEEDS);
   const feedUrl = feeds[property];
   if (typeof feedUrl !== "string" || !feedUrl.startsWith("https://calendar.google.com/")) {
-    return json({ error: "Live availability is not configured for this property." }, 503);
+    return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
   }
 
   const cache = caches.default;
@@ -329,7 +329,7 @@ async function availability(request, env, context) {
   if (!response.ok) return json({ error: "The calendar feed could not be loaded." }, 502);
 
   const result = json(
-    { property, reservedDates: keepCurrentYearFromToday(parseReservedDates(await response.text())) },
+    { property, live: true, reservedDates: keepCurrentYearFromToday(parseReservedDates(await response.text())) },
     200,
     "public, max-age=300, s-maxage=900",
   );
