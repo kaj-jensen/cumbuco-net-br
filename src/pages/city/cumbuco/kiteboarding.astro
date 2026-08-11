@@ -163,8 +163,8 @@ const structuredData = [
   .level-grid h3 { margin-top: 2rem; }
   .level-grid p { margin-top: .7rem; color: var(--ink-soft); }
   .level-grid strong { margin-top: auto; padding-top: 1rem; color: var(--ocean); font-size: .8rem; }
-  .season-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(2.5rem, 7vw, 6rem); align-items: center; }
-  .season-grid picture { display: block; aspect-ratio: 5/4; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
+  .season-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(2.5rem, 6vw, 5rem); align-items: stretch; }
+  .season-grid picture { display: block; min-height: 100%; overflow: hidden; border-radius: 1.4rem; box-shadow: var(--shadow); }
   .season-grid img { width: 100%; height: 100%; object-fit: cover; }
   .season-grid h2 { max-width: 12ch; }
   .timeline { margin-top: 1.2rem; border-top: 1px solid var(--line); }
@@ -199,6 +199,6 @@ const structuredData = [
   .faq-grid h3 { font-size: 1.2rem; }
   .faq-grid p { margin-top: .6rem; color: var(--ink-soft); }
   @media (max-width: 850px) { .level-grid { grid-template-columns: 1fr 1fr; } .level-grid article:nth-child(2) { border-right: 0; } .level-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--line); } }
-  @media (max-width: 720px) { .sub-hero { min-height: 32rem; } .fact-grid { grid-template-columns: 1fr 1fr; } .fact-grid p { padding: .8rem 0; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 14%); } .fact-grid p:nth-child(odd) { padding-right: 1rem; } .intro-grid, .season-grid, .conditions-grid, .safety-grid, .logistics-grid, .cta-grid, .faq-grid { grid-template-columns: 1fr; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
+  @media (max-width: 720px) { .sub-hero { min-height: 32rem; } .fact-grid { grid-template-columns: 1fr 1fr; } .fact-grid p { padding: .8rem 0; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 14%); } .fact-grid p:nth-child(odd) { padding-right: 1rem; } .intro-grid, .season-grid, .conditions-grid, .safety-grid, .logistics-grid, .cta-grid, .faq-grid { grid-template-columns: 1fr; } .season-grid picture { min-height: 0; aspect-ratio: 5/4; } .faq-grid article, .faq-grid article:nth-child(even) { padding: 1.25rem 0; border-right: 0; } }
   @media (max-width: 520px) { .level-grid, .condition-cards, .logistics-list { grid-template-columns: 1fr; } .level-grid article { border-right: 0; border-bottom: 1px solid var(--line); } .logistics-list article, .logistics-list article:nth-child(even) { padding: 1rem 0; border-left: 0; } }
 </style>
