@@ -53,6 +53,21 @@ test("redirects the apex domain to www and preserves the path", async () => {
   assert.match(response.headers.get("content-security-policy"), /frame-ancestors 'none'/);
 });
 
+test("redirects both cumbuco.com.br hostnames to the canonical site in one hop", async () => {
+  for (const hostname of ["cumbuco.com.br", "www.cumbuco.com.br"]) {
+    const response = await worker.fetch(
+      new Request(`https://${hostname}/casas-de-praia-cumbuco/?utm_source=old-domain`),
+      env,
+      context,
+    );
+    assert.equal(response.status, 301);
+    assert.equal(response.headers.get("location"), "https://www.cumbuco.net.br/casas-de-praia-cumbuco/?utm_source=old-domain");
+    assert.equal(response.headers.get("strict-transport-security"), "max-age=15552000");
+    assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+    assert.equal(response.headers.get("x-frame-options"), "DENY");
+  }
+});
+
 test("upgrades HTTP visitors to the canonical HTTPS URL", async () => {
   const response = await worker.fetch(
     new Request("https://www.cumbuco.net.br/properties/villa-branca/", {

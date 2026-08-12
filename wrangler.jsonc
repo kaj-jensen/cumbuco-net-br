@@ -13,6 +13,14 @@
     {
       "pattern": "www.cumbuco.net.br/*",
       "zone_name": "cumbuco.net.br"
+    },
+    {
+      "pattern": "cumbuco.com.br/*",
+      "zone_name": "cumbuco.com.br"
+    },
+    {
+      "pattern": "www.cumbuco.com.br/*",
+      "zone_name": "cumbuco.com.br"
     }
   ],
   "vars": {

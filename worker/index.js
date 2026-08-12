@@ -29,6 +29,7 @@ const EMAIL_FORWARDING_DESTINATIONS = [
 ];
 const ENQUIRY_FROM = { email: "enquiries@cumbuco.net.br", name: "Cumbuco Aluguéis" };
 const REPORT_FROM = { email: "reports@cumbuco.net.br", name: "Cumbuco Aluguéis" };
+const REDIRECT_HOSTNAMES = new Set(["cumbuco.com.br", "www.cumbuco.com.br"]);
 const LEGACY_PATH_REDIRECTS = new Map([
   ["/apartamentos/", "/listings/apartment/"],
   ["/casas/", "/listings/house/"],
@@ -554,6 +555,11 @@ export default {
 
   async fetch(request, env, context) {
     const url = new URL(request.url);
+    if (REDIRECT_HOSTNAMES.has(url.hostname)) {
+      url.protocol = "https:";
+      url.hostname = "www.cumbuco.net.br";
+      return secureResponse(Response.redirect(url.toString(), 301));
+    }
     const productionHostname = url.hostname === "cumbuco.net.br" || url.hostname === "www.cumbuco.net.br";
     let redirect = false;
 
