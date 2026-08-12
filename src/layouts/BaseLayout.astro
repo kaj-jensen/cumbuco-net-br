@@ -12,6 +12,7 @@ interface Props {
   imageAlt?: string;
   pageType?: "WebPage" | "AboutPage" | "ContactPage" | "CollectionPage";
   structuredData?: Record<string, unknown>[];
+  analyticsProperty?: string;
 }
 const {
   title,
@@ -21,6 +22,7 @@ const {
   imageAlt = "Praia de Cumbuco, Ceará, Brasil",
   pageType = "WebPage",
   structuredData = [],
+  analyticsProperty = "",
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
 const pageTitle = title.includes("Cumbuco") ? title : `${title} | Cumbuco Aluguéis`;
@@ -123,15 +125,15 @@ const jsonLd = JSON.stringify({
     <script type="application/ld+json" set:html={jsonLd}></script>
     <title>{pageTitle}</title>
   </head>
-  <body>
+  <body data-analytics-property={analyticsProperty}>
     <a class="skip-link" href="#main-content">Pular para o conteúdo principal</a>
     <SiteHeader />
     <main id="main-content" tabindex="-1"><slot /></main>
     <SiteFooter />
     <script is:inline>
       (() => {
-        const send = (event, property = "") => {
-          const body = JSON.stringify({ event, property, page: location.pathname });
+        const send = (event, property = "", source = "unspecified") => {
+          const body = JSON.stringify({ event, property, source, page: location.pathname });
           if (navigator.sendBeacon) {
             navigator.sendBeacon("/api/events", new Blob([body], { type: "application/json" }));
           } else {
@@ -139,10 +141,15 @@ const jsonLd = JSON.stringify({
           }
         };
         window.cumbucoTrack = send;
+        send("page_view", document.body.dataset.analyticsProperty || "", "page_load");
         document.addEventListener("click", (event) => {
           const target = event.target instanceof Element ? event.target.closest("[data-track]") : null;
           if (!target) return;
-          send(target.getAttribute("data-track") || "", target.getAttribute("data-track-property") || "");
+          send(
+            target.getAttribute("data-track") || "",
+            target.getAttribute("data-track-property") || "",
+            target.getAttribute("data-track-source") || "unspecified",
+          );
         });
       })();
     </script>

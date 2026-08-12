@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import worker, { currentDateInFortaleza, keepBookingHorizon } from "./index.js";
+import worker, { currentDateInFortaleza, funnelReportContent, keepBookingHorizon } from "./index.js";
 
 const env = {
   ASSETS: {
@@ -51,6 +51,19 @@ test("redirects the apex domain to www and preserves the path", async () => {
   );
   assert.equal(response.headers.get("x-frame-options"), "DENY");
   assert.match(response.headers.get("content-security-policy"), /frame-ancestors 'none'/);
+});
+
+test("upgrades HTTP visitors to the canonical HTTPS URL", async () => {
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/properties/villa-branca/", {
+      headers: { "CF-Visitor": JSON.stringify({ scheme: "http" }) },
+    }),
+    env,
+    context,
+  );
+
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get("location"), "https://www.cumbuco.net.br/properties/villa-branca/");
 });
 
 test("removes obsolete WordPress display parameters in one permanent redirect", async () => {
@@ -151,7 +164,7 @@ test("records only allowlisted, anonymous conversion events", async () => {
   );
 
   assert.equal(response.status, 204);
-  assert.deepEqual(points[0].blobs, ["dates_selected", "villa-branca", "/properties/villa-branca/"]);
+  assert.deepEqual(points[0].blobs, ["dates_selected", "villa-branca", "/properties/villa-branca/", "unspecified"]);
   assert.equal(points[0].doubles[0], 1);
 });
 
@@ -187,6 +200,7 @@ test("falls back to structured observability when Analytics Engine is unavailabl
       type: "conversion",
       event: "calendar_expand",
       property: "villa-branca",
+      source: "unspecified",
       page: "/properties/villa-branca/",
     });
   } finally {
@@ -198,7 +212,6 @@ test("validates Turnstile and sends a structured rental enquiry", async () => {
   const sent = [];
   const configuredEnv = {
     ...env,
-    ENQUIRY_TO: "cumbucorentals@outlook.com",
     TURNSTILE_SECRET_KEY: "test-secret",
     EMAIL: { send: async (message) => { sent.push(message); return { messageId: "test-id" }; } },
   };
@@ -236,8 +249,11 @@ test("validates Turnstile and sends a structured rental enquiry", async () => {
 
     assert.equal(response.status, 200);
     assert.equal((await response.json()).ok, true);
-    assert.equal(sent.length, 1);
-    assert.equal(sent[0].to, configuredEnv.ENQUIRY_TO);
+    assert.equal(sent.length, 2);
+    assert.deepEqual(sent.map((message) => message.to).sort(), [
+      "anaceres.teixeira@gmail.com",
+      "kaj.jensen@outlook.com",
+    ]);
     assert.equal(sent[0].from.email, "enquiries@cumbuco.net.br");
     assert.equal(sent[0].replyTo.email, "guest@example.com");
     assert.match(sent[0].subject, /^Nova consulta pelo site/);
@@ -257,7 +273,6 @@ test("rejects invalid enquiry fields before sending email", async () => {
     }),
     {
       ...env,
-      ENQUIRY_TO: "cumbucorentals@outlook.com",
       TURNSTILE_SECRET_KEY: "test-secret",
       EMAIL: { send: async () => { sent = true; } },
     },
@@ -266,4 +281,48 @@ test("rejects invalid enquiry fields before sending email", async () => {
 
   assert.equal(response.status, 400);
   assert.equal(sent, false);
+});
+
+test("stores only daily aggregate conversion counts in D1", async () => {
+  const writes = [];
+  const pending = [];
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/api/events", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ event: "page_view", property: "villa-branca", source: "page_load", page: "/properties/villa-branca/" }),
+    }),
+    {
+      ...env,
+      CONVERSIONS_DB: {
+        prepare(sql) {
+          return { bind(...values) { return { async run() { writes.push({ sql, values }); } }; } };
+        },
+      },
+    },
+    { waitUntil(promise) { pending.push(promise); } },
+  );
+
+  await Promise.all(pending);
+  assert.equal(response.status, 204);
+  assert.equal(writes.length, 1);
+  assert.match(writes[0].sql, /ON CONFLICT/);
+  assert.deepEqual(writes[0].values.slice(1), ["villa-branca", "page_view", "page_load", "/properties/villa-branca/"]);
+});
+
+test("builds a readable weekly funnel report", () => {
+  const report = funnelReportContent([{
+    property: "villa-branca",
+    views: 120,
+    property_opens: 42,
+    dates_viewed: 30,
+    dates_selected: 12,
+    enquiries_started: 8,
+    whatsapp_enquiries: 5,
+    email_enquiries: 2,
+  }]);
+  assert.match(report.text, /villa-branca/);
+  assert.match(report.text, /Visualizações 120/);
+  assert.match(report.html, /<table/);
+  assert.match(report.html, /WhatsApp/);
 });

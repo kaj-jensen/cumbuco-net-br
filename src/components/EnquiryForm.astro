@@ -15,14 +15,14 @@ interface Props {
 
 const { property, slug, maxGuests = null, properties = [], compact = false } = Astro.props;
 const fixedProperty = Boolean(property && slug);
-const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
+const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "0x4AAAAAAEOMtUj0QBL-0DcM";
 ---
 
 <form class:list={["enquiry-form", { compact }]} data-enquiry-form data-property={property} data-property-slug={slug} action="/api/enquiry" method="post">
   <div class="form-heading">
     <p class="eyebrow">{fixedProperty ? `Consulte ${property}` : "Consulta de aluguel"}</p>
     <h2>Conte como será sua estadia.</h2>
-    <p>Preencha as datas, o número de hóspedes e seu nome. Envie a consulta por e-mail ou abra uma mensagem pronta no WhatsApp para confirmarmos disponibilidade e valor.</p>
+    <p>Preencha as datas, o número de hóspedes e seus dados de contato. Você pode enviar a consulta com segurança por e-mail ou abrir uma mensagem pronta no WhatsApp.</p>
   </div>
 
   <div class="form-body">
@@ -77,7 +77,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     </div>
 
     <div class="form-actions">
-      {turnstileSiteKey && <button class="button button--email" type="submit">Enviar por e-mail</button>}
+      {turnstileSiteKey && <button class="button button--email" type="submit">Enviar consulta por e-mail</button>}
       <button class="button button--whatsapp" type="button" data-whatsapp-submit>Enviar consulta pelo WhatsApp <span aria-hidden="true">→</span></button>
     </div>
     <p class="form-note"><strong>Sem reserva automática:</strong> você recebe a disponibilidade e o valor completo antes de decidir.</p>
@@ -137,7 +137,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     form.addEventListener('input', () => {
       if (started) return;
       started = true;
-      (window as any).cumbucoTrack?.('enquiry_start', selectedProperty().slug);
+      (window as any).cumbucoTrack?.('enquiry_start', selectedProperty().slug, 'property_form');
     });
 
     arrival.addEventListener('change', () => {
@@ -177,7 +177,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
       const message = String(data.get('message') || '').trim();
       if (message) lines.push(`Mensagem: ${message}`);
       window.open(`https://wa.me/5585988139402?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
-      (window as any).cumbucoTrack?.('enquiry_whatsapp_open', selected.slug);
+      (window as any).cumbucoTrack?.('enquiry_whatsapp_open', selected.slug, 'property_form');
       showStatus('O WhatsApp foi aberto com os dados da sua consulta.', 'success');
     });
 
@@ -215,7 +215,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
         const result = await response.json() as { ok?: boolean; reference?: string; error?: string };
         if (!response.ok || !result.ok) throw new Error(result.error || 'Não foi possível enviar o e-mail.');
         showStatus(`Obrigado — sua consulta foi enviada. Referência: ${result.reference}. Responderemos pessoalmente.`, 'success');
-        (window as any).cumbucoTrack?.('enquiry_email_sent', selected.slug);
+        (window as any).cumbucoTrack?.('enquiry_email_sent', selected.slug, 'property_form');
         form.reset();
         arrival.min = today;
         departure.min = today;

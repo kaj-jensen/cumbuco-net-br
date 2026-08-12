@@ -27,13 +27,14 @@ const EMAIL_FORWARDING_DESTINATIONS = [
   "anaceres.teixeira@gmail.com",
   "kaj.jensen@outlook.com",
 ];
+const ENQUIRY_FROM = { email: "enquiries@cumbuco.net.br", name: "Cumbuco Aluguéis" };
+const REPORT_FROM = { email: "reports@cumbuco.net.br", name: "Cumbuco Aluguéis" };
 const LEGACY_PATH_REDIRECTS = new Map([
   ["/apartamentos/", "/listings/apartment/"],
   ["/casas/", "/listings/house/"],
   ["/listings/apartamento/", "/listings/apartment/"],
   ["/listings/casa/", "/listings/house/"],
   ["/action/imovel/", "/properties/"],
-  ["/action/entire-home/", "/properties/"],
   ["/area/cumbuco/", "/properties/"],
   ["/cumbuco/", "/city/cumbuco/"],
   ["/contato/", "/contact-cumbuco-rentals/"],
@@ -184,8 +185,10 @@ function keepBookingHorizon(dates, today = currentDateInFortaleza()) {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const CONVERSION_EVENTS = new Set([
+  "page_view",
   "property_open",
   "availability_jump",
+  "availability_view",
   "calendar_expand",
   "dates_selected",
   "enquiry_start",
@@ -212,7 +215,7 @@ function escapeHtml(value) {
   })[character]);
 }
 
-async function conversionEvent(request, env) {
+async function conversionEvent(request, env, context) {
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > 2_048) return new Response(null, { status: 413 });
 
@@ -225,15 +228,32 @@ async function conversionEvent(request, env) {
 
   const event = cleanText(input.event, 48);
   const property = cleanText(input.property, 100);
+  const source = cleanText(input.source, 80) || "unspecified";
   const page = cleanText(input.page, 180);
-  if (!CONVERSION_EVENTS.has(event) || (property && !/^[a-z0-9-]+$/.test(property)) || !page.startsWith("/")) {
+  if (
+    !CONVERSION_EVENTS.has(event) ||
+    (property && !/^[a-z0-9-]+$/.test(property)) ||
+    !/^[a-z0-9_-]+$/.test(source) ||
+    !page.startsWith("/")
+  ) {
     return new Response(null, { status: 400 });
   }
 
-  const point = { event, property: property || "none", page };
+  const point = { event, property: property || "none", source, page };
+  if (env.CONVERSIONS_DB) {
+    const eventDate = currentDateInFortaleza();
+    context.waitUntil(
+      env.CONVERSIONS_DB.prepare(
+        `INSERT INTO conversion_daily (event_date, property, event, source, page, event_count)
+         VALUES (?1, ?2, ?3, ?4, ?5, 1)
+         ON CONFLICT(event_date, property, event, source, page)
+         DO UPDATE SET event_count = event_count + 1`,
+      ).bind(eventDate, point.property, point.event, point.source, point.page).run(),
+    );
+  }
   if (env.CONVERSION_ANALYTICS) {
     env.CONVERSION_ANALYTICS.writeDataPoint({
-      blobs: [point.event, point.property, point.page],
+      blobs: [point.event, point.property, point.page, point.source],
       doubles: [1],
       indexes: [point.event],
     });
@@ -250,8 +270,10 @@ function validStayDates(arrival, departure, today = currentDateInFortaleza()) {
     return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
   };
   if (!isRealDate(arrival) || !isRealDate(departure)) return false;
-  const yearEnd = `${today.slice(0, 4)}-12-31`;
-  return arrival >= today && departure > arrival && departure <= yearEnd;
+  const horizon = new Date(`${today}T12:00:00Z`);
+  horizon.setUTCFullYear(horizon.getUTCFullYear() + 2);
+  const horizonDate = horizon.toISOString().slice(0, 10);
+  return arrival >= today && departure > arrival && departure <= horizonDate;
 }
 
 async function verifyTurnstile(token, request, secret) {
@@ -276,7 +298,7 @@ async function verifyTurnstile(token, request, secret) {
 }
 
 async function enquiry(request, env) {
-  if (!env.EMAIL || !env.ENQUIRY_TO || !env.TURNSTILE_SECRET_KEY) {
+  if (!env.EMAIL || !env.TURNSTILE_SECRET_KEY) {
     return json({ error: "Email enquiries are temporarily unavailable. Please use WhatsApp." }, 503);
   }
   const contentLength = Number(request.headers.get("content-length") || 0);
@@ -341,14 +363,14 @@ async function enquiry(request, env) {
   ].map(([label, value]) => `<tr><th align="left" style="padding:6px 12px 6px 0">${label}</th><td style="padding:6px 0">${escapeHtml(value)}</td></tr>`).join("");
 
   try {
-    await env.EMAIL.send({
-      to: env.ENQUIRY_TO,
-      from: { email: "enquiries@cumbuco.net.br", name: "Cumbuco Aluguéis" },
+    await Promise.all(EMAIL_FORWARDING_DESTINATIONS.map((destination) => env.EMAIL.send({
+      to: destination,
+      from: ENQUIRY_FROM,
       replyTo: { email, name },
       subject: `Nova consulta pelo site — ${property} · ${arrival} · ${reference}`,
       text: lines.join("\n"),
       html: `<h1>Nova consulta pelo site</h1><table>${htmlRows}</table><p>Responda diretamente a este e-mail para falar com ${escapeHtml(name)}.</p>`,
-    });
+    })));
     return json({ ok: true, reference }, 200);
   } catch (error) {
     console.error("Enquiry email failed", error?.code || "unknown");
@@ -360,7 +382,57 @@ async function enquiry(request, env) {
   }
 }
 
-export { currentDateInFortaleza, keepBookingHorizon, keepCurrentYearFromToday, parseReservedDates };
+function funnelReportContent(rows, days = 7) {
+  const columns = [
+    ["views", "Visualizações"],
+    ["property_opens", "Aberturas"],
+    ["dates_viewed", "Datas vistas"],
+    ["dates_selected", "Datas escolhidas"],
+    ["enquiries_started", "Consultas iniciadas"],
+    ["whatsapp_enquiries", "WhatsApp"],
+    ["email_enquiries", "E-mail"],
+  ];
+  const normalized = rows.map((row) => Object.fromEntries(
+    Object.entries(row).map(([key, value]) => [key, key === "property" ? value : Number(value || 0)]),
+  ));
+  const textRows = normalized.length
+    ? normalized.map((row) => `${row.property}: ${columns.map(([key, label]) => `${label} ${row[key]}`).join(" · ")}`).join("\n")
+    : "Nenhuma interação de imóvel registrada no período.";
+  const htmlRows = normalized.length
+    ? normalized.map((row) => `<tr><th align="left">${escapeHtml(String(row.property))}</th>${columns.map(([key]) => `<td align="right">${row[key]}</td>`).join("")}</tr>`).join("")
+    : `<tr><td colspan="8">Nenhuma interação de imóvel registrada no período.</td></tr>`;
+  return {
+    text: `Funil de conversão por imóvel — últimos ${days} dias\n\n${textRows}\n\nOs números são contagens agregadas e não identificam visitantes.`,
+    html: `<h1>Funil de conversão por imóvel</h1><p>Últimos ${days} dias. Contagens agregadas, sem identificação de visitantes.</p><table cellpadding="6" cellspacing="0" border="1"><thead><tr><th>Imóvel</th>${columns.map(([, label]) => `<th>${label}</th>`).join("")}</tr></thead><tbody>${htmlRows}</tbody></table>`,
+  };
+}
+
+async function weeklyFunnelReport(env) {
+  if (!env.CONVERSIONS_DB || !env.EMAIL) return;
+  const result = await env.CONVERSIONS_DB.prepare(
+    `SELECT property,
+      SUM(CASE WHEN event = 'page_view' THEN event_count ELSE 0 END) AS views,
+      SUM(CASE WHEN event = 'property_open' THEN event_count ELSE 0 END) AS property_opens,
+      SUM(CASE WHEN event = 'availability_view' THEN event_count ELSE 0 END) AS dates_viewed,
+      SUM(CASE WHEN event = 'dates_selected' THEN event_count ELSE 0 END) AS dates_selected,
+      SUM(CASE WHEN event = 'enquiry_start' THEN event_count ELSE 0 END) AS enquiries_started,
+      SUM(CASE WHEN event = 'enquiry_whatsapp_open' THEN event_count ELSE 0 END) AS whatsapp_enquiries,
+      SUM(CASE WHEN event = 'enquiry_email_sent' THEN event_count ELSE 0 END) AS email_enquiries
+     FROM conversion_daily
+     WHERE event_date >= date('now', '-6 days') AND property <> 'none'
+     GROUP BY property ORDER BY views DESC, property ASC`,
+  ).all();
+  const report = funnelReportContent(result.results || []);
+  await Promise.all(EMAIL_FORWARDING_DESTINATIONS.map((destination) => env.EMAIL.send({
+    to: destination,
+    from: REPORT_FROM,
+    subject: "Relatório semanal do site — Cumbuco Aluguéis",
+    text: report.text,
+    html: report.html,
+  })));
+}
+
+export { currentDateInFortaleza, funnelReportContent, keepBookingHorizon, keepCurrentYearFromToday, parseReservedDates };
 
 async function availability(request, env, context) {
   const property = new URL(request.url).searchParams.get("property") || "";
@@ -408,6 +480,18 @@ export default {
     const productionHostname = url.hostname === "cumbuco.net.br" || url.hostname === "www.cumbuco.net.br";
     let redirect = false;
 
+    if (productionHostname) {
+      try {
+        const visitor = JSON.parse(request.headers.get("CF-Visitor") || "{}");
+        if (visitor.scheme === "http") {
+          url.protocol = "https:";
+          redirect = true;
+        }
+      } catch {
+        // Ignore malformed infrastructure metadata and continue normally.
+      }
+    }
+
     if (url.hostname === "cumbuco.net.br") {
       url.hostname = "www.cumbuco.net.br";
       redirect = true;
@@ -446,12 +530,16 @@ export default {
       return secureResponse(await enquiry(request, env));
     }
     if (request.method === "POST" && url.pathname === "/api/events") {
-      return secureResponse(await conversionEvent(request, env));
+      return secureResponse(await conversionEvent(request, env, context));
     }
     if (url.pathname.startsWith("/api/")) {
       return secureResponse(json({ error: "Not found." }, 404));
     }
     const response = await env.ASSETS.fetch(request);
     return secureResponse(response, { preview: url.hostname.endsWith(".workers.dev") });
+  },
+
+  async scheduled(_controller, env, context) {
+    context.waitUntil(weeklyFunnelReport(env));
   },
 };

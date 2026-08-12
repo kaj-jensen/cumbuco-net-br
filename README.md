@@ -38,7 +38,19 @@ The migration captures the indexed WordPress URL inventory, rendered source snap
 
 Property pages display imported availability as a fallback and request live blocked dates from the Worker API. Google Calendar remains the source of truth; its private iCal feeds are stored in the encrypted `GOOGLE_CALENDAR_FEEDS` Worker secret. See [docs/google-calendar-setup.md](docs/google-calendar-setup.md).
 
-The first enquiry flow creates a structured Portuguese WhatsApp message containing the property, dates, guest count, name, and optional requests. Email is intentionally disabled for the first preview and will be connected to Zoho later without changing the WhatsApp or availability flows.
+The enquiry flow offers two secure channels. WhatsApp creates a structured Portuguese message containing the property, dates, guest count, name, and optional requests. Email submissions are protected by Cloudflare Turnstile and sent through the Worker Email binding to Ana and Kaj.
+
+## Privacy-friendly conversion reporting
+
+The browser sends an allowlisted set of aggregate funnel events without form contents, travel dates, cookies, persistent identifiers, or visitor profiles. The Worker increments daily counts in the EU-jurisdiction `cumbuco-net-br-conversions` D1 database. A scheduled Worker emails a seven-day property funnel report every Monday at 11:00 UTC.
+
+Run the same query manually for the last seven days with:
+
+```sh
+npm run report:funnel
+```
+
+Pass a different period in days after `--`, for example `npm run report:funnel -- 30`.
 
 ## SEO migration
 

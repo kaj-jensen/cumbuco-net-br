@@ -86,11 +86,11 @@ const propertyStructuredData = [
 ];
 ---
 
-<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical={`/properties/${p.slug}/`} image={p.gallery[0].src} imageAlt={`${p.title} para aluguel por temporada em Cumbuco`} structuredData={propertyStructuredData}>
+<BaseLayout title={p.seo.title || p.title} description={p.seo.description} canonical={`/properties/${p.slug}/`} image={p.gallery[0].src} imageAlt={`${p.title} para aluguel por temporada em Cumbuco`} structuredData={propertyStructuredData} analyticsProperty={p.slug}>
   <section class="property-head">
     <div class="shell">
       <p class="eyebrow">{typeLabel} · Cumbuco, Ceará</p>
-      <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire" data-track="availability_jump" data-track-property={p.slug}>Consultar este imóvel</a></div>
+      <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire" data-track="availability_jump" data-track-property={p.slug} data-track-source="hero_consult">Consultar este imóvel</a></div>
       <ul class="quick-facts"><li>{p.metrics.guests} hóspedes</li><li>{p.metrics.bedrooms} quartos</li><li>{p.metrics.baths} banheiros</li><li>{p.gallery.length} fotos</li></ul>
     </div>
   </section>
@@ -109,7 +109,7 @@ const propertyStructuredData = [
       <strong>Quer saber se {p.title} está disponível?</strong>
       <span>Veja as datas livres e escolha sua chegada e saída.</span>
     </div>
-    <a class="button availability-button" href="#availability" data-track="availability_jump" data-track-property={p.slug}>Ver disponibilidade <span aria-hidden="true">↓</span></a>
+    <a class="button availability-button" href="#availability" data-track="availability_jump" data-track-property={p.slug} data-track-source="gallery_availability">Ver disponibilidade <span aria-hidden="true">↓</span></a>
   </div>
 
   <div class="shell whatsapp-wrap">
@@ -120,7 +120,7 @@ const propertyStructuredData = [
       rel="noopener noreferrer"
       data-track="property_whatsapp_open"
       data-track-property={p.slug}
-      aria-label={`Conversar sobre ${p.title} pelo WhatsApp no número ${whatsappDisplay}; abre em uma nova aba`}
+      data-track-source="property_whatsapp_card"
     >
       <span class="whatsapp-icon" aria-hidden="true">
         <svg viewBox="0 0 32 32" role="img">
@@ -222,8 +222,8 @@ const propertyStructuredData = [
     </div>
   </section>
   <nav class="mobile-property-actions" aria-label={`Ações rápidas para ${p.title}`}>
-    <a href="#availability" data-track="availability_jump" data-track-property={p.slug}>Ver datas</a>
-    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-track="property_whatsapp_open" data-track-property={p.slug}>WhatsApp</a>
+    <a href="#availability" data-track="availability_jump" data-track-property={p.slug} data-track-source="sticky_dates">Ver datas</a>
+    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-track="property_whatsapp_open" data-track-property={p.slug} data-track-source="sticky_whatsapp">WhatsApp</a>
   </nav>
 </BaseLayout>
 

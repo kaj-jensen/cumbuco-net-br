@@ -35,7 +35,7 @@ const { property, slug, reservedDates } = Astro.props;
 
   <div class="calendar-preview">
     <div class="calendars" aria-label={`Próximos meses disponíveis de ${property}`} data-calendar-months></div>
-    <button class="calendar-expand" type="button" data-calendar-open data-track="calendar_expand" data-track-property={slug}>
+    <button class="calendar-expand" type="button" data-calendar-open data-track="calendar_expand" data-track-property={slug} data-track-source="full_calendar">
       Ver calendário completo
       <span aria-hidden="true">→</span>
     </button>
@@ -224,12 +224,13 @@ const { property, slug, reservedDates } = Astro.props;
       } else {
         selectedDeparture = iso;
         setSelectionText(`${displayDate(selectedArrival)} a ${displayDate(selectedDeparture)} selecionado. Levando você ao formulário de consulta…`);
+        const selectionSource = dialog?.open ? 'full_calendar' : 'calendar_preview';
         if (dialog?.open) dialog.close();
         calendar.dispatchEvent(new CustomEvent('availability:dates-selected', {
           bubbles: true,
           detail: { slug, arrival: selectedArrival, departure: selectedDeparture },
         }));
-        (window as any).cumbucoTrack?.('dates_selected', slug || '');
+        (window as any).cumbucoTrack?.('dates_selected', slug || '', selectionSource);
       }
       updateSelectedDates();
     };
@@ -261,6 +262,12 @@ const { property, slug, reservedDates } = Astro.props;
     });
 
     renderMonths(importedDates);
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      (window as any).cumbucoTrack?.('availability_view', slug || '', 'calendar_section');
+      visibilityObserver.disconnect();
+    }, { threshold: 0.25 });
+    visibilityObserver.observe(calendar);
     fetch(`/api/availability?property=${encodeURIComponent(slug || '')}`)
       .then(async (response) => {
         if (!response.ok) throw new Error('A disponibilidade ao vivo ainda não está configurada.');

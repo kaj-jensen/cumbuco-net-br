@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "cumbuco-net-br",
-  "compatibility_date": "2026-08-10",
+  "compatibility_date": "2026-08-12",
   "main": "./worker/index.js",
   "workers_dev": true,
   "preview_urls": true,
@@ -16,7 +16,30 @@
     }
   ],
   "vars": {
-    "ENQUIRY_MODE": "whatsapp"
+    "ENQUIRY_MODE": "email-and-whatsapp"
+  },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "allowed_destination_addresses": [
+        "anaceres.teixeira@gmail.com",
+        "kaj.jensen@outlook.com"
+      ],
+      "allowed_sender_addresses": [
+        "enquiries@cumbuco.net.br",
+        "reports@cumbuco.net.br"
+      ]
+    }
+  ],
+  "d1_databases": [
+    {
+      "binding": "CONVERSIONS_DB",
+      "database_name": "cumbuco-net-br-conversions",
+      "database_id": "57a1ca2d-2ef1-4099-90a7-c7f5f1b05395"
+    }
+  ],
+  "triggers": {
+    "crons": ["0 11 * * 1"]
   },
   "assets": {
     "directory": "./dist",
@@ -25,6 +48,7 @@
     "run_worker_first": true
   },
   "observability": {
-    "enabled": true
+    "enabled": true,
+    "head_sampling_rate": 1
   }
 }

@@ -10,6 +10,7 @@
     "audit:seo": "npm run build && node scripts/audit-seo.mjs",
     "audit:properties": "node scripts/audit-property-facts.mjs",
     "audit:live": "node scripts/audit-live.mjs",
+    "report:funnel": "node scripts/report-funnel.mjs",
     "content:prepare": "node scripts/prepare-content.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
     "preview": "astro preview",
