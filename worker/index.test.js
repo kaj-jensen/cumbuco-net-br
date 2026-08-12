@@ -168,6 +168,32 @@ test("rejects unknown conversion events", async () => {
   assert.equal(response.status, 400);
 });
 
+test("falls back to structured observability when Analytics Engine is unavailable", async () => {
+  const messages = [];
+  const originalLog = console.log;
+  console.log = (message) => messages.push(message);
+  try {
+    const response = await worker.fetch(
+      new Request("https://www.cumbuco.net.br/api/events", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ event: "calendar_expand", property: "villa-branca", page: "/properties/villa-branca/" }),
+      }),
+      env,
+      context,
+    );
+    assert.equal(response.status, 204);
+    assert.deepEqual(JSON.parse(messages[0]), {
+      type: "conversion",
+      event: "calendar_expand",
+      property: "villa-branca",
+      page: "/properties/villa-branca/",
+    });
+  } finally {
+    console.log = originalLog;
+  }
+});
+
 test("validates Turnstile and sends a structured rental enquiry", async () => {
   const sent = [];
   const configuredEnv = {

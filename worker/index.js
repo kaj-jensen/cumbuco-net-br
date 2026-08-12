@@ -230,11 +230,16 @@ async function conversionEvent(request, env) {
     return new Response(null, { status: 400 });
   }
 
-  env.CONVERSION_ANALYTICS?.writeDataPoint({
-    blobs: [event, property || "none", page],
-    doubles: [1],
-    indexes: [event],
-  });
+  const point = { event, property: property || "none", page };
+  if (env.CONVERSION_ANALYTICS) {
+    env.CONVERSION_ANALYTICS.writeDataPoint({
+      blobs: [point.event, point.property, point.page],
+      doubles: [1],
+      indexes: [point.event],
+    });
+  } else {
+    console.log(JSON.stringify({ type: "conversion", ...point }));
+  }
   return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 }
 

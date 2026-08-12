@@ -18,12 +18,6 @@
   "vars": {
     "ENQUIRY_MODE": "whatsapp"
   },
-  "analytics_engine_datasets": [
-    {
-      "binding": "CONVERSION_ANALYTICS",
-      "dataset": "cumbuco_net_br_conversions"
-    }
-  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
