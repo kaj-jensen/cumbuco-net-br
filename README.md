@@ -44,6 +44,8 @@ The enquiry flow offers two secure channels. WhatsApp creates a structured Portu
 
 The browser sends an allowlisted set of aggregate funnel events without form contents, travel dates, cookies, persistent identifiers, or visitor profiles. The Worker increments daily counts in the EU-jurisdiction `cumbuco-net-br-conversions` D1 database. A scheduled Worker emails a seven-day property funnel report every Monday at 11:00 UTC.
 
+A second scheduled report runs on the first day of each month at 11:30 UTC. It checks the production sitemap, robots.txt, page status, canonical URLs and essential metadata, then combines that audit with aggregate organic landing-page entries grouped by search engine. Only the search-engine category is retained; full referrer URLs, search queries and visitor identities are not stored. Google Search Console query, impression, click and position metrics require a separately authorized Search Console API connection.
+
 Run the same query manually for the last seven days with:
 
 ```sh

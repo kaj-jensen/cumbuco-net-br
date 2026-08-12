@@ -186,6 +186,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
 const CONVERSION_EVENTS = new Set([
   "page_view",
+  "organic_entry",
   "property_open",
   "availability_jump",
   "availability_view",
@@ -407,6 +408,61 @@ function funnelReportContent(rows, days = 7) {
   };
 }
 
+function seoReportContent({ rows, audit, days = 30 }) {
+  const organicRows = rows.length
+    ? rows.map((row) => `${row.page}: ${row.search_engine} ${Number(row.entries || 0)}`).join("\n")
+    : "Nenhuma entrada orgânica registrada no período.";
+  const organicHtml = rows.length
+    ? rows.map((row) => `<tr><td>${escapeHtml(String(row.page))}</td><td>${escapeHtml(String(row.search_engine))}</td><td align="right">${Number(row.entries || 0)}</td></tr>`).join("")
+    : '<tr><td colspan="3">Nenhuma entrada orgânica registrada no período.</td></tr>';
+  const issueText = audit.issues.length ? audit.issues.join("\n") : "Nenhum problema técnico encontrado.";
+  const issueHtml = audit.issues.length
+    ? `<ul>${audit.issues.map((issue) => `<li>${escapeHtml(issue)}</li>`).join("")}</ul>`
+    : "<p>Nenhum problema técnico encontrado.</p>";
+  return {
+    text: `Relatório mensal de SEO — últimos ${days} dias\n\nSaúde técnica: ${audit.okPages}/${audit.totalPages} páginas aprovadas\nSitemap: ${audit.sitemapOk ? "OK" : "ERRO"}\nRobots.txt: ${audit.robotsOk ? "OK" : "ERRO"}\n\nProblemas\n${issueText}\n\nEntradas orgânicas por página e buscador\n${organicRows}\n\nMedição agregada e sem identificação de visitantes. Consultas, impressões, posições e cliques do Google exigem uma integração autorizada com o Search Console.`,
+    html: `<h1>Relatório mensal de SEO</h1><p>Últimos ${days} dias.</p><h2>Saúde técnica</h2><p><strong>${audit.okPages}/${audit.totalPages}</strong> páginas aprovadas · Sitemap: <strong>${audit.sitemapOk ? "OK" : "ERRO"}</strong> · Robots.txt: <strong>${audit.robotsOk ? "OK" : "ERRO"}</strong></p>${issueHtml}<h2>Entradas orgânicas</h2><table cellpadding="6" cellspacing="0" border="1"><thead><tr><th>Página</th><th>Buscador</th><th>Entradas</th></tr></thead><tbody>${organicHtml}</tbody></table><p>Medição agregada, sem cookies nem identificação de visitantes.</p><p><small>Consultas, impressões, posições e cliques do Google exigem uma integração autorizada com o Search Console.</small></p>`,
+  };
+}
+
+async function productionSeoAudit(origin = "https://www.cumbuco.net.br") {
+  const issues = [];
+  let sitemapOk = false;
+  let robotsOk = false;
+  let urls = [];
+  try {
+    const sitemapResponse = await fetch(`${origin}/sitemap.xml`, { headers: { accept: "application/xml" } });
+    const sitemap = await sitemapResponse.text();
+    sitemapOk = sitemapResponse.ok && sitemap.includes("<urlset");
+    urls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+    if (!sitemapOk) issues.push(`Sitemap indisponível (${sitemapResponse.status}).`);
+  } catch {
+    issues.push("Sitemap indisponível.");
+  }
+  try {
+    const robotsResponse = await fetch(`${origin}/robots.txt`);
+    const robots = await robotsResponse.text();
+    robotsOk = robotsResponse.ok && robots.includes(`${origin}/sitemap.xml`);
+    if (!robotsOk) issues.push(`robots.txt inválido (${robotsResponse.status}).`);
+  } catch {
+    issues.push("robots.txt indisponível.");
+  }
+  let okPages = 0;
+  await Promise.all(urls.map(async (url) => {
+    try {
+      const response = await fetch(url, { headers: { accept: "text/html" } });
+      const html = await response.text();
+      const canonical = html.match(/<link rel="canonical" href="([^"]+)"/i)?.[1] || "";
+      const valid = response.ok && canonical === url && /<title>[^<]+<\/title>/i.test(html) && /<meta name="description" content="[^"]+"/i.test(html) && !/noindex/i.test(html);
+      if (valid) okPages += 1;
+      else issues.push(`${new URL(url).pathname}: status, canonical ou metadados inválidos.`);
+    } catch {
+      issues.push(`${new URL(url).pathname}: página indisponível.`);
+    }
+  }));
+  return { sitemapOk, robotsOk, totalPages: urls.length, okPages, issues };
+}
+
 async function weeklyFunnelReport(env) {
   if (!env.CONVERSIONS_DB || !env.EMAIL) return;
   const result = await env.CONVERSIONS_DB.prepare(
@@ -432,7 +488,28 @@ async function weeklyFunnelReport(env) {
   })));
 }
 
-export { currentDateInFortaleza, funnelReportContent, keepBookingHorizon, keepCurrentYearFromToday, parseReservedDates };
+async function monthlySeoReport(env) {
+  if (!env.CONVERSIONS_DB || !env.EMAIL) return;
+  const [result, audit] = await Promise.all([
+    env.CONVERSIONS_DB.prepare(
+      `SELECT page, source AS search_engine, SUM(event_count) AS entries
+       FROM conversion_daily
+       WHERE event = 'organic_entry' AND event_date >= date('now', '-29 days')
+       GROUP BY page, source ORDER BY entries DESC, page ASC`,
+    ).all(),
+    productionSeoAudit(),
+  ]);
+  const report = seoReportContent({ rows: result.results || [], audit });
+  await Promise.all(EMAIL_FORWARDING_DESTINATIONS.map((destination) => env.EMAIL.send({
+    to: destination,
+    from: REPORT_FROM,
+    subject: "Relatório mensal de SEO — Cumbuco Aluguéis",
+    text: report.text,
+    html: report.html,
+  })));
+}
+
+export { currentDateInFortaleza, funnelReportContent, keepBookingHorizon, keepCurrentYearFromToday, parseReservedDates, productionSeoAudit, seoReportContent };
 
 async function availability(request, env, context) {
   const property = new URL(request.url).searchParams.get("property") || "";
@@ -539,7 +616,7 @@ export default {
     return secureResponse(response, { preview: url.hostname.endsWith(".workers.dev") });
   },
 
-  async scheduled(_controller, env, context) {
-    context.waitUntil(weeklyFunnelReport(env));
+  async scheduled(controller, env, context) {
+    context.waitUntil(controller.cron === "30 11 1 * *" ? monthlySeoReport(env) : weeklyFunnelReport(env));
   },
 };

@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import worker, { currentDateInFortaleza, funnelReportContent, keepBookingHorizon } from "./index.js";
+import worker, { currentDateInFortaleza, funnelReportContent, keepBookingHorizon, seoReportContent } from "./index.js";
 
 const env = {
   ASSETS: {
@@ -325,4 +325,29 @@ test("builds a readable weekly funnel report", () => {
   assert.match(report.text, /Visualizações 120/);
   assert.match(report.html, /<table/);
   assert.match(report.html, /WhatsApp/);
+});
+
+test("builds a readable monthly SEO report", () => {
+  const report = seoReportContent({
+    rows: [{ page: "/casas-de-praia-cumbuco/", search_engine: "google", entries: 34 }],
+    audit: { sitemapOk: true, robotsOk: true, totalPages: 31, okPages: 31, issues: [] },
+  });
+  assert.match(report.text, /31\/31 páginas aprovadas/);
+  assert.match(report.text, /google 34/);
+  assert.match(report.html, /Entradas orgânicas/);
+});
+
+test("accepts aggregate organic entry events", async () => {
+  const points = [];
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/api/events", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ event: "organic_entry", property: "", source: "google", page: "/casas-de-praia-cumbuco/" }),
+    }),
+    { ...env, CONVERSION_ANALYTICS: { writeDataPoint: (point) => points.push(point) } },
+    context,
+  );
+  assert.equal(response.status, 204);
+  assert.deepEqual(points[0].blobs, ["organic_entry", "none", "/casas-de-praia-cumbuco/", "google"]);
 });

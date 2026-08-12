@@ -142,6 +142,22 @@ const jsonLd = JSON.stringify({
         };
         window.cumbucoTrack = send;
         send("page_view", document.body.dataset.analyticsProperty || "", "page_load");
+        try {
+          const referrer = document.referrer ? new URL(document.referrer) : null;
+          const searchEngines = [
+            [/google\./i, "google"],
+            [/bing\.com$/i, "bing"],
+            [/search\.yahoo\./i, "yahoo"],
+            [/duckduckgo\.com$/i, "duckduckgo"],
+            [/ecosia\.org$/i, "ecosia"],
+          ];
+          const source = referrer && referrer.origin !== location.origin
+            ? searchEngines.find(([pattern]) => pattern.test(referrer.hostname))?.[1]
+            : null;
+          if (source) send("organic_entry", document.body.dataset.analyticsProperty || "", source);
+        } catch {
+          // Referrer parsing must never affect the page experience.
+        }
         document.addEventListener("click", (event) => {
           const target = event.target instanceof Element ? event.target.closest("[data-track]") : null;
           if (!target) return;
