@@ -20,6 +20,7 @@ export async function GET({ site }: { site: URL }) {
   const fixedRoutes = [
     "/",
     "/properties/",
+    "/casas-de-praia-cumbuco/",
     "/city/cumbuco/",
     "/city/cumbuco/where-to-stay/",
     "/city/cumbuco/restaurants/",
