@@ -35,7 +35,7 @@ const { property, slug, reservedDates } = Astro.props;
 
   <div class="calendar-preview">
     <div class="calendars" aria-label={`Próximos meses disponíveis de ${property}`} data-calendar-months></div>
-    <button class="calendar-expand" type="button" data-calendar-open>
+    <button class="calendar-expand" type="button" data-calendar-open data-track="calendar_expand" data-track-property={slug}>
       Ver calendário completo
       <span aria-hidden="true">→</span>
     </button>
@@ -229,6 +229,7 @@ const { property, slug, reservedDates } = Astro.props;
           bubbles: true,
           detail: { slug, arrival: selectedArrival, departure: selectedDeparture },
         }));
+        (window as any).cumbucoTrack?.('dates_selected', slug || '');
       }
       updateSelectedDates();
     };

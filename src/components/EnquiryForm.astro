@@ -97,6 +97,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     const status = form.querySelector<HTMLElement>('[data-form-status]');
     const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]');
     const whatsapp = form.querySelector<HTMLButtonElement>('[data-whatsapp-submit]');
+    let started = false;
     const localIso = (date: Date) =>
       `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
     const today = localIso(new Date());
@@ -132,6 +133,12 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
     arrival.max = latestBookingDate;
     departure.min = today;
     departure.max = latestBookingDate;
+
+    form.addEventListener('input', () => {
+      if (started) return;
+      started = true;
+      (window as any).cumbucoTrack?.('enquiry_start', selectedProperty().slug);
+    });
 
     arrival.addEventListener('change', () => {
       departure.min = arrival.value ? nextDay(arrival.value) : today;
@@ -170,6 +177,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
       const message = String(data.get('message') || '').trim();
       if (message) lines.push(`Mensagem: ${message}`);
       window.open(`https://wa.me/5585988139402?text=${encodeURIComponent(lines.join('\n'))}`, '_blank', 'noopener,noreferrer');
+      (window as any).cumbucoTrack?.('enquiry_whatsapp_open', selected.slug);
       showStatus('O WhatsApp foi aberto com os dados da sua consulta.', 'success');
     });
 
@@ -207,6 +215,7 @@ const turnstileSiteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || "";
         const result = await response.json() as { ok?: boolean; reference?: string; error?: string };
         if (!response.ok || !result.ok) throw new Error(result.error || 'Não foi possível enviar o e-mail.');
         showStatus(`Obrigado — sua consulta foi enviada. Referência: ${result.reference}. Responderemos pessoalmente.`, 'success');
+        (window as any).cumbucoTrack?.('enquiry_email_sent', selected.slug);
         form.reset();
         arrival.min = today;
         departure.min = today;

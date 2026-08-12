@@ -14,7 +14,7 @@ const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
 ---
 
 <article class:list={["card", { "card--featured": isFeatured }]}>
-  <a class="image-link" href={`/properties/${data.slug}/`}>
+  <a class="image-link" href={`/properties/${data.slug}/`} data-track="property_open" data-track-property={data.slug}>
     <picture>
       <source type="image/avif" srcset={`${cardImageSmallAvif} 480w, ${cardImageAvif} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
       <source type="image/webp" srcset={`${cardImageSmallWebp} 480w, ${cardImageWebp} 720w`} sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px" />
@@ -34,7 +34,7 @@ const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
   </a>
   <div class="card-body">
     <div>
-      <h3><a href={`/properties/${data.slug}/`}>{data.title}</a></h3>
+      <h3><a href={`/properties/${data.slug}/`} data-track="property_open" data-track-property={data.slug}>{data.title}</a></h3>
       <p>{isFeatured ? "Villa frente ao mar · Cumbuco, Ceará" : "Cumbuco, Ceará"}</p>
     </div>
     <ul aria-label="Detalhes do imóvel">

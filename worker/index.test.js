@@ -138,6 +138,36 @@ test("keeps email enquiries unavailable until secure bindings are configured", a
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
 });
 
+test("records only allowlisted, anonymous conversion events", async () => {
+  const points = [];
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/api/events", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ event: "dates_selected", property: "villa-branca", page: "/properties/villa-branca/" }),
+    }),
+    { ...env, CONVERSION_ANALYTICS: { writeDataPoint: (point) => points.push(point) } },
+    context,
+  );
+
+  assert.equal(response.status, 204);
+  assert.deepEqual(points[0].blobs, ["dates_selected", "villa-branca", "/properties/villa-branca/"]);
+  assert.equal(points[0].doubles[0], 1);
+});
+
+test("rejects unknown conversion events", async () => {
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/api/events", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ event: "form_contents", property: "villa-branca", page: "/" }),
+    }),
+    env,
+    context,
+  );
+  assert.equal(response.status, 400);
+});
+
 test("validates Turnstile and sends a structured rental enquiry", async () => {
   const sent = [];
   const configuredEnv = {

@@ -74,6 +74,15 @@ const propertyStructuredData = [
       { "@type": "ListItem", position: 3, name: p.title, item: propertyUrl },
     ],
   },
+  ...(p.slug === "villa-branca" ? [{
+    "@type": "FAQPage",
+    "@id": `${propertyUrl}#faq`,
+    mainEntity: [
+      { "@type": "Question", name: "Quantas pessoas a Villa Branca acomoda?", acceptedAnswer: { "@type": "Answer", text: "A Villa Branca acomoda grupos de até 20 hóspedes em seis suítes." } },
+      { "@type": "Question", name: "A Villa Branca fica de frente para o mar?", acceptedAnswer: { "@type": "Answer", text: "Sim. A casa fica de frente para a Praia de Cumbuco e tem acesso direto à área da praia." } },
+      { "@type": "Question", name: "A Villa Branca tem piscina e churrasqueira?", acceptedAnswer: { "@type": "Answer", text: "Sim. A área externa reúne piscina, jardim e churrasqueira." } },
+    ],
+  }] : []),
 ];
 ---
 
@@ -81,7 +90,7 @@ const propertyStructuredData = [
   <section class="property-head">
     <div class="shell">
       <p class="eyebrow">{typeLabel} · Cumbuco, Ceará</p>
-      <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire">Consultar este imóvel</a></div>
+      <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire" data-track="availability_jump" data-track-property={p.slug}>Consultar este imóvel</a></div>
       <ul class="quick-facts"><li>{p.metrics.guests} hóspedes</li><li>{p.metrics.bedrooms} quartos</li><li>{p.metrics.baths} banheiros</li><li>{p.gallery.length} fotos</li></ul>
     </div>
   </section>
@@ -100,7 +109,7 @@ const propertyStructuredData = [
       <strong>Quer saber se {p.title} está disponível?</strong>
       <span>Veja as datas livres e escolha sua chegada e saída.</span>
     </div>
-    <a class="button availability-button" href="#availability">Ver disponibilidade <span aria-hidden="true">↓</span></a>
+    <a class="button availability-button" href="#availability" data-track="availability_jump" data-track-property={p.slug}>Ver disponibilidade <span aria-hidden="true">↓</span></a>
   </div>
 
   <div class="shell whatsapp-wrap">
@@ -109,6 +118,8 @@ const propertyStructuredData = [
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
+      data-track="property_whatsapp_open"
+      data-track-property={p.slug}
       aria-label={`Conversar sobre ${p.title} pelo WhatsApp no número ${whatsappDisplay}; abre em uma nova aba`}
     >
       <span class="whatsapp-icon" aria-hidden="true">
@@ -175,6 +186,29 @@ const propertyStructuredData = [
   </section>
 
   {p.slug === "villa-branca" && (
+    <section class="section villa-authority" aria-labelledby="villa-essential-title">
+      <div class="shell">
+        <header class="villa-authority__head">
+          <p class="eyebrow">Villa Branca em resumo</p>
+          <h2 id="villa-essential-title">Espaço, praia e apoio local para grupos.</h2>
+          <p>As informações essenciais reunidas antes da consulta, sem esconder os detalhes importantes no fim da página.</p>
+        </header>
+        <div class="villa-highlights">
+          <article><strong>20</strong><span>hóspedes</span><p>Uma casa inteira pensada para famílias e grupos.</p></article>
+          <article><strong>6</strong><span>suítes climatizadas</span><p>Três no térreo e três no primeiro andar.</p></article>
+          <article><strong>400 m²</strong><span>de área</span><p>Jardim, piscina, churrasqueira e ambientes para conviver.</p></article>
+          <article><strong>Frente mar</strong><span>Praia de Cumbuco</span><p>Aproximadamente 10 a 15 minutos a pé da vila pela praia.</p></article>
+        </div>
+        <div class="villa-notes">
+          <div><h3>O que está incluído</h3><p>Roupa de cama com troca semanal e toalhas para uso na casa.</p></div>
+          <div><h3>Confirme antes de reservar</h3><p>Consumo do ar-condicionado, limpeza diária e limpeza final são combinados separadamente.</p></div>
+          <div><h3>Atendimento no local</h3><p>Há apoio para combinar limpeza, compras, café da manhã e churrasco.</p></div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  {p.slug === "villa-branca" && (
     <section class="section section--sand">
       <div class="shell">
         <VillaBrancaReviews />
@@ -187,6 +221,10 @@ const propertyStructuredData = [
       <EnquiryForm property={p.title} slug={p.slug} maxGuests={p.metrics.guests} />
     </div>
   </section>
+  <nav class="mobile-property-actions" aria-label={`Ações rápidas para ${p.title}`}>
+    <a href="#availability" data-track="availability_jump" data-track-property={p.slug}>Ver datas</a>
+    <a href={whatsappUrl} target="_blank" rel="noopener noreferrer" data-track="property_whatsapp_open" data-track-property={p.slug}>WhatsApp</a>
+  </nav>
 </BaseLayout>
 
 <style>
@@ -273,6 +311,22 @@ const propertyStructuredData = [
   dd { margin: 0; font-weight: 700; }
   .amenities ul { display: grid; grid-template-columns: 1fr 1fr; gap: 0.55rem; margin: 1rem 0 0; padding: 0; font-size: 0.85rem; list-style: none; }
   .amenities li::before { content: "✓"; margin-right: 0.45rem; color: var(--coral); font-weight: 900; }
+  .villa-authority { padding-top: 0; }
+  .villa-authority__head { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(18rem, 1.15fr); gap: 1rem 4rem; align-items: end; margin-bottom: 2rem; }
+  .villa-authority__head .eyebrow { grid-column: 1 / -1; }
+  .villa-authority__head h2 { max-width: 13ch; }
+  .villa-authority__head > p:last-child { max-width: 38rem; color: var(--ink-soft); }
+  .villa-highlights { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: var(--ocean-deep); color: white; }
+  .villa-highlights article { min-height: 13rem; padding: 1.5rem; border-right: 1px solid rgb(255 255 255 / 16%); }
+  .villa-highlights article:last-child { border-right: 0; }
+  .villa-highlights strong { display: block; color: white; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1; }
+  .villa-highlights span { display: block; margin-top: 0.4rem; color: #9fe3dc; font-size: 0.75rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase; }
+  .villa-highlights p { margin-top: 1.2rem; color: #dceceb; font-size: 0.86rem; }
+  .villa-notes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1rem; }
+  .villa-notes > div { padding: 1.25rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--paper); }
+  .villa-notes h3 { font-size: 1.15rem; }
+  .villa-notes p { margin-top: 0.55rem; color: var(--ink-soft); font-size: 0.85rem; }
+  .mobile-property-actions { display: none; }
   @media (max-width: 780px) {
     .title-row { grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
     .title-row .button { width: fit-content; }
@@ -280,6 +334,11 @@ const propertyStructuredData = [
     .gallery picture { grid-row: 1 / 3; }
     .detail-grid { grid-template-columns: 1fr; }
     .full-gallery-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .villa-authority__head { grid-template-columns: 1fr; }
+    .villa-highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .villa-highlights article:nth-child(2) { border-right: 0; }
+    .villa-highlights article:nth-child(-n+2) { border-bottom: 1px solid rgb(255 255 255 / 16%); }
+    .villa-notes { grid-template-columns: 1fr; }
   }
   @media (max-width: 520px) {
     .gallery { display: flex; overflow-x: auto; border-radius: 0; width: calc(100% - 0.625rem); margin-left: 0.625rem; scrollbar-width: none; scroll-snap-type: x proximity; }
@@ -293,5 +352,11 @@ const propertyStructuredData = [
     .whatsapp-contact { grid-template-columns: auto minmax(0, 1fr); padding: 1rem; }
     .whatsapp-arrow { display: none; }
     .whatsapp-copy > span { margin-top: 0.2rem; }
+    .mobile-property-actions { position: fixed; z-index: 30; right: 0.7rem; bottom: 0.7rem; left: 0.7rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; padding: 0.55rem; border: 1px solid rgb(255 255 255 / 22%); border-radius: 1rem; background: rgb(6 79 85 / 94%); box-shadow: 0 1rem 2.5rem rgb(0 32 35 / 30%); backdrop-filter: blur(0.7rem); }
+    .mobile-property-actions a { display: grid; min-height: 2.8rem; place-items: center; border-radius: 0.7rem; background: white; color: var(--ocean-deep); font-size: 0.86rem; font-weight: 900; text-decoration: none; }
+    .mobile-property-actions a:last-child { background: #25d366; color: #073f27; }
+    .villa-highlights { grid-template-columns: 1fr; }
+    .villa-highlights article { min-height: auto; border-right: 0; border-bottom: 1px solid rgb(255 255 255 / 16%); }
+    .villa-highlights article:last-child { border-bottom: 0; }
   }
 </style>

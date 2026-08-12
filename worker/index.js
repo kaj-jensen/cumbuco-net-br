@@ -183,6 +183,16 @@ function keepBookingHorizon(dates, today = currentDateInFortaleza()) {
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const DATE_PATTERN = /^\d{4}-\d{2}-\d{2}$/;
+const CONVERSION_EVENTS = new Set([
+  "property_open",
+  "availability_jump",
+  "calendar_expand",
+  "dates_selected",
+  "enquiry_start",
+  "enquiry_email_sent",
+  "enquiry_whatsapp_open",
+  "property_whatsapp_open",
+]);
 
 function cleanText(value, maxLength) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
@@ -200,6 +210,32 @@ function escapeHtml(value) {
     '"': "&quot;",
     "'": "&#39;",
   })[character]);
+}
+
+async function conversionEvent(request, env) {
+  const contentLength = Number(request.headers.get("content-length") || 0);
+  if (contentLength > 2_048) return new Response(null, { status: 413 });
+
+  let input;
+  try {
+    input = await request.json();
+  } catch {
+    return new Response(null, { status: 400 });
+  }
+
+  const event = cleanText(input.event, 48);
+  const property = cleanText(input.property, 100);
+  const page = cleanText(input.page, 180);
+  if (!CONVERSION_EVENTS.has(event) || (property && !/^[a-z0-9-]+$/.test(property)) || !page.startsWith("/")) {
+    return new Response(null, { status: 400 });
+  }
+
+  env.CONVERSION_ANALYTICS?.writeDataPoint({
+    blobs: [event, property || "none", page],
+    doubles: [1],
+    indexes: [event],
+  });
+  return new Response(null, { status: 204, headers: { "cache-control": "no-store" } });
 }
 
 function validStayDates(arrival, departure, today = currentDateInFortaleza()) {
@@ -403,6 +439,9 @@ export default {
     }
     if (request.method === "POST" && url.pathname === "/api/enquiry") {
       return secureResponse(await enquiry(request, env));
+    }
+    if (request.method === "POST" && url.pathname === "/api/events") {
+      return secureResponse(await conversionEvent(request, env));
     }
     if (url.pathname.startsWith("/api/")) {
       return secureResponse(json({ error: "Not found." }, 404));
