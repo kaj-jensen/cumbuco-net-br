@@ -13,6 +13,7 @@ export const site = {
       href: "/properties/",
       children: [
         { label: "Todos os imóveis", href: "/properties/" },
+        { label: "Casas de praia", href: "/casas-de-praia-cumbuco/" },
         { label: "Apartamentos", href: "/listings/apartment/" },
         { label: "Casas", href: "/listings/house/" },
         { label: "Villas", href: "/listings/villa/" },
