@@ -127,6 +127,15 @@ test("adds security headers to production asset responses", async () => {
   assert.equal(response.headers.get("x-robots-tag"), null);
 });
 
+test("gives media effective browser caching without hiding future image updates", async () => {
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/images/content/cumbuco/sunny-kitesurfing-720.avif"),
+    { ...env, ASSETS: { fetch: async () => new Response("image", { headers: { "content-type": "image/avif" } }) } },
+    context,
+  );
+  assert.equal(response.headers.get("cache-control"), "public, max-age=86400, stale-while-revalidate=604800");
+});
+
 test("prevents indexing of the workers.dev preview", async () => {
   const response = await worker.fetch(
     new Request("https://cumbuco-net.example.workers.dev/"),

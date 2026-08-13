@@ -14,8 +14,8 @@ const CONTENT_SECURITY_POLICY = [
   "frame-ancestors 'none'",
   "form-action 'self'",
   "img-src 'self' data:",
-  "font-src 'self' https://fonts.gstatic.com",
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self'",
+  "style-src 'self' 'unsafe-inline'",
   "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
   "frame-src https://challenges.cloudflare.com",
   "connect-src 'self' https://challenges.cloudflare.com",
@@ -99,6 +99,9 @@ const GONE_WORDPRESS_PATHS = new Set([
 
 function secureResponse(response, { preview = false } = {}) {
   const headers = new Headers(response.headers);
+  const contentType = headers.get("content-type") || "";
+  if (contentType.startsWith("font/")) headers.set("cache-control", "public, max-age=31536000, immutable");
+  else if (contentType.startsWith("image/")) headers.set("cache-control", "public, max-age=86400, stale-while-revalidate=604800");
   headers.set("content-security-policy", CONTENT_SECURITY_POLICY);
   headers.set("permissions-policy", "camera=(), microphone=(), geolocation=()");
   headers.set("referrer-policy", "strict-origin-when-cross-origin");

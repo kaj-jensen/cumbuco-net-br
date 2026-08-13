@@ -20,6 +20,9 @@ const heroLargeWebp = "/images/content/cumbuco/sunny-kitesurfing-1440.webp";
   title="Cumbuco Aluguéis por Temporada: Casas e Apartamentos"
   description="Casas, villas e apartamentos para aluguel por temporada em Cumbuco, Ceará. Consulte disponibilidade e receba uma cotação pessoal pelo WhatsApp."
   image={hero}
+  preloadImage={heroSmallAvif}
+  preloadImageSrcset={`${heroSmallAvif} 720w, ${heroLargeAvif} 1440w`}
+  preloadImageSizes="100vw"
 >
   <section class="hero">
     <picture class="hero-picture">
@@ -34,6 +37,7 @@ const heroLargeWebp = "/images/content/cumbuco/sunny-kitesurfing-1440.webp";
         height="1080"
         alt="Kitesurfistas aproveitando o vento e o mar quente na praia de Cumbuco"
         fetchpriority="high"
+        decoding="async"
       />
     </picture>
     <div class="hero-shade"></div>
