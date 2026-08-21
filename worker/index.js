@@ -31,6 +31,7 @@ const ENQUIRY_FROM = { email: "enquiries@cumbuco.net.br", name: "Cumbuco Alugué
 const REPORT_FROM = { email: "reports@cumbuco.net.br", name: "Cumbuco Aluguéis" };
 const REDIRECT_HOSTNAMES = new Set(["cumbuco.com.br", "www.cumbuco.com.br"]);
 const LEGACY_PATH_REDIRECTS = new Map([
+  ["/action/apartment/", "/listings/apartment/"],
   ["/apartamentos/", "/listings/apartment/"],
   ["/casas/", "/listings/house/"],
   ["/listings/apartamento/", "/listings/apartment/"],

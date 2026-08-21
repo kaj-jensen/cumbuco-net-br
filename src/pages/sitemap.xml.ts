@@ -34,7 +34,6 @@ export async function GET({ site }: { site: URL }) {
     "/listings/apartment/",
     "/listings/house/",
     "/listings/villa/",
-    "/action/apartment/",
     "/action/entire-home/",
   ];
   const paths = [

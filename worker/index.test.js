@@ -118,6 +118,17 @@ test("redirects legacy WordPress layouts to their closest canonical page", async
   assert.equal(response.headers.get("location"), "https://www.cumbuco.net.br/properties/");
 });
 
+test("consolidates the duplicate apartment archive", async () => {
+  const response = await worker.fetch(
+    new Request("https://www.cumbuco.net.br/action/apartment/"),
+    env,
+    context,
+  );
+
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get("location"), "https://www.cumbuco.net.br/listings/apartment/");
+});
+
 test("adds security headers to production asset responses", async () => {
   const response = await worker.fetch(new Request("https://www.cumbuco.net.br/"), env, context);
 

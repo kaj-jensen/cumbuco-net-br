@@ -31,6 +31,20 @@ const {
   preloadImageSizes = "100vw",
 } = Astro.props;
 const canonicalUrl = new URL(canonical, Astro.site);
+const commonLocalizedPaths = new Set([
+  "/", "/properties/", "/about-us/", "/contact-cumbuco-rentals/", "/featured-partners/",
+  "/list-your-property/", "/privacy-cookies/", "/terms-and-conditions/", "/action/entire-home/",
+  "/listings/apartment/", "/listings/house/", "/listings/villa/", "/city/cumbuco/",
+  "/city/cumbuco/beaches/", "/city/cumbuco/kiteboarding/", "/city/cumbuco/local-businesses/",
+  "/city/cumbuco/restaurants/", "/city/cumbuco/things-to-do/", "/city/cumbuco/travel-information/",
+  "/city/cumbuco/where-to-stay/", "/properties/beach-sun-cumbuco/", "/properties/casa-chick/",
+  "/properties/casa-vermelha/", "/properties/dream-village-301-h/", "/properties/dream-village-301-v/",
+  "/properties/dream-village-401-h/", "/properties/villa-branca/",
+]);
+const alternatePath = canonicalUrl.pathname === "/properties/dunas-village-cumbuco/"
+  ? "/properties/dunas-village/"
+  : commonLocalizedPaths.has(canonicalUrl.pathname) ? canonicalUrl.pathname : null;
+const englishAlternate = alternatePath ? new URL(alternatePath, "https://www.cumbuco.net") : null;
 const pageTitle = title.includes("Cumbuco") ? title : `${title} | Cumbuco Aluguéis`;
 const absoluteImage = new URL(image, Astro.site).toString();
 const webpageId = `${canonicalUrl.toString()}#webpage`;
@@ -109,6 +123,9 @@ const jsonLd = JSON.stringify({
     <link rel="manifest" href="/manifest.json" />
     <link rel="icon" href="/images/brand/cumbuco-app-icon.svg" type="image/svg+xml" />
     <link rel="canonical" href={canonicalUrl} />
+    {englishAlternate && <link rel="alternate" hreflang="pt-BR" href={canonicalUrl} />}
+    {englishAlternate && <link rel="alternate" hreflang="en" href={englishAlternate} />}
+    {englishAlternate && <link rel="alternate" hreflang="x-default" href={englishAlternate} />}
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/fraunces-latin.woff2" as="font" type="font/woff2" crossorigin />
