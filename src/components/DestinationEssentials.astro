@@ -22,28 +22,11 @@ const wind = [28, 30, 34, 42, 50, 68, 88, 100, 98, 91, 75, 48];
   <div class="shell visual-grid">
     <article class="map-card">
       <header><span>03° 37′ S</span><h3>{pt ? "Onde fica Cumbuco" : "Where Cumbuco is"}</h3></header>
-      <div class="map" role="img" aria-label={pt ? "Mapa ilustrado entre Fortaleza, Cumbuco, dunas e lagoas" : "Illustrated map between Fortaleza, Cumbuco, dunes, and lagoons"}>
-        <svg viewBox="0 0 720 380" aria-hidden="true">
-          <defs>
-            <linearGradient id="sea" x1="0" x2="1"><stop stop-color="#bcebec"/><stop offset="1" stop-color="#78d3d9"/></linearGradient>
-            <pattern id="waves" width="42" height="20" patternUnits="userSpaceOnUse"><path d="M0 11c7-7 14-7 21 0s14 7 21 0" fill="none" stroke="#fff" stroke-opacity=".48" stroke-width="2"/></pattern>
-          </defs>
-          <path d="M0 0h720v380H0z" fill="url(#sea)"/>
-          <path d="M0 0h438c-16 68-4 111 28 151 27 34 25 72-7 114-25 33-28 71-12 115H0z" fill="#fff5dc"/>
-          <path d="M447 0c-16 68-4 111 28 151 27 34 25 72-7 114-25 33-28 71-12 115" fill="none" stroke="#fff" stroke-width="10"/>
-          <path d="M0 0h720v380H0z" fill="url(#waves)"/>
-          <path d="M118 298C212 276 253 208 327 161s99-72 129-99" fill="none" stroke="#bd735b" stroke-dasharray="7 9" stroke-width="4"/>
-          <circle cx="118" cy="298" r="10" fill="#b9472f"/><circle cx="327" cy="161" r="13" fill="#064f55"/><circle cx="456" cy="62" r="8" fill="#f4bf3a"/>
-          <path d="M299 161a28 28 0 1 1 56 0c0 22-28 52-28 52s-28-30-28-52Z" fill="#064f55"/><circle cx="327" cy="160" r="9" fill="#f4bf3a"/>
-          <g fill="#b88d53"><path d="m195 80 34-28 33 28Z"/><path d="m229 80 38-34 39 34Z"/></g>
-          <ellipse cx="232" cy="111" rx="48" ry="21" fill="#53c5bd"/>
-        </svg>
-        <span class="label label--fortaleza">Fortaleza<small>{pt ? "Aeroporto" : "Airport"}</small></span>
-        <span class="label label--cumbuco">Cumbuco<small>{pt ? "Vila e praia" : "Village & beach"}</small></span>
-        <span class="label label--north">{pt ? "Costa oeste" : "West coast"}<small>{pt ? "Praias e lagoas" : "Beaches & lagoons"}</small></span>
-        <span class="label label--dunes">{pt ? "Dunas" : "Dunes"}</span>
+      <div class="map">
+        <iframe title={pt ? "Mapa interativo de Cumbuco, Caucaia e Fortaleza" : "Interactive map of Cumbuco, Caucaia, and Fortaleza"} src="https://www.openstreetmap.org/export/embed.html?bbox=-38.88%2C-3.84%2C-38.45%2C-3.50&amp;layer=mapnik&amp;marker=-3.6263%2C-38.7291" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <span class="map-pin-copy"><strong>Cumbuco</strong><small>{pt ? "diretamente na costa" : "directly on the coast"}</small></span>
       </div>
-      <footer><strong>30 km</strong><span>{pt ? "de Fortaleza · acesso fácil pelo aeroporto" : "from Fortaleza · an easy airport transfer"}</span></footer>
+      <footer><div><strong>30 km</strong><span>{pt ? "de Fortaleza · acesso fácil pelo aeroporto" : "from Fortaleza · an easy airport transfer"}</span></div><a href="https://www.openstreetmap.org/?mlat=-3.6263&amp;mlon=-38.7291#map=11/-3.6263/-38.7291" target="_blank" rel="noopener noreferrer">{pt ? "Abrir mapa detalhado ↗" : "Open detailed map ↗"}</a></footer>
     </article>
 
     <article class="season-card">
@@ -73,13 +56,12 @@ const wind = [28, 30, 34, 42, 50, 68, 88, 100, 98, 91, 75, 48];
   article > header { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 1.35rem 1.5rem; }
   article > header > span { color: var(--coral); font-size: .7rem; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
   article > header h3 { font-size: 1.45rem; }
-  .map { position: relative; min-height: 21rem; overflow: hidden; background: var(--sky); }
-  .map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .label { position: absolute; display: grid; padding: .45rem .65rem; border-radius: .65rem; background: rgb(255 253 247 / 92%); color: var(--ocean-deep); font-size: .76rem; font-weight: 900; line-height: 1.15; box-shadow: 0 .35rem 1rem rgb(6 79 85 / 15%); }
-  .label small { margin-top: .15rem; color: var(--ink-soft); font-size: .59rem; font-weight: 700; }
-  .label--fortaleza { left: 8%; bottom: 9%; }.label--cumbuco { left: 42%; top: 38%; }.label--north { right: 7%; top: 12%; }.label--dunes { left: 28%; top: 15%; background: #fff0ca; }
-  .map-card footer { display: flex; align-items: baseline; gap: .65rem; padding: 1rem 1.5rem; background: var(--ocean-deep); color: white; }
-  .map-card footer strong { font-family: "Fraunces", Georgia, serif; font-size: 1.8rem; }.map-card footer span { color: #cde7e5; font-size: .82rem; }
+  .map { position: relative; min-height: 24rem; overflow: hidden; border-block: 1px solid var(--line); background: var(--sky); }
+  .map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; filter: saturate(.82) contrast(.96); }
+  .map-pin-copy { position: absolute; top: 25%; left: 45%; display: grid; padding: .62rem .78rem; border: 1px solid rgb(255 255 255 / 72%); border-radius: .75rem; background: rgb(255 253 247 / 94%); color: var(--ocean-deep); line-height: 1.1; box-shadow: 0 .5rem 1.5rem rgb(6 79 85 / 18%); pointer-events: none; }
+  .map-pin-copy strong { font-size: .82rem; }.map-pin-copy small { margin-top: .18rem; color: var(--ink-soft); font-size: .62rem; }
+  .map-card footer { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 1.5rem; background: var(--ocean-deep); color: white; }
+  .map-card footer > div { display: flex; align-items: baseline; gap: .65rem; }.map-card footer strong { font-family: "Fraunces", Georgia, serif; font-size: 1.8rem; }.map-card footer span { color: #cde7e5; font-size: .82rem; }.map-card footer a { color: white; font-size: .72rem; font-weight: 800; white-space: nowrap; }
   .season-card { padding-bottom: 1.25rem; background: linear-gradient(160deg, #fffdf7, #effbf7); }
   .season-card > p { max-width: 32rem; padding: 0 1.5rem; color: var(--ink-soft); font-size: .93rem; }
   .wind-chart { height: 14rem; display: grid; grid-template-columns: repeat(12, 1fr); gap: .35rem; align-items: end; margin: 2rem 1.5rem 0; padding-top: 1rem; border-bottom: 1px solid var(--line); background: repeating-linear-gradient(to bottom, transparent 0 24%, rgb(6 79 85 / 7%) 25%); }
@@ -93,6 +75,6 @@ const wind = [28, 30, 34, 42, 50, 68, 88, 100, 98, 91, 75, 48];
   .confidence-grid article { display: grid; grid-template-columns: auto 1fr; gap: .9rem; padding: 1.2rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--sand); }
   .confidence-grid article > span { display: grid; width: 2.5rem; height: 2.5rem; place-items: center; border-radius: 50%; background: var(--ocean-deep); color: white; font-size: 1.15rem; font-weight: 900; }
   .confidence-grid h3 { font-family: "DM Sans", sans-serif; font-size: .94rem; letter-spacing: 0; }.confidence-grid p { margin-top: .25rem; color: var(--ink-soft); font-size: .78rem; }
-  @media (max-width: 850px) { .essentials-heading, .visual-grid { grid-template-columns: 1fr; }.confidence-grid { grid-template-columns: 1fr; }.map { min-height: 18rem; } }
-  @media (max-width: 520px) { article > header { align-items: flex-start; flex-direction: column; }.map { min-height: 16rem; }.label--north { right: 3%; }.wind-chart { gap: .2rem; margin-inline: .8rem; }.wind-month span { font-size: .5rem; }.map-card footer { align-items: flex-start; flex-direction: column; } }
+  @media (max-width: 850px) { .essentials-heading, .visual-grid { grid-template-columns: 1fr; }.confidence-grid { grid-template-columns: 1fr; }.map { min-height: 22rem; } }
+  @media (max-width: 520px) { article > header { align-items: flex-start; flex-direction: column; }.map { min-height: 19rem; }.wind-chart { gap: .2rem; margin-inline: .8rem; }.wind-month span { font-size: .5rem; }.map-card footer, .map-card footer > div { align-items: flex-start; flex-direction: column; } }
 </style>
