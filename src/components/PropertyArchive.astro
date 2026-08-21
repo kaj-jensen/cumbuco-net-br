@@ -4,7 +4,7 @@ interface Props { properties: any[]; title: string; eyebrow?: string; descriptio
 const { properties, title, eyebrow = "Aluguéis em Cumbuco", description, showDestinationLink = false } = Astro.props;
 ---
 
-<section class="page-hero">
+<section class="page-hero page-hero--archive">
   <div class="shell"><p class="eyebrow">{eyebrow}</p><h1>{title}</h1><p class="lede">{description}</p></div>
 </section>
 <section class="section">
@@ -16,6 +16,8 @@ const { properties, title, eyebrow = "Aluguéis em Cumbuco", description, showDe
 </section>
 
 <style>
+  .page-hero--archive { padding-block: clamp(2.75rem, 5vw, 4.5rem); }
+  .page-hero--archive h1 { font-size: clamp(2.8rem, 5vw, 4.8rem); }
   .archive-head { display: flex; justify-content: space-between; gap: 1rem 2rem; margin-bottom: 1.5rem; color: var(--ink-soft); font-size: 0.85rem; }
   .archive-head a { color: var(--ocean); font-weight: 700; text-align: right; text-underline-offset: 0.2em; }
   @media (max-width: 520px) { .archive-head { align-items: start; flex-direction: column; } .archive-head a { text-align: left; } }

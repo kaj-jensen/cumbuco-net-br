@@ -48,7 +48,7 @@ const reviews = [
 </section>
 
 <style>
-  .villa-reviews { display: grid; gap: 2.25rem; }
+  .villa-reviews { display: grid; gap: 1.5rem; }
   .reviews-intro { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(2rem, 7vw, 6rem); align-items: end; }
   .reviews-intro h2 { max-width: 14ch; }
   .reviews-note { max-width: 42rem; margin-top: 1rem; color: var(--ink-soft); }
@@ -57,8 +57,8 @@ const reviews = [
   .rating span:last-child { color: var(--ink-soft); font-size: 0.82rem; }
   .stars, .review-stars { color: #e6a400; letter-spacing: 0.08em; }
   .review-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
-  .review-card { display: grid; align-content: space-between; min-height: 14rem; margin: 0; padding: clamp(1.4rem, 3vw, 2rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
-  .review-card blockquote { margin: 1.5rem 0; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.25; letter-spacing: -0.025em; }
+  .review-card { display: grid; grid-template-rows: auto 1fr auto; min-height: 12rem; margin: 0; padding: clamp(1.25rem, 2vw, 1.65rem); border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); }
+  .review-card blockquote { display: flex; align-items: center; margin: 1rem 0; font-family: "Fraunces", Georgia, serif; font-size: clamp(1.35rem, 2.3vw, 1.8rem); line-height: 1.25; letter-spacing: -0.025em; }
   .review-card figcaption { font-weight: 700; }
   .review-card figcaption span { color: var(--ink-soft); font-size: 0.8rem; font-weight: 400; }
   .review-link { width: fit-content; color: var(--ocean); font-weight: 700; text-underline-offset: 0.25rem; }
