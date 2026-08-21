@@ -2,11 +2,12 @@
 import { getCollection } from "astro:content";
 import PropertyCard from "../components/PropertyCard.astro";
 import VillaBrancaReviews from "../components/VillaBrancaReviews.astro";
+import DestinationEssentials from "../components/DestinationEssentials.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { brazilianPropertySlugs, propertyDisplayOrder, site } from "../config/site";
 
 const properties = (await getCollection("properties")).filter((item) => brazilianPropertySlugs.has(item.data.slug));
-const featured = propertyDisplayOrder.map((slug) => properties.find((item) => item.data.slug === slug)).filter(Boolean);
+const featured = propertyDisplayOrder.map((slug) => properties.find((item) => item.data.slug === slug)).filter(Boolean).slice(0, 6);
 const hero = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
 const heroSmall = "/images/content/cumbuco/sunny-kitesurfing-720.jpg";
 const heroLarge = "/images/content/cumbuco/sunny-kitesurfing-1440.jpg";
@@ -102,6 +103,8 @@ const heroLargeWebp = "/images/content/cumbuco/sunny-kitesurfing-1440.webp";
       </div>
     </div>
   </section>
+
+  <DestinationEssentials locale="pt" />
 
   <section class="section">
     <div class="shell">

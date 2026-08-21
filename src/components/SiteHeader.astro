@@ -32,6 +32,7 @@ import { site } from "../config/site";
       </ul>
     </nav>
 
+    <a class="language-switch" href="https://www.cumbuco.net/" hreflang="en" lang="en" aria-label="View the English website">EN</a>
     <a class="header-cta" href="/contact-cumbuco-rentals/">Planeje sua estadia</a>
 
     <details class="mobile-menu">
@@ -196,6 +197,9 @@ import { site } from "../config/site";
     text-decoration: none;
     white-space: nowrap;
   }
+
+  .language-switch { display: grid; width: 2.35rem; height: 2.35rem; flex: 0 0 auto; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ocean-deep); font-size: 0.7rem; font-weight: 900; text-decoration: none; }
+  .language-switch:hover { border-color: var(--ocean); background: var(--seafoam); }
 
   .header-cta:hover {
     background: var(--ocean);
