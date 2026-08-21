@@ -17,7 +17,7 @@ const CONTENT_SECURITY_POLICY = [
   "font-src 'self'",
   "style-src 'self' 'unsafe-inline'",
   "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
-  "frame-src https://challenges.cloudflare.com",
+  "frame-src https://challenges.cloudflare.com https://www.openstreetmap.org",
   "connect-src 'self' https://challenges.cloudflare.com",
   "upgrade-insecure-requests",
 ].join("; ");
