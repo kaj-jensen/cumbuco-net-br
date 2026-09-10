@@ -36,83 +36,218 @@
   "gallery": [
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca-1.jpg",
+      "alt": "Villa Branca de frente para o mar com piscina — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-barbecue-dining-terrace.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-barbecue-dining-terrace-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-barbecue-dining-terrace.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Churrasqueira e mesa na varanda coberta com vista para o mar — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-living-room-sofa.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-living-room-sofa-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-living-room-sofa.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Sala de estar com sofá e poltronas de madeira com almofadas — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-ensuite.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-ensuite-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-ensuite.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto amplo com duas camas e banheiro privativo — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-rocking-chairs.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-rocking-chairs-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-rocking-chairs.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Varanda superior coberta com cadeiras de balanço de madeira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-covered-barbecue-lounge.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-covered-barbecue-lounge-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-covered-barbecue-lounge.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Bancos de madeira e freezer na área coberta da churrasqueira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-poolside-dining-veranda.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-poolside-dining-veranda-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-poolside-dining-veranda.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Varanda coberta com mesa de madeira ao lado da piscina — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-dining-room-wooden-cabinets.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-dining-room-wooden-cabinets-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-dining-room-wooden-cabinets.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Armários de madeira na área de jantar — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-indoor-seating-area.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-indoor-seating-area-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-indoor-seating-area.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Área de estar com cadeiras de madeira e quadros de paisagens costeiras — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-air-conditioning.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-air-conditioning-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-air-conditioning.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto de casal com ar-condicionado e luminária de cabeceira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-glass-shower.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-glass-shower-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-glass-shower.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Banheiro revestido com box de vidro — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-open-storage.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-open-storage-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-open-storage.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto de casal com armário aberto e luminária de cabeceira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-striped-curtains.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-striped-curtains-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-striped-curtains.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto de casal climatizado com cortinas listradas — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bedroom-ensuite-entrance.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bedroom-ensuite-entrance-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-bedroom-ensuite-entrance.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto com armário aberto e entrada para o banheiro da suíte — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-headboard.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-headboard-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-headboard.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto de casal com cabeceira de madeira e ar-condicionado — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-double-basin.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-double-basin-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-double-basin.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Banheiro amplo revestido com duas cubas — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-spacious-bedroom-striped-curtains.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-spacious-bedroom-striped-curtains-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-spacious-bedroom-striped-curtains.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto amplo com ar-condicionado e cortinas listradas em tons quentes — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-balcony-beach-palm-view.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-balcony-beach-palm-view-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-balcony-beach-palm-view.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Vista da varanda para a praia e os coqueiros — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-dresser.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-dresser-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-double-bedroom-wooden-dresser.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto de casal climatizado com cômodas de madeira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-tiled-shower.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-tiled-shower-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-tiled-shower.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Banheiro com revestimento decorativo e box de vidro — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-seating.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-seating-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-upper-balcony-seating.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Cadeiras e bancos de madeira na varanda superior coberta — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-balcony-door.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-balcony-door-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-family-bedroom-balcony-door.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Quarto com duas camas e porta de acesso à varanda — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-shower-washbasin.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-shower-washbasin-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-bathroom-shower-washbasin.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Banheiro revestido com box de vidro e pia — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-microwave-water-dispenser.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-microwave-water-dispenser-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-microwave-water-dispenser.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Área da cozinha com armários, micro-ondas e bebedouro — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-stove-sink.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-stove-sink-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-stove-sink.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Cozinha com fogão a gás, pia e armários de madeira — Villa Branca, Cumbuco"
+    },
+    {
+      "src": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-refrigerator.webp",
+      "srcset": "/images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-refrigerator-640.webp 640w, /images/properties/villa-branca/2026/villa-branca-cumbuco-kitchen-refrigerator.webp 1280w",
+      "width": 1280,
+      "height": 960,
+      "alt": "Cozinha com geladeira, fogão a gás e bancada de preparo — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca1-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca1-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca2-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca2-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca3-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca3-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca4-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca4-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca5-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca5-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca1-1.jpg",
+      "alt": "Piscina e coqueiros vistos da varanda — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca6-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca6-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca7-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca7-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca6-1.jpg",
+      "alt": "Pergolado sombreado no jardim ao lado da praia — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca8-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca8-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca8-1.jpg",
+      "alt": "Jardim de frente para a praia com equipamentos de kitesurf — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca9-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca9-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca10-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca10-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca9-1.jpg",
+      "alt": "Fachada da villa vista do gramado à beira-mar — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca11-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca11-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca12-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca12-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca11-1.jpg",
+      "alt": "Entrada pelo jardim com plantas floridas — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca13-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca13-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca14-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca14-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca15-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca15-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca16-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca16-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca13-1.jpg",
+      "alt": "Gramado e área externa coberta da churrasqueira — Villa Branca, Cumbuco"
     },
     {
       "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca17-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca17-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca18-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca18-1.jpg"
-    },
-    {
-      "src": "/images/properties/villa-branca/originals/2017-02-Villa-Branca19-1.jpg",
-      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca19-1.jpg"
+      "sourceUrl": "https://www.cumbuco.net/wp-content/uploads/2017/02/Villa-Branca17-1.jpg",
+      "alt": "Fachada e jardim da villa ao lado da praia — Villa Branca, Cumbuco"
     }
   ],
   "metrics": {
@@ -192,7 +327,7 @@
   "seo": {
     "title": "Villa Branca | Aluguel por temporada em Cumbuco",
     "description": "A Casa Villa Branca é situada frente mar na linda Praia de Cumbuco. Uma caminhada de aproximadamente 10 a 15 minutos pela… Consulte disponibilidade pelo WhatsApp.",
-    "modified": "2026-08-10T00:00:00-03:00",
+    "modified": "2026-09-10T18:40:00Z",
     "ogImage": "/images/properties/villa-branca/originals/2017-02-Villa-Branca-1.jpg"
   },
   "slug": "villa-branca",
@@ -210,5 +345,27 @@
   "youtubeId": "tb9_xVGzMFg",
   "legacyUrl": "https://www.cumbuco.net.br/properties/villa-branca/",
   "propertyType": "villa",
-  "rentalType": "entire-home"
+  "rentalType": "entire-home",
+  "videos": [
+    {
+      "src": "/videos/villa-branca/villa-branca-cumbuco-garden-terrace-tour.mp4",
+      "poster": "/images/properties/villa-branca/2026/villa-branca-cumbuco-garden-terrace-tour-poster.webp",
+      "title": "Jardim e varandas da Villa Branca",
+      "description": "Passeio pela entrada, jardim, área da piscina e varandas da Villa Branca no Cumbuco.",
+      "duration": "PT79.77S",
+      "uploadDate": "2026-09-10T18:40:00Z",
+      "width": 848,
+      "height": 480
+    },
+    {
+      "src": "/videos/villa-branca/villa-branca-cumbuco-bedrooms-bathrooms-tour.mp4",
+      "poster": "/images/properties/villa-branca/2026/villa-branca-cumbuco-bedrooms-bathrooms-tour-poster.webp",
+      "title": "Quartos e banheiros da Villa Branca",
+      "description": "Conheça os quartos, banheiros e circulação interna da Villa Branca no Cumbuco.",
+      "duration": "PT117.5S",
+      "uploadDate": "2026-09-10T18:40:00Z",
+      "width": 848,
+      "height": 480
+    }
+  ]
 }

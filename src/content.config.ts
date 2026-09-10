@@ -127,8 +127,12 @@ const properties = defineCollection({
       .nullable(),
     youtubeId: z.string().nullable(),
     gallery: z.array(
-      z.object({ src: z.string(), sourceUrl: z.string().url() }),
+      z.object({ src: z.string(), sourceUrl: z.string().url().optional(), alt: z.string().optional(), srcset: z.string().optional(), width: z.number().int().positive().optional(), height: z.number().int().positive().optional() }),
     ),
+    videos: z.array(z.object({
+      src: z.string(), poster: z.string(), title: z.string(), description: z.string(),
+      duration: z.string(), uploadDate: z.string(), width: z.number(), height: z.number(),
+    })).default([]),
     reservedDates: z.array(z.string()),
   }),
 });

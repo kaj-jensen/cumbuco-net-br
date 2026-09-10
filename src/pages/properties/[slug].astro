@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import PropertyVideos from "../../components/PropertyVideos.astro";
 import DreamVillageOccupancy from "../../components/DreamVillageOccupancy.astro";
 import AvailabilityCalendar from "../../components/AvailabilityCalendar.astro";
 import EnquiryForm from "../../components/EnquiryForm.astro";
@@ -26,6 +27,16 @@ const whatsappMessage = `Olá! Tenho interesse em ${p.title}. Gostaria de consul
 const whatsappUrl = `https://wa.me/5585988139402?text=${encodeURIComponent(whatsappMessage)}`;
 const propertyUrl = new URL(`/properties/${p.slug}/`, Astro.site).toString();
 const propertyStructuredData = [
+  ...p.videos.map((video) => ({
+    "@type": "VideoObject",
+    "@id": `${propertyUrl}#${video.src.split("/").pop()}`,
+    name: video.title, description: video.description,
+    thumbnailUrl: new URL(video.poster, Astro.site).toString(),
+    contentUrl: new URL(video.src, Astro.site).toString(),
+    uploadDate: video.uploadDate, duration: video.duration,
+    inLanguage: "pt-BR",
+    isPartOf: { "@id": `${propertyUrl}#webpage` },
+  })),
   {
     "@type": "VacationRental",
     "@id": `${propertyUrl}#vacation-rental`,
@@ -107,7 +118,7 @@ const propertyStructuredData = [
       <source type="image/webp" srcset={optimizedHero.webp} />
       <img src={optimizedHero.fallback} width="720" height="480" alt={`${p.title} para aluguel em Cumbuco`} loading="eager" fetchpriority="high" decoding="async" />
     </picture>
-    {heroImages.slice(1).map((image, index) => <img src={image.src} width="1200" height="900" alt={`${p.title}, foto ${index + 2}`} loading="lazy" decoding="async" />)}
+    {heroImages.slice(1).map((image, index) => <img src={image.src} width={image.width ?? 1200} height={image.height ?? 900} srcset={image.srcset} sizes="(max-width: 620px) 88vw, (max-width: 850px) 40vw, 25vw" alt={image.alt ?? `${p.title}, foto ${index + 2}`} loading="lazy" decoding="async" />)}
   </section>
 
   <div class="shell availability-prompt" aria-label={`Consultar disponibilidade de ${p.title}`}>
@@ -149,9 +160,11 @@ const propertyStructuredData = [
         {p.gallery.map((image, index) => (
           <img
             src={image.src}
-            width="1200"
-            height="900"
-            alt={`${p.title}, foto da galeria ${index + 1}`}
+            width={image.width ?? 1200}
+            height={image.height ?? 900}
+            srcset={image.srcset}
+            sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) 45vw, 30vw"
+            alt={image.alt ?? `${p.title}, foto da galeria ${index + 1}`}
             loading="lazy"
             decoding="async"
           />
@@ -159,6 +172,8 @@ const propertyStructuredData = [
       </div>
     </details>
   )}
+
+  {p.videos.length > 0 && <PropertyVideos videos={p.videos} />}
 
   <section id="availability" class="section section--sand availability-section">
     <div class="shell">

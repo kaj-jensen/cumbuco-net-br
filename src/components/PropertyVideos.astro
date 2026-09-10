@@ -1,0 +1,29 @@
+---
+interface Props { videos: Array<{src: string; poster: string; title: string; description: string; width: number; height: number}>; }
+const { videos } = Astro.props;
+---
+<section class="shell property-videos" aria-labelledby="property-video-title">
+  <h2 id="property-video-title">Conheça a Villa Branca em vídeo</h2>
+  <div class="video-grid">
+    {videos.map((video) => (
+      <figure>
+        <video controls playsinline preload="none" poster={video.poster} width={video.width} height={video.height} aria-label={video.title}>
+          <source src={video.src} type="video/mp4" />
+          <a href={video.src}>Assistir ao vídeo</a>
+        </video>
+        <figcaption><h3>{video.title}</h3><p>{video.description}</p></figcaption>
+      </figure>
+    ))}
+  </div>
+</section>
+<style>
+  .property-videos { padding-block: 2.5rem; }
+  h2 { margin: 0 0 1.25rem; font-size: clamp(1.5rem, 3vw, 2.2rem); }
+  .video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+  figure { margin: 0; min-width: 0; }
+  video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 480; border-radius: 0.9rem; background: #123b3e; }
+  figcaption { padding-top: 1rem; }
+  h3 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+  p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
+  @media (max-width: 620px) { .video-grid { grid-template-columns: 1fr; } }
+</style>

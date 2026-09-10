@@ -15,3 +15,7 @@ migration/raw-br/html/
 public/images/properties/*/*
 !public/images/properties/*/originals/
 !public/images/properties/*/originals/**
+
+# Approved, optimized Villa Branca owner media.
+!public/images/properties/villa-branca/2026/
+!public/images/properties/villa-branca/2026/**
