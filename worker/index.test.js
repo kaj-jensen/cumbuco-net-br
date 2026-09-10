@@ -162,7 +162,7 @@ test("uses the synchronized English calendar when the Brazilian Worker has no pr
   const originalCaches = globalThis.caches;
   globalThis.fetch = async (url) => {
     assert.equal(String(url), "https://www.cumbuco.net/api/availability?property=villa-branca");
-    return Response.json({ property: "villa-branca", live: true, reservedDates: ["2026-09-19", "2026-09-20"] });
+    return Response.json({ property: "villa-branca", reservedDates: ["2026-09-19", "2026-09-20"] });
   };
   globalThis.caches = { default: { match: async () => undefined, put: async () => {} } };
   try {

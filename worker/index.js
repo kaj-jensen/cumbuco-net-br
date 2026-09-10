@@ -540,7 +540,7 @@ async function availability(request, env, context) {
     const response = await fetch(`${SHARED_AVAILABILITY_ORIGIN}/api/availability?property=${encodeURIComponent(property)}`);
     if (!response.ok) return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
     const shared = await response.json();
-    if (shared?.live !== true || !Array.isArray(shared.reservedDates)) {
+    if (shared?.live === false || !Array.isArray(shared.reservedDates)) {
       return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
     }
     reservedDates = keepBookingHorizon(shared.reservedDates.filter((date) => typeof date === "string"));
