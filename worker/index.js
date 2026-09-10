@@ -29,6 +29,7 @@ const EMAIL_FORWARDING_DESTINATIONS = [
 ];
 const ENQUIRY_FROM = { email: "enquiries@cumbuco.net.br", name: "Cumbuco Aluguéis" };
 const REPORT_FROM = { email: "reports@cumbuco.net.br", name: "Cumbuco Aluguéis" };
+const SHARED_AVAILABILITY_ORIGIN = "https://www.cumbuco.net";
 const REDIRECT_HOSTNAMES = new Set(["cumbuco.com.br", "www.cumbuco.com.br"]);
 const LEGACY_PATH_REDIRECTS = new Map([
   ["/action/apartment/", "/listings/apartment/"],
@@ -520,22 +521,31 @@ async function availability(request, env, context) {
   const property = new URL(request.url).searchParams.get("property") || "";
   if (!/^[a-z0-9-]+$/.test(property)) return json({ error: "Invalid property." }, 400);
 
-  const feeds = parseGoogleCalendarFeeds(env.GOOGLE_CALENDAR_FEEDS);
-  const feedUrl = feeds[property];
-  if (typeof feedUrl !== "string" || !feedUrl.startsWith("https://calendar.google.com/")) {
-    return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
-  }
-
   const cache = caches.default;
   const cacheKey = new Request(request.url, { method: "GET" });
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 
-  const response = await fetch(feedUrl, { headers: { accept: "text/calendar" } });
-  if (!response.ok) return json({ error: "The calendar feed could not be loaded." }, 502);
+  const feeds = parseGoogleCalendarFeeds(env.GOOGLE_CALENDAR_FEEDS);
+  const feedUrl = feeds[property];
+  let reservedDates;
+
+  if (typeof feedUrl === "string" && feedUrl.startsWith("https://calendar.google.com/")) {
+    const response = await fetch(feedUrl, { headers: { accept: "text/calendar" } });
+    if (!response.ok) return json({ error: "The calendar feed could not be loaded." }, 502);
+    reservedDates = keepBookingHorizon(parseReservedDates(await response.text()));
+  } else {
+    const response = await fetch(`${SHARED_AVAILABILITY_ORIGIN}/api/availability?property=${encodeURIComponent(property)}`);
+    if (!response.ok) return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
+    const shared = await response.json();
+    if (shared?.live !== true || !Array.isArray(shared.reservedDates)) {
+      return json({ property, live: false }, 200, "public, max-age=300, s-maxage=900");
+    }
+    reservedDates = keepBookingHorizon(shared.reservedDates.filter((date) => typeof date === "string"));
+  }
 
   const result = json(
-    { property, live: true, reservedDates: keepBookingHorizon(parseReservedDates(await response.text())) },
+    { property, live: true, reservedDates },
     200,
     "public, max-age=300, s-maxage=900",
   );
