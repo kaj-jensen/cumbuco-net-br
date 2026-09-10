@@ -522,7 +522,9 @@ async function availability(request, env, context) {
   if (!/^[a-z0-9-]+$/.test(property)) return json({ error: "Invalid property." }, 400);
 
   const cache = caches.default;
-  const cacheKey = new Request(request.url, { method: "GET" });
+  const cacheUrl = new URL(request.url);
+  cacheUrl.searchParams.set("calendar-source", "shared-v1");
+  const cacheKey = new Request(cacheUrl, { method: "GET" });
   const cached = await cache.match(cacheKey);
   if (cached) return cached;
 

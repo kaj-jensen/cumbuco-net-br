@@ -268,7 +268,7 @@ const { property, slug, reservedDates } = Astro.props;
       visibilityObserver.disconnect();
     }, { threshold: 0.25 });
     visibilityObserver.observe(calendar);
-    fetch(`/api/availability?property=${encodeURIComponent(slug || '')}`)
+    fetch(`/api/availability?property=${encodeURIComponent(slug || '')}&calendar-source=shared-v1`)
       .then(async (response) => {
         if (!response.ok) throw new Error('A disponibilidade ao vivo ainda não está configurada.');
         return response.json();
