@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 const { property } = Astro.props;
 const p = property.data;
 const heroImages = p.gallery.slice(0, 5);
-const heroImageBase = p.gallery[0].src.replace(/\.(?:jpe?g|png)$/i, "-card");
+const heroImageBase = p.gallery[0].src.replace(/\.(?:jpe?g|png|webp|avif)$/i, "-card");
 const optimizedHero = {
   avif: `${heroImageBase}.avif`,
   webp: `${heroImageBase}.webp`,
@@ -114,9 +114,10 @@ const propertyStructuredData = [
 
   <section class="shell gallery" aria-label={`Galeria de fotos de ${p.title}`}>
     <picture>
+      {p.gallery[0].srcset && <source type="image/webp" srcset={p.gallery[0].srcset} sizes="(max-width: 620px) 88vw, (max-width: 850px) 60vw, 50vw" />}
       <source type="image/avif" srcset={optimizedHero.avif} />
       <source type="image/webp" srcset={optimizedHero.webp} />
-      <img src={optimizedHero.fallback} width="720" height="480" alt={`${p.title} para aluguel em Cumbuco`} loading="eager" fetchpriority="high" decoding="async" />
+      <img src={p.gallery[0].srcset ? p.gallery[0].src : optimizedHero.fallback} width={p.gallery[0].width ?? 720} height={p.gallery[0].height ?? 480} alt={p.gallery[0].alt ?? `${p.title} para aluguel em Cumbuco`} loading="eager" fetchpriority="high" decoding="async" />
     </picture>
     {heroImages.slice(1).map((image, index) => <img src={image.src} width={image.width ?? 1200} height={image.height ?? 900} srcset={image.srcset} sizes="(max-width: 620px) 88vw, (max-width: 850px) 40vw, 25vw" alt={image.alt ?? `${p.title}, foto ${index + 2}`} loading="lazy" decoding="async" />)}
   </section>

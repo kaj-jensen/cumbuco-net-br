@@ -24,7 +24,7 @@ const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
         sizes="(max-width: 620px) calc(100vw - 2.5rem), (max-width: 850px) calc(50vw - 2.5rem), 384px"
         width="720"
         height="540"
-        alt={`${data.title} para aluguel em Cumbuco`}
+        alt={data.gallery[0].alt ?? `${data.title} para aluguel em Cumbuco`}
         loading={priority ? "eager" : "lazy"}
         decoding="async"
       />
