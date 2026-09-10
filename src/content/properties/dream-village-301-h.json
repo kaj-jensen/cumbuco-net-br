@@ -77,14 +77,14 @@
   "metrics": {
     "baths": 2,
     "bedrooms": 2,
-    "guests": 4
+    "guests": 6
   },
   "postId": "7067",
   "reservedDates": [],
   "seo": {
     "title": "Dream Village 301-H | Aluguel por temporada em Cumbuco",
     "description": "Apartamento 301-H no condomínio Dream Village está localizado no térreo poucos metros da piscina e da praia. Este… Consulte disponibilidade pelo WhatsApp.",
-    "modified": "2026-08-10T00:00:00-03:00",
+    "modified": "2026-09-10T10:00:00.000Z",
     "ogImage": "/images/properties/dream-village-301-h/originals/2017-06-Dream-Village-301-H.jpg"
   },
   "slug": "dream-village-301-h",
@@ -102,5 +102,6 @@
   "youtubeId": "CSxz4UC0054",
   "legacyUrl": "https://www.cumbuco.net.br/properties/dream-village-301-h/",
   "propertyType": "apartment",
-  "rentalType": "apartment"
+  "rentalType": "apartment",
+  "occupancyLabel": "Máximo de 4 adultos e 2 crianças de até 6 anos"
 }

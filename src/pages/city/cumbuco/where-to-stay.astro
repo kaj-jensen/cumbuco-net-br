@@ -10,7 +10,7 @@ const description = "Compare o centro de Cumbuco, condomínios à beira-mar, cas
 const image = "/images/content/cumbuco/local-accommodation-1440.jpg";
 
 const properties = await getCollection("properties");
-const exampleSlugs = ["villa-branca", "dream-village-301-v", "casa-vermelha"];
+const exampleSlugs = ["villa-branca", "dream-village-301-v"];
 const examples = exampleSlugs
   .map((slug) => properties.find((property) => property.data.slug === slug))
   .filter(Boolean);

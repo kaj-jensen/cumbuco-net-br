@@ -38,7 +38,7 @@ const cardImageSmallWebp = cardImageSmall.replace(/\.jpg$/, ".webp");
       <p>{isFeatured ? "Villa frente ao mar · Cumbuco, Ceará" : "Cumbuco, Ceará"}</p>
     </div>
     <ul aria-label="Detalhes do imóvel">
-      <li>{data.metrics.guests} hóspedes</li>
+      <li>{data.occupancyLabel ?? `${data.metrics.guests} hóspedes`}</li>
       <li>{data.metrics.bedrooms} quartos</li>
       <li>{data.metrics.baths} banheiros</li>
     </ul>

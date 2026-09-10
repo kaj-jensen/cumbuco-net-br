@@ -104,13 +104,13 @@
   "metrics": {
     "baths": 2,
     "bedrooms": 2,
-    "guests": 4
+    "guests": 6
   },
   "postId": "2147",
   "reservedDates": [],
   "seo": {
     "description": "Dream Village Cumbuco apartment 302-V is a two bed room apartment with kitchen laundry machine, bedrooms with air condition and a veranda with ocean view.",
-    "modified": "2017-03-14T08:11:24+00:00",
+    "modified": "2026-09-10T10:00:00.000Z",
     "ogImage": "https://www.cumbuco.net/wp-content/uploads/2017/05/IMG_4361.jpg",
     "title": "Dream Village 302-V - Vacation Rentals Cumbuco"
   },
@@ -129,5 +129,6 @@
   "youtubeId": "CSxz4UC0054",
   "legacyUrl": "https://www.cumbuco.net/properties/dream-village-302-v/",
   "propertyType": "apartment",
-  "rentalType": "apartment"
+  "rentalType": "apartment",
+  "occupancyLabel": "Máximo de 4 adultos e 2 crianças de até 6 anos"
 }

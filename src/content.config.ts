@@ -114,6 +114,7 @@ const properties = defineCollection({
     propertyType: z.enum(["apartment", "house", "villa"]),
     rentalType: z.enum(["apartment", "entire-home"]),
     taxonomy: z.array(z.object({ label: z.string(), url: z.string().url() })),
+    occupancyLabel: z.string().optional(),
     metrics: z.object({
       bedrooms: z.number().nullable(),
       baths: z.number().nullable(),

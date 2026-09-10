@@ -52,7 +52,6 @@ export type PropertyType = "apartment" | "house" | "villa";
 export const brazilianPropertySlugs = new Set([
   "beach-sun-cumbuco",
   "casa-chick",
-  "casa-vermelha",
   "dream-village-301-h",
   "dream-village-301-v",
   "dream-village-401-h",
@@ -64,7 +63,6 @@ export const brazilianPropertySlugs = new Set([
 export const propertyDisplayOrder = [
   "villa-branca",
   "casa-chick",
-  "casa-vermelha",
   "dream-village-301-v",
   "dunas-village-cumbuco",
   "dream-village-401-h",

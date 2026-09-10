@@ -1,14 +1,13 @@
 {
   "source": "https://github.com/kaj-jensen/cumbuco-net",
-  "captured": "2026-08-10",
-  "policy": "English listing facts are authoritative for shared properties; Jardim Reale uses the Brazilian legacy listing until an English counterpart exists.",
+  "captured": "2026-09-10",
+  "policy": "Owner update on 2026-09-10: Casa Vermelha removed; standard Dream Village occupancy is 4 adults plus 2 children up to 6 years old (6 total). English listing facts are otherwise authoritative for shared properties; Jardim Reale uses the Brazilian legacy listing until an English counterpart exists.",
   "properties": {
     "beach-sun-cumbuco": { "guests": 4, "bedrooms": 2, "baths": 2, "size": "100 m2", "checkIn": "12:00", "checkOut": "12:00" },
     "casa-chick": { "guests": 14, "bedrooms": 5, "baths": 7, "size": "350 m2", "checkIn": "12:00", "checkOut": "12:00" },
-    "casa-vermelha": { "guests": 10, "bedrooms": 3, "baths": 3, "size": "210 m2", "checkIn": "12:00", "checkOut": "12:00" },
-    "dream-village-301-h": { "guests": 4, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "12:00", "checkOut": "12:00" },
-    "dream-village-301-v": { "guests": 4, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "13:00", "checkOut": "12:00" },
-    "dream-village-401-h": { "guests": 4, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "12:00", "checkOut": "12:00" },
+    "dream-village-301-h": { "guests": 6, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "12:00", "checkOut": "12:00" },
+    "dream-village-301-v": { "guests": 6, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "13:00", "checkOut": "12:00" },
+    "dream-village-401-h": { "guests": 6, "bedrooms": 2, "baths": 2, "size": "84 m2", "checkIn": "12:00", "checkOut": "12:00" },
     "dunas-village-cumbuco": { "guests": 6, "bedrooms": 3, "baths": 2, "size": "115 m2", "checkIn": "12:00", "checkOut": "12:00" },
     "jardim-reale-cumbuco": { "guests": 4, "bedrooms": 2, "baths": 2, "size": "128 m 2", "checkIn": "15:00", "checkOut": "12:00", "source": "Brazilian legacy listing" },
     "villa-branca": { "guests": 20, "bedrooms": 6, "baths": 8, "size": "400 m2", "checkIn": "12:00", "checkOut": "12:00" }

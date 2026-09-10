@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import DreamVillageOccupancy from "../../components/DreamVillageOccupancy.astro";
 import AvailabilityCalendar from "../../components/AvailabilityCalendar.astro";
 import EnquiryForm from "../../components/EnquiryForm.astro";
 import VillaBrancaReviews from "../../components/VillaBrancaReviews.astro";
@@ -95,7 +96,8 @@ const propertyStructuredData = [
     <div class="shell">
       <p class="eyebrow">{typeLabel} · Cumbuco, Ceará</p>
       <div class="title-row"><h1>{p.title}</h1><a class="button" href="#enquire" data-track="availability_jump" data-track-property={p.slug} data-track-source="hero_consult">Consultar este imóvel</a></div>
-      <ul class="quick-facts"><li>{p.metrics.guests} hóspedes</li><li>{p.metrics.bedrooms} quartos</li><li>{p.metrics.baths} banheiros</li><li>{p.gallery.length} fotos</li></ul>
+      <ul class="quick-facts"><li>{p.occupancyLabel ?? `${p.metrics.guests} hóspedes`}</li><li>{p.metrics.bedrooms} quartos</li><li>{p.metrics.baths} banheiros</li><li>{p.gallery.length} fotos</li></ul>
+      {p.slug.startsWith("dream-village-") && <DreamVillageOccupancy />}
     </div>
   </section>
 
@@ -177,7 +179,7 @@ const propertyStructuredData = [
             <div><dt>Tipo</dt><dd>{typeLabel}</dd></div>
             <div><dt>Quartos</dt><dd>{p.metrics.bedrooms}</dd></div>
             <div><dt>Banheiros</dt><dd>{p.metrics.baths}</dd></div>
-            <div><dt>Hóspedes</dt><dd>{p.metrics.guests}</dd></div>
+            <div><dt>Hóspedes</dt><dd>{p.occupancyLabel ?? p.metrics.guests}</dd></div>
             {p.details["Property Size"] && <div><dt>Área</dt><dd>{p.details["Property Size"]}</dd></div>}
           </dl>
         </div>

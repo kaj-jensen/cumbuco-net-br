@@ -76,14 +76,14 @@
   "metrics": {
     "baths": 2,
     "bedrooms": 2,
-    "guests": 4
+    "guests": 6
   },
   "postId": "7363",
   "reservedDates": [],
   "seo": {
     "title": "Dream Village 301-V | Aluguel por temporada em Cumbuco",
     "description": "Dream Village Cumbuco Aluguel &#8211; apartamentos de alto nível de frente para o mar. Apartamento 301-V no condomínio Dream… Consulte disponibilidade pelo WhatsApp.",
-    "modified": "2026-08-10T00:00:00-03:00",
+    "modified": "2026-09-10T10:00:00.000Z",
     "ogImage": "/images/properties/dream-village-301-v/originals/2018-06-Dream-Village-301-V-5.jpg"
   },
   "slug": "dream-village-301-v",
@@ -101,5 +101,6 @@
   "youtubeId": "HO5yANTCR7M",
   "legacyUrl": "https://www.cumbuco.net.br/properties/dream-village-301-v/",
   "propertyType": "apartment",
-  "rentalType": "apartment"
+  "rentalType": "apartment",
+  "occupancyLabel": "Máximo de 4 adultos e 2 crianças de até 6 anos"
 }
