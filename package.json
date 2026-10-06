@@ -24,10 +24,13 @@
     "astro": "7.2.8"
   },
   "devDependencies": {
-    "sharp": "^0.35.3",
-    "wrangler": "4.120.1"
+    "sharp": "0.35.5",
+    "wrangler": "4.148.0"
   },
   "engines": {
     "node": ">=22.12.0"
+  },
+  "overrides": {
+    "sharp": "0.35.5"
   }
 }
