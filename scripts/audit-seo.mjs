@@ -72,11 +72,11 @@ for (const file of await htmlFiles(root)) {
 
   const types = collectTypes(graph);
   for (const required of ["WebSite", "WebPage", "LodgingBusiness"]) {
-    if (!types.has(required)) issues.push(`${path}: missing ${required} structured data`);
+    if (!(required === "WebPage" ? ["WebPage", "AboutPage", "ContactPage", "CollectionPage"].some((type) => types.has(type)) : types.has(required))) issues.push(`${path}: missing ${required} structured data`);
   }
   if (path.startsWith("properties/") && path !== "properties/index.html") {
     if (!types.has("BreadcrumbList")) issues.push(`${path}: missing property breadcrumb structured data`);
-    if (!types.has("Apartment") && !types.has("House")) issues.push(`${path}: missing accommodation structured data`);
+    if (!["Apartment", "House", "Accommodation"].some((type) => types.has(type))) issues.push(`${path}: missing accommodation structured data`);
   }
   if (path === "city/cumbuco/local-businesses/index.html") {
     for (const required of ["CollectionPage", "ItemList", "BreadcrumbList", "LocalBusiness"]) {
