@@ -160,9 +160,14 @@ test("prevents indexing of the workers.dev preview", async () => {
 test("uses the synchronized English calendar when the Brazilian Worker has no private feed", async () => {
   const originalFetch = globalThis.fetch;
   const originalCaches = globalThis.caches;
+  const tomorrow = new Date();
+  tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
+  const followingDay = new Date(tomorrow);
+  followingDay.setUTCDate(followingDay.getUTCDate() + 1);
+  const reservedDates = [tomorrow, followingDay].map((date) => date.toISOString().slice(0, 10));
   globalThis.fetch = async (url) => {
     assert.equal(String(url), "https://www.cumbuco.net/api/availability?property=villa-branca");
-    return Response.json({ property: "villa-branca", reservedDates: ["2026-09-19", "2026-09-20"] });
+    return Response.json({ property: "villa-branca", reservedDates });
   };
   globalThis.caches = { default: { match: async () => undefined, put: async () => {} } };
   try {
@@ -175,7 +180,7 @@ test("uses the synchronized English calendar when the Brazilian Worker has no pr
     assert.equal(response.status, 200);
     assert.equal(response.headers.get("x-content-type-options"), "nosniff");
     assert.equal(response.headers.get("cache-control"), "public, max-age=300, s-maxage=900");
-    assert.deepEqual(await response.json(), { property: "villa-branca", live: true, reservedDates: ["2026-09-19", "2026-09-20"] });
+    assert.deepEqual(await response.json(), { property: "villa-branca", live: true, reservedDates });
   } finally {
     globalThis.fetch = originalFetch;
     globalThis.caches = originalCaches;
