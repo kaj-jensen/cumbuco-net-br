@@ -24,7 +24,7 @@
     "astro": "7.2.0"
   },
   "devDependencies": {
-    "sharp": "^0.35.3",
+    "sharp": "^0.35.5",
     "wrangler": "4.120.1"
   },
   "engines": {
