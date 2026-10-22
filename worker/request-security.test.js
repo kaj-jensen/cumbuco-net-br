@@ -19,3 +19,14 @@ test('fails closed for missing or failed limiter and returns 429 on exhaustion',
  const response=await requestGate(request,{ENQUIRY_RATE_LIMIT:{limit:async()=>({success:false})}});
  assert.equal(response.status,429);assert.equal(response.headers.get('Retry-After'),'60');
 });
+
+import worker from './index.js';
+test('rejects scalar JSON before any email side effects', async()=>{
+ const host='www.cumbuco.net.br';
+ for(const body of ['null','[]','1']){
+  let sent=false;
+  const env={ENQUIRY_RATE_LIMIT:{limit:async()=>({success:true})},EMAIL:{send:async()=>{sent=true}},ENQUIRY_TO:'test@example.invalid',TURNSTILE_SECRET_KEY:'test-only'};
+  const response=await worker.fetch(new Request('https://'+host+'/api/enquiry',{method:'POST',headers:{'Content-Type':'application/json'},body}),env,{});
+  assert.equal(response.status,400);assert.equal(sent,false);
+ }
+});

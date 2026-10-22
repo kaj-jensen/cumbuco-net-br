@@ -237,6 +237,7 @@ async function conversionEvent(request, env, context) {
     return new Response(null, { status: 400 });
   }
 
+  if (!input || typeof input !== "object" || Array.isArray(input)) return new Response(null, { status: 400 });
   const event = cleanText(input.event, 48);
   const property = cleanText(input.property, 100);
   const source = cleanText(input.source, 80) || "unspecified";
@@ -327,6 +328,7 @@ async function enquiry(request, env) {
     return json({ error: "Invalid enquiry." }, 400);
   }
 
+  if (!input || typeof input !== "object" || Array.isArray(input)) return json({ error: "Invalid enquiry." }, 400);
   if (cleanText(input.website, 200)) return json({ ok: true }, 200);
 
   const name = cleanSingleLine(input.name, 100);
