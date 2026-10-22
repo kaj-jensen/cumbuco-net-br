@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "test": "node --test worker/index.test.js",
+    "test": "node --test worker/*.test.js",
     "audit:seo": "npm run build && node scripts/audit-seo.mjs",
     "audit:properties": "node scripts/audit-property-facts.mjs",
     "audit:live": "node scripts/audit-live.mjs",

@@ -4,6 +4,8 @@ import test from "node:test";
 import worker, { currentDateInFortaleza, funnelReportContent, keepBookingHorizon, seoReportContent } from "./index.js";
 
 const env = {
+  ENQUIRY_RATE_LIMIT: { limit: async () => ({ success: true }) },
+  EVENT_RATE_LIMIT: { limit: async () => ({ success: true }) },
   ASSETS: {
     fetch: async () => new Response("<!doctype html><title>Test</title>", {
       headers: { "content-type": "text/html; charset=utf-8" },

@@ -1,3 +1,4 @@
+import { decodeEntities } from "./html-entities.mjs";
 import { readFile, readdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -5,14 +6,7 @@ const root = process.cwd();
 const rawRoot = path.join(root, "migration", "raw-br");
 const site = JSON.parse(await readFile(path.join(rawRoot, "site-export.json"), "utf8"));
 
-const entities = (value = "") => value
-  .replaceAll("&amp;", "&")
-  .replaceAll("&quot;", '"')
-  .replaceAll("&#039;", "'")
-  .replaceAll("&nbsp;", " ")
-  .replaceAll("&aacute;", "á")
-  .replaceAll("&atilde;", "ã")
-  .replaceAll("&ccedil;", "ç");
+const entities = decodeEntities;
 
 const text = (html = "") => entities(html)
   .replace(/<br\s*\/?>/gi, "\n")

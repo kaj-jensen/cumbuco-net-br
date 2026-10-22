@@ -47,7 +47,10 @@
     }
   ],
   "triggers": {
-    "crons": ["0 11 * * 1", "30 11 1 * *"]
+    "crons": [
+      "0 11 * * 1",
+      "30 11 1 * *"
+    ]
   },
   "assets": {
     "directory": "./dist",
@@ -58,5 +61,24 @@
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
-  }
+  },
+  "ratelimits": [
+    {
+      "name": "ENQUIRY_RATE_LIMIT",
+      "namespace_id": "2026102202",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    },
+    {
+      "name": "EVENT_RATE_LIMIT",
+      "namespace_id": "2026102203",
+      "simple": {
+        "limit": 120,
+        "period": 60
+      }
+    }
+  ],
+  "keep_vars": true
 }
