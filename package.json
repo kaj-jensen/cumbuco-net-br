@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "test": "node --test worker/index.test.js",
+    "test": "node --test worker/*.test.js",
     "audit:seo": "npm run build && node scripts/audit-seo.mjs",
     "audit:properties": "node scripts/audit-property-facts.mjs",
     "audit:live": "node scripts/audit-live.mjs",
@@ -31,6 +31,7 @@
     "node": ">=22.12.0"
   },
   "overrides": {
-    "sharp": "0.35.5"
+    "sharp": "0.35.5",
+    "vite": "8.1.6"
   }
 }

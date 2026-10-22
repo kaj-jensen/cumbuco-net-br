@@ -1,3 +1,4 @@
+import { decodeEntities } from "./html-entities.mjs";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
@@ -8,14 +9,7 @@ const htmlOutput = path.join(output, "html");
 
 await mkdir(htmlOutput, { recursive: true });
 
-const decode = (value = "") => value
-  .replaceAll("&amp;", "&")
-  .replaceAll("&quot;", '"')
-  .replaceAll("&#039;", "'")
-  .replaceAll("&#8211;", "–")
-  .replaceAll("&#8226;", "•")
-  .replaceAll("&lt;", "<")
-  .replaceAll("&gt;", ">");
+const decode = decodeEntities;
 
 async function fetchText(url) {
   const response = await fetch(url, {

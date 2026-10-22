@@ -1,3 +1,4 @@
+import { readLimited, requestGate } from "./request-security.js";
 const json = (body, status = 200, cacheControl = "no-store") =>
   new Response(JSON.stringify(body), {
     status,
@@ -223,16 +224,20 @@ function escapeHtml(value) {
 }
 
 async function conversionEvent(request, env, context) {
+  const rejected = await requestGate(request, env, "EVENT_RATE_LIMIT");
+  if (rejected) return rejected;
   const contentLength = Number(request.headers.get("content-length") || 0);
   if (contentLength > 2_048) return new Response(null, { status: 413 });
 
   let input;
   try {
-    input = await request.json();
-  } catch {
+    input = JSON.parse(new TextDecoder().decode(await readLimited(request, 2_048)));
+  } catch (error) {
+    if (error instanceof Response) return error;
     return new Response(null, { status: 400 });
   }
 
+  if (!input || typeof input !== "object" || Array.isArray(input)) return new Response(null, { status: 400 });
   const event = cleanText(input.event, 48);
   const property = cleanText(input.property, 100);
   const source = cleanText(input.source, 80) || "unspecified";
@@ -295,16 +300,20 @@ async function verifyTurnstile(token, request, secret) {
     const response = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
       method: "POST",
       body,
+      signal: AbortSignal.timeout(10_000),
     });
     if (!response.ok) return false;
     const result = await response.json();
-    return result.success === true && (!result.hostname || result.hostname === "www.cumbuco.net.br" || result.hostname.endsWith(".workers.dev"));
+    return result.success === true && result.hostname === new URL(request.url).hostname;
   } catch {
     return false;
   }
 }
 
 async function enquiry(request, env) {
+  const rejected = await requestGate(request, env);
+  if (rejected) return rejected;
+  if (!request.headers.get("content-type")?.toLowerCase().includes("application/json")) return json({ error: "Expected JSON." }, 415);
   if (!env.EMAIL || !env.TURNSTILE_SECRET_KEY) {
     return json({ error: "Email enquiries are temporarily unavailable. Please use WhatsApp." }, 503);
   }
@@ -313,11 +322,13 @@ async function enquiry(request, env) {
 
   let input;
   try {
-    input = await request.json();
-  } catch {
+    input = JSON.parse(new TextDecoder().decode(await readLimited(request, 16_384)));
+  } catch (error) {
+    if (error instanceof Response) return error;
     return json({ error: "Invalid enquiry." }, 400);
   }
 
+  if (!input || typeof input !== "object" || Array.isArray(input)) return json({ error: "Invalid enquiry." }, 400);
   if (cleanText(input.website, 200)) return json({ ok: true }, 200);
 
   const name = cleanSingleLine(input.name, 100);
