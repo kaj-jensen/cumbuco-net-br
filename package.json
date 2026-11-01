@@ -18,7 +18,8 @@
     "migrate:export": "node scripts/export-legacy-br.mjs",
     "migrate:images": "node scripts/download-legacy-images-br.mjs",
     "migrate:reconcile": "node scripts/reconcile-properties-br.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "prebuild": "node scripts/check-framework-policy.mjs"
   },
   "dependencies": {
     "astro": "7.4.2"
