@@ -22,11 +22,11 @@
     "prebuild": "node scripts/check-framework-policy.mjs"
   },
   "dependencies": {
-    "astro": "7.4.2"
+    "astro": "7.4.4"
   },
   "devDependencies": {
     "sharp": "0.35.5",
-    "wrangler": "4.152.0"
+    "wrangler": "4.156.0"
   },
   "engines": {
     "node": ">=22.12.0"
