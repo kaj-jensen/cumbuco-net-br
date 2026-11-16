@@ -22,7 +22,7 @@
     "prebuild": "node scripts/check-framework-policy.mjs"
   },
   "dependencies": {
-    "astro": "7.4.2"
+    "astro": "7.4.12"
   },
   "devDependencies": {
     "sharp": "0.35.5",
