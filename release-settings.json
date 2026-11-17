@@ -1,0 +1,15 @@
+{
+  "repository": "kaj-jensen/cumbuco-net-br",
+  "branch": "codex/initial-build",
+  "worker": "cumbuco-net-br",
+  "account": "d29f48cc069d51d0787fc306533039e1",
+  "productionURL": "https://www.cumbuco.net.br",
+  "config": "wrangler.jsonc",
+  "artifact": "dist",
+  "paths": [
+    "/",
+    "/properties/",
+    "/contact-cumbuco-rentals/"
+  ],
+  "private": false
+}

@@ -23,3 +23,13 @@ public/images/properties/*/*
 # Approved, optimized Dream Village 401-H owner media.
 !public/images/properties/dream-village-401-h/2026/
 !public/images/properties/dream-village-401-h/2026/**
+
+playwright-report/
+
+test-results/
+
+wrangler.release.json
+
+wrangler.preview.json
+
+deployment-result.json

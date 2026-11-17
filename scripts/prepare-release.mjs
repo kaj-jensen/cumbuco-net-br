@@ -1,0 +1,13 @@
+import {experimental_readRawConfig} from 'wrangler';
+import {readFileSync,writeFileSync} from 'node:fs';
+import path from 'node:path';
+const s=JSON.parse(readFileSync('release-settings.json'));
+const raw=experimental_readRawConfig({config:s.config}).rawConfig;
+if(raw.name!==s.worker || (raw.account_id && raw.account_id!==s.account))throw Error('Cloudflare target mismatch');
+const base=path.dirname(path.resolve(s.config));
+const resolve=v=>path.relative(process.cwd(),path.resolve(base,v));
+const prod={...raw,account_id:s.account,main:resolve(raw.main),assets:{...raw.assets,directory:resolve(raw.assets.directory)}};
+for(const key of ['build','configPath','userConfigPath','routes','triggers','workers_dev','preview_urls','observability','$schema'])delete prod[key];
+const preview={previews:{vars:s.private?raw.vars:{},send_email:[],ratelimits:[],d1_databases:[],observability:{enabled:false}},name:s.worker,account_id:s.account,main:prod.main,compatibility_date:prod.compatibility_date,compatibility_flags:prod.compatibility_flags,assets:prod.assets,no_bundle:prod.no_bundle,vars:s.private?raw.vars:undefined};
+writeFileSync('wrangler.release.json',JSON.stringify(prod,null,2)+'\n');
+writeFileSync('wrangler.preview.json',JSON.stringify(preview,null,2)+'\n');

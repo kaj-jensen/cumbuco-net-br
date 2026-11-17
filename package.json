@@ -14,19 +14,23 @@
     "content:prepare": "node scripts/prepare-content.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
     "preview": "astro preview",
-    "deploy": "node scripts/deploy-production.mjs",
+    "deploy": "gh workflow run browser-checks.yml --ref codex/initial-build --repo kaj-jensen/cumbuco-net-br",
     "migrate:export": "node scripts/export-legacy-br.mjs",
     "migrate:images": "node scripts/download-legacy-images-br.mjs",
     "migrate:reconcile": "node scripts/reconcile-properties-br.mjs",
     "astro": "astro",
-    "prebuild": "node scripts/check-framework-policy.mjs"
+    "prebuild": "node scripts/check-framework-policy.mjs",
+    "test:browser": "playwright test",
+    "release:checks": "npm test && node --test tests/release-policy.test.mjs",
+    "release:prepare": "node scripts/prepare-release.mjs"
   },
   "dependencies": {
     "astro": "7.4.12"
   },
   "devDependencies": {
     "sharp": "0.35.5",
-    "wrangler": "4.152.0"
+    "wrangler": "4.164.0",
+    "@playwright/test": "1.65.1"
   },
   "engines": {
     "node": ">=22.12.0"
