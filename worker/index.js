@@ -116,6 +116,7 @@ async function secureResponse(response, { preview = false } = {}) {
     headers.delete("content-encoding");
   }
   headers.set("content-security-policy", policy);
+  if (response.status === 304) headers.delete("content-security-policy");
   headers.set("permissions-policy", "camera=(), microphone=(), geolocation=()");
   headers.set("referrer-policy", "strict-origin-when-cross-origin");
   headers.set("strict-transport-security", "max-age=15552000");
