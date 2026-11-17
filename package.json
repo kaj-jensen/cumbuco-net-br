@@ -14,7 +14,7 @@
     "content:prepare": "node scripts/prepare-content.mjs",
     "images:optimize": "node scripts/optimize-images.mjs",
     "preview": "astro preview",
-    "deploy": "npm run build && wrangler deploy",
+    "deploy": "node scripts/deploy-production.mjs",
     "migrate:export": "node scripts/export-legacy-br.mjs",
     "migrate:images": "node scripts/download-legacy-images-br.mjs",
     "migrate:reconcile": "node scripts/reconcile-properties-br.mjs",
