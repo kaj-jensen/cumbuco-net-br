@@ -243,7 +243,7 @@ async function conversionEvent(request, env, context) {
   try {
     input = JSON.parse(new TextDecoder().decode(await readLimited(request, 2_048)));
   } catch (error) {
-    if (error instanceof Response) return error;
+    if (error instanceof Response) return new Response(null, {status: error.status === 413 ? 413 : 400});
     return new Response(null, { status: 400 });
   }
 
@@ -334,7 +334,7 @@ async function enquiry(request, env) {
   try {
     input = JSON.parse(new TextDecoder().decode(await readLimited(request, 16_384)));
   } catch (error) {
-    if (error instanceof Response) return error;
+    if (error instanceof Response) return new Response(null, {status: error.status === 413 ? 413 : 400});
     return json({ error: "Invalid enquiry." }, 400);
   }
 
