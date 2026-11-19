@@ -2,13 +2,13 @@ name: Browser checks
 on:
   pull_request:
   push:
-    branches: [codex/initial-build]
+    branches: [ codex/initial-build ]
   workflow_dispatch:
 permissions:
   contents: read
 concurrency:
   group: browser-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
   source:
     uses: ./.github/workflows/source-security.yml
@@ -25,6 +25,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 24
+          cache: npm
       - run: npm ci
       - name: Dependency security and Worker tests
         run: |
@@ -52,7 +53,7 @@ jobs:
           include-hidden-files: true
           retention-days: 1
   deploy:
-    needs: [browser, source]
+    needs: [ browser, source ]
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/codex/initial-build'
     runs-on: ubuntu-latest
     timeout-minutes: 15
@@ -74,6 +75,7 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: 24
+          cache: npm
       - run: npm ci --ignore-scripts
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:

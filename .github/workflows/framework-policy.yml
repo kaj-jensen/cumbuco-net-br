@@ -1,6 +1,8 @@
 name: Framework policy
 on:
   push:
+    branches:
+      - codex/initial-build
   pull_request:
 permissions:
   contents: read
@@ -15,3 +17,7 @@ jobs:
         with:
           node-version: 24
       - run: node scripts/check-framework-policy.mjs
+    timeout-minutes: 10
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
