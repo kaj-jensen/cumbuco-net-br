@@ -4,7 +4,7 @@
   "compatibility_date": "2026-08-12",
   "main": "./worker/index.js",
   "workers_dev": true,
-  "preview_urls": true,
+  "preview_urls": false,
   "routes": [
     {
       "pattern": "cumbuco.net.br/*",
@@ -60,7 +60,15 @@
   },
   "observability": {
     "enabled": true,
-    "head_sampling_rate": 1
+    "head_sampling_rate": 1,
+    "logs": {
+      "enabled": true,
+      "invocation_logs": false
+    },
+    "traces": {
+      "enabled": false
+    },
+    "redact_query_string": true
   },
   "ratelimits": [
     {
