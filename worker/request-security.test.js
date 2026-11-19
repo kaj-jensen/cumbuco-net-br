@@ -30,3 +30,20 @@ test('rejects scalar JSON before any email side effects', async()=>{
   assert.equal(response.status,400);assert.equal(sent,false);
  }
 });
+
+test('preview API requests are rejected before touching production bindings',async()=>{
+ let touched=false;const binding=new Proxy({}, {get(){touched=true;throw Error('binding accessed');}});
+ for(const endpoint of ['/api/enquiry','/api/events','/api/availability']){
+  const response=await worker.fetch(new Request('https://preview.example.workers.dev'+endpoint,{method:endpoint==='/api/availability'?'GET':'POST'}),binding,{});
+  assert.equal(response.status,403);assert.equal(touched,false);
+ }
+});
+
+test('asset failures cross the real Worker boundary without leaking exception text',async()=>{
+ const original=console.error;const records=[];console.error=value=>records.push(value);
+ try {
+  const response=await worker.fetch(new Request('https://www.cumbuco.net.br/'),{ASSETS:{fetch:async()=>{throw Error('private-provider-details')}}},{});
+  assert.equal(response.status,500);assert.doesNotMatch(await response.text(),/private-provider/);
+  assert.ok(response.headers.get('X-Request-ID'));assert.doesNotMatch(records.join(''),/private-provider/);
+ } finally {console.error=original;}
+});

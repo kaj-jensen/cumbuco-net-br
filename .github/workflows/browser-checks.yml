@@ -53,11 +53,7 @@ jobs:
           retention-days: 1
   deploy:
     needs: [browser, source]
-    if: >-
-      (github.event_name == 'pull_request' &&
-       github.event.pull_request.head.repo.full_name == github.repository &&
-       github.actor != 'dependabot[bot]') ||
-      (github.event_name != 'pull_request' && github.ref == 'refs/heads/codex/initial-build')
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/codex/initial-build'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     permissions:

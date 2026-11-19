@@ -1,3 +1,4 @@
+import { handleUnexpected } from './unexpected-error.js';
 import { scriptPolicy } from "./script-policy.js";
 import { readLimited, requestGate } from "./request-security.js";
 const json = (body, status = 200, cacheControl = "no-store") =>
@@ -402,7 +403,7 @@ async function enquiry(request, env) {
     })));
     return json({ ok: true, reference }, 200);
   } catch (error) {
-    console.error("Enquiry email failed", error?.code || "unknown");
+    console.error(JSON.stringify({ event: "enquiry_email_failed", code: ["E_RATE_LIMIT_EXCEEDED", "E_DAILY_LIMIT_EXCEEDED"].includes(error?.code) ? error.code : "unknown" }));
     const rateLimited = error?.code === "E_RATE_LIMIT_EXCEEDED" || error?.code === "E_DAILY_LIMIT_EXCEEDED";
     return json(
       { error: rateLimited ? "Email service is busy. Please try again shortly or use WhatsApp." : "Email could not be sent. Please use WhatsApp or try again." },
@@ -577,7 +578,7 @@ async function availability(request, env, context) {
   return result;
 }
 
-export default {
+const worker = {
   async email(message) {
     const results = await Promise.allSettled(
       EMAIL_FORWARDING_DESTINATIONS.map((destination) => message.forward(destination)),
@@ -593,6 +594,9 @@ export default {
 
   async fetch(request, env, context) {
     const url = new URL(request.url);
+    if (url.pathname.startsWith('/api/') && !['cumbuco.net.br', 'www.cumbuco.net.br'].includes(url.hostname)) {
+      return new Response('API unavailable on this hostname.', { status: 403, headers: { 'Cache-Control': 'no-store' } });
+    }
     if (REDIRECT_HOSTNAMES.has(url.hostname)) {
       url.protocol = "https:";
       url.hostname = "www.cumbuco.net.br";
@@ -664,3 +668,7 @@ export default {
     context.waitUntil(controller.cron === "30 11 1 * *" ? monthlySeoReport(env) : weeklyFunnelReport(env));
   },
 };
+
+export default { ...worker, fetch(request, env, context) {
+  return handleUnexpected(() => worker.fetch(request, env, context), 'Ocorreu um erro inesperado. Tente novamente mais tarde.');
+} };
