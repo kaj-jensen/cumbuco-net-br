@@ -25,11 +25,11 @@
     "release:prepare": "node scripts/prepare-release.mjs"
   },
   "dependencies": {
-    "astro": "7.4.12"
+    "astro": "7.4.13"
   },
   "devDependencies": {
     "sharp": "0.35.5",
-    "wrangler": "4.164.0",
+    "wrangler": "4.166.0",
     "@playwright/test": "1.65.1"
   },
   "engines": {
